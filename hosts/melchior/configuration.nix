@@ -52,6 +52,12 @@
     smartmontools lsscsi
   ];
 
+  # Default editor
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   # Security
   programs.mtr.enable = true;
   programs.zsh.enable = true;
