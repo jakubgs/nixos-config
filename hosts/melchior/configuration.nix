@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./users.nix
+  ];
 
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
@@ -89,29 +89,9 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.systemWide = true;
   
-  # Make zsh the default shell
-  users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sochan = {
-    uid = 1000;
-    createHome = true;
-    isNormalUser = true;
-    useDefaultShell = true;
-    extraGroups = [ "wheel" "audio" "video" "disk" "adm" "systemd-journal" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAotJTAk91kQ4skl7hDT5h5GwC/dWCfDXJiQMTw4QrgpNI7rxLhQbgorvN287bzrVig5xBQloMkkm9qqzOn2cv5L7iit8TT9mcrApDiqWBrb05jCm5cu1lINni/MWn5XfQMnE8YnWtwnW+ncd2EcwS9wVDabrTJPFjFYnMaHbl7Ls= sochan@lilim"
-    ];
-  };
-
-  # allow of sudo without password
-  security.sudo.wheelNeedsPassword = false;
-
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
-
 }
-
