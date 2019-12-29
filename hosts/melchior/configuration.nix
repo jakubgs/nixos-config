@@ -25,11 +25,6 @@
   boot.loader.grub.useOSProber = false;
 
   networking.hostName = "melchior";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = true;
   networking.interfaces.enp3s0.useDHCP = true;
 
   # Select internationalisation properties.
@@ -81,8 +76,8 @@
   };
 
   # Open ports in the firewall.
+  networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ ];
 
   # Enable sound.
   sound.enable = true;
