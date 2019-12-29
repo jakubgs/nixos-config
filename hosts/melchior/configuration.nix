@@ -52,7 +52,7 @@
     # hardware tools
     pciutils htop lm_sensors
     # networking
-    nmap nettools samba
+    nmap nettools
     # filesystems
     zfs zfstools 
     # hard drive management

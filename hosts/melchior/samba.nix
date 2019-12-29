@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Tools
+  environment.systemPackages = with pkgs; [ samba ];
+
   # Firewall
   networking.firewall.allowedTCPPorts = [ 139 445 ];
   networking.firewall.allowedUDPPorts = [ 137 138 ];
