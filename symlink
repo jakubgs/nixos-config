@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+HOST=$(hostname)
+if [[ ! -z "$1" ]]; then
+  HOST=$1
+fi
+
+if [[ ! -e secrets.nix ]]; then
+    echo "Missing secrets.nix file!" >&2
+    exit 1
+fi
+
+if [[ ! -e "hosts/$HOST/configuration.nix" ]] || [[ ! -e "hosts/$HOST/hardware.nix" ]]; then
+    echo "Missing $HOST.nix or $HOST-hardware.nix" >&2
+    exit 1
+fi
+
+ln -f "hosts/$HOST/configuration.nix" "/etc/nixos"
+ln -f "hosts/$HOST/hardware.nix" "/etc/nixos"
+ln -f "secrets.nix" "/etc/nixos"
