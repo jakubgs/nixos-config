@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ 139 445 ];
+  networking.firewall.allowedUDPPorts = [ 137 138 ];
+
+  # Daemon
   services.samba.enable = true;
   services.samba.syncPasswordsByPam = true;
   services.samba.extraConfig = ''
