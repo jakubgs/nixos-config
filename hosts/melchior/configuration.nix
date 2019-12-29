@@ -62,6 +62,7 @@
   programs.mtr.enable = true;
   programs.zsh.enable = true;
   services.openssh.enable = true;
+  services.openssh.openFirewall = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -72,10 +73,6 @@
     enable = true;
     autodetect = true;
   };
-
-  # Open ports in the firewall.
-  networking.firewall.allowPing = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
 
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
