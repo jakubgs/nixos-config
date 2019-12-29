@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./users.nix
+    ./samba.nix
   ];
 
   # Modules for sensors
@@ -51,7 +52,7 @@
     # hardware tools
     pciutils htop lm_sensors
     # networking
-    nmap nettools
+    nmap nettools samba
     # filesystems
     zfs zfstools 
     # hard drive management
