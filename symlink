@@ -2,13 +2,13 @@
 
 HOST=$(hostname)
 if [[ ! -z "$1" ]]; then
-    HOST=$1
+    HOST="$1"
 fi
 
 FILES=(
   "secrets.nix"
-  "hosts/$HOST/configuration.nix" 
-  "hosts/$HOST/hardware-configuration.nix" 
+  "hosts/${HOST}/configuration.nix" 
+  "hosts/${HOST}/hardware-configuration.nix" 
 )
 
 for FILE in ${FILES[@]}; do
@@ -18,5 +18,9 @@ for FILE in ${FILES[@]}; do
     fi
 done
 
+# symlink secrets
+ln -vsf "${PWD}/secrets.nix" "${PWD}/hosts/${HOST}"
+
+# and then the whole dir
 rm -r "/etc/nixos"
-ln -vsf "$PWD/hosts/$HOST" "/etc/nixos"
+ln -vsf "${PWD}/hosts/${HOST}" "/etc/nixos"
