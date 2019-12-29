@@ -10,6 +10,7 @@
     ./users.nix
     ./samba.nix
     ./music.nix
+    ./zerotier.nix
   ];
 
   # Modules for sensors
@@ -26,6 +27,7 @@
   boot.loader.grub.useOSProber = false;
 
   networking.hostName = "melchior";
+  networking.domain = "magi";
   networking.interfaces.enp3s0.useDHCP = true;
 
   # Select internationalisation properties.
