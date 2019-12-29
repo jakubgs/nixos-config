@@ -7,7 +7,9 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [ config.services.zerotierone.port ];
+  networking.firewall.allowedTCPPorts = [
+    config.services.zerotierone.port
+  ];
 
   # Daemon
   services.zerotierone.enable = true;
