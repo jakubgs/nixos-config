@@ -49,7 +49,7 @@
     # filesystems
     zfs zfstools 
     # hard drive management
-    smartmontools lsscsi
+    smartmontools lsscsi hddtemp hdparm
   ];
 
   # Default editor
