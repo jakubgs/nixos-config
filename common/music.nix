@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import ./secrets.nix;
+  secrets = import ../secrets.nix;
 in {
   # Clients
   environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];

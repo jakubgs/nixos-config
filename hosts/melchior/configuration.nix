@@ -3,10 +3,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./users.nix
-    ./samba.nix
-    ./music.nix
-    ./zerotier.nix
+    ../../common/users.nix
+    ../../common/samba.nix
+    ../../common/music.nix
+    ../../common/zerotier.nix
   ];
 
   # Modules for sensors

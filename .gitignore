@@ -1,1 +1,3 @@
 secrets.nix
+configuration.nix
+hardware-configuration.nix

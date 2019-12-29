@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import ./secrets.nix;
+  secrets = import ../secrets.nix;
 in {
   # Make zsh the default shell
   users.defaultUserShell = pkgs.zsh;

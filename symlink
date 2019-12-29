@@ -18,9 +18,10 @@ for FILE in ${FILES[@]}; do
     fi
 done
 
-# symlink secrets
-ln -vsf "${PWD}/secrets.nix" "${PWD}/hosts/${HOST}"
+# symlink host config
+ln -vsf "${PWD}/hosts/${HOST}/configuration.nix" "${PWD}"
+ln -vsf "${PWD}/hosts/${HOST}/hardware-configuration.nix" "${PWD}"
 
 # and then the whole dir
 rm -r "/etc/nixos"
-ln -vsf "${PWD}/hosts/${HOST}" "/etc/nixos"
+ln -vsf "${PWD}" "/etc/nixos"
