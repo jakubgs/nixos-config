@@ -82,12 +82,6 @@
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
 
-  # Enable sound.
-  sound.enable = true;
-  sound.extraConfig = "defaults.pcm.card 2";
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.systemWide = true;
-  
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
