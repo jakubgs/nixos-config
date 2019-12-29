@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./users.nix
     ./samba.nix
+    ./music.nix
   ];
 
   # Modules for sensors
