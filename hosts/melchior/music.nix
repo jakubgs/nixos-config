@@ -9,6 +9,7 @@ in {
   # Firewall
   networking.firewall.allowedTCPPorts = [
     config.services.mpd.network.port
+    config.services.ympd.webPort
   ];
 
   # Daemon
