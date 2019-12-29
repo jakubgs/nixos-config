@@ -7,6 +7,8 @@
     ../../common/samba.nix
     ../../common/music.nix
     ../../common/zerotier.nix
+    ../../common/rtorrent.nix
+    ../../services/rtorrent.nix
   ];
 
   # Modules for sensors
@@ -39,7 +41,7 @@
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
     # utilities
-    zsh wget curl multitail
+    zsh wget curl multitail dtach
     # dev tools
     git neovim jq tmux fzf
     # hardware tools
