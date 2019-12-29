@@ -12,15 +12,6 @@ in {
       rtorrent = {
         enable = mkEnableOption "rTorrent daemon";
 
-        config = mkOption {
-          type = types.attrs;
-          default = {};
-          example = literalExample ''
-          '';
-          description = ''
-          '';
-        };
-
         workDir = mkOption {
           type = types.str;
           default = "/var/run/rtorrent";
