@@ -5,7 +5,6 @@ with lib;
 let
   cfg   = config.services.rtorrent;
   bash  = "/run/current-system/sw/bin/bash";
-  kill  = "/run/current-system/sw/bin/kill";
   chmod = "/run/current-system/sw/bin/chmod";
 in {
   options = {
@@ -85,11 +84,12 @@ in {
     systemd.services.rtorrent =
       let 
         rpcSocket = "${cfg.workDir}/rtorrent.sock";
-        session   = "${cfg.workDir}/rtorrent.dtach";
+        dtachSock = "${cfg.workDir}/rtorrent.dtach";
         pidFile   = "${cfg.workDir}/rtorrent.pid";
         logFile   = "${cfg.workDir}/rtorrent.log";
 
         dtach     = "${pkgs.dtach}/bin/dtach";
+        killall   = "${pkgs.killall}/bin/killall";
         rtorrent  = "${pkgs.rtorrent}/bin/rtorrent";
 
         rcFile = "${cfg.workDir}/rtorrent.rc";
@@ -118,17 +118,14 @@ in {
           mkdir -m 0700 -p ${cfg.workDir}
           chown ${cfg.user} ${cfg.workDir}
           echo '${rcContents}' > "${rcFile}"
-          if [ -f ${session} ]; then
-            rm ${session}
-          fi
+          rm -f ${dtachSock}
         '';
         serviceConfig = {
           User = cfg.user;
           Group = cfg.user;
-          Type = "forking";
           KillMode = "none";
-          ExecStop = "${bash} -c '${kill} -s 15 `cat ${pidFile}` || true'";
-          ExecStart = "${dtach} -n ${session} -E -z ${rtorrent} -n -o import=${rcFile}";
+          ExecStop = "${killall} -w -s INT ${rtorrent}";
+          ExecStart = "${dtach} -N ${dtachSock} -E -z ${rtorrent} -n -o import=${rcFile}";
           Restart = "on-failure";
         };
         environment = {

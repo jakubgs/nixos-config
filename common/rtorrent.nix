@@ -7,7 +7,7 @@
     user = "sochan";
     group = "sochan";
     dataDir = "/mnt/media/torrent";
-    workDir = "/mnt/media/torrent_config/rtorrent";
+    workDir = "/mnt/media/rtorrent";
     extraConfig = ''
       min_peers = 40
       max_peers = 1200
