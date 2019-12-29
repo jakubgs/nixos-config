@@ -27,4 +27,18 @@ in {
 
   # allow of sudo without password
   security.sudo.wheelNeedsPassword = false;
+
+  system.activationScripts.dotfiles = lib.noDepEntry ''
+    _dotfiles=${config.users.users.sochan.home}/dotfiles 
+    if [[ -d "$_dotfiles" ]]; then
+      echo "dotfiles already configured"
+    else
+      echo "fetching and configuring dotfiles..."
+      function dotfiles_setup() {
+        git clone git@github.com:jakubgs/dotfiles.git
+        $_dotfiles/bin/symlinkconf
+      }
+      sudo -i -u sochan bash -c "$(declare -f dotfiles_setup); dotfiles_setup"
+    fi
+  '';
 }
