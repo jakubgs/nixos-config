@@ -43,7 +43,7 @@
     # utilities
     zsh wget curl multitail dtach
     # dev tools
-    git neovim jq tmux fzf
+    git neovim jq tmux fzf silver-searcher
     # hardware tools
     pciutils htop lm_sensors
     # networking
