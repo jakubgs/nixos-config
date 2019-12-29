@@ -2,19 +2,21 @@
 
 HOST=$(hostname)
 if [[ ! -z "$1" ]]; then
-  HOST=$1
+    HOST=$1
 fi
 
-if [[ ! -e secrets.nix ]]; then
-    echo "Missing secrets.nix file!" >&2
-    exit 1
-fi
+FILES=(
+  "secrets.nix"
+  "hosts/$HOST/configuration.nix" 
+  "hosts/$HOST/hardware-configuration.nix" 
+)
 
-if [[ ! -e "hosts/$HOST/configuration.nix" ]] || [[ ! -e "hosts/$HOST/hardware.nix" ]]; then
-    echo "Missing $HOST.nix or $HOST-hardware.nix" >&2
-    exit 1
-fi
+for FILE in ${FILES[@]}; do
+    if [[ ! -e "${FILE}" ]]; then
+        echo "Missing '${FILE}' file!" >&2
+        exit 1
+    fi
+done
 
-ln -f "hosts/$HOST/configuration.nix" "/etc/nixos"
-ln -f "hosts/$HOST/hardware.nix" "/etc/nixos"
-ln -f "secrets.nix" "/etc/nixos"
+rm -r "/etc/nixos"
+ln -vsf "$PWD/hosts/$HOST" "/etc/nixos"
