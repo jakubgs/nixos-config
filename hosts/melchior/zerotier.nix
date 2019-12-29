@@ -6,9 +6,6 @@ in {
   # Accept license
   nixpkgs.config.allowUnfree = true;
 
-  # Clients
-  #environment.systemPackages = with pkgs; [ ];
-
   # Firewall
   networking.firewall.allowedTCPPorts = [ config.services.zerotierone.port ];
 
