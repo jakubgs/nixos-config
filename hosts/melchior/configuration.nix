@@ -41,7 +41,7 @@
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
     # utilities
-    zsh wget curl multitail dtach
+    zsh wget curl multitail dtach manpages
     # dev tools
     git neovim jq tmux fzf silver-searcher
     # hardware tools
