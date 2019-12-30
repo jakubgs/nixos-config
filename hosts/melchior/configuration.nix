@@ -8,6 +8,8 @@
     ../../common/music.nix
     ../../common/torrent.nix
     ../../common/zerotier.nix
+    ../../services/torrent-watch.nix
+    ../../services/transmission.nix
   ];
 
   # Modules for sensors

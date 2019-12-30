@@ -8,16 +8,25 @@
   services.transmission = {
     enable = true;
     port = 9091;
-    home = "/mnt/media/transmission";
+    home = "/mnt/media/torrent";
+    user = "sochan";
     group = "sochan";
     settings = {
+      download-dir = "/mnt/media/torrent";
       incomplete-dir-enabled = false;
       rename-partial-files = true;
       rpc-whitelist-enabled = true;
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
       rpc-host-whitelist = "melchior.magi,melchior.magi.local";
-      watch-dir = "/mnt/media/transmission/watched";
-      watch-dir-enabled = true;
+      # a separate service watches for torrent files to start
+      watch-dir-enabled = false;
     };
+  };
+
+  # Directory Watcher - Recursively starts torrents
+  services.transmission-watch = {
+    enable = true;
+    watchDir = "/mnt/media/torrent/watched";
+    downloadDir = "/mnt/media/torrent/";
   };
 }
