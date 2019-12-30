@@ -44,7 +44,8 @@
     # utilities
     zsh wget curl multitail dtach manpages
     # dev tools
-    git neovim jq tmux fzf silver-searcher
+    neovim jq tmux fzf silver-searcher
+    git gitAndTools.git-annex
     # hardware tools
     pciutils htop lm_sensors
     # networking
