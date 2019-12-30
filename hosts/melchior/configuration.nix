@@ -6,9 +6,8 @@
     ../../common/users.nix
     ../../common/samba.nix
     ../../common/music.nix
+    ../../common/torrent.nix
     ../../common/zerotier.nix
-    ../../common/rtorrent.nix
-    ../../services/rtorrent.nix
   ];
 
   # Modules for sensors
