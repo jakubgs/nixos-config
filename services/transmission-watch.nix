@@ -30,6 +30,7 @@ let
           ${transmission-remote} ${cfg.rpcAddr} --trash-torrent \
             --download-dir "$DOWNLOAD_DIR$SUBDIR" \
             --add "$FULLPATH"
+          ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
         done 
       }
   '';
