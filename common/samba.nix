@@ -19,23 +19,28 @@
   services.samba.shares = {
     data = {
       browseable = "no";
+      writeable = "yes";
       path = "/mnt/data/data";
     };
     sync = {
       browseable = "no";
+      writeable = "yes";
       path = "/mnt/data/sync";
     };
     music = {
       browseable = "yes";
+      writeable = "yes";
       path = "/mnt/data/music";
       "guest ok" = "yes";
     };
     backup = {
       browseable = "no";
+      writeable = "yes";
       path = "/mnt/data/backup";
     };
     torrent = {
       browseable = "no";
+      writeable = "yes";
       path = "/mnt/media/torrent";
     };
   };
