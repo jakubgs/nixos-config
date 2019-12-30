@@ -61,8 +61,8 @@ in {
         };
         
         dhtPort = mkOption {
-          type = types.str;
-          default = "6881";
+          type = types.int;
+          default = 6881;
           description = ''
             Listening port for DHT (distributed hash table).
           '';
@@ -91,7 +91,7 @@ in {
           trackers.use_udp.set    = no
           protocol.pex.set        = yes
           dht.mode.set            = on
-          dht.port.set            = ${cfg.dhtPort}
+          dht.port.set            = ${toString cfg.dhtPort}
           directory.default.set   = ${cfg.dataDir}
           session.path.set        = ${cfg.workDir}/session
           network.scgi.open_local = ${rpcSocket}
