@@ -51,7 +51,7 @@
     # networking
     nmap nettools
     # filesystems
-    zfs zfstools inotify-tools
+    zfs zfstools inotify-tools lsof
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
   ];
