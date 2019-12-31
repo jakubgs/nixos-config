@@ -29,8 +29,8 @@ let
           SUBDIR="''${PATH#$WATCH_DIR/}"
           echo "Subfolder: $DOWNLOAD_DIR$SUBDIR"
           ${transmission-remote} ${cfg.rpcAddr} --trash-torrent \
-            --download-dir "$DOWNLOAD_DIR$SUBDIR" \
-            --add "$FULLPATH"
+            --add "$FULLPATH" \
+            --download-dir "$DOWNLOAD_DIR$SUBDIR"
           ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
         done 
       }
