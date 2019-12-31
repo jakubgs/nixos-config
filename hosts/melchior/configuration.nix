@@ -43,12 +43,14 @@
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
     # utilities
-    zsh wget curl multitail dtach manpages
+    zsh wget curl dtach manpages
+    # monitoring
+    htop iotop iftop multitail
     # dev tools
     neovim jq tmux fzf silver-searcher
     git gitAndTools.git-annex
     # hardware tools
-    pciutils htop lm_sensors
+    pciutils lm_sensors
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
