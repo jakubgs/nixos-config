@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 let
   secrets = import ../secrets.nix;

@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../common/base.nix
     ../../common/users.nix
     ../../common/samba.nix
     ../../common/music.nix
@@ -39,47 +40,6 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
-
-  # Packages installed in system profile
-  environment.systemPackages = with pkgs; [
-    # utilities
-    zsh wget curl dtach manpages
-    # monitoring
-    htop iotop iftop multitail
-    # dev tools
-    neovim jq tmux fzf silver-searcher
-    git gitAndTools.git-annex
-    # hardware tools
-    pciutils lm_sensors
-    # networking
-    nmap nettools traceroute dnsutils wol
-    # filesystems
-    zfs zfstools inotify-tools lsof
-    # hard drive management
-    smartmontools lsscsi hddtemp hdparm
-  ];
-
-  # Default editor
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
-
-  # Security
-  programs.mtr.enable = true;
-  programs.zsh.enable = true;
-  services.openssh.enable = true;
-  services.openssh.openFirewall = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # SMART drive monitoring
-  services.smartd = {
-    enable = true;
-    autodetect = true;
-  };
 
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
