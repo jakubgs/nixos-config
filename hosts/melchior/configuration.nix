@@ -6,6 +6,7 @@
     ../../common/users.nix
     ../../common/samba.nix
     ../../common/music.nix
+    ../../common/locate.nix
     ../../common/torrent.nix
     ../../common/zerotier.nix
     ../../services/transmission.nix
