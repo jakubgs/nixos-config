@@ -20,6 +20,9 @@
   # Enable ZFS support
   networking.hostId = "e5acabaa";
   boot.supportedFilesystems = [ "zfs" ];
+  services.zfs.autoScrub.enable = true;
+  services.zfs.autoScrub.interval = "weekly";
+  services.zfs.autoScrub.pools = [ "MEDIA" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.device = "/dev/sdh";
