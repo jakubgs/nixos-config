@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -50,7 +50,7 @@
     # hardware tools
     pciutils htop lm_sensors
     # networking
-    nmap nettools
+    nmap nettools traceroute dnsutils
     # filesystems
     zfs zfstools inotify-tools lsof
     # hard drive management
