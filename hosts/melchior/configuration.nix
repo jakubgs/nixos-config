@@ -50,7 +50,7 @@
     # hardware tools
     pciutils htop lm_sensors
     # networking
-    nmap nettools traceroute dnsutils
+    nmap nettools traceroute dnsutils wol
     # filesystems
     zfs zfstools inotify-tools lsof
     # hard drive management
