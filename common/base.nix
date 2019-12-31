@@ -20,6 +20,10 @@
     smartmontools lsscsi hddtemp hdparm
   ];
 
+  # Shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Editor
   environment.variables = {
     EDITOR = "nvim";
@@ -27,14 +31,12 @@
   };
 
   # Security
-  programs.mtr.enable = true;
-  programs.zsh.enable = true;
-  services.openssh.enable = true;
-  services.openssh.openFirewall = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
+  services.openssh.enable = true;
+  services.openssh.openFirewall = true;
 
   # SMART drive monitoring
   services.smartd = {

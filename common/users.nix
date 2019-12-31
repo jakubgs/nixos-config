@@ -3,9 +3,6 @@
 let
   secrets = import ../secrets.nix;
 in {
-  # Make zsh the default shell
-  users.defaultUserShell = pkgs.zsh;
-
   users.groups.sochan = {
     gid = 1000;
     name = "sochan";
