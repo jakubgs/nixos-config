@@ -44,6 +44,12 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
+  # Enable sound.
+  sound.enable = true;
+  sound.extraConfig = "defaults.pcm.card D30";
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.systemWide = true;
+  
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
   system.stateVersion = "19.09";

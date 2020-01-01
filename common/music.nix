@@ -6,12 +6,6 @@ in {
   # Clients
   environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];
 
-  # Enable sound.
-  sound.enable = true;
-  sound.extraConfig = "defaults.pcm.card D30";
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.systemWide = true;
-  
   # Firewall
   networking.firewall.allowedTCPPorts = [
     config.services.mpd.network.port
