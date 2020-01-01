@@ -8,7 +8,7 @@ in {
 
   # Enable sound.
   sound.enable = true;
-  sound.extraConfig = "defaults.pcm.card 2";
+  sound.extraConfig = "defaults.pcm.card D30";
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.systemWide = true;
   
