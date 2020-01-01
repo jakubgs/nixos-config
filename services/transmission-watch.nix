@@ -14,6 +14,8 @@ let
   watch-script = pkgs.writeShellScriptBin "transmission-watch" ''
     WATCH_DIR="$1"
     DOWNLOAD_DIR="${cfg.downloadDir}"
+    RPC_ADDR="${cfg.rpcAddr}"
+    ${optionalString (cfg.rpcUser != "") "RPC_AUTH=\"--auth ${cfg.rpcUser}:${cfg.rpcPass}\""}
     if [[ -z "$WATCH_DIR" ]]; then
       echo "No directory to watch specified!" >&2
       exit 1
@@ -28,7 +30,8 @@ let
           echo "Adding torrent: $FULLPATH";
           SUBDIR="''${PATH#$WATCH_DIR/}"
           echo "Subfolder: $DOWNLOAD_DIR$SUBDIR"
-          ${transmission-remote} ${cfg.rpcAddr} --trash-torrent \
+          ${transmission-remote} $RPC_ADDR $RPC_AUTH \
+            --trash-torrent \
             --add "$FULLPATH" \
             --download-dir "$DOWNLOAD_DIR$SUBDIR"
           ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
@@ -56,11 +59,28 @@ in {
             Directory to where the found *.torrent files should be downloaded.
           '';
         };
+
         rpcAddr = mkOption {
           type = types.str;
           default = "localhost:${toString config.services.transmission.port}";
           description = ''
-            URL for the Transmission TPC port.
+            URL for the Transmission RPC port.
+          '';
+        };
+
+        rpcUser = mkOption {
+          type = types.str;
+          default = "";
+          description = ''
+            HTTP Auth user for RPC port.
+          '';
+        };
+
+        rpcPass = mkOption {
+          type = types.str;
+          default = "";
+          description = ''
+            HTTP Auth password for RPC port.
           '';
         };
       };

@@ -22,7 +22,7 @@ in {
       rpc-host-whitelist = "melchior.magi,melchior.magi.local";
       rpc-authentication-required = true;
       rpc-username = "sochan";
-      rpc-password = secrets.rcpPassword;
+      rpc-password = secrets.rpcPassword;
       # a separate service watches for torrent files to start
       watch-dir-enabled = false;
     };
@@ -33,5 +33,7 @@ in {
     enable = true;
     watchDir = "/mnt/media/torrent/watched";
     downloadDir = "/mnt/media/torrent/";
+    rpcUser = "sochan";
+    rpcPass = secrets.rpcPassword;
   };
 }
