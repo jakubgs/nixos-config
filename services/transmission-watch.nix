@@ -34,7 +34,12 @@ let
             --trash-torrent \
             --add "$FULLPATH" \
             --download-dir "$DOWNLOAD_DIR$SUBDIR"
-          ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
+          if [[ $? -eq 0 ]]; then
+            ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
+          else
+            ${pkgs.coreutils}/bin/mv "$FULLPATH" "$FULLPATH.failed"
+            echo "Failed to add torrent!"
+          fi
         done 
       }
   '';
