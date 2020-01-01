@@ -3,13 +3,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../common/base.nix
-    ../../common/users.nix
-    ../../common/samba.nix
-    ../../common/music.nix
-    ../../common/locate.nix
-    ../../common/torrent.nix
-    ../../common/zerotier.nix
+    ../../roles/base.nix
+    ../../roles/users.nix
+    ../../roles/samba.nix
+    ../../roles/music.nix
+    ../../roles/locate.nix
+    ../../roles/torrent.nix
+    ../../roles/zerotier.nix
     ../../services/transmission.nix
     ../../services/transmission-watch.nix
   ];
