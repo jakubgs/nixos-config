@@ -10,6 +10,7 @@
     ../../roles/locate.nix
     ../../roles/torrent.nix
     ../../roles/zerotier.nix
+    ../../roles/netdata.nix
     ../../services/transmission.nix
     ../../services/transmission-watch.nix
   ];
