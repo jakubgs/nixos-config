@@ -17,14 +17,17 @@ in {
       download-dir = "/mnt/media/torrent";
       incomplete-dir-enabled = false;
       rename-partial-files = true;
+      # RPC
       rpc-whitelist-enabled = true;
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
       rpc-host-whitelist = "melchior.magi,melchior.magi.local";
       rpc-authentication-required = true;
       rpc-username = "sochan";
       rpc-password = secrets.rpcPassword;
-      # a separate service watches for torrent files to start
+      # separate service watches for torrent files to start
       watch-dir-enabled = false;
+      # limits
+      download-queue-size = 30;
     };
   };
 
