@@ -18,7 +18,8 @@ in {
   services.mpd.musicDirectory = "/mnt/data/music";
   services.mpd.playlistDirectory = "/mnt/data/music/_playlists";
   services.mpd.extraConfig = ''
-    password  "${secrets.mpdPassword}@read,add,control,admin"
+    password   "${secrets.mpdPassword}@read,add,control,admin"
+    mixer_type "software"
   '';
 
   # Web UI
