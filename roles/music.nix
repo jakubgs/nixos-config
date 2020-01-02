@@ -14,6 +14,8 @@ in {
 
   # Daemon
   services.mpd.enable = true;
+  services.mpd.user = "sochan";
+  services.mpd.group = "sochan";
   services.mpd.network.listenAddress = "0.0.0.0";
   services.mpd.musicDirectory = "/mnt/data/music";
   services.mpd.playlistDirectory = "/mnt/data/music/_playlists";
