@@ -5,6 +5,8 @@
   mpdPassword = "CHANGE_ME";
   # Password for Transmission RPC API
   rpcPassword = "CHANGE_ME";
+  # Password for NextCloud admin user
+  nextCloudPass = "CHANGE_ME";
   # ID of ZeroTier private network
   zeroTierNetwork = "CHANGE_ME";
 }

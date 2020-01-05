@@ -12,6 +12,7 @@
     ../../roles/torrent.nix
     ../../roles/zerotier.nix
     ../../roles/netdata.nix
+    ../../roles/nextcloud.nix
     ../../services/transmission.nix
     ../../services/transmission-watch.nix
   ];
@@ -59,6 +60,7 @@
       mpd          = 6600;
       netdata      = 8000;
       ympd         = 8001;
+      nextcloud    = 8002;
       transmission = 9091;
     };
   };
