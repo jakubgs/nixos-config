@@ -18,6 +18,8 @@
     zfs zfstools inotify-tools lsof
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
+    # security
+    pinentry_ncurses 
   ];
 
   # Shell
