@@ -2,11 +2,10 @@
 
 {
   # Firewall
-  networking.firewall.allowedTCPPorts = [ config.services.netdata.port ];
+  networking.firewall.allowedTCPPorts = [ config.vars.ports.netdata ];
 
   # Daemon
   services.netdata.enable = true;
-  services.netdata.port = 9002;
   services.netdata.config = {
     "global" = {
         "hostname" = config.networking.hostName;
@@ -18,7 +17,7 @@
         "access log" = "none";
     };
     "web" = {
-       "default port" = config.services.netdata.port;
+       "default port" = config.vars.ports.netdata;
        "allow connections from" = "localhost 10.2.2.* 192.168.1.*";
     };
     "health" = {

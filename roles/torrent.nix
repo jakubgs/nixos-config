@@ -1,15 +1,17 @@
-{ ... }:
+{ config, ... }:
 
 let
   secrets = import ../secrets.nix;
 in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 9091 ];
+  networking.firewall.allowedTCPPorts = [
+    config.vars.ports.transmission
+  ];
 
   # Daemon
   services.transmission = {
     enable = true;
-    port = 9091;
+    port = config.vars.ports.transmission;
     home = "/mnt/media/torrent";
     user = "sochan";
     group = "sochan";
