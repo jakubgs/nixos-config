@@ -7,6 +7,8 @@
   rpcPassword = "CHANGE_ME";
   # Password for NextCloud admin user
   nextCloudPass = "CHANGE_ME";
+  # Password for NextCloud DB access
+  nextCloudDBPass = "CHANGE_ME";
   # ID of ZeroTier private network
   zeroTierNetwork = "CHANGE_ME";
 }

@@ -9,22 +9,53 @@ in {
   ];
 
   # Proxy
-  services.nginx.enable = true;
-  services.nginx.virtualHosts = {
-    ${config.services.nextcloud.hostName} = {
-      listen = [{
-        addr = "0.0.0.0";
-        port = config.vars.ports.nextcloud;
-      }];
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      ${config.services.nextcloud.hostName} = {
+        listen = [{
+          addr = "0.0.0.0";
+          port = config.vars.ports.nextcloud;
+        }];
+      };
     };
   };
 
+  # Database
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "nextcloud" ];
+    ensureUsers = [
+      { name = "nextcloud";
+        ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; }; }
+    ];
+  };
+
   # Daemon
-  services.nextcloud.enable = true;
-  services.nextcloud.home = "/mnt/data/nextcloud";
-  services.nextcloud.hostName = "melchior.magi.local";
-  services.nextcloud.config.extraTrustedDomains = [ "melchior.magi" ];
-  services.nextcloud.config.adminuser = "sochan";
-  services.nextcloud.config.adminpass = secrets.nextCloudPass;
-  services.nextcloud.nginx.enable = true;
+  services.nextcloud = {
+    enable = true;
+    home = "/mnt/data/nextcloud";
+    hostName = "melchior.magi.local";
+    nginx.enable = true;
+    config = {
+      extraTrustedDomains = [ "melchior.magi" ];
+      adminuser = "admin";
+      adminpassFile = toString (
+        pkgs.writeText "admin-pass-file" secrets.nextCloudAdminPass
+      );
+    };
+  };
+  # DB
+  services.nextcloud.config = {
+    dbtype = "pgsql";
+    dbhost = "/run/postgresql";
+    dbname = "nextcloud";
+    dbuser = "nextcloud";
+    dbpass = secrets.nextCloudDBPass;
+  };
+
+  systemd.services.nextcloud-setup = {
+    requires = ["postgresql.service"];
+    after = [ "postgresql.service" ];
+  };
 }
