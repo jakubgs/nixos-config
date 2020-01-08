@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "xhci_pci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -28,8 +28,8 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/media" =
-    { device = "MEDIA";
+  fileSystems."/mnt/torrent" =
+    { device = "MEDIA/torrent";
       fsType = "zfs";
     };
 
@@ -38,6 +38,4 @@
     ];
 
   nix.maxJobs = lib.mkDefault 4;
-  # High-DPI console
-  i18n.consoleFont = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
