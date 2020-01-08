@@ -12,11 +12,11 @@ in {
   services.transmission = {
     enable = true;
     port = config.vars.ports.transmission;
-    home = "/mnt/media/torrent";
+    home = "/mnt/torrent";
     user = "sochan";
     group = "sochan";
     settings = {
-      download-dir = "/mnt/media/torrent";
+      download-dir = "/mnt/torrent";
       incomplete-dir-enabled = false;
       rename-partial-files = true;
       # RPC
@@ -36,8 +36,8 @@ in {
   # Directory Watcher - Recursively starts torrents
   services.transmission-watch = {
     enable = true;
-    watchDir = "/mnt/media/torrent/watched";
-    downloadDir = "/mnt/media/torrent/";
+    watchDir = "/mnt/torrent/watched";
+    downloadDir = "/mnt/torrent/";
     rpcUser = "sochan";
     rpcPass = secrets.rpcPassword;
   };

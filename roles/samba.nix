@@ -41,7 +41,7 @@
     torrent = {
       browseable = "no";
       writeable = "yes";
-      path = "/mnt/media/torrent";
+      path = "/mnt/torrent";
     };
   };
 }
