@@ -6,6 +6,7 @@
     ../../roles/vars.nix
     ../../roles/base.nix
     ../../roles/users.nix
+    ../../roles/nfs.nix
     ../../roles/samba.nix
     ../../roles/music.nix
     ../../roles/locate.nix
