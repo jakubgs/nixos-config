@@ -31,11 +31,7 @@ in {
       echo "dotfiles already configured"
     else
       echo "fetching and configuring dotfiles..."
-      function dotfiles_setup() {
-        git clone git@github.com:jakubgs/dotfiles.git
-        $_dotfiles/bin/symlinkconf
-      }
-      sudo -i -u sochan bash -c "$(declare -f dotfiles_setup); dotfiles_setup"
+      ${pkgs.sudo}/bin/sudo -i -u sochan bash -c "GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' git clone git@github.com:jakubgs/dotfiles.git && $_dotfiles/bin/symlinkconf"
     fi
   '';
 }
