@@ -29,10 +29,10 @@
   services.zfs.autoScrub.pools = [ "MEDIA" ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.grub.device = "/dev/sdh";
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = false;
-  boot.loader.grub.useOSProber = false;
+  boot.loader.grub.devices = [
+    "/dev/disk/by-id/ata-SanDisk_SDSSDA120G_173025801877"
+    "/dev/disk/by-id/ata-SanDisk_SDSSDA120G_173025803524"
+  ];
 
   networking.hostName = "melchior";
   networking.domain = "magi";
