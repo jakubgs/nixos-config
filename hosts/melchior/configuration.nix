@@ -26,7 +26,7 @@
   boot.supportedFilesystems = [ "zfs" ];
   services.zfs.autoScrub.enable = true;
   services.zfs.autoScrub.interval = "weekly";
-  services.zfs.autoScrub.pools = [ "MEDIA" ];
+  services.zfs.autoScrub.pools = [ "SYSTEM" "DATA" "MEDIA" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.devices = [
