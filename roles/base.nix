@@ -4,7 +4,9 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    zsh wget curl dtach manpages pstree sudo
+    zsh wget curl manpages sudo
+    # processes
+    dtach reptyr pstree
     # monitoring
     htop iotop iftop multitail
     # dev tools
