@@ -11,5 +11,11 @@
     statdPort = 4000;
     lockdPort = 4001;
     mountdPort = 4002;
+    # exported shares
+    exports = ''
+      /mnt/data      10.2.2.0/8(rw) 192.168.1.0/8(rw)
+      /mnt/music     10.2.2.0/8(rw) 192.168.1.0/8(rw)
+      /mnt/torrent   10.2.2.0/8(rw) 192.168.1.0/8(rw)
+    '';
   };
 }
