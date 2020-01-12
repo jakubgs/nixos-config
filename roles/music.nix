@@ -18,8 +18,8 @@ in {
   services.mpd.group = "sochan";
   services.mpd.network.port = config.vars.ports.mpd;
   services.mpd.network.listenAddress = "0.0.0.0";
-  services.mpd.musicDirectory = "/mnt/data/music";
-  services.mpd.playlistDirectory = "/mnt/data/music/_playlists";
+  services.mpd.musicDirectory = "/mnt/music";
+  services.mpd.playlistDirectory = "/mnt/music/_playlists";
   services.mpd.extraConfig = ''
     password   "${secrets.mpdPassword}@read,add,control,admin"
     mixer_type "software"
