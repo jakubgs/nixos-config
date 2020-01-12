@@ -22,21 +22,38 @@
   boot.kernelModules = [ "it87" "k10temp" ];
 
   # Enable ZFS support
+  # WARNING: All mountpoints need to be set to 'legacy'
   networking.hostId = "e5acabaa";
   boot.supportedFilesystems = [ "zfs" ];
-  services.zfs.autoScrub.enable = true;
-  services.zfs.autoScrub.interval = "weekly";
-  services.zfs.autoScrub.pools = [ "SYSTEM" "DATA" "MEDIA" ];
+  # Scrub to find errors
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    pools = [ "SYSTEM" "DATA" "MEDIA" ];
+  };
+  # Snapshot daily
+  services.zfs.autoSnapshot = {
+    enable = true;
+    monthly = 6;
+    weekly = 2;
+    daily = 14;
+    hourly = 0;
+    frequent = 0;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.devices = [
     "/dev/disk/by-id/ata-SanDisk_SDSSDA120G_173025801877"
     "/dev/disk/by-id/ata-SanDisk_SDSSDA120G_173025803524"
   ];
+  # To avoid some boot errors
+  boot.loader.grub.copyKernels = true;
 
-  networking.hostName = "melchior";
-  networking.domain = "magi";
-  networking.interfaces.enp3s0.useDHCP = true;
+  networking = {
+    hostName = "melchior";
+    domain = "magi";
+    interfaces.enp3s0.useDHCP = true;
+  };
 
   # Select internationalisation properties.
   i18n = {
