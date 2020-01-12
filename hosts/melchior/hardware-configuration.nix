@@ -49,6 +49,11 @@
       options = [ "bind" ];
     };
 
+  fileSystems."/mnt/nextcloud" =
+    { device = "DATA/nextcloud";
+      fsType = "zfs";
+    };
+
   swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 4;

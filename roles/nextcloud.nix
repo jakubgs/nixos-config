@@ -34,7 +34,7 @@ in {
   # Daemon
   services.nextcloud = {
     enable = true;
-    home = "/mnt/data/nextcloud";
+    home = "/mnt/nextcloud";
     hostName = "melchior.magi.local";
     nginx.enable = true;
     config = {
