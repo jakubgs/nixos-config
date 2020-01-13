@@ -18,6 +18,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/usb_backup" =
+    { device = "/dev/disk/by-uuid/bef2843c-7e60-4250-aeef-9f8e48427d4f";
+      fsType = "ext4";
+    };
+
   fileSystems."/mnt/torrent" =
     { device = "MEDIA/torrent";
       fsType = "zfs";
@@ -28,13 +33,13 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/data" =
-    { device = "DATA/data";
+  fileSystems."/mnt/nextcloud" =
+    { device = "DATA/nextcloud";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/nextcloud" =
-    { device = "DATA/nextcloud";
+  fileSystems."/mnt/data" =
+    { device = "DATA/data";
       fsType = "zfs";
     };
 
@@ -43,14 +48,10 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/usb_backup" =
-    { device = "/dev/disk/by-uuid/bef2843c-7e60-4250-aeef-9f8e48427d4f";
-      fsType = "ext4";
-    };
-
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/53f42441-293f-42f8-9eb4-aeb0213acee0"; }
+      { device = "/dev/disk/by-uuid/58af9ff6-9fe1-45ef-803c-f5699b1becf9"; }
+    ];
 
   nix.maxJobs = lib.mkDefault 4;
-  # High-DPI console
-  i18n.consoleFont = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
