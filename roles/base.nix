@@ -4,7 +4,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    zsh wget curl manpages sudo
+    zsh bash wget curl manpages sudo
     # processes
     dtach reptyr pstree
     # monitoring
@@ -13,15 +13,17 @@
     neovim jq tmux fzf silver-searcher
     git gitAndTools.git-annex
     # hardware tools
-    pciutils lm_sensors
+    pciutils lm_sensors acpi
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
     zfs zfstools inotify-tools lsof parted
+    # network filesystems
+    nfs-utils
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
     # security
-    pinentry_ncurses 
+    pinentry-curses 
   ];
 
   # Shell
