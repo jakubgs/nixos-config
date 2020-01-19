@@ -17,7 +17,7 @@
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
-    zfs zfstools inotify-tools lsof
+    zfs zfstools inotify-tools lsof parted
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
     # security
@@ -41,6 +41,8 @@
   };
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
+  services.openssh.passwordAuthentication = false;
+  security.pam.enableSSHAgentAuth = true;
 
   # SMART drive monitoring
   services.smartd = {
