@@ -21,6 +21,7 @@ let
       exit 1
     fi
     ${inotifywait} -q -m \
+      --event=close \
       --event=close_write \
       --format='%w %f' -r \
       --include='.*.torrent$' \
