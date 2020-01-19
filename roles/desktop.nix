@@ -11,15 +11,19 @@
   services.xserver = {
     enable = true;
     layout = "pl";
+    videoDrivers = [ "nvidia" ];
     windowManager.awesome.enable = true;
-    displayManager.sddm.enable = true;
+    displayManager.lightdm.enable = true;
   };
+
+  # Enable 32bit OpenGL
+  hardware.opengl.driSupport32Bit = true;
 
   environment.systemPackages = with pkgs; [
     # Console
     rxvt_unicode rofi ranger
     # X Tools
-    xkbset xorg.xmodmap xcape xbindkeys
+    xkbset xorg.xmodmap xcape xbindkeys glxinfo
     # System
     gparted
     # Desktop
