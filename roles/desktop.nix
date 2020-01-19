@@ -12,6 +12,7 @@
     enable = true;
     layout = "pl";
     videoDrivers = [ "nvidia" ];
+    enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
     displayManager.lightdm.enable = true;
   };
