@@ -41,6 +41,7 @@
     hostName = "caspair";
     hostId = "9fbd8b5d";
     useDHCP = false;
+    enableIPv6 = false;
     interfaces = {
       eno1 = { useDHCP = true; };
     };
