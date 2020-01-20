@@ -16,7 +16,7 @@ in {
     useDefaultShell = true;
     group = "sochan";
     hashedPassword = secrets.userHashedPassword;
-    extraGroups = [ "wheel" "audio" "video" "disk" "adm" "systemd-journal" ];
+    extraGroups = [ "wheel" "audio" "video" "disk" "adm" "tty" "systemd-journal" ];
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAotJTAk91kQ4skl7hDT5h5GwC/dWCfDXJiQMTw4QrgpNI7rxLhQbgorvN287bzrVig5xBQloMkkm9qqzOn2cv5L7iit8TT9mcrApDiqWBrb05jCm5cu1lINni/MWn5XfQMnE8YnWtwnW+ncd2EcwS9wVDabrTJPFjFYnMaHbl7Ls= sochan@lilim"
     ];
