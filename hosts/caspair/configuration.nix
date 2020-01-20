@@ -13,6 +13,7 @@
       ../../roles/locate.nix
       ../../roles/autofs.nix
       ../../roles/desktop.nix
+      ../../roles/zerotier.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
