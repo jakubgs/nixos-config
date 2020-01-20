@@ -40,6 +40,7 @@
   fonts = {
     enableFontDir = true;
     fontconfig = {
+      cache32Bit = true;
       defaultFonts = {
         monospace = [ "terminus" ];
       };
