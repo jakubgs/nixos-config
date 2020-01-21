@@ -22,9 +22,11 @@
 
   environment.systemPackages = with pkgs; [
     # Console
-    rxvt_unicode rofi ranger
+    rxvt_unicode ranger rofi
     # X Tools
-    xkbset xorg.xmodmap xcape xbindkeys glxinfo
+    xclip xkbset xorg.xmodmap xcape xbindkeys glxinfo xsel
+    # Network
+    networkmanagerapplet
     # System
     gparted
     # Desktop
@@ -32,9 +34,25 @@
     # Browsers
     brave chromium
     # Other
-    xfce.thunar discord steam
-    # Video player
+    xfce.thunar
+    # Video
     mpv
+    # Audio
+    ncmpcpp
+    # Communication
+    gnome3.evolution discord zoom-us
+    # Images
+    feh gthumb
+    # Gaming
+    steam lutris
+    # Torrent
+    transmission-remote-gtk
+    # Themes
+    lxappearance arc-theme amber-theme
+    # Remote
+    remmina
+    # Security
+    pinentry-gtk2
   ];
 
   fonts = {
