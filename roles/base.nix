@@ -5,6 +5,8 @@
   environment.systemPackages = with pkgs; [
     # utilities
     zsh bash wget curl manpages sudo pass
+    # building
+    gnumake unzip
     # processes
     dtach reptyr pstree
     # monitoring
@@ -13,7 +15,7 @@
     neovim jq tmux fzf silver-searcher
     git gitAndTools.git-annex
     # hardware tools
-    pciutils lm_sensors acpi
+    pciutils lm_sensors acpi pmutils
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
