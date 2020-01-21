@@ -15,6 +15,7 @@
       ../../roles/desktop.nix
       ../../roles/docker.nix
       ../../roles/zerotier.nix
+      ../../roles/yubikey.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
