@@ -13,6 +13,7 @@
       ../../roles/locate.nix
       ../../roles/autofs.nix
       ../../roles/desktop.nix
+      ../../roles/docker.nix
       ../../roles/zerotier.nix
     ];
 
