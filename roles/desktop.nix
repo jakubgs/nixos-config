@@ -48,7 +48,6 @@
     fonts = with pkgs; [
       corefonts
       terminus_font
-      terminus_font_ttf
       dejavu_fonts
       ubuntu_font_family
     ];
