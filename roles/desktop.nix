@@ -38,9 +38,10 @@
   ];
 
   fonts = {
-    enableFontDir = true;
     fontconfig = {
       cache32Bit = true;
+      allowBitmaps = true;
+      useEmbeddedBitmaps = true;
       defaultFonts = {
         monospace = [ "terminus" ];
       };
