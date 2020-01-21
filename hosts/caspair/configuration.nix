@@ -49,6 +49,8 @@
       eno1 = { useDHCP = true; };
     };
   };
+  # Enable NetworkManager
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   console = {
