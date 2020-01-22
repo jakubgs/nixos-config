@@ -73,4 +73,7 @@
       ubuntu_font_family
     ];
   };
+
+  # Keyring for app credentials
+  services.gnome3.gnome-keyring.enable = true;
 }
