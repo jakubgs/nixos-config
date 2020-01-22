@@ -9,6 +9,8 @@
     zoom-us
     # Infra dev
     terraform ansible
+    # Cloud
+    doctl
     # GoLang dev
     go
     # NodeJS dev
