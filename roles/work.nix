@@ -13,6 +13,8 @@
     doctl
     # GoLang dev
     go
+    # Python dev
+    python38 python38Packages.ipython python38Packages.pip
     # NodeJS dev
     nodejs-12_x yarn
     # Mobile dev
