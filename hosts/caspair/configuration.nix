@@ -16,6 +16,7 @@
       ../../roles/docker.nix
       ../../roles/zerotier.nix
       ../../roles/yubikey.nix
+      ../../roles/work.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -48,7 +49,7 @@
     interfaces = {
       eno1 = { useDHCP = true; };
     };
-    search = [ "statusim.net" "magi.blue" ];
+    search = [ "magi.blue" ];
   };
   # Enable NetworkManager
   networking.networkmanager.enable = true;
