@@ -19,6 +19,10 @@
     fastlane
   ];
 
+  # Android development Tool
+  programs.adb.enable = true;
+  users.users.sochan.extraGroups = [ "adbusers" ];
+
   # Simplify accessing Status hosts
   networking.search = [ "statusim.net" ];
 }
