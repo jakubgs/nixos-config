@@ -48,6 +48,7 @@
     interfaces = {
       eno1 = { useDHCP = true; };
     };
+    search = [ "statusim.net" "magi.blue" ];
   };
   # Enable NetworkManager
   networking.networkmanager.enable = true;
