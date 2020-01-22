@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Accept unfree licenses
@@ -32,7 +32,7 @@
     # System
     gparted
     # Desktop
-    nitrogen arandr
+    nitrogen arandr scrot
     # Browsers
     brave chromium
     # Other
@@ -50,13 +50,14 @@
     # Torrent
     transmission-remote-gtk
     # Themes
-    lxappearance arc-theme amber-theme
+    lxappearance lounge-gtk-theme
     # Remote
     remmina
     # Security
     pinentry-gtk2
   ];
 
+  # Tonts
   fonts = {
     fontconfig = {
       cache32Bit = true;
