@@ -13,7 +13,7 @@
     htop iotop iftop multitail
     # dev tools
     neovim jq tmux fzf silver-searcher
-    git gitAndTools.git-annex
+    git gitAndTools.git-annex qrencode
     # hardware tools
     pciutils lm_sensors acpi pmutils
     # networking
