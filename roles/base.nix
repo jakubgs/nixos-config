@@ -4,7 +4,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash wget curl manpages sudo pass bc
+    file zsh bash wget curl manpages sudo pass bc rename
     # building
     gnumake unzip zip envsubst
     # processes
