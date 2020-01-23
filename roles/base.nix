@@ -6,7 +6,7 @@
     # utilities
     file zsh bash wget curl manpages sudo pass bc rename
     # building
-    gnumake unzip zip envsubst
+    gnumake unzip zip envsubst entr
     # processes
     dtach reptyr pstree
     # monitoring
