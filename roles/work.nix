@@ -2,19 +2,26 @@
 
 # This file includes setup for things required for work
 
-{
+with pkgs;
+let
+  # For details see: https://nixos.wiki/wiki/Python
+  myPythonPkgs = python-packages: with python38Packages; [
+     ipython pip boto3
+  ];
+  myPython = python38.withPackages myPythonPkgs;
+in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
     # Meetings
     zoom-us
     # Infra dev
     terraform ansible
-    # Cloud
+    # DigitalOcean
     doctl
     # GoLang dev
     go
     # Python dev
-    python38 python38Packages.ipython python38Packages.pip
+    myPython
     # NodeJS dev
     nodejs-12_x yarn
     # Mobile dev
