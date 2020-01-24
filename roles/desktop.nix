@@ -40,7 +40,7 @@
     # Video
     mpv python38Packages.youtube-dl
     # Audio
-    ncmpcpp
+    ncmpcpp vorbis-tools mpg321
     # Communication
     gnome3.evolution discord zoom-us
     # Images
