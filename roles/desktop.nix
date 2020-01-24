@@ -38,7 +38,7 @@
     # Other
     xfce.thunar
     # Video
-    mpv
+    mpv python38Packages.youtube-dl
     # Audio
     ncmpcpp
     # Communication
