@@ -13,6 +13,7 @@
     ../../roles/locate.nix
     ../../roles/torrent.nix
     ../../roles/zerotier.nix
+    ../../roles/syncthing.nix
     ../../roles/netdata.nix
     ../../roles/nextcloud.nix
     ../../services/transmission.nix

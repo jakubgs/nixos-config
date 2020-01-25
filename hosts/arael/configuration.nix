@@ -8,6 +8,7 @@
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/zerotier.nix
+    ../../roles/syncthing.nix
   ];
 
   # No need to tinker with AWS bootloader
