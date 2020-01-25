@@ -18,6 +18,8 @@
     ../../services/transmission-watch.nix
   ];
 
+  # Upgrade kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
 
