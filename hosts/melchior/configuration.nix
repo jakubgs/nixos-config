@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../roles/security.nix
     ../../roles/vars.nix
     ../../roles/base.nix
     ../../roles/users.nix

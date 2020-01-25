@@ -5,19 +5,19 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../roles/base.nix
-      ../../roles/users.nix
-      ../../roles/locate.nix
-      ../../roles/autofs.nix
-      ../../roles/desktop.nix
-      ../../roles/docker.nix
-      ../../roles/zerotier.nix
-      ../../roles/yubikey.nix
-      ../../roles/work.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../roles/security.nix
+    ../../roles/base.nix
+    ../../roles/users.nix
+    ../../roles/locate.nix
+    ../../roles/autofs.nix
+    ../../roles/desktop.nix
+    ../../roles/docker.nix
+    ../../roles/zerotier.nix
+    ../../roles/yubikey.nix
+    ../../roles/work.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub = {
