@@ -1,13 +1,18 @@
 { ... }:
 
 {
-  # Security
+  # Increase SSH security
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+  };
+  # Enable GnuPG agent for keys
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
-  services.openssh.enable = true;
-  services.openssh.openFirewall = true;
-  services.openssh.passwordAuthentication = false;
+  # Use PAM with SSH auth
   security.pam.enableSSHAgentAuth = true;
 }
