@@ -19,7 +19,7 @@
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
-    zfs zfstools inotify-tools lsof parted ntfs3g
+    zfs zfstools inotify-tools lsof parted ntfs3g gptfdisk
     # network filesystems
     nfs-utils
     # hard drive management
