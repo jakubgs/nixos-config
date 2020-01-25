@@ -23,6 +23,7 @@
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
   boot.kernelParams = [ "ipv6.disable=1" ];
+  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # Enable ZFS support
   # WARNING: All mountpoints need to be set to 'legacy'
