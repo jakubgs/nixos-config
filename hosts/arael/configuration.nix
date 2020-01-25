@@ -10,16 +10,14 @@
     ../../roles/zerotier.nix
   ];
 
+  # No need to tinker with AWS bootloader
+  boot.loader.grub.device = "nodev";
+
   # Upgrade kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.grub.device = "/dev/disk/by-label/nixos";
-  # To avoid some boot errors
-  boot.loader.grub.copyKernels = true;
 
   networking = {
     hostName = "arael";
