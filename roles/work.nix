@@ -16,6 +16,8 @@ in {
     zoom-us
     # Infra dev
     terraform ansible
+    # AWS
+    awscli
     # DigitalOcean
     doctl
     # GoLang dev
