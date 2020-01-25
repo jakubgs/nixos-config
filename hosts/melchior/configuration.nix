@@ -22,10 +22,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
+  boot.kernelParams = [ "ipv6.disable=1" ];
 
   # Enable ZFS support
   # WARNING: All mountpoints need to be set to 'legacy'
-  networking.hostId = "e5acabaa";
   boot.supportedFilesystems = [ "zfs" ];
   # Scrub to find errors
   services.zfs.autoScrub = {
@@ -53,7 +53,10 @@
 
   networking = {
     hostName = "melchior";
+    hostId = "e5acabaa";
     domain = "magi";
+    search = [ "magi.blue" ];
+    enableIPv6 = false;
     interfaces.enp3s0.useDHCP = true;
   };
 
