@@ -19,6 +19,15 @@
   boot.kernelModules = [ "it87" "k10temp" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
+  # Enable ZFS support
+  boot.supportedFilesystems = [ "zfs" ];
+  # Scrub to find errors
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    pools = [ "DATA" ];
+  };
+
   networking = {
     hostName = "arael";
     hostId = "43bd2a4e";
