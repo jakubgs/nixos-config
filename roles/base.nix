@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Packages
@@ -25,7 +25,9 @@
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
     # security
-    pinentry-curses 
+    (if builtins.hasAttr "pinentry-curses" pkgs then
+      lib.getAttr "pinentry-curses" pkgs else
+      lib.getAttr "pinentry_ncurses" pkgs)
   ];
 
   # Shell
