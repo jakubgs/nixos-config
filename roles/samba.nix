@@ -43,5 +43,12 @@
       writeable = "yes";
       path = "/mnt/torrent";
     };
+    ania = {
+      path = "/mnt/ania";
+      browseable = "yes";
+      writeable = "yes";
+      "guest ok" = "yes";
+      "guest only" = "yes";
+    };
   };
 }
