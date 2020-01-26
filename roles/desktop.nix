@@ -14,7 +14,10 @@
     videoDrivers = [ "nvidia" ];
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      background = "${../files/wallpapers/default.jpg}";
+    };
   };
 
   # Enable 32bit OpenGL and PulseAudio
