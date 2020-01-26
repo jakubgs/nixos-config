@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Server Landing Page</title>
+    </head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: lightgrey;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        a {
+            text-decoration: none;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+            grid-template-rows: repeat(3, 33%);
+            background-color: green;
+        }
+        .service {
+            height: 100%;
+            width: 100%;
+            #margin: 1em;
+            #padding: 1em;
+            #background-color: darkgrey;
+        }
+        .service:hover {
+            background-color: grey;
+        }
+        .center-text {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+    <body>
+        <header class="row center-text">
+            <h3>Server Landing Page</h3>
+        </header>
+        <hr>
+        <div class="main">
+            <a href="/sync/">
+                <div class="service center-text">
+                    SyncThing
+                </div>
+            </a>
+            <a href="/git/">
+                <div class="service center-text">
+                    Git Web
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

@@ -10,6 +10,7 @@
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/gitweb.nix
+    ../../roles/landing.nix
   ];
 
   # No need to tinker with AWS bootloader
