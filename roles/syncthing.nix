@@ -14,6 +14,7 @@ in {
     dataDir = "/home/sochan/.syncthing";
     guiAddress = "127.0.0.1:8384";
     openDefaultPorts = true;
+    relay.extraOptions = [ "insecureSkipHostcheck=true" ];
 
     declarative = {
       devices = lib.filterAttrs (h: v: notThisHost h) {
