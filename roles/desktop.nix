@@ -40,6 +40,8 @@
     brave chromium
     # Other
     xfce.thunar
+    # Documents
+    evince
     # Video
     mpv python38Packages.youtube-dl
     # Audio
