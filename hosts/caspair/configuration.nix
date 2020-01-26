@@ -38,6 +38,7 @@
   #];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "nct6775" "coretemp" ];
   boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
