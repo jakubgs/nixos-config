@@ -45,4 +45,11 @@
     enable = true;
     autodetect = true;
   };
+
+  # nobody cares about ipv6
+  boot.kernelParams = [ "ipv6.disable=1" ];
+  networking.enableIPv6 = false;
+
+  # domain use for my own infra
+  networking.search = [ "magi.blue" ];
 }

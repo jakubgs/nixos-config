@@ -23,7 +23,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
-  boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # Enable ZFS support
@@ -56,9 +55,6 @@
   networking = {
     hostName = "melchior";
     hostId = "e5acabaa";
-    domain = "magi";
-    search = [ "magi.blue" ];
-    enableIPv6 = false;
     interfaces.enp3s0.useDHCP = true;
   };
 

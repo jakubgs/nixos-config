@@ -14,7 +14,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
-  boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # Use the systemd-boot EFI boot loader.
@@ -25,9 +24,6 @@
   networking = {
     hostName = "arael";
     hostId = "43bd2a4e";
-    domain = "magi";
-    search = [ "magi.blue" ];
-    enableIPv6 = false;
     interfaces.eth0.useDHCP = true;
   };
 

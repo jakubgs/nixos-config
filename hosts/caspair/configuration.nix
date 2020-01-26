@@ -39,18 +39,15 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "nct6775" "coretemp" ];
-  boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   networking = {
     hostName = "caspair";
     hostId = "9fbd8b5d";
     useDHCP = false;
-    enableIPv6 = false;
     interfaces = {
       eno1 = { useDHCP = true; };
     };
-    search = [ "magi.blue" ];
   };
   # Enable NetworkManager
   networking.networkmanager.enable = true;
