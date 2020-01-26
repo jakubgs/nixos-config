@@ -7,9 +7,12 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [
-    config.services.zerotierone.port
-  ];
+  networking.firewall = {
+    # Open port for connecting to ZeroTier
+    allowedTCPPorts = [ config.services.zerotierone.port ];
+    # Open firewall for connections from ZeroTier
+    trustedInterfaces = [ "ztbto5ttab" ];
+  };
 
   # Daemon
   services.zerotierone.enable = true;
