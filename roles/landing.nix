@@ -18,7 +18,7 @@
           # SyncThing Web GUI
           "/sync/" = lib.optionalAttrs config.services.syncthing.enable {
             extraConfig = ''
-              proxy_set_header Host $host;
+              proxy_set_header Host localhost;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
               proxy_set_header X-Forwarded-Proto $scheme;
