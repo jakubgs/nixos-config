@@ -14,7 +14,6 @@
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/netdata.nix
-    ../../roles/nextcloud.nix
     ../../roles/landing.nix
     ../../services/transmission.nix
     ../../services/transmission-watch.nix
