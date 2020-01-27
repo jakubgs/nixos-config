@@ -63,8 +63,9 @@ in {
         basicAuthFile = "${../files/htpasswd}";
         
         locations = {
-          "/" = {
+          "= /" = {
             root = "${pkgs.writeTextDir "index.html" indexPage}";
+            tryFiles = "/index.html =400";
           };
         } // lib.listToAttrs proxiedServices;
       };
