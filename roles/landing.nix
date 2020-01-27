@@ -32,6 +32,13 @@ let
       value = {
         proxyPass = "http://localhost:19999/";
       };
+    }
+    ++ optional config.services.ympd.enable {
+      name ="/mpd/"; # Nginx path
+      title = "YMPD";
+      value = {
+        proxyPass = "http://localhost:${toString config.services.ympd.webPort}/";
+      };
     };
   indexTemplate = import ../templates/landing.index.nix;
   indexPage = pkgs.callPackage indexTemplate { inherit proxiedServices; };
