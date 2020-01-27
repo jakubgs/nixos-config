@@ -1,6 +1,8 @@
 { proxiedServices, lib, config }:
 
-''
+let
+  sortedServices = lib.sort ((a: b: a.title < b.title)) proxiedServices;
+in ''
 <!doctype html>
 <html>
     <head>
@@ -56,7 +58,7 @@
         <div class="main">
 ${lib.concatStringsSep "\n" (builtins.map (service: ''
 <a class="service" href="${service.name}">${service.title}</a>
-'') proxiedServices)}
+'') sortedServices)}
         </div>
     </body>
 </html>
