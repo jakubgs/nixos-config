@@ -10,7 +10,7 @@ let
       value = {
         proxyPass = "http://localhost:80/gitweb/";
         extraConfig = ''
-          proxy_hide_header Host;
+          proxy_set_header Host default;
         '';
       };
     }
