@@ -10,6 +10,7 @@
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/gitweb.nix
+    ../../roles/netdata.nix
     ../../roles/landing.nix
   ];
 
