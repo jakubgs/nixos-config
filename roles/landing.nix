@@ -8,9 +8,7 @@ let
       name ="/git/"; # Nginx path
       title = "WebGit";
       value = {
-        extraConfig = ''
-          rewrite /git/(.*) /gitweb/$1 last;
-        '';
+        proxyPass = "http://localhost:80/gitweb/";
       };
     }
     ++ optional config.services.syncthing.enable { 
