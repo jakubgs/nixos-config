@@ -29,9 +29,10 @@
         }
         .main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
         }
         .service {
+            font-size: 3em;
             line-height: 160px;
             display: block;
             border-radius: 0.3ex;
