@@ -54,7 +54,7 @@ let
       };
     };
   indexTemplate = import ../templates/landing.index.nix;
-  indexPage = pkgs.callPackage indexTemplate { inherit proxiedServices; };
+  indexPage = pkgs.callPackage indexTemplate { inherit proxiedServices config; };
 in {
   services.nginx = {
     enable = true;

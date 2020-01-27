@@ -1,4 +1,4 @@
-{ proxiedServices, lib }:
+{ proxiedServices, lib, config }:
 
 ''
 <!doctype html>
@@ -27,6 +27,9 @@
             color: #eaeaea;
             text-decoration: none;
         }
+        .hostname {
+            font-family: monospace;
+        }
         .main {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
@@ -48,7 +51,7 @@
     </style>
     <body>
         <header class="row center-text">
-            <h3>Server Landing Page</h3>
+            <h1 class="hostname">⛁ ${config.networking.hostName}</h1>
         </header>
         <div class="main">
 ${lib.concatStringsSep "\n" (builtins.map (service: ''
