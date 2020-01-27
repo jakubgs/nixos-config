@@ -7,6 +7,7 @@
     ../../roles/base.nix
     ../../roles/users.nix
     ../../roles/locate.nix
+    ../../roles/netdata.nix
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/gitweb.nix
