@@ -3,9 +3,12 @@
 let
   inherit (lib) optional;
 
+  # This list of sets represents service proxies we support.
+  # To simplify merging with 'locations' we use the 
+  # Nginx path as 'name' and rest of config as 'value'.
   proxiedServices = []
     ++ optional config.services.nginx.gitweb.enable {
-      name ="/git/"; # Nginx path
+      name ="/git/";
       title = "WebGit";
       value = {
         proxyPass = "http://localhost:80/gitweb/";
@@ -15,7 +18,7 @@ let
       };
     }
     ++ optional config.services.syncthing.enable { 
-      name ="/sync/"; # Nginx path
+      name ="/sync/";
       title = "SyncThing";
       value = {
         extraConfig = ''
@@ -30,21 +33,21 @@ let
       };
     }
     ++ optional config.services.netdata.enable {
-      name ="/netdata/"; # Nginx path
+      name ="/netdata/";
       title = "Netdata";
       value = {
         proxyPass = "http://localhost:${toString config.services.netdata.config."web"."default port"}/";
       };
     }
     ++ optional config.services.ympd.enable {
-      name ="/mpd/"; # Nginx path
+      name ="/mpd/";
       title = "YMPD";
       value = {
         proxyPass = "http://localhost:${toString config.services.ympd.webPort}/";
       };
     }
     ++ optional config.services.transmission.enable {
-      name ="/torrent/"; # Nginx path
+      name ="/torrent/";
       title = "Transmission";
       value = {
         proxyPass = "http://localhost:${toString config.services.transmission.port}/";
