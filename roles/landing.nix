@@ -9,6 +9,9 @@ let
       title = "WebGit";
       value = {
         proxyPass = "http://localhost:80/gitweb/";
+        extraConfig = ''
+          proxy_hide_header Host;
+        '';
       };
     }
     ++ optional config.services.syncthing.enable { 
