@@ -6,7 +6,7 @@ This repo defines [NixOS](https://nixos.org/nixos/) configuration for my hosts.
 
 To deploy the configuration run:
 ```bash
-cp secrets.example.nix secrets.nix
+cp example.secrets.nix secrets.nix
 vim secrets.nix
 sudo ./symlink "${HOSTNAME}"
 ```
