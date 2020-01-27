@@ -32,7 +32,7 @@ let
       name ="/netdata/"; # Nginx path
       title = "Netdata";
       value = {
-        proxyPass = "http://localhost:19999/";
+        proxyPass = "http://localhost:${toString config.services.netdata.config."web"."default port"}/";
       };
     }
     ++ optional config.services.ympd.enable {

@@ -17,6 +17,7 @@
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
     ../../roles/work.nix
+    ../../roles/landing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
