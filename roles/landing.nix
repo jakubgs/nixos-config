@@ -1,7 +1,9 @@
 { pkgs, config, lib, ... }:
 
 let
-  proxiedServices = with lib; []
+  inherit (lib) optional;
+
+  proxiedServices = []
     ++ optional config.services.nginx.gitweb.enable {
       name ="/git/"; # Nginx path
       title = "WebGit";
@@ -38,6 +40,17 @@ let
       title = "YMPD";
       value = {
         proxyPass = "http://localhost:${toString config.services.ympd.webPort}/";
+      };
+    }
+    ++ optional config.services.transmission.enable {
+      name ="/torrent/"; # Nginx path
+      title = "Transmission";
+      value = {
+        proxyPass = "http://localhost:${toString config.services.transmission.port}/";
+        extraConfig = ''
+          proxy_pass_request_headers on;
+          proxy_pass_header Authorization;
+        '';
       };
     };
   indexTemplate = import ../templates/landing.index.nix;
