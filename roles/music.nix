@@ -16,7 +16,7 @@ in {
   services.mpd.enable = true;
   services.mpd.user = "sochan";
   services.mpd.group = "sochan";
-  services.mpd.network.port = config.vars.ports.mpd;
+  services.mpd.network.port = 6600;
   services.mpd.network.listenAddress = "0.0.0.0";
   services.mpd.musicDirectory = "/mnt/music";
   services.mpd.playlistDirectory = "/mnt/music/_playlists";
@@ -28,5 +28,5 @@ in {
   # Web UI
   services.ympd.enable = true;
   services.ympd.mpd.host = "localhost";
-  services.ympd.webPort = config.vars.ports.ympd;
+  services.ympd.webPort = 8001;
 }

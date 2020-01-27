@@ -2,11 +2,10 @@
 
 let
   secrets = import ../secrets.nix;
+  listenPort = 8002;
 in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [
-    config.vars.ports.nextcloud
-  ];
+  networking.firewall.allowedTCPPorts = [ listenPort ];
 
   # Proxy
   services.nginx = {
@@ -15,7 +14,7 @@ in {
       ${config.services.nextcloud.hostName} = {
         listen = [{
           addr = "0.0.0.0";
-          port = config.vars.ports.nextcloud;
+          port = listenPort;
         }];
       };
     };

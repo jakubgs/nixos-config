@@ -2,16 +2,15 @@
 
 let
   secrets = import ../secrets.nix;
+  listenPort = 9091;
 in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [
-    config.vars.ports.transmission
-  ];
+  networking.firewall.allowedTCPPorts = [ listenPort ];
 
   # Daemon
   services.transmission = {
     enable = true;
-    port = config.vars.ports.transmission;
+    port = listenPort;
     home = "/mnt/torrent";
     user = "sochan";
     group = "sochan";

@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/security.nix
-    ../../roles/vars.nix
     ../../roles/base.nix
     ../../roles/users.nix
     ../../roles/nfs.nix
@@ -76,17 +75,6 @@
     options snd_usb_audio index=0
     options snd_hda_intel index=1
   '';
-
-  # Define "global" variables, see roles/vars.nix
-  vars = {
-    ports = {
-      mpd          = 6600;
-      netdata      = 8000;
-      ympd         = 8001;
-      nextcloud    = 8002;
-      transmission = 9091;
-    };
-  };
   
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.

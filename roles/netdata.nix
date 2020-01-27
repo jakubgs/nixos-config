@@ -1,8 +1,10 @@
 { config, ... }:
 
-{
+let
+  listenPort = 8000;
+in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [ config.vars.ports.netdata ];
+  networking.firewall.allowedTCPPorts = [ listenPort ];
 
   # Daemon
   services.netdata.enable = true;
@@ -17,7 +19,7 @@
         "access log" = "none";
     };
     "web" = {
-       "default port" = config.vars.ports.netdata;
+       "default port" = listenPort;
        "allow connections from" = "localhost 10.2.2.* 192.168.1.*";
     };
     "health" = {
