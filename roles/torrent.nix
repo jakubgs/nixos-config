@@ -21,7 +21,7 @@ in {
       # RPC
       rpc-whitelist-enabled = true;
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
-      rpc-host-whitelist = "melchior.magi,melchior.magi.local";
+      rpc-host-whitelist = "melchior.magi.vpn,melchior.magi.local";
       rpc-authentication-required = true;
       rpc-username = "sochan";
       rpc-password = secrets.rpcPassword;
