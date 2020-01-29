@@ -25,6 +25,7 @@
     # hard drive management
     smartmontools lsscsi hddtemp hdparm
     # security
+    openssl
     (if builtins.hasAttr "pinentry-curses" pkgs then
       lib.getAttr "pinentry-curses" pkgs else
       lib.getAttr "pinentry_ncurses" pkgs)
