@@ -8,7 +8,7 @@
     # building
     gnumake unzip zip envsubst entr
     # processes
-    dtach reptyr pstree
+    dtach reptyr pstree killall
     # monitoring
     htop iotop iftop multitail
     # dev tools
