@@ -56,7 +56,7 @@
     enable = true;
     monthly = 12;
     weekly = 4;
-    daily = 0;
+    daily = 3;
     hourly = 0;
     frequent = 0;
   };
