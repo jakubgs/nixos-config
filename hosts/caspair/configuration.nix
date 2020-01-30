@@ -42,6 +42,16 @@
   boot.kernelModules = [ "nct6775" "coretemp" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
+  # Snapshot weekly
+  services.zfs.autoSnapshot = {
+    enable = true;
+    monthly = 12;
+    weekly = 4;
+    daily = 0;
+    hourly = 0;
+    frequent = 0;
+  };
+
   networking = {
     hostName = "caspair";
     hostId = "9fbd8b5d";
