@@ -42,6 +42,15 @@
   boot.kernelModules = [ "nct6775" "coretemp" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
+  # Enable ZFS support
+  # WARNING: All mountpoints need to be set to 'legacy'
+  boot.supportedFilesystems = [ "zfs" ];
+  # Scrub to find errors
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    pools = [ "rpool" ];
+  };
   # Snapshot weekly
   services.zfs.autoSnapshot = {
     enable = true;
