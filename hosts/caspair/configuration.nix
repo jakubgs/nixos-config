@@ -54,6 +54,7 @@
   # Snapshot weekly
   services.zfs.autoSnapshot = {
     enable = true;
+    flags = "-k -p --utc";
     monthly = 12;
     weekly = 4;
     daily = 3;
