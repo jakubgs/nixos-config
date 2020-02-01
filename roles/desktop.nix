@@ -50,8 +50,6 @@
     gnome3.evolution discord zoom-us
     # Images
     feh gthumb
-    # Gaming
-    steam lutris
     # Torrent
     transmission-remote-gtk
     # Themes

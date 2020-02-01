@@ -13,6 +13,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
+    ../../roles/gaming.nix
     ../../roles/docker.nix
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
