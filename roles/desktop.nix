@@ -25,6 +25,7 @@
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   hardware.pulseaudio.support32Bit = true;
 
+  # System packages
   environment.systemPackages = with pkgs; [
     # Console
     rxvt_unicode ranger rofi
@@ -35,29 +36,31 @@
     # System
     gparted
     # Desktop
-    nitrogen arandr scrot
+    arandr
+    # Security
+    pinentry-gtk2
+  ];
+
+  # User packages
+  users.users.sochan.packages = with pkgs; [
+    # Desktop
+    xfce.thunar nitrogen scrot
+    # Themes
+    lxappearance lounge-gtk-theme
     # Browsers
     brave chromium
-    # Other
-    xfce.thunar
     # Documents
     evince
+    # Images
+    feh gthumb
     # Video
-    mpv python38Packages.youtube-dl
+    mpv youtube-dl
     # Audio
     ncmpcpp vorbis-tools mpg321
     # Communication
     gnome3.evolution discord zoom-us
-    # Images
-    feh gthumb
     # Torrent
     transmission-remote-gtk
-    # Themes
-    lxappearance lounge-gtk-theme
-    # Remote
-    remmina
-    # Security
-    pinentry-gtk2
   ];
 
   # Tonts

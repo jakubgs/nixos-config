@@ -12,6 +12,8 @@ let
 in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
+    # Remote
+    remmina
     # Meetings
     zoom-us
     # Infra dev
