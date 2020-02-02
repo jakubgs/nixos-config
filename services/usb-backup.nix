@@ -11,24 +11,38 @@ let
     concatStringsSep "-" (drop 1 (splitString "/" path))
   );
   # Creates a map of services out of list of paths
-  mkBackupServices = list: map (path: let
+  mkBackupServices = paths: map (path: let
     serviceName = pathToServiceName path;
   in {
     name = "usb-backup-${serviceName}";
     value = {
       enable = true;
+      description = "Syncing ${path} to ${cfg.destination} using rsync.";
       serviceConfig = {
         ExecStart = "${pkgs.rsync}/bin/rsync --info=stats2 -ra --delete ${path} ${cfg.destination}/";
         Type = "simple";
         TimeoutStopSec = "${toString cfg.timeout}s";
       };
-      unitConfig = {
-        Description = "Syncing ${path} to ${cfg.destination} using rsync.";
-        Requisite = [ "${serviceName}.mount" ];
-        After = [ "${serviceName}.mount" ];
-      };
+      requisite = [ "${serviceName}.mount" ];
+      after = [ "${serviceName}.mount" ];
     };
-  }) list;
+  }) paths;
+  # Creates a map of services out of list of paths
+  mkBackupTimers = paths: map (path: let
+    serviceName = pathToServiceName path;
+  in {
+    name = "usb-backup-${serviceName}";
+    value = {
+      enable = true;
+      description = "Timer for syncing ${path} to ${cfg.destination} using rsync.";
+      timerConfig = {
+        Unit = "usb-backup-${serviceName}.service";
+        OnCalendar = cfg.frequency;
+        Persistent = true;
+      };
+      wantedBy = [ "basic.target" ];
+    };
+  }) paths;
 in {
   options = {
     services = {
@@ -43,9 +57,17 @@ in {
           '';
         };
 
+        frequency = mkOption {
+          type = types.str;
+          default = "daily";
+          description = ''
+            Frequency in the systemd OnCalendar format.
+          '';
+        };
+
         destination = mkOption {
           type = types.str;
-          default = "";
+          default = "daily";
           description = ''
             Path to which rsync will copy the given directory.
           '';
@@ -64,6 +86,7 @@ in {
 
   # Defines multiple services for multiple sourcePaths
   config = mkIf cfg.enable {
-    systemd.services = traceVal listToAttrs (mkBackupServices cfg.sourcePaths);
+    systemd.services = listToAttrs (mkBackupServices cfg.sourcePaths);
+    systemd.timers = listToAttrs (mkBackupTimers cfg.sourcePaths);
   };
 }
