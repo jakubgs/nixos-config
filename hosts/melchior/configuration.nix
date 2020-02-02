@@ -15,6 +15,8 @@
     ../../roles/syncthing.nix
     ../../roles/netdata.nix
     ../../roles/landing.nix
+    ../../roles/usb-backup.nix
+    ../../services/usb-backup.nix
     ../../services/transmission.nix
     ../../services/transmission-watch.nix
   ];
