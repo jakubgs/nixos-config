@@ -4,9 +4,6 @@
   # Accept unfree licenses
   nixpkgs.config.allowUnfree = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -24,13 +21,15 @@
   environment.systemPackages = with pkgs; [
     # Console
     rxvt_unicode ranger rofi
-    # X Tools
-    xclip xkbset xorg.xmodmap xcape xbindkeys glxinfo xsel
+    # Xorg Tools
+    glxinfo xsel libdrm xorg.xmodmap
+    # Keyboard
+    xcape xbindkeys xclip xkbset 
     # Network
     networkmanagerapplet
     # System
     gparted
-    # Desktop
+    # Screen
     arandr
     # Security
     pinentry-gtk2
