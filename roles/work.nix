@@ -6,7 +6,9 @@ with pkgs;
 let
   # For details see: https://nixos.wiki/wiki/Python
   myPythonPkgs = python-packages: with python38Packages; [
-     ipython pip ansible setuptools boto3 pyopenssl cryptography
+    ipython pip ansible
+    setuptools boto3 retry
+    pyopenssl cryptography
   ];
   myPython = python38.withPackages myPythonPkgs;
 in {
