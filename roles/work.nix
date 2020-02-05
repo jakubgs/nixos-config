@@ -40,5 +40,5 @@ in {
   users.users.sochan.extraGroups = [ "adbusers" ];
 
   # Simplify accessing Status hosts
-  networking.search = [ "statusim.net" ];
+  networking.search = [ "statusim.net" "hosts.dap.ps" ];
 }
