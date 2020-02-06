@@ -20,10 +20,13 @@ let
       echo "No directory to watch specified!" >&2
       exit 1
     fi
-    ${inotifywait} -q -m \
+    ${inotifywait} \
+      --monitor \
+      --recursive \
+      --event=create \
       --event=close \
       --event=close_write \
-      --format='%w %f' -r \
+      --format='%w %f' \
       --include='.*.torrent$' \
       $WATCH_DIR | {
         while IFS=' ' read -r PATH FILE; do
