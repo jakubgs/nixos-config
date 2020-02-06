@@ -40,7 +40,7 @@ let
           SUBDIR="''${PATH#$WATCH_DIR/}"
           echo "Subfolder: $DOWNLOAD_DIR$SUBDIR"
           ${transmission-remote} $RPC_ADDR $RPC_AUTH \
-            --trash-torrent \
+            --no-trash-torrent \
             --add "$FULLPATH" \
             --download-dir "$DOWNLOAD_DIR$SUBDIR"
           if [[ $? -eq 0 ]]; then
