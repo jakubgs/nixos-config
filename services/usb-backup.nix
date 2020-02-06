@@ -7,12 +7,15 @@
 with lib;
 let
   cfg = config.services.usb-backup;
+  isMountPoint = path: hasAttr path config.fileSystems;
   pathToServiceName = path: (
     concatStringsSep "-" (drop 1 (splitString "/" path))
   );
   # Creates a map of services out of list of paths
   mkBackupServices = paths: map (path: let
     serviceName = pathToServiceName path;
+    # if not a mount point we can't wait for .mount service
+    afterReq = optionals (isMountPoint path) [ "${serviceName}.mount" ];
   in {
     name = "usb-backup-${serviceName}";
     value = {
@@ -23,8 +26,8 @@ let
         Type = "simple";
         TimeoutStopSec = "${toString cfg.timeout}s";
       };
-      requisite = [ "${serviceName}.mount" ];
-      after = [ "${serviceName}.mount" ];
+      requisite = afterReq;
+      after = afterReq;
     };
   }) paths;
   # Creates a map of services out of list of paths

@@ -12,7 +12,6 @@
       "/mnt/data"
       "/mnt/music"
       "/mnt/backup"
-      "/mnt/company"
     ];
   };
 }
