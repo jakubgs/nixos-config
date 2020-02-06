@@ -24,13 +24,18 @@ let
       --monitor \
       --recursive \
       --event=create \
-      --event=close \
-      --event=close_write \
       --format='%w %f' \
-      --include='.*.torrent$' \
       $WATCH_DIR | {
         while IFS=' ' read -r PATH FILE; do
           FULLPATH="$PATH$FILE"
+          if [[ -d "$FULLPATH" ]]; then
+            echo "New directory created: $FULLPATH"
+            continue
+          fi
+          if [[ "$FULLPATH" != *.torrent ]]; then
+            echo "Not a torrent file: $FULLPATH"
+            continue
+          fi
           echo "Adding torrent: $FULLPATH";
           SUBDIR="''${PATH#$WATCH_DIR/}"
           echo "Subfolder: $DOWNLOAD_DIR$SUBDIR"
