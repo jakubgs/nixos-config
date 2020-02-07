@@ -6,7 +6,7 @@
     # utilities
     file zsh bash wget curl manpages sudo pass bc rename
     # building
-    gnumake gcc unrar unzip zip envsubst entr patchelf
+    gnumake gcc unrar unzip zip envsubst entr patchelfUnstable
     # processes
     dtach reptyr pstree killall
     # monitoring
