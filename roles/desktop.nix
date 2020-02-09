@@ -29,6 +29,8 @@
     networkmanagerapplet
     # System
     gparted
+    # Audio
+    pavucontrol
     # Screen
     arandr
     # Security
