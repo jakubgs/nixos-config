@@ -53,4 +53,10 @@
 
   # domain use for my own infra
   networking.search = [ "magi.blue" ];
+
+  # Nix Auto Garbage Collect
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 15";
+  };
 }
