@@ -30,7 +30,7 @@ in {
     # Python dev
     myPython
     # NodeJS dev
-    nodejs-12_x yarn
+    nodejs-13_x yarn
     # Mobile dev
     fastlane
   ];
