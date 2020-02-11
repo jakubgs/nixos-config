@@ -28,22 +28,18 @@
       fsType = "zfs";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/F566-B554";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/AAC8-04CC";
       fsType = "vfat";
     };
 
   fileSystems."/mnt/melchior" =
-    { device = "/nix/store/iafcw8spa1d4irsm56sw20yinhlljwz3-melchior";
+    { device = "/nix/store/qpp40m155wy83ahw18bizgb2pnrh7bnc-melchior";
       fsType = "autofs";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/e87727ca-36c9-425b-84c9-3fdd0c78af58"; }
-    ];
+  swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
