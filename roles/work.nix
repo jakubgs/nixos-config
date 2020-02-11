@@ -32,7 +32,7 @@ in {
     # NodeJS dev
     nodejs-13_x yarn
     # Mobile dev
-    fastlane
+    fastlane apktool adoptopenjdk-bin
   ];
 
   # Android development Tool
