@@ -36,7 +36,7 @@ in {
   services.transmission-watch = {
     enable = true;
     watchDir = "/mnt/torrent/watched";
-    downloadDir = "/mnt/torrent";
+    downloadDir = "/mnt/torrent/";
     rpcUser = "sochan";
     rpcPass = secrets.rpcPassword;
   };
