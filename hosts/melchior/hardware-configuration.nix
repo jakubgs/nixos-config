@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -25,16 +25,6 @@
 
   fileSystems."/mnt/torrent" =
     { device = "MEDIA/torrent";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/nextcloud" =
-    { device = "DATA/nextcloud";
       fsType = "zfs";
     };
 
@@ -55,6 +45,11 @@
 
   fileSystems."/mnt/backup" =
     { device = "DATA/backup";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
       fsType = "zfs";
     };
 
