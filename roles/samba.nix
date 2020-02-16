@@ -9,6 +9,7 @@ let
       writeable = "yes";
       "guest ok" = "yes";
       "guest only" = "yes";
+      "force user" = "nobody";
     };
   };
   makePrivateShare = path: {
@@ -47,6 +48,8 @@ in {
     load printers = no
     printcap name = /dev/null
     printing = bsd
+    guest account = nobody
+    map to guest = Bad User
   '';
   services.samba.shares = with lib; (
     listToAttrs (map makePublicShare shares.public) //
