@@ -1,6 +1,38 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
-{
+let
+  makePublicShare = path: {
+    name = path;
+    value = {
+      inherit path;
+      browseable = "yes";
+      writeable = "yes";
+      "guest ok" = "yes";
+      "guest only" = "yes";
+    };
+  };
+  makePrivateShare = path: {
+    name = path;
+    value = {
+      inherit path;
+      browseable = "no";
+      writeable = "yes";
+    };
+  };
+  shares = {
+    public = [
+      "/mnt/ania"
+      "/mnt/data/music"
+      "/mnt/torrent/movies"
+    ];
+    private = [
+      "/mnt/data/data"
+      "/mnt/data/sync"
+      "/mnt/data/backup"
+      "/mnt/torrent"
+    ];
+  };
+in {
   # Tools
   environment.systemPackages = with pkgs; [ samba ];
 
@@ -16,46 +48,8 @@
     printcap name = /dev/null
     printing = bsd
   '';
-  services.samba.shares = {
-    data = {
-      path = "/mnt/data/data";
-      browseable = "no";
-      writeable = "yes";
-    };
-    sync = {
-      path = "/mnt/data/sync";
-      browseable = "no";
-      writeable = "yes";
-    };
-    backup = {
-      path = "/mnt/data/backup";
-      browseable = "no";
-      writeable = "yes";
-    };
-    torrent = {
-      path = "/mnt/torrent";
-      browseable = "no";
-      writeable = "yes";
-    };
-    music = {
-      path = "/mnt/data/music";
-      browseable = "yes";
-      writeable = "yes";
-      "guest ok" = "yes";
-    };
-    ania = {
-      path = "/mnt/ania";
-      browseable = "yes";
-      writeable = "yes";
-      "guest ok" = "yes";
-      "guest only" = "yes";
-    };
-    movies = {
-      path = "/mnt/torrent/movies";
-      browseable = "yes";
-      writeable = "yes";
-      "guest ok" = "yes";
-      "guest only" = "yes";
-    };
-  };
+  services.samba.shares = with lib; (
+    listToAttrs (map makePublicShare shares.public) //
+    listToAttrs (map makePrivateShare shares.private)
+  );
 }
