@@ -23,7 +23,7 @@ let
   shares = {
     public = [
       "/mnt/ania"
-      "/mnt/data/music"
+      "/mnt/music"
       "/mnt/torrent/movies"
     ];
     private = [
