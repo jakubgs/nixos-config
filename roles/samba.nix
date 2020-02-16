@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   makePublicShare = path: {
@@ -6,7 +6,7 @@ let
     value = {
       inherit path;
       browseable = "yes";
-      writeable = "yes";
+      writeable = "no";
       "guest ok" = "yes";
       "guest only" = "yes";
       "force user" = "nobody";
@@ -45,6 +45,9 @@ in {
   services.samba.enable = true;
   services.samba.syncPasswordsByPam = true;
   services.samba.extraConfig = ''
+    workgroup = MAGI
+    netbios name = ${config.networking.hostName}
+    name resolve order = bcast host
     load printers = no
     printcap name = /dev/null
     printing = bsd
