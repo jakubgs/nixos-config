@@ -18,33 +18,40 @@
   '';
   services.samba.shares = {
     data = {
+      path = "/mnt/data/data";
       browseable = "no";
       writeable = "yes";
-      path = "/mnt/data/data";
     };
     sync = {
+      path = "/mnt/data/sync";
       browseable = "no";
       writeable = "yes";
-      path = "/mnt/data/sync";
-    };
-    music = {
-      browseable = "yes";
-      writeable = "yes";
-      path = "/mnt/data/music";
-      "guest ok" = "yes";
     };
     backup = {
+      path = "/mnt/data/backup";
       browseable = "no";
       writeable = "yes";
-      path = "/mnt/data/backup";
     };
     torrent = {
+      path = "/mnt/torrent";
       browseable = "no";
       writeable = "yes";
-      path = "/mnt/torrent";
+    };
+    music = {
+      path = "/mnt/data/music";
+      browseable = "yes";
+      writeable = "yes";
+      "guest ok" = "yes";
     };
     ania = {
       path = "/mnt/ania";
+      browseable = "yes";
+      writeable = "yes";
+      "guest ok" = "yes";
+      "guest only" = "yes";
+    };
+    movies = {
+      path = "/mnt/torrent/movies";
       browseable = "yes";
       writeable = "yes";
       "guest ok" = "yes";
