@@ -53,6 +53,8 @@ in {
     printing = bsd
     guest account = nobody
     map to guest = Bad User
+    # Avoid ipv6 bind errors
+    bind interfaces only = yes
   '';
   services.samba.shares = with lib; (
     listToAttrs (map makePublicShare shares.public) //
