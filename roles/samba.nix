@@ -2,7 +2,7 @@
 
 let
   makePublicShare = path: {
-    name = path;
+    name = builtins.baseNameOf path;
     value = {
       inherit path;
       browseable = "yes";
@@ -13,7 +13,7 @@ let
     };
   };
   makePrivateShare = path: {
-    name = path;
+    name = builtins.baseNameOf path;
     value = {
       inherit path;
       browseable = "no";
