@@ -3,6 +3,9 @@
 let
   secrets = import ../secrets.nix;
 in {
+  # Give extra permissions with Nix
+  nix.trustedUsers = [ "sochan" ];
+
   users.groups.sochan = {
     gid = 1000;
     name = "sochan";
