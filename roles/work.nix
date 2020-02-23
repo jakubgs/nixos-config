@@ -15,6 +15,8 @@ let
 in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
+    # Network
+    netcat
     # Remote
     remmina
     # Meetings
@@ -32,7 +34,7 @@ in {
     # NodeJS dev
     nodejs-13_x yarn
     # Mobile dev
-    fastlane apktool adoptopenjdk-bin
+    fastlane apktool jdk8
   ];
 
   # Android development Tool
