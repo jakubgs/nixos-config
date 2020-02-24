@@ -37,7 +37,7 @@
   services.zfs.autoScrub = {
     enable = true;
     interval = "weekly";
-    pools = [ "rpool" ];
+    pools = [ "rpool" "DATA" ];
   };
   # Snapshot weekly
   services.zfs.autoSnapshot = {
