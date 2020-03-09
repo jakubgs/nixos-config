@@ -33,23 +33,18 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/melchior" =
-    { device = "/nix/store/h1k64i2brywjbxpj8j4zd1cmlmflka2y-melchior";
-      fsType = "autofs";
-    };
-
   fileSystems."/mnt/data" =
     { device = "DATA/data";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
       fsType = "zfs";
     };
 
