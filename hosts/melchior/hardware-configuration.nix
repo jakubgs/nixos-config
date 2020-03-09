@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -23,6 +23,16 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
+      fsType = "zfs";
+    };
+
   fileSystems."/mnt/torrent" =
     { device = "MEDIA/torrent";
       fsType = "zfs";
@@ -30,11 +40,6 @@
 
   fileSystems."/mnt/data" =
     { device = "DATA/data";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
       fsType = "zfs";
     };
 
@@ -48,14 +53,9 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
-      fsType = "zfs";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/53f42441-293f-42f8-9eb4-aeb0213acee0"; }
-      { device = "/dev/disk/by-uuid/58af9ff6-9fe1-45ef-803c-f5699b1becf9"; }
+    [ { device = "/dev/disk/by-uuid/58af9ff6-9fe1-45ef-803c-f5699b1becf9"; }
+      { device = "/dev/disk/by-uuid/53f42441-293f-42f8-9eb4-aeb0213acee0"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
