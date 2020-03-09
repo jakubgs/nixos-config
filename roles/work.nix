@@ -9,7 +9,7 @@ let
     ipython pip ansible
     setuptools boto3 retry
     pyopenssl cryptography
-    elasticsearch
+    elasticsearch wakeonlan
   ];
   myPython = python38.withPackages myPythonPkgs;
 in {
