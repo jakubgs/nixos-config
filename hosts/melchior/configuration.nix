@@ -73,10 +73,10 @@
 
   # Enable sound.
   sound.enable = true;
-  boot.extraModprobeConfig = ''
-    options snd_usb_audio index=0
-    options snd_hda_intel index=1
-  '';
+  boot = { # fix for USB not being default card
+    extraModprobeConfig = "options snd_usb_audio index=0";
+    blacklistedKernelModules = [ "snd_hda_intel" ];
+  };
   
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
