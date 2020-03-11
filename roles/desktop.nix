@@ -15,6 +15,13 @@
       enable = true;
       background = "${../files/wallpapers/default.jpg}";
     };
+    # symlink at /etc/X11/xorg.conf
+    exportConfiguration = true;
+    # for better mouse in FPS
+    libinput = {
+      enable = true;
+      accelProfile = "flat";
+    };
   };
 
   # System packages
