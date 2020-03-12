@@ -11,17 +11,18 @@
     videoDrivers = [ "nvidia" ];
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      background = "${../files/wallpapers/default.jpg}";
+    displayManager = {
+      lightdm = {
+        enable = true;
+        background = "${../files/wallpapers/default.jpg}";
+      };
+      # for better mouse in FPS
+      sessionCommands = ''
+        xinput set-prop "pointer:Razer Razer DeathAdder Elite" "Device Accel Profile" -1
+      '';
     };
     # symlink at /etc/X11/xorg.conf
     exportConfiguration = true;
-    # for better mouse in FPS
-    libinput = {
-      enable = true;
-      accelProfile = "flat";
-    };
   };
 
   # System packages
