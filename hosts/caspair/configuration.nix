@@ -20,6 +20,7 @@
     ../../roles/yubikey.nix
     ../../roles/syncthing.nix
     ../../roles/work.nix
+    ../../roles/virtualbox.nix
     ../../roles/landing.nix
   ];
 
