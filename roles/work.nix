@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 # This file includes setup for things required for work
 
@@ -43,4 +43,7 @@ in {
 
   # Simplify accessing Status hosts
   networking.search = [ "statusim.net" "hosts.dap.ps" ];
+
+  # Disable Garbage Collection
+  nix.gc.automatic = lib.mkForce false;
 }
