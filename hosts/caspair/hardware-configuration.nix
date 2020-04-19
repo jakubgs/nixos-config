@@ -28,13 +28,8 @@
       fsType = "zfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/AAC8-04CC";
-      fsType = "vfat";
-    };
-
-  fileSystems."/mnt/data" =
-    { device = "DATA/data";
+  fileSystems."/mnt/mobile" =
+    { device = "DATA/mobile";
       fsType = "zfs";
     };
 
@@ -48,9 +43,14 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/mobile" =
-    { device = "DATA/mobile";
+  fileSystems."/mnt/data" =
+    { device = "DATA/data";
       fsType = "zfs";
+    };
+
+  fileSystems."/efi" =
+    { device = "/dev/disk/by-uuid/9C9E-FCCC";
+      fsType = "vfat";
     };
 
   swapDevices = [ ];
