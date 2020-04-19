@@ -13,14 +13,14 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
-    ../../roles/printer.nix
+    #../../roles/printer.nix
     ../../roles/gaming.nix
     ../../roles/docker.nix
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
     ../../roles/syncthing.nix
     ../../roles/work.nix
-    ../../roles/virtualbox.nix
+    ../../roles/qemu.nix
     ../../roles/landing.nix
   ];
 
