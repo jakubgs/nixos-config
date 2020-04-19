@@ -27,6 +27,10 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub.enable = false;
+  boot.loader.efi = {
+    efiSysMountPoint = "/efi";
+    canTouchEfiVariables = true;
+  };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
   boot.kernel.sysctl = { "kernel.sysrq" = 1; };
