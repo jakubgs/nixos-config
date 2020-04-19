@@ -15,7 +15,7 @@
     neovim jq tmux fzf silver-searcher
     git gitAndTools.git-annex qrencode
     # hardware tools
-    pciutils lm_sensors acpi pmutils usbutils
+    pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
     nmap nettools traceroute dnsutils wol
     # filesystems
