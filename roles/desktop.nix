@@ -11,6 +11,7 @@
     videoDrivers = [ "nvidia" ];
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
+    displayManager.defaultSession = "none+awesome";
     displayManager = {
       lightdm = {
         enable = true;
