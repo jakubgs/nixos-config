@@ -66,6 +66,8 @@
     gnome3.evolution discord zoom-us
     # Torrent
     transmission-remote-gtk
+    # Coding
+    zeal
   ];
 
   # Tonts
