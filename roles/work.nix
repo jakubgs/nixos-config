@@ -16,7 +16,7 @@ in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
     # Network
-    netcat insomnia ngrok
+    netcat insomnia ngrok tcpdump
     # Remote
     remmina
     # Meetings
