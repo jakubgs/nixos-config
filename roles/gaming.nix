@@ -8,6 +8,10 @@
 
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
-    steam lutris wineWowPackages.staging xboxdrv
+    steam
+    lutris
+    wineWowPackages.staging
+    winetricks
+    xboxdrv
   ];
 }
