@@ -34,7 +34,7 @@ in ''
         }
         .main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+            grid-template-columns: repeat(4, minmax(20em, 1fr));
         }
         .service {
             font-size: 3em;
