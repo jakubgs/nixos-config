@@ -22,6 +22,7 @@
     ../../roles/work.nix
     ../../roles/qemu.nix
     ../../roles/landing.nix
+    ../../roles/crypto.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
