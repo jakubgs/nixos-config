@@ -15,6 +15,11 @@
     ../../roles/landing.nix
   ];
 
+  # SWAP due to low memory
+  swapDevices = [
+    { device = "/swapfile"; size = 4096; }
+  ];
+
   # No need to tinker with AWS bootloader
   boot.loader.grub.device = "nodev";
 
