@@ -21,10 +21,10 @@ in {
   # Hosts Entries
   networking.hosts = {
     "10.2.2.1"  = [ "melchior.magi.vpn" ]; # server
-    "10.2.2.2"  = [ "arael.magi.vpn" ];    # cloud
-    "10.2.2.11" = [ "caspair.magi.vpn" ];  # desktop
-    "10.2.2.12" = [ "lilim.magi.vpn" ];    # laptop
-    "10.2.2.13" = [ "ramiel.magi.vpn" ];   # phone
+    "10.2.2.2"  = [ "arael.magi.vpn"    ]; # cloud
+    "10.2.2.11" = [ "caspair.magi.vpn"  ]; # desktop
+    "10.2.2.12" = [ "lilim.magi.vpn"    ]; # laptop
+    "10.2.2.13" = [ "ramiel.magi.vpn"   ]; # phone
   };
 
   # Search the magi domain
