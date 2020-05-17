@@ -65,13 +65,13 @@ in {
     enableReload = true;
 
     virtualHosts = {
-      "arael.magi.vpn" = {
+      "${config.networking.hostName}" = {
         basicAuthFile = "${../files/htpasswd}";
         
         locations = {
           "= /" = {
             root = "${pkgs.writeTextDir "index.html" indexPage}";
-            tryFiles = "/index.html =400";
+            tryFiles = "/index.html =404";
           };
         } // lib.listToAttrs proxiedServices;
       };
