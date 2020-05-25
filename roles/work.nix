@@ -2,21 +2,18 @@
 
 # This file includes setup for things required for work
 
-with pkgs;
 let
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = python-packages: with python38Packages; [
+  myPythonPkgs = python-packages: with (pkgs.python38Packages); [
     ipython pip ansible
     setuptools boto3 retry
     pyopenssl cryptography
     elasticsearch wakeonlan
   ];
-  myPython = python38.withPackages myPythonPkgs;
+  myPython = pkgs.python38.withPackages myPythonPkgs;
 in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
-    # Documents
-    pandoc texlive.combined.scheme-small
     # Network
     netcat insomnia ngrok tcpdump
     # Remote
