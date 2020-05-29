@@ -13,20 +13,24 @@ in {
   ];
 
   # Daemon
-  services.mpd.enable = true;
-  services.mpd.user = "sochan";
-  services.mpd.group = "sochan";
-  services.mpd.network.port = 6600;
-  services.mpd.network.listenAddress = "0.0.0.0";
-  services.mpd.musicDirectory = "/mnt/music";
-  services.mpd.playlistDirectory = "/mnt/music/_playlists";
-  services.mpd.extraConfig = ''
-    password   "${secrets.mpdPassword}@read,add,control,admin"
-    mixer_type "software"
-  '';
+  services.mpd = {
+    enable = true;
+    user = "sochan";
+    group = "sochan";
+    network.port = 6600;
+    network.listenAddress = "0.0.0.0";
+    musicDirectory = "/mnt/music";
+    playlistDirectory = "/mnt/music/_playlists";
+    extraConfig = ''
+      password   "${secrets.mpdPassword}@read,add,control,admin"
+      mixer_type "software"
+    '';
+  };
 
   # Web UI
-  services.ympd.enable = true;
-  services.ympd.mpd.host = "localhost";
-  services.ympd.webPort = 8001;
+  services.ympd = {
+    enable = true;
+    mpd.host = "localhost";
+    webPort = 8001;
+  };
 }
