@@ -18,8 +18,6 @@ in {
     netcat insomnia ngrok tcpdump
     # Remote
     remmina
-    # Meetings
-    zoom-us
     # Infra dev
     terraform
     # AWS
