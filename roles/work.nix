@@ -26,6 +26,8 @@ in {
     awscli
     # DigitalOcean
     doctl
+    # Google Cloud
+    google-cloud-sdk
     # GoLang dev
     go
     # Python dev
