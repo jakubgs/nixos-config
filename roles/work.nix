@@ -26,6 +26,8 @@ in {
     doctl
     # Google Cloud
     google-cloud-sdk
+    # Scaleway
+    scaleway-cli
     # GoLang dev
     go
     # Python dev
