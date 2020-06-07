@@ -43,7 +43,7 @@
     # Screen
     arandr
     # Security
-    pinentry-gtk2
+    pinentry-gtk2 cryptsetup
   ];
 
   # User packages
