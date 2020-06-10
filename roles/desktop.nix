@@ -44,6 +44,7 @@
     arandr
     # Security
     pinentry-gtk2 cryptsetup
+    gnome3.seahorse
   ];
 
   # User packages
