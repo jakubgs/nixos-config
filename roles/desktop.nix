@@ -45,6 +45,8 @@
     # Security
     pinentry-gtk2 cryptsetup
     gnome3.seahorse
+    # Phone
+    jmtpfs
   ];
 
   # User packages
