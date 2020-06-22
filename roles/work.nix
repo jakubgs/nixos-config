@@ -28,6 +28,8 @@ in {
     google-cloud-sdk
     # Scaleway
     scaleway-cli
+    # General dev
+    pkg-config
     # GoLang dev
     go
     # Python dev
