@@ -20,6 +20,7 @@
       # for better mouse in FPS
       sessionCommands = ''
         xinput set-prop "pointer:Razer Razer DeathAdder Elite" "Device Accel Profile" -1
+        xinput set-prop "pointer:Razer Razer DeathAdder Elite Consumer Control" "Device Accel Profile" -1
       '';
     };
     # symlink at /etc/X11/xorg.conf
