@@ -60,5 +60,5 @@
 
   nix.maxJobs = lib.mkDefault 4;
   # High-DPI console
-  i18n.consoleFont = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
