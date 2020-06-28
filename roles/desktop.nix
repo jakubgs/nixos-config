@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 
-{
+let
+  disableAccelProfile = name:
+    "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
+in {
   # Accept unfree licenses
   nixpkgs.config.allowUnfree = true;
 
@@ -19,8 +22,8 @@
       };
       # for better mouse in FPS
       sessionCommands = ''
-        xinput set-prop "pointer:Razer Razer DeathAdder Elite" "Device Accel Profile" -1
-        xinput set-prop "pointer:Razer Razer DeathAdder Elite Consumer Control" "Device Accel Profile" -1
+        ${disableAccelProfile "Razer Razer DeathAdder Elite"}
+        ${disableAccelProfile "Razer Razer DeathAdder Elite Consumer Control"}
       '';
     };
     # symlink at /etc/X11/xorg.conf
@@ -85,10 +88,8 @@
       };
     };
     fonts = with pkgs; [
-      corefonts
-      terminus_font
-      dejavu_fonts
-      ubuntu_font_family
+      corefonts terminus_font
+      dejavu_fonts ubuntu_font_family
     ];
   };
 
