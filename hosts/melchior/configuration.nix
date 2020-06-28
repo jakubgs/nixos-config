@@ -25,7 +25,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
-  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # Enable ZFS support
   # WARNING: All mountpoints need to be set to 'legacy'

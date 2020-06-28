@@ -47,6 +47,9 @@
     autodetect = true;
   };
 
+  # SysRQ is useful when things hang
+  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
+
   # nobody cares about ipv6
   boot.kernelParams = [ "ipv6.disable=1" ];
   networking.enableIPv6 = false;

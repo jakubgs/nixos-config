@@ -36,7 +36,6 @@
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   # Enable ZFS support
   # WARNING: All mountpoints need to be set to 'legacy'
