@@ -21,6 +21,7 @@ in {
         background = "${../files/wallpapers/default.jpg}";
       };
       # for better mouse in FPS
+      # TODO: generalize for all pointers with this setting
       sessionCommands = ''
         ${disableAccelProfile "Razer Razer DeathAdder Elite"}
         ${disableAccelProfile "Razer Razer DeathAdder Elite Consumer Control"}
