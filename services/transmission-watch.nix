@@ -9,49 +9,9 @@ with lib;
 let
   cfg = config.services.transmission-watch;
   # script for watching for new *.torrent files
-  inotifywait = "${pkgs.inotify-tools}/bin/inotifywait";
-  transmission-remote = "${pkgs.transmission}/bin/transmission-remote";
-  watch-script = pkgs.writeShellScriptBin "transmission-watch" ''
-    WATCH_DIR="$1"
-    DOWNLOAD_DIR="${cfg.downloadDir}"
-    RPC_ADDR="${cfg.rpcAddr}"
-    ${optionalString (cfg.rpcUser != "") "RPC_AUTH=\"--auth ${cfg.rpcUser}:${cfg.rpcPass}\""}
-    if [[ -z "$WATCH_DIR" ]]; then
-      echo "No directory to watch specified!" >&2
-      exit 1
-    fi
-    ${inotifywait} \
-      --monitor \
-      --recursive \
-      --event=create \
-      --format='%w %f' \
-      $WATCH_DIR | {
-        while IFS=' ' read -r PATH FILE; do
-          FULLPATH="$PATH$FILE"
-          if [[ -d "$FULLPATH" ]]; then
-            echo "New directory created: $FULLPATH"
-            continue
-          fi
-          if [[ "$FULLPATH" != *.torrent ]]; then
-            echo "Not a torrent file: $FULLPATH"
-            continue
-          fi
-          echo "Adding torrent: $FULLPATH";
-          SUBDIR="''${PATH#$WATCH_DIR/}"
-          echo "Subfolder: $DOWNLOAD_DIR$SUBDIR"
-          ${transmission-remote} $RPC_ADDR $RPC_AUTH \
-            --no-trash-torrent \
-            --add "$FULLPATH" \
-            --download-dir "$DOWNLOAD_DIR$SUBDIR"
-          if [[ $? -eq 0 ]]; then
-            ${pkgs.coreutils}/bin/rm -vf "$FULLPATH"
-          else
-            ${pkgs.coreutils}/bin/mv "$FULLPATH" "$FULLPATH.failed"
-            echo "Failed to add torrent!"
-          fi
-        done 
-      }
-  '';
+  watch-script = pkgs.makeSetupHook {
+    deps = with pkgs; [ inotify-tools transmission ];
+  }./transmission-watch.sh;
 in {
   options = {
     services = {
@@ -105,8 +65,12 @@ in {
     systemd.services.transmission-watch = {
       enable = true;
       serviceConfig = {
-        ExecStart = "${watch-script}/bin/transmission-watch ${cfg.watchDir}";
+        ExecStart = "${watch-script} ${cfg.watchDir} ${cfg.downloadDir}";
         Restart = "on-failure";
+      };
+      environment = {
+        RPC_USER = cfg.rpcUser;
+        RPC_PASS = cfg.rpcPass;
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "transmission.service" ];
