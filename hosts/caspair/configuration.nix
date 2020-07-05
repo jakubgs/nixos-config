@@ -34,7 +34,7 @@
     efiSysMountPoint = "/efi";
     canTouchEfiVariables = true;
   };
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
   # Enable ZFS support
