@@ -14,8 +14,8 @@ in {
     videoDrivers = [ "nvidia" ];
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
-    displayManager.defaultSession = "none+awesome";
     displayManager = {
+      defaultSession = "none+awesome";
       lightdm = {
         enable = true;
         background = "${../files/wallpapers/default.jpg}";
