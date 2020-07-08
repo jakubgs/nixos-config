@@ -17,7 +17,7 @@
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
-    nmap nettools traceroute dnsutils wol
+    nmap nettools traceroute dnsutils wol iperf
     # filesystems
     zfs zfstools inotify-tools lsof parted ntfs3g gptfdisk
     # network filesystems
