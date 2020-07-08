@@ -9,6 +9,8 @@ let
     setuptools boto3 retry
     pyopenssl cryptography
     elasticsearch wakeonlan
+    # Statistics
+    matplotlib pandas
   ];
   myPython = pkgs.python38.withPackages myPythonPkgs;
 in {
