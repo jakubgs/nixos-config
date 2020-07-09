@@ -46,10 +46,6 @@
   # Miscellaneous
   time.timeZone = "Europe/Warsaw";
 
-  # Nix
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 30d";
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.03";
 }
