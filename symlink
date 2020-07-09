@@ -23,5 +23,7 @@ ln -vsf "${PWD}/hosts/${HOST}/configuration.nix" "${PWD}"
 ln -vsf "${PWD}/hosts/${HOST}/hardware-configuration.nix" "${PWD}"
 
 # and then the whole dir
-rm -r "/etc/nixos"
-ln -vsf "${PWD}" "/etc/nixos"
+if [[ "${PWD}" != "/etc/nixos" ]]; then
+    rm -r "/etc/nixos"
+    ln -vsf "${PWD}" "/etc/nixos"
+fi
