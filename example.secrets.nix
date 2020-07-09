@@ -1,4 +1,6 @@
 {
+  # Magi WiFi password
+  wifiMagiPassword = "CHANGE_ME";
   # user password made with mkpasswd -m sha-512
   userHashedPassword = "CHANGE_ME";
   # user by music.nix to configure MPD
