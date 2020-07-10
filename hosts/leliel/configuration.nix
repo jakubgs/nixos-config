@@ -26,6 +26,9 @@
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 
+  # Lower power usage and heat generation
+  powerManagement.cpuFreqGovernor = "ondemand";
+
   # Filesystems
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
