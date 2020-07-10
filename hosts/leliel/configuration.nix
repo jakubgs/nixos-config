@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
+    ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/users.nix
@@ -33,6 +34,9 @@
 
   # Miscellaneous
   time.timeZone = "Europe/Warsaw";
+
+  # High-DPI console
+  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.03";
