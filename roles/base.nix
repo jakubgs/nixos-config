@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 
 {
+  # Imports the overlay
+  nixpkgs.overlays = [ (import ../overlay) ];
+
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
