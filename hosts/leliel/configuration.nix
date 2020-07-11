@@ -41,6 +41,9 @@
   # High-DPI console
   console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
+  # SMART won't work on Raspberry Pi
+  services.smartd.enable = lib.mkForce false;
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.03";
 }
