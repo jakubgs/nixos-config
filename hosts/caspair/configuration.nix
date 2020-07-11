@@ -9,7 +9,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
-    #../../roles/printer.nix
+    ../../roles/printer.nix
     ../../roles/gaming.nix
     ../../roles/docker.nix
     ../../roles/zerotier.nix
