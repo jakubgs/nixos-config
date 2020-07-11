@@ -41,9 +41,9 @@ fi
         --download-dir "${DOWNLOAD_DIR}${SUBDIR}"
 
       if [[ $? -eq 0 ]]; then
-        rm -vf "${FULLPATH}"
+        @coreutils@/bin/rm -vf "${FULLPATH}"
       else
-        mv "${FULLPATH}" "${FULLPATH}.failed"
+        @coreutils@/bin/mv "${FULLPATH}" "${FULLPATH}.failed"
         echo "Failed to add torrent!"
       fi
     done 

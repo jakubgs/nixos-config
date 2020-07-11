@@ -13,7 +13,7 @@ let
     src = ./transmission-watch.sh;
     isExecutable = true;
     inotifytools = pkgs.inotify-tools;
-    inherit (pkgs) transmission;
+    inherit (pkgs) coreutils transmission;
   };
 in {
   options = {
