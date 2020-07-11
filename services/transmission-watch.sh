@@ -32,7 +32,7 @@ fi
       fi
 
       echo "Adding torrent: ${FULLPATH}";
-      SUBDIR="''${PATH#$WATCH_DIR/}"
+      SUBDIR="${PATH#$WATCH_DIR/}"
       echo "Subfolder: ${DOWNLOAD_DIR}${SUBDIR}"
 
       @transmission@/bin/transmission-remote ${RPC_ADDR} ${RPC_AUTH} \
