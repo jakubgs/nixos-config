@@ -1,9 +1,7 @@
-#!/usr/bin/env bash
+#!@shell@ -e
 
-WATCH_DIR="$1"
-DOWNLOAD_DIR="${cfg.downloadDir}"
-RPC_ADDR="${cfg.rpcAddr}"
-#${optionalString (cfg.rpcUser != "") 
+WATCH_DIR="${1}"
+DOWNLOAD_DIR="${2}"
 if [[ -z "${RPC_USER}" ]] || [[ -z "${RPC_USER}" ]]; then
     echo "WARNING: RPC Auth no configured!"
 else
@@ -15,7 +13,7 @@ if [[ -z "${WATCH_DIR}" ]]; then
   exit 1
 fi
 
-inotifywait \
+@inotifytools@/bin/inotifywait \
   --monitor \
   --recursive \
   --event=create \
@@ -37,7 +35,7 @@ inotifywait \
       SUBDIR="''${PATH#$WATCH_DIR/}"
       echo "Subfolder: ${DOWNLOAD_DIR}${SUBDIR}"
 
-      transmission-remote ${RPC_ADDR} ${RPC_AUTH} \
+      @transmission@/bin/transmission-remote ${RPC_ADDR} ${RPC_AUTH} \
         --no-trash-torrent \
         --add "${FULLPATH}" \
         --download-dir "${DOWNLOAD_DIR}${SUBDIR}"

@@ -9,9 +9,12 @@ with lib;
 let
   cfg = config.services.transmission-watch;
   # script for watching for new *.torrent files
-  watch-script = pkgs.makeSetupHook {
-    deps = with pkgs; [ inotify-tools transmission ];
-  }./transmission-watch.sh;
+  watch-script = pkgs.substituteAll {
+    src = ./transmission-watch.sh;
+    isExecutable = true;
+    inotifytools = pkgs.inotify-tools;
+    inherit (pkgs) transmission;
+  };
 in {
   options = {
     services = {
