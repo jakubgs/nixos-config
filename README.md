@@ -21,3 +21,10 @@ To apply the changes simply use:
 ```bash
 sudo nixos-rebuild switch
 ```
+
+# Nix Packages
+
+To use a custom `nixpkgs` location use the `-I` flag:
+```
+sudo nixos-rebuild switch -I nixpkgs=${HOME}/nixpkgs
+```
