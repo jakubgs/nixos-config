@@ -17,6 +17,7 @@ fi
   --monitor \
   --recursive \
   --event=create \
+  --event=close_write \
   --format='%w %f' \
   ${WATCH_DIR} | {
     while IFS=' ' read -r PATH FILE; do
