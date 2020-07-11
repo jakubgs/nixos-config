@@ -17,6 +17,7 @@ fi
   --monitor \
   --recursive \
   --event=create \
+  --event=attrib \
   --event=close_write \
   --format='%w %f' \
   ${WATCH_DIR} | {
