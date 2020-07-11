@@ -3,6 +3,8 @@
 let
   secrets = import ../secrets.nix;
 in {
+  imports = [ ./home.nix ];
+
   # Give extra permissions with Nix
   nix.trustedUsers = [ "sochan" ];
 
@@ -27,14 +29,4 @@ in {
 
   # allow of sudo without password
   security.sudo.wheelNeedsPassword = false;
-
-  system.activationScripts.dotfiles = lib.noDepEntry ''
-    _dotfiles=${config.users.users.sochan.home}/dotfiles 
-    if [[ -d "$_dotfiles" ]]; then
-      echo "dotfiles already configured"
-    else
-      echo "fetching and configuring dotfiles..."
-      ${pkgs.sudo}/bin/sudo -i -u sochan bash -c "GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' git clone git@github.com:jakubgs/dotfiles.git && $_dotfiles/bin/symlinkconf"
-    fi
-  '';
 }

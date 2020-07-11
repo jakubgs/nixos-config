@@ -2,6 +2,7 @@
 
 {
   imports = [
+    <home-manager/nixos>
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
@@ -79,6 +80,9 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Use global packages with home-manager
+  home-manager.useGlobalPkgs = true;
 
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
