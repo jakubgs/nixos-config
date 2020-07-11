@@ -28,7 +28,7 @@ in {
   # allow of sudo without password
   security.sudo.wheelNeedsPassword = false;
 
-  system.activationScripts.dotfiles = lib.noDepEntry ''
+  system.userActivationScripts.sochanDotfiles = lib.noDepEntry ''
     _dotfiles=${config.users.users.sochan.home}/dotfiles 
     if [[ -d "$_dotfiles" ]]; then
       echo "dotfiles already configured"
