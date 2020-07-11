@@ -1,4 +1,4 @@
-#!@shell@ -e
+#!@shell@
 
 WATCH_DIR="${1}"
 DOWNLOAD_DIR="${2}"
