@@ -13,4 +13,6 @@
   nextCloudDBPass = "CHANGE_ME";
   # ID of ZeroTier private network
   zeroTierNetwork = "CHANGE_ME";
+  # Password for FTP user
+  ftpAnonUserPassword = "CHANGE_ME";
 }

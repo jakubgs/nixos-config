@@ -1,25 +1,32 @@
 { pkgs, lib, ... }:
 
 let
+  secrets = import ../secrets.nix;
+
   ftpUser = "anon";
   listenPort = 9999;
   pasvPorts = {
     min = 51000;
-    max = 51100;
+    max = 51001;
   };
 in {
+  # User
+  users.extraUsers.anon = {
+    createHome = true;
+    isNormalUser = true;
+    hashedPassword = secrets.ftpAnonUserPassword;
+    extraGroups = [ "ftp" ];
+  };
+
   # Service - WARNING: Open to public!
   services.vsftpd = {
     enable = true;
     writeEnable = true;
-    #localUsers = true;
+    localUsers = true;
     chrootlocalUser = true;
     allowWriteableChroot = true;
-    anonymousUser = true;
-    anonymousUploadEnable = true;
-    anonymousMkdirEnable = true;
-    anonymousUserNoPassword = true;
-    anonymousUserHome = "/var/tmp/ftp";
+    userlistEnable = true;
+    userlist = [ "anon" ];
     extraConfig = ''
       listen_port=${builtins.toString listenPort}
       pasv_enable=YES
