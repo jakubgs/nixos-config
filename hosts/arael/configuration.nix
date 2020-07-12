@@ -45,9 +45,11 @@
 
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
+  };
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "pl";
   };
 
   # Set your time zone.
