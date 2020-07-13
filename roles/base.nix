@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Packages
@@ -13,7 +13,7 @@
     htop iotop iftop multitail
     # dev tools
     neovim jq tmux fzf silver-searcher
-    git gitAndTools.git-annex qrencode
+    git qrencode
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
@@ -29,6 +29,8 @@
     (if builtins.hasAttr "pinentry-curses" pkgs then
       lib.getAttr "pinentry-curses" pkgs else
       lib.getAttr "pinentry_ncurses" pkgs)
+  ] ++ lib.optionals (!config.boot.loader.raspberryPi.enable) [
+    gitAndTools.git-annex 
   ];
 
   # Shell
