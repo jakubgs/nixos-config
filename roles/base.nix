@@ -4,7 +4,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash wget curl manpages sudo pass bc rename
+    file zsh bash wget curl manpages sudo pass bc rename sqlite
     # building
     gnumake gcc unrar unzip zip envsubst entr patchelfUnstable
     # processes
