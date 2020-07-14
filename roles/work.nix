@@ -5,10 +5,15 @@
 let
   # For details see: https://nixos.wiki/wiki/Python
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
-    ipython pip yapf ansible
-    setuptools boto3 retry
+    ipython pip
+    # Development
+    setuptools retry yapf
+    # Devops
+    ansible boto3 wakeonlan
+    # Security
     pyopenssl cryptography
-    elasticsearch wakeonlan
+    # Databases
+    elasticsearch psycopg2
     # Statistics
     matplotlib pandas seaborn
   ];
