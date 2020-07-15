@@ -3,7 +3,8 @@
 {
   virtualisation.docker = {
     enable = true;
-    extraOptions = "--storage-opt dm.basesize=20G";
+    storageDriver = "devicemapper";
+    extraOptions = "--storage-opt dm.basesize=30G";
   };
 
   environment.systemPackages = with pkgs; [ docker-compose ];
