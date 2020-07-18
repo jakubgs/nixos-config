@@ -10,6 +10,7 @@
     ../../roles/docker.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
+    ../../roles/syncthing.nix
     ../../roles/usb-backup.nix
     ../../services/usb-backup.nix
   ];

@@ -29,6 +29,10 @@ in {
           id = "3LSSBGT-OCETH6T-XXVBYAL-G5ULPYN-CYEA6QL-J2LYOBI-3EVTOPR-CLJBCQO";
           addresses = [ "tcp://arael.magi.vpn:22000" ];
         };
+        leliel = {
+          id = "JPYOZ3K-Y32C3T6-YETQKUE-K44JSWI-KBEKCWI-YRCJWEF-5CDFTBH-5A336Q4";
+          addresses = [ "tcp://leliel.magi.vpn:22000" ];
+        };
       };
       folders = {
         "/mnt/git"    = { id = "git";    type = "sendreceive"; devices = otherHosts; };
