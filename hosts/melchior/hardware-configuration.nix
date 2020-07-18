@@ -18,11 +18,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/usb_backup" =
-    { device = "/dev/disk/by-uuid/bef2843c-7e60-4250-aeef-9f8e48427d4f";
-      fsType = "ext4";
-    };
-
   fileSystems."/mnt/git" =
     { device = "DATA/git";
       fsType = "zfs";
