@@ -17,19 +17,19 @@ in {
 
     declarative = {
       devices = lib.filterAttrs (h: v: notThisHost h) {
-        caspair = {
+        caspair = { # desktop
           id = "EVNUYJP-TPGQVZM-NI7IWRB-WL24QEM-G4IIHTV-WE3HLMV-O5LW7IM-CFWDRAI";
           addresses = [ "tcp://caspair.magi.vpn:22000" ];
         };
-        melchior = {
+        melchior = { # server
           id = "42V5WFK-OBSCQW2-73PWWT6-QMGQXKR-TPTITJL-74FVKZV-MRAUJUW-YSPF5QP";
           addresses = [ "tcp://melchior.magi.vpn:22000" ];
         };
-        arael = {
+        arael = { # cloud
           id = "3LSSBGT-OCETH6T-XXVBYAL-G5ULPYN-CYEA6QL-J2LYOBI-3EVTOPR-CLJBCQO";
           addresses = [ "tcp://arael.magi.vpn:22000" ];
         };
-        leliel = {
+        leliel = { # rpi4b
           id = "JPYOZ3K-Y32C3T6-YETQKUE-K44JSWI-KBEKCWI-YRCJWEF-5CDFTBH-5A336Q4";
           addresses = [ "tcp://leliel.magi.vpn:22000" ];
         };
