@@ -11,6 +11,7 @@
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
+    ../../roles/landing.nix
     ../../roles/usb-backup.nix
     ../../services/usb-backup.nix
   ];
