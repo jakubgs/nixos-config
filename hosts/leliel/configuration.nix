@@ -10,6 +10,8 @@
     ../../roles/docker.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
+    ../../roles/usb-backup.nix
+    ../../services/usb-backup.nix
   ];
 
   # Boot
@@ -23,6 +25,25 @@
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
+  # Enable ZFS support
+  boot.supportedFilesystems = [ "zfs" ];
+  # Scrub to find errors
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    pools = [ "USB-HDD" ];
+  };
+  # Snapshot daily
+  services.zfs.autoSnapshot = {
+    enable = true;
+    flags = "-k -p --utc";
+    monthly = 4;
+    weekly = 2;
+    daily = 7;
+    hourly = 0;
+    frequent = 0;
+  };
+
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 
@@ -33,7 +54,11 @@
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
   # Networking
-  networking.hostName = "leliel";
+  networking = {
+    hostName = "leliel";
+    hostId = "cf51a179";
+    useDHCP = true;
+  };
 
   # Miscellaneous
   time.timeZone = "Europe/Warsaw";
