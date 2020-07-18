@@ -13,17 +13,35 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems = {
-      # There is no U-Boot on the Pi 4 (yet) -- the firmware partition has to be mounted as /boot.
-      "/boot" = {
-          device = "/dev/disk/by-label/FIRMWARE";
-          fsType = "vfat";
-      };
-      "/" = {
-          device = "/dev/disk/by-label/NIXOS_SD";
-          fsType = "ext4";
-      };
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/2178-694E";
+      fsType = "vfat";
+    };
+
+  fileSystems."/mnt/data" =
+    { device = "USB-HDD/data";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "USB-HDD/git";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "USB-HDD/mobile";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "USB-HDD/music";
+      fsType = "zfs";
+    };
 
   swapDevices = [ ];
 
