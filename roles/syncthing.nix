@@ -30,7 +30,7 @@ in {
           addresses = [ "tcp://arael.magi.vpn:22000" ];
         };
         leliel = { # rpi4b
-          id = "JPYOZ3K-Y32C3T6-YETQKUE-K44JSWI-KBEKCWI-YRCJWEF-5CDFTBH-5A336Q4";
+          id = "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ";
           addresses = [ "tcp://leliel.magi.vpn:22000" ];
         };
       };
