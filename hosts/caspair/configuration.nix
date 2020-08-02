@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
+    ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/autofs.nix
@@ -34,24 +35,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
-  # Enable ZFS support
-  # WARNING: All mountpoints need to be set to 'legacy'
-  boot.supportedFilesystems = [ "zfs" ];
   # Scrub to find errors
   services.zfs.autoScrub = {
     enable = true;
     interval = "weekly";
     pools = [ "rpool" "DATA" ];
-  };
-  # Snapshot weekly
-  services.zfs.autoSnapshot = {
-    enable = true;
-    flags = "-k -p --utc";
-    monthly = 12;
-    weekly = 4;
-    daily = 3;
-    hourly = 0;
-    frequent = 0;
   };
 
   networking = {

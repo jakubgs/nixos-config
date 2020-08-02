@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
+    ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/nfs.nix
     ../../roles/samba.nix
@@ -24,24 +25,11 @@
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
 
-  # Enable ZFS support
-  # WARNING: All mountpoints need to be set to 'legacy'
-  boot.supportedFilesystems = [ "zfs" ];
   # Scrub to find errors
   services.zfs.autoScrub = {
     enable = true;
     interval = "weekly";
     pools = [ "SYSTEM" "DATA" "MEDIA" ];
-  };
-  # Snapshot daily
-  services.zfs.autoSnapshot = {
-    enable = true;
-    flags = "-k -p --utc";
-    monthly = 6;
-    weekly = 2;
-    daily = 14;
-    hourly = 0;
-    frequent = 0;
   };
 
   # Use the systemd-boot EFI boot loader.

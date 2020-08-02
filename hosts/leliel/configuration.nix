@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
+    ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/autofs.nix
@@ -25,23 +26,11 @@
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
-  # Enable ZFS support
-  boot.supportedFilesystems = [ "zfs" ];
   # Scrub to find errors
   services.zfs.autoScrub = {
     enable = true;
     interval = "weekly";
     pools = [ "USB-HDD" ];
-  };
-  # Snapshot daily
-  services.zfs.autoSnapshot = {
-    enable = true;
-    flags = "-k -p --utc";
-    monthly = 4;
-    weekly = 2;
-    daily = 7;
-    hourly = 0;
-    frequent = 0;
   };
 
   # Enable additional firmware (such as Wi-Fi drivers).
