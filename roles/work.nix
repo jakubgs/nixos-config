@@ -42,7 +42,7 @@ in {
     # Python dev
     myPython
     # NodeJS dev
-    nodejs-14_x yarn
+    nodejs-13_x yarn
     # Mobile dev
     fastlane apktool jdk8
   ];
