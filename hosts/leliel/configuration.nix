@@ -21,6 +21,13 @@
   boot.loader.raspberryPi = {
     enable = true;
     version = 4;
+    # Downclocking to reduce temperatures
+    firmwareConfig = ''
+      # Default: 1500
+      arm_freq_max=1200
+      # Default: 600
+      arm_freq_min=150
+    '';
   };
 
   # Kernel configuration
