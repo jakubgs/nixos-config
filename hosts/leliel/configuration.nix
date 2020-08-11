@@ -38,7 +38,7 @@
   hardware.enableRedistributableFirmware = true;
 
   # Lower power usage and heat generation
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "powersave";
 
   # Filesystems
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
