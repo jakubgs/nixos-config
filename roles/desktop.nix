@@ -90,6 +90,7 @@ in {
     };
     fonts = with pkgs; [
       corefonts terminus_font
+      fira-code inconsolata
       dejavu_fonts ubuntu_font_family
     ];
   };
