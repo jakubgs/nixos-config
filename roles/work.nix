@@ -45,6 +45,8 @@ in {
     nodejs-13_x yarn
     # Mobile dev
     fastlane apktool jdk8
+    # Utils
+    jsonnet appimage-run
   ];
 
   # Android development Tool
