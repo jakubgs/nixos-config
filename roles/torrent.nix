@@ -4,6 +4,11 @@ let
   secrets = import ../secrets.nix;
   listenPort = 9091;
 in {
+  imports = [
+    ../services/transmission.nix
+    ../services/transmission-watch.nix
+  ];
+
   # Firewall
   networking.firewall.allowedTCPPorts = [ listenPort ];
 

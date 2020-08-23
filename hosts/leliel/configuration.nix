@@ -14,6 +14,7 @@
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/landing.nix
+    ../../roles/torrent.nix
   ];
 
   # Boot
