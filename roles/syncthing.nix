@@ -2,7 +2,7 @@
 
 
 let
-  syncthingHosts = ["caspair" "melchior" "arael"];
+  syncthingHosts = ["caspair" "melchior" "arael" "lilim"];
   notThisHost = h: h != config.networking.hostName;
   otherHosts = builtins.filter notThisHost syncthingHosts;
 in {
@@ -24,6 +24,10 @@ in {
         melchior = { # server
           id = "42V5WFK-OBSCQW2-73PWWT6-QMGQXKR-TPTITJL-74FVKZV-MRAUJUW-YSPF5QP";
           addresses = [ "tcp://melchior.magi.vpn:22000" ];
+        };
+        lilim = { # laptop
+          id = "QRBF2L2-YQPQ5S4-ZZVGOSQ-PLKKXXD-KA35LCJ-RBR73KB-63KG3JR-KDBAZQ3";
+          addresses = [ "tcp://lilim.magi.vpn:22000" ];
         };
         arael = { # cloud
           id = "3LSSBGT-OCETH6T-XXVBYAL-G5ULPYN-CYEA6QL-J2LYOBI-3EVTOPR-CLJBCQO";
