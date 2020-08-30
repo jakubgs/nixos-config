@@ -42,6 +42,7 @@ in {
         "/mnt/git"    = { id = "git";    type = "sendreceive"; devices = otherHosts; };
         "/mnt/data"   = { id = "data";   type = "sendreceive"; devices = otherHosts; };
         "/mnt/music"  = { id = "music";  type = "sendreceive"; devices = otherHosts; };
+        "/mnt/photos" = { id = "photos"; type = "sendreceive"; devices = otherHosts; };
         "/mnt/mobile" = { id = "mobile"; type = "sendreceive"; devices = otherHosts; };
       };
     };

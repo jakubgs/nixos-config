@@ -16,6 +16,7 @@
       /mnt/git       10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
       /mnt/data      10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
       /mnt/music     10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
+      /mnt/photos    10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
       /mnt/backup    10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
       /mnt/torrent   10.2.2.0/8(rw,no_subtree_check) 192.168.1.0/8(rw,no_subtree_check)
     '';
