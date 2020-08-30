@@ -29,7 +29,7 @@ let
     private = [
       "/mnt/data/data"
       "/mnt/data/sync"
-      "/mnt/data/backup"
+      "/mnt/backup"
       "/mnt/torrent"
     ];
   };
