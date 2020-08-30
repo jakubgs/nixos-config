@@ -59,4 +59,10 @@ in {
     listToAttrs (map makePublicShare shares.public) //
     listToAttrs (map makePrivateShare shares.private)
   );
+
+  # User for /mnt/ania
+  users.groups.ania = {
+    gid = 1001;
+    name = "ania";
+  };
 }
