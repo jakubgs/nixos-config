@@ -10,6 +10,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
+    ../../roles/slock.nix
     ../../roles/printer.nix
     ../../roles/gaming.nix
     ../../roles/docker.nix
