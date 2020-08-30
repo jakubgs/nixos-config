@@ -8,23 +8,13 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "mpt3sas" "xhci_pci" "firewire_ohci" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "SYSTEM";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
       fsType = "zfs";
     };
 
@@ -38,22 +28,35 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/ania" =
-    { device = "DATA/ania";
-      fsType = "zfs";
-    };
-
   fileSystems."/mnt/backup" =
     { device = "DATA/backup";
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/ania" =
+    { device = "DATA/ania";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "DATA/photos";
+      fsType = "zfs";
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/58af9ff6-9fe1-45ef-803c-f5699b1becf9"; }
-      { device = "/dev/disk/by-uuid/53f42441-293f-42f8-9eb4-aeb0213acee0"; }
+    [ { device = "/dev/disk/by-uuid/53f42441-293f-42f8-9eb4-aeb0213acee0"; }
+      { device = "/dev/disk/by-uuid/58af9ff6-9fe1-45ef-803c-f5699b1becf9"; }
     ];
 
   nix.maxJobs = lib.mkDefault 4;
-  # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
