@@ -18,7 +18,7 @@ in {
     declarative = {
       devices = lib.filterAttrs (h: v: notThisHost h) {
         caspair = { # desktop
-          id = "EVNUYJP-TPGQVZM-NI7IWRB-WL24QEM-G4IIHTV-WE3HLMV-O5LW7IM-CFWDRAI";
+          id = "3WCZ4ZA-XPW2B2T-7BE2FP2-Z7TO63K-IOFJD4V-QTS6W7R-5UNDPAJ-DQJOSAU";
           addresses = [ "tcp://caspair.magi.vpn:22000" ];
         };
         melchior = { # server
@@ -26,7 +26,7 @@ in {
           addresses = [ "tcp://melchior.magi.vpn:22000" ];
         };
         lilim = { # laptop
-          id = "QRBF2L2-YQPQ5S4-ZZVGOSQ-PLKKXXD-KA35LCJ-RBR73KB-63KG3JR-KDBAZQ3";
+          id = "IQOAEJV-4CAZQJA-5WZQWPU-WHAWIXD-RNWKSLH-I27MIAX-S4UH2EP-5YDCJQF";
           addresses = [ "tcp://lilim.magi.vpn:22000" ];
         };
         arael = { # cloud
