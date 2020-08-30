@@ -18,19 +18,39 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home" =
-    { device = "rpool/home";
+  fileSystems."/nix" =
+    { device = "rpool/nix";
       fsType = "zfs";
     };
 
-  fileSystems."/nix" =
-    { device = "rpool/nix";
+  fileSystems."/home" =
+    { device = "rpool/home";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/AD43-F8F4";
       fsType = "vfat";
+    };
+
+  fileSystems."/mnt/melchior" =
+    { device = "/nix/store/5cildcibqcr45frmykqm8mc8ipng9cv8-melchior";
+      fsType = "autofs";
+    };
+
+  fileSystems."/var/lib/docker" =
+    { device = "rpool/docker";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "rpool/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "rpool/git";
+      fsType = "zfs";
     };
 
   swapDevices =
