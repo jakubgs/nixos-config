@@ -65,4 +65,11 @@ in {
     gid = 1001;
     name = "ania";
   };
+  users.users.ania = {
+    uid = 1001;
+    createHome = true;
+    isNormalUser = true;
+    useDefaultShell = true;
+    group = "ania";
+  };
 }
