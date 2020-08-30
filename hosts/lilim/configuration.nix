@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    <nixos-hardware/lenovo/thinkpad/t480s>
     ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
@@ -10,18 +11,18 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
-    ../../roles/printer.nix
-    ../../roles/gaming.nix
-    ../../roles/docker.nix
-    ../../roles/zerotier.nix
-    ../../roles/yubikey.nix
-    ../../roles/syncthing.nix
-    ../../roles/work.nix
-    ../../roles/docs.nix
-    ../../roles/qemu.nix
-    ../../roles/netdata.nix
-    ../../roles/landing.nix
-    ../../roles/crypto.nix
+    #../../roles/printer.nix
+    #../../roles/gaming.nix
+    #../../roles/docker.nix
+    #../../roles/zerotier.nix
+    #../../roles/yubikey.nix
+    #../../roles/syncthing.nix
+    #../../roles/work.nix
+    #../../roles/docs.nix
+    #../../roles/qemu.nix
+    #../../roles/netdata.nix
+    #../../roles/landing.nix
+    #../../roles/crypto.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
