@@ -66,6 +66,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Power auto tuning on startup
+  powerManagement.powertop.enable = true;
+
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
   system.stateVersion = "20.03"; # Did you read the comment?
