@@ -18,13 +18,23 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
+      fsType = "zfs";
+    };
+
   fileSystems."/mnt/data" =
     { device = "DATA/data";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
+  fileSystems."/mnt/mobile" =
+    { device = "DATA/mobile";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "DATA/photos";
       fsType = "zfs";
     };
 
