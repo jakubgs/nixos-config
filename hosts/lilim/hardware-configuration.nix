@@ -48,6 +48,16 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/data" =
+    { device = "rpool/data";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "rpool/mobile";
+      fsType = "zfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/8c023781-b98d-4a75-9c68-f37432573544"; }
     ];
