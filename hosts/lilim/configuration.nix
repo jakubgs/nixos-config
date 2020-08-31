@@ -44,7 +44,7 @@
     hostId = "e87975cc";
     useDHCP = false;
     interfaces = {
-      eno1 = { useDHCP = true; };
+      enp0s31f6 = { useDHCP = true; };
     };
   };
   # Enable NetworkManager
