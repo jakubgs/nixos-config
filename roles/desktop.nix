@@ -69,7 +69,7 @@ in {
     # Video
     mpv youtube-dl
     # Audio
-    ncmpcpp vorbis-tools mpg321
+    mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
     gnome3.evolution discord zoom-us
     # Torrent
