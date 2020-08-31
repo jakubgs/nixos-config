@@ -23,8 +23,13 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/data" =
-    { device = "USB-HDD/data";
+  fileSystems."/mnt/mobile" =
+    { device = "USB-HDD/mobile";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "USB-HDD/music";
       fsType = "zfs";
     };
 
@@ -33,13 +38,13 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/mobile" =
-    { device = "USB-HDD/mobile";
+  fileSystems."/mnt/data" =
+    { device = "USB-HDD/data";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/music" =
-    { device = "USB-HDD/music";
+  fileSystems."/mnt/photos" =
+    { device = "USB-HDD/photos";
       fsType = "zfs";
     };
 
