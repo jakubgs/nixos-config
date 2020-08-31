@@ -12,6 +12,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
+    ../../roles/laptop.nix
     ../../roles/touchpad.nix
     ../../roles/physlock.nix
     ../../roles/docker.nix
