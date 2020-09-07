@@ -26,7 +26,7 @@ in {
     # Remote
     remmina
     # Infra dev
-    terraform
+    terraform_0_13
     # AWS
     awscli
     # DigitalOcean
