@@ -97,4 +97,7 @@ in {
 
   # Keyring for app credentials
   services.gnome3.gnome-keyring.enable = true;
+
+  # Fix for Network Manager permission issues
+  programs.dconf.enable = true;
 }
