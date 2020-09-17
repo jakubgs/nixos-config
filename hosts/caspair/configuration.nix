@@ -7,6 +7,7 @@
     ../../roles/base.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
+    ../../roles/network.nix
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
@@ -51,8 +52,6 @@
       eno1 = { useDHCP = true; };
     };
   };
-  # Enable NetworkManager
-  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n = {
