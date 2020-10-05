@@ -46,7 +46,7 @@ in {
     # Mobile dev
     fastlane apktool jdk8
     # Utils
-    jsonnet appimage-run
+    jsonnet appimage-run unixtools.xxd bvi
   ];
 
   # Android development Tool
