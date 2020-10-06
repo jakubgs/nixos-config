@@ -8,9 +8,9 @@
   services.zfs.autoSnapshot = {
     enable = true;
     flags = "-k -p --utc";
-    monthly = 4;
-    weekly = 4;
-    daily = 7;
+    monthly = 3;
+    weekly = 3;
+    daily = 6;
     hourly = 0;
     frequent = 0;
   };
