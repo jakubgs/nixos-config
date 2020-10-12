@@ -52,6 +52,7 @@ in {
     gnome3.seahorse
     # Phone
     jmtpfs
+    chirp
   ];
 
   # User packages
@@ -97,7 +98,4 @@ in {
 
   # Keyring for app credentials
   services.gnome3.gnome-keyring.enable = true;
-
-  # Fix for Network Manager permission issues
-  programs.dconf.enable = true;
 }
