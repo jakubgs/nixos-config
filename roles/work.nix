@@ -3,6 +3,8 @@
 # This file includes setup for things required for work
 
 let
+  unstablePkgs = import <nixos-unstable> { };
+
   # For details see: https://nixos.wiki/wiki/Python
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
     ipython pip
@@ -25,8 +27,6 @@ in {
     netcat insomnia ngrok tcpdump
     # Remote
     remmina
-    # Infra dev
-    terraform_0_13
     # AWS
     awscli
     # DigitalOcean
@@ -37,12 +37,14 @@ in {
     scaleway-cli
     # General dev
     pkg-config
+    # Infra dev
+    unstablePkgs.terraform_0_13
+    # NodeJS dev
+    unstablePkgs.nodejs-14_x yarn
     # GoLang dev
     go
     # Python dev
     myPython
-    # NodeJS dev
-    nodejs-13_x yarn
     # Mobile dev
     fastlane apktool jdk8
     # Utils
