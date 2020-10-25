@@ -11,9 +11,8 @@
     vulkan-tools
     steam
     lutris
-    wineStaging
-    winePackages.staging
-    wineWowPackages.staging
+    wineFull
+    wineWowPackages.full
     winetricks
     corefonts
     xboxdrv
