@@ -8,11 +8,10 @@
 
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
+    wineWowPackages.staging
     vulkan-tools
     steam
     lutris
-    wineFull
-    wineWowPackages.full
     winetricks
     corefonts
     xboxdrv
