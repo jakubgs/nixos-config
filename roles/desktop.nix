@@ -7,6 +7,9 @@ in {
   # Accept unfree licenses
   nixpkgs.config.allowUnfree = true;
 
+  # Font/DPI optimized for HiDPI displays
+  hardware.video.hidpi.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
