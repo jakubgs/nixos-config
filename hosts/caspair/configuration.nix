@@ -72,10 +72,4 @@
   # Determines the NixOS release with which your system is to be compatible
   # You should change this only after NixOS release notes say you should.
   system.stateVersion = "20.09"; # Did you read the comment?
-
-  networking.hosts = {
-    "172.67.10.161" = [ "cortex.status.im" ];
-    "104.22.24.181" = [ "cortex.status.im" ];
-    "104.22.25.181" = [ "cortex.status.im" ];
-  };
 }
