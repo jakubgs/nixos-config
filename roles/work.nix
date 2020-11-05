@@ -9,7 +9,7 @@ let
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
     ipython pip
     # Development
-    setuptools retry yapf
+    setuptools retry yapf mohawk
     # Devops
     ansible boto3 wakeonlan
     # Security
@@ -49,6 +49,8 @@ in {
     fastlane apktool jdk8
     # Utils
     jsonnet appimage-run unixtools.xxd bvi
+    # Docs
+    #libreoffice
   ];
 
   # Android development Tool
