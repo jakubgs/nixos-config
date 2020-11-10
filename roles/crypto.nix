@@ -11,6 +11,6 @@
 
   # Fix permissions
   services.udev.extraRules = '''
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0001|1011", GROUP="adm"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0001|1011|1015", GROUP="adm"
   '';
 }
