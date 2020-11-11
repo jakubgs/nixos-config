@@ -5,7 +5,6 @@ let
   listenPort = 9091;
 in {
   imports = [
-    ../services/transmission.nix
     ../services/transmission-watch.nix
   ];
 
@@ -24,6 +23,7 @@ in {
       incomplete-dir-enabled = false;
       rename-partial-files = true;
       # RPC
+      rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = true;
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
       rpc-host-whitelist = "melchior.magi.vpn,melchior.magi.local";
