@@ -2,7 +2,7 @@
 
 let
   genHostConfig = ip: paths: lib.concatStringsSep "\n" (
-    map (p: "${baseNameOf p} -fstype=nfs ${ip}:${p}") paths
+    map (p: "${p} -fstype=nfs ${ip}:/mnt/${p}") paths
   );
 in {
   services.autofs = {
