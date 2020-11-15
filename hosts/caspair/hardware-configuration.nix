@@ -18,11 +18,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/efi" =
-    { device = "/dev/disk/by-uuid/9C9E-FCCC";
-      fsType = "vfat";
-    };
-
   fileSystems."/nix" =
     { device = "rpool/local/nix";
       fsType = "zfs";
@@ -33,8 +28,13 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
+  fileSystems."/efi" =
+    { device = "/dev/disk/by-uuid/9C9E-FCCC";
+      fsType = "vfat";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
       fsType = "zfs";
     };
 
@@ -43,18 +43,18 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/mobile" =
-    { device = "DATA/mobile";
-      fsType = "zfs";
-    };
-
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
-      fsType = "zfs";
-    };
-
   fileSystems."/mnt/photos" =
     { device = "DATA/photos";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "DATA/mobile";
       fsType = "zfs";
     };
 
