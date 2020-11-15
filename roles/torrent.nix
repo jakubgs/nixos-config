@@ -3,6 +3,8 @@
 let
   secrets = import ../secrets.nix;
   listenPort = 9091;
+  torrentDir = "/mnt/torrent";
+  torrentUser = "sochan";
 in {
   imports = [
     ../services/transmission-watch.nix
@@ -15,11 +17,11 @@ in {
   services.transmission = {
     enable = true;
     port = listenPort;
-    home = "/mnt/torrent";
-    user = "sochan";
-    group = "sochan";
+    home = torrentDir;
+    user = torrentUser;
+    group = torrentUser;
     settings = {
-      download-dir = "/mnt/torrent";
+      download-dir = torrentDir;
       incomplete-dir-enabled = false;
       rename-partial-files = true;
       # RPC
@@ -28,7 +30,7 @@ in {
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
       rpc-host-whitelist = "melchior.magi.vpn,melchior.magi.local";
       rpc-authentication-required = true;
-      rpc-username = "sochan";
+      rpc-username = torrentUser;
       rpc-password = secrets.rpcPassword;
       # separate service watches for torrent files to start
       watch-dir-enabled = false;
@@ -40,9 +42,9 @@ in {
   # Directory Watcher - Recursively starts torrents
   services.transmission-watch = {
     enable = true;
-    watchDir = "/mnt/torrent/watched";
-    downloadDir = "/mnt/torrent/";
-    rpcUser = "sochan";
+    watchDir = "${torrentDir}/watched";
+    downloadDir = torrentDir;
+    rpcUser = torrentUser;
     rpcPass = secrets.rpcPassword;
   };
 }
