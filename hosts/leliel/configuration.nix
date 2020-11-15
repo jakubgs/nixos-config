@@ -7,6 +7,7 @@
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
+    ../../roles/nfs.nix
     ../../roles/music.nix
     ../../roles/autofs.nix
     ../../roles/docker.nix
