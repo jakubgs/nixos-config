@@ -3,6 +3,7 @@
 {
   services.autofs = {
     enable = true;
+    timeout = 60;
     autoMaster =
       let
         melchiorConf = pkgs.writeText "melchior" ''
