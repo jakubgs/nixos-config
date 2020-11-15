@@ -35,12 +35,12 @@ fi
 
       echo "Adding torrent: ${FULLPATH}";
       SUBDIR="${PATH#$WATCH_DIR/}"
-      echo "Subfolder: ${DOWNLOAD_DIR}${SUBDIR}"
+      echo "Subfolder: ${DOWNLOAD_DIR}/${SUBDIR}"
 
       @transmission@/bin/transmission-remote ${RPC_ADDR} ${RPC_AUTH} \
         --no-trash-torrent \
         --add "${FULLPATH}" \
-        --download-dir "${DOWNLOAD_DIR}${SUBDIR}"
+        --download-dir "${DOWNLOAD_DIR}/${SUBDIR}"
 
       if [[ $? -eq 0 ]]; then
         @coreutils@/bin/rm -vf "${FULLPATH}"
