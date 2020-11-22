@@ -29,9 +29,9 @@
       # Default: 1500
       arm_freq_max=1700
       # Default: 600
-      arm_freq_min=600
+      arm_freq_min=400
       # Default: 60
-      temp_soft_limit=62
+      temp_soft_limit=65
     '';
   };
 
