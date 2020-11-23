@@ -83,4 +83,9 @@
 
   # Packages
   environment.systemPackages = with pkgs; [ raspberrypi-tools ];
+
+  # Fix for USB sound issues
+  environment.etc."modprobe.d/nixos.conf".text = ''
+    options usbcore autosuspend=-1
+  '';
 }
