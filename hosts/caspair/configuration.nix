@@ -28,6 +28,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.grub.enable = false;
   boot.loader.efi = {
     efiSysMountPoint = "/efi";
