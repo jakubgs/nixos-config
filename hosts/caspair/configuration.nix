@@ -34,8 +34,7 @@
     efiSysMountPoint = "/efi";
     canTouchEfiVariables = true;
   };
-  # Upgrade kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
   # Scrub to find errors
