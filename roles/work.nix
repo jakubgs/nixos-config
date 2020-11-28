@@ -11,7 +11,7 @@ let
     # Development
     setuptools retry yapf mohawk
     # Devops
-    ansible boto3 wakeonlan
+    ansible boto3 wakeonlan PyGithub
     # Security
     pyopenssl cryptography
     # Databases
