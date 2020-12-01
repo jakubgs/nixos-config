@@ -13,10 +13,9 @@ pkgs.stdenv.mkDerivation rec {
 
   buildInputs = with pkgs; [ which bash git nim ];
 
-  NIMFLAGS = "-d:insecure -d:testnet_servers_image";
-  CC = pkgs.gcc;
+  NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native";
 
-  buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "installPhase" ];
+  buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
 
   # Generate vendor/.nimble contents with correct paths
   configurePhase = ''
@@ -34,7 +33,8 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   buildPhase = ''
-    make nimbus_beacon_node nimbus_signing_process USE_SYSTEM_NIM=1
+    make nimbus_beacon_node nimbus_signing_process \
+      NIMFLAGS='${NIMFLAGS}' USE_SYSTEM_NIM=1
   '';
 
   installPhase = ''
