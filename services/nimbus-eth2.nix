@@ -24,6 +24,12 @@ in {
           description = "Name of Eth2 network to connect to.";
         };
 
+        graffiti = mkOption {
+          type = types.str;
+          default = "Nimbus-Eth2";
+          description = "Name of Eth2 network to connect to.";
+        };
+
         logLevel = mkOption {
           type = types.str;
           default = "info";
@@ -83,14 +89,13 @@ in {
         ExecStart = ''
           ${binaryPkg}/bin/nimbus_beacon_node \
             --network=${cfg.network} \
+            --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
             --web3-url=${cfg.web3Url} \
             --nat=extip:${cfg.publicIp} \
             --log-level=${toUpper cfg.logLevel} \
             --tcp-port=${toString cfg.listenPort} \
             --udp-port=${toString cfg.discoverPort} \
-            --netkey-file=${cfg.dataDir}/netkey \
-            --insecure-netkey-password=true \
             --rpc \
             --rpc-address=${cfg.rpcAddr} \
             --rpc-port=${toString cfg.rpcPort} \
