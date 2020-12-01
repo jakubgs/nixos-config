@@ -34,7 +34,7 @@ pkgs.stdenv.mkDerivation rec {
 
   buildPhase = ''
     make nimbus_beacon_node nimbus_signing_process \
-      NIMFLAGS='${NIMFLAGS}' USE_SYSTEM_NIM=1
+      USE_LIBBACKTRACE=0 NIMFLAGS='${NIMFLAGS}' USE_SYSTEM_NIM=1
   '';
 
   installPhase = ''
