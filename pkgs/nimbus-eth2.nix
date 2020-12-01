@@ -11,6 +11,8 @@ pkgs.stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
+  dontStrip = true; # leave debugging symbols in
+
   buildInputs = with pkgs; [ which bash git nim ];
 
   NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native";
