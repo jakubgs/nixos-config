@@ -13,6 +13,8 @@
   nextCloudDBPass = "CHANGE_ME";
   # ID of ZeroTier private network
   zeroTierNetwork = "CHANGE_ME";
+  # Web3 URL for Nimbus Eth2 node
+  nimbusWeb3Url = "CHANGE_ME";
   # Password for FTP user
   ftpAnonUserPassword = "CHANGE_ME";
 }
