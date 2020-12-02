@@ -1,11 +1,11 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  rev = "83272404";
+  rev = "43662be3";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.0.0";
+  version = "1.0.1";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
