@@ -1,6 +1,9 @@
 { pkgs ? import <nixpkgs> { } }:
 
-pkgs.stdenv.mkDerivation rec {
+let
+  rev = "83272404";
+  fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
+in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
   version = "1.0.0";
 
@@ -13,7 +16,7 @@ pkgs.stdenv.mkDerivation rec {
 
   dontStrip = true; # leave debugging symbols in
 
-  buildInputs = with pkgs; [ which bash git nim ];
+  buildInputs = with pkgs; [ which nim ];
 
   NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native";
 
@@ -35,6 +38,8 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   buildPhase = ''
+    # Fix for Nim compiler calling git rev-parse
+    export PATH=$PATH:${fakeGit}/bin
     make nimbus_beacon_node nimbus_signing_process \
       USE_LIBBACKTRACE=0 NIMFLAGS='${NIMFLAGS}' USE_SYSTEM_NIM=1
   '';
