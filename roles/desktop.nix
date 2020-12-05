@@ -69,7 +69,7 @@ in {
     # Documents
     evince
     # Images
-    feh gthumb
+    feh gthumb gimp
     # Video
     mpv youtube-dl
     # Audio
