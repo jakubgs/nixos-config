@@ -82,14 +82,14 @@ in {
     zeal
   ];
 
-  # Tonts
+  # Fonts
   fonts = {
     fontconfig = {
       cache32Bit = true;
       allowBitmaps = true;
       useEmbeddedBitmaps = true;
       defaultFonts = {
-        monospace = [ "terminus" ];
+        monospace = [ "Inconsolata" ];
       };
     };
     fonts = with pkgs; [
