@@ -75,7 +75,7 @@ in {
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
-    gnome3.geary discord
+    gnome3.evolution discord
     # Torrent
     transmission-remote-gtk
     # Coding
@@ -101,6 +101,9 @@ in {
 
   # Keyring for app credentials
   services.gnome3.gnome-keyring.enable = true;
+
+  # Fix Evolution startup errors
+  services.gnome3.evolution-data-server.enable = true;
 
   # Fix Gnome Apps that require dconf
   programs.dconf.enable = true;
