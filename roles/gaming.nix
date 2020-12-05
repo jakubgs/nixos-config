@@ -8,7 +8,7 @@
 
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
-    wineWowPackages.staging
+    wineWowPackages.full
     vulkan-tools
     steam
     lutris
