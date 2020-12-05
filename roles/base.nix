@@ -26,9 +26,6 @@
     smartmontools lsscsi hddtemp hdparm
     # security
     openssl
-    (if builtins.hasAttr "pinentry-curses" pkgs then
-      lib.getAttr "pinentry-curses" pkgs else
-      lib.getAttr "pinentry_ncurses" pkgs)
   ] ++ lib.optionals (!config.boot.loader.raspberryPi.enable) [
     gitAndTools.git-annex 
   ];
