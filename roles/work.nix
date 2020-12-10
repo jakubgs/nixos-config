@@ -13,7 +13,7 @@ let
     # Devops
     ansible boto3 wakeonlan PyGithub
     # Security
-    pyopenssl cryptography
+    pyopenssl cryptography passlib
     # Databases
     elasticsearch psycopg2
     # Statistics
