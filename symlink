@@ -24,6 +24,6 @@ if [[ -h "/etc/nixos" ]]; then
     echo "The /etc/nixos path is already a symlink!" >&2
     ls -l "/etc/nixos"
 elif [[ "${PWD}" != "/etc/nixos" ]]; then
-    sudo rm -rf "/etc/nixos"
+    sudo mv "/etc/nixos" "/etc/nixos_bkp"
     sudo ln -vsf "${PWD}" "/etc/nixos"
 fi
