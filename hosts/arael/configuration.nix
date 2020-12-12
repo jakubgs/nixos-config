@@ -25,8 +25,6 @@
 
   # Upgrade kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # Modules for sensors
-  boot.kernelModules = [ "it87" "k10temp" ];
 
   # Enable ZFS support
   boot.supportedFilesystems = [ "zfs" ];
