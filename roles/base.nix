@@ -23,7 +23,7 @@
     # network filesystems
     nfs-utils
     # hard drive management
-    smartmontools lsscsi hddtemp hdparm
+    lsscsi hddtemp hdparm
     # security
     openssl
   ] ++ lib.optionals (!config.boot.loader.raspberryPi.enable) [
@@ -38,12 +38,6 @@
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-  };
-
-  # SMART drive monitoring
-  services.smartd = {
-    enable = true;
-    autodetect = true;
   };
 
   # SysRQ is useful when things hang

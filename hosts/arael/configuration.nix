@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
+    ../../roles/smart.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/netdata.nix

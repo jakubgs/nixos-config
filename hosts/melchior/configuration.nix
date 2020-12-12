@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
+    ../../roles/smart.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/nfs.nix
