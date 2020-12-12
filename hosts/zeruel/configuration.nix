@@ -12,6 +12,7 @@
     ../../roles/netdata.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/nimbus-eth2.nix
   ];
 
   # SWAP due to low memory
