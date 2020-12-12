@@ -1,22 +1,22 @@
 { pkgs ? import <nixpkgs> { }, nativeBuild ? false }:
 
 let
-  rev = "43662be3";
+  rev = "91741326";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.0.1";
+  version = "1.0.3";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "0a08k91b7vykns1hx5krmn2mwhk6fikiavmdw38il9v0zaki1q7v";
+    sha256 = "0aj9iklxcdlgcygy8n1rlai84qy5cx6c20z3zxsr35k7cpmma49b";
     fetchSubmodules = true;
   };
 
   dontStrip = true; # leave debugging symbols in
 
-  buildInputs = with pkgs; [ which nim ];
+  nativeBuildInputs = with pkgs; [ which nim ];
 
   NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native" 
     + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
