@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, nativeBuild ? false }:
 
 let
   rev = "43662be3";
@@ -18,7 +18,8 @@ in pkgs.stdenv.mkDerivation rec {
 
   buildInputs = with pkgs; [ which nim ];
 
-  NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native";
+  NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native" 
+    + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
   buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
 
