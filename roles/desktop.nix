@@ -51,8 +51,7 @@ in {
     # Screen
     arandr
     # Security
-    pinentry-gtk2 cryptsetup
-    gnome3.seahorse
+    pinentry-gnome gnome3.seahorse cryptsetup
     # Phone
     jmtpfs
     chirp
