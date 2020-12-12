@@ -11,7 +11,7 @@ in {
     autoMaster =
       let
         melchiorConf = pkgs.writeText "autofs-melchior" (
-          genHostConfig "192.168.1.12" [
+          genHostConfig "melchior.magi.vpn" [
             "git" "data" "music" "photos" "backup" "torrent"
           ]
         );
