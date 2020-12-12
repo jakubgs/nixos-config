@@ -23,15 +23,6 @@
   # Upgrade kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Enable ZFS support
-  boot.supportedFilesystems = [ "zfs" ];
-  # Scrub to find errors
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    pools = [ "DATA" ];
-  };
-
   networking = {
     hostName = "zeruel";
     hostId = "b9a1a20b";
