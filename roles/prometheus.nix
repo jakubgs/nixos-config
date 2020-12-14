@@ -46,5 +46,10 @@ in {
       (genScrapeJob "netdata" "/api/v1/allmetrics")
       (genScrapeJob "nimbus" "/metrics")
     ];
+
+    ruleFiles = [
+      ../files/prometheus/rules/netdata.yml
+      ../files/prometheus/rules/nimbus.yml
+    ];
   };
 }

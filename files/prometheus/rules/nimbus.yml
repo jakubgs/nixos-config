@@ -1,0 +1,24 @@
+---
+groups:
+  - name: nimbus
+    rules:
+    # A decrease in Eth balance indicates issues with the validator
+    - alert: 'ValidatorEthBalanceDecrease'
+      expr: 'rate(attached_validator_balance[1m]) < 0'
+      annotations:
+        summary: 'Validator balance decreased on {{ $labels.instance }}'
+        description: '{{ $labels.instance }} decrease in Eth balance of validator was detected.'
+        # This metric is given in Wei, so we convert it to Eth.
+        current_value: '{{ $value }} * (10^18)'
+
+    # Noticeable drop in number of peers indicates connectivity issues.
+    - alert: 'ValidatorPeerCountDecrease'
+      expr: >
+        (
+          avg_over_time(nbc_peers[10m])           / avg_over_time(nbc_peers[5h] offset 30m) +
+          avg_over_time(libp2p_peers[10m])        / avg_over_time(libp2p_peers[5h] offset 30m) +
+          avg_over_time(libp2p_pubsub_peers[10m]) / avg_over_time(libp2p_pubsub_peers[5h] offset 30m)
+        ) / 3 < 0.5
+      annotations:
+        summary: 'Total peer count decreased {{ $labels.instance }}'
+        description: '{{ $labels.instance }} has a noticeable decrease in connected peers.'
