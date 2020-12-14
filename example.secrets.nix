@@ -17,4 +17,6 @@
   nimbusWeb3Url = "CHANGE_ME";
   # Password for FTP user
   ftpAnonUserPassword = "CHANGE_ME";
+  # Discord Web Hook for Prometheus
+  prometheusDiscordWebHook = "CHANGE_ME";
 }
