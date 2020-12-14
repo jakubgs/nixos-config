@@ -27,6 +27,11 @@ let
     static_configs = [{ 
       targets = genTargets name;
     }];
+    relabel_configs = [
+      { source_labels = ["__address__"];
+        target_label = "instance";
+        regex = "([a-z.-]+):[0-9]+"; }
+    ];
   };
 in {
   services.prometheus = {
