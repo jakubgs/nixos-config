@@ -59,6 +59,17 @@ let
           proxy_pass_header Authorization;
         '';
       };
+    }
+    ++ optional services.prometheus.enable {
+      name ="/prometheus/";
+      title = "Prometheus";
+      value = {
+        proxyPass = "http://localhost:${toString services.prometheus.port}/";
+        extraConfig = ''
+          proxy_pass_request_headers on;
+          proxy_pass_header Authorization;
+        '';
+      };
     };
 
   landingPage = pkgs.callPackage ../templates/landing.index.nix {

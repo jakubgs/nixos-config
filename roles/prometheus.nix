@@ -33,6 +33,8 @@ in {
     checkConfig = true;
      extraFlags = [
       "--storage.tsdb.retention=30d"
+      "--web.external-url=http://arael.magi.vpn/prometheus/"
+      "--web.route-prefix=/"
     ];
 
     globalConfig = {
