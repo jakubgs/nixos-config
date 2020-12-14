@@ -17,4 +17,6 @@
     onBoot = "ignore";
     onShutdown = "shutdown";
   };
+
+  users.users.sochan.extraGroups = [ "libvirtd" ];
 }
