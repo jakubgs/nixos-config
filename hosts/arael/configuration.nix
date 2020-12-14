@@ -14,6 +14,7 @@
     ../../roles/gitweb.nix
     ../../roles/netdata.nix
     ../../roles/landing.nix
+    ../../roles/prometheus.nix
   ];
 
   # SWAP due to low memory
