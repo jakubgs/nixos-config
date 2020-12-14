@@ -63,6 +63,7 @@ in {
     enable = true;
     port = 9093;
     webExternalUrl = "http://arael.magi.vpn/alertmanager/";
+    extraFlags = [ "--web.route-prefix=/" ];
 
     configuration = {
       route = {

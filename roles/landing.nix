@@ -65,10 +65,13 @@ let
       title = "Prometheus";
       value = {
         proxyPass = "http://localhost:${toString services.prometheus.port}/";
-        extraConfig = ''
-          proxy_pass_request_headers on;
-          proxy_pass_header Authorization;
-        '';
+      };
+    }
+    ++ optional services.prometheus.alertmanager.enable {
+      name ="/alertmanager/";
+      title = "AlertManager";
+      value = {
+        proxyPass = "http://localhost:${toString services.prometheus.alertmanager.port}/";
       };
     };
 
