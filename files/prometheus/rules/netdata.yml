@@ -13,7 +13,7 @@ groups:
 
     # Alert for any instance that has too low disk space
     - alert: LowRootDiskSpace
-      expr: netdata_disk_space_GiB_average{family="/", dimension="avail", fleet!~".*test.*"} < 1
+      expr: netdata_disk_space_GiB_average{family="/", dimension="avail"} < 1
       for: 1m
       annotations:
         summary: "Low root disk space on {{ $labels.instance }}" 
@@ -22,7 +22,7 @@ groups:
 
     # Alert for any instance that has too high CPU usage
     - alert: HighCPUUsage
-      expr: netdata_cpu_cpu_percentage_average{dimension="user", fleet!~".*test.*"} >= 98
+      expr: netdata_cpu_cpu_percentage_average{dimension="user"} >= 98
       for: 30m
       annotations:
         summary: "Low disk space on {{ $labels.instance }}" 
