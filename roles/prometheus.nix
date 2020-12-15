@@ -1,8 +1,7 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 let
-  secrets = import ../secrets.nix;
-
+  fqdn = with config.networking; "${hostName}.${domain}";
   hosts = {
     "arael.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
@@ -38,7 +37,7 @@ in {
     enable = true;
     port = 9090;
     checkConfig = true;
-     extraFlags = [
+    extraFlags = [
       "--storage.tsdb.retention=30d"
       "--web.external-url=http://arael.magi.vpn/prometheus/"
       "--web.route-prefix=/"
@@ -62,31 +61,5 @@ in {
     alertmanagers = [
       { static_configs = [ { targets = [ "localhost:9093" ]; } ]; }
     ];
-  };
-
-  services.prometheus.alertmanager = {
-    enable = true;
-    port = 9093;
-    webExternalUrl = "http://arael.magi.vpn/alertmanager/";
-    extraFlags = [ "--web.route-prefix=/" ];
-
-    configuration = {
-      route = {
-        # Default destination fo all alerts not matching any routes.
-        receiver = "discord-alerts";
-        repeat_interval = "1h";
-      };
-
-      receivers = [
-        {
-          name = "discord-alerts";
-          /* Discord accepts Slack API payloads under /slack. */
-          slack_configs = [
-            { api_url = "${secrets.prometheusDiscordWebHook}/slack";
-              channel = "alerts"; }
-          ];
-        }
-      ];
-    };
   };
 }

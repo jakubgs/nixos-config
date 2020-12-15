@@ -15,6 +15,7 @@
     ../../roles/netdata.nix
     ../../roles/landing.nix
     ../../roles/prometheus.nix
+    ../../roles/alertmanager.nix
   ];
 
   # SWAP due to low memory
