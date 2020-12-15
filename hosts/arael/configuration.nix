@@ -16,6 +16,7 @@
     ../../roles/landing.nix
     ../../roles/prometheus.nix
     ../../roles/alertmanager.nix
+    ../../roles/grafana.nix
   ];
 
   # SWAP due to low memory

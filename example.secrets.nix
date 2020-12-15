@@ -19,4 +19,6 @@
   ftpAnonUserPassword = "CHANGE_ME";
   # Discord Web Hook for Prometheus
   prometheusDiscordWebHook = "CHANGE_ME";
+  # Grafana first admin user password
+  grafanaAdminPassword = "CHANGE_ME";
 }
