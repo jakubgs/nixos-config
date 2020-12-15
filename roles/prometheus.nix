@@ -74,7 +74,7 @@ in {
       route = {
         # Default destination fo all alerts not matching any routes.
         receiver = "discord-alerts";
-        repeat_interval = "5m";
+        repeat_interval = "1h";
       };
 
       receivers = [
