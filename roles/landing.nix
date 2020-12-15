@@ -73,6 +73,13 @@ let
       value = {
         proxyPass = "http://localhost:${toString services.prometheus.alertmanager.port}/";
       };
+    }
+    ++ optional services.prometheus.alertmanager.enable {
+      name ="/grafana/";
+      title = "Grafana";
+      value = {
+        proxyPass = "http://localhost:${toString services.grafana.port}/";
+      };
     };
 
   landingPage = pkgs.callPackage ../templates/landing.index.nix {
