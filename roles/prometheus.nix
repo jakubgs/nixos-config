@@ -45,7 +45,7 @@ in {
     ];
 
     globalConfig = {
-      scrape_interval = "30s";
+      scrape_interval = "60s";
       scrape_timeout = "5s";
     };
 
