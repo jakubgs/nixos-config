@@ -23,7 +23,7 @@
     # network filesystems
     nfs-utils
     # hard drive management
-    lsscsi hddtemp hdparm
+    lsscsi hddtemp hdparm perf-tools
     # security
     openssl
   ] ++ lib.optionals (!config.boot.loader.raspberryPi.enable) [
