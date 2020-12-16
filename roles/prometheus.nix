@@ -2,6 +2,7 @@
 
 let
   fqdn = with config.networking; "${hostName}.${domain}";
+
   hosts = {
     "arael.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
@@ -28,9 +29,11 @@ let
       targets = genTargets name;
     }];
     relabel_configs = [
-      { source_labels = ["__address__"];
+      {
+        source_labels = ["__address__"];
         target_label = "instance";
-        regex = "([a-z.-]+):[0-9]+"; }
+        regex = "([a-z.-]+):[0-9]+";
+      }
     ];
   };
 in {
@@ -57,10 +60,6 @@ in {
     ruleFiles = [
       ../files/prometheus/rules/netdata.yml
       ../files/prometheus/rules/nimbus.yml
-    ];
-
-    alertmanagers = [
-      { static_configs = [ { targets = [ "localhost:9093" ]; } ]; }
     ];
   };
 }
