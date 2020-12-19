@@ -41,8 +41,11 @@ in pkgs.stdenv.mkDerivation rec {
   buildPhase = ''
     # Fix for Nim compiler calling git rev-parse
     export PATH=$PATH:${fakeGit}/bin
-    make nimbus_beacon_node nimbus_signing_process \
-      USE_LIBBACKTRACE=0 NIMFLAGS='${NIMFLAGS}' USE_SYSTEM_NIM=1
+    make -j$NIX_BUILD_CORES \
+      nimbus_beacon_node nimbus_signing_process \
+      NIMFLAGS='${NIMFLAGS}' \
+      USE_LIBBACKTRACE=0 \
+      USE_SYSTEM_NIM=1
   '';
 
   installPhase = ''
