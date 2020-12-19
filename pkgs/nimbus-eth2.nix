@@ -1,4 +1,8 @@
-{ pkgs ? import <nixpkgs> { }, nativeBuild ? false }:
+{
+  pkgs ? import <nixpkgs> { },
+  # WARNING: This makes binary not portable.
+  nativeBuild ? true
+}:
 
 let
   rev = "f06e6d46";
