@@ -1,16 +1,16 @@
 { pkgs ? import <nixpkgs> { }, nativeBuild ? false }:
 
 let
-  rev = "91741326";
+  rev = "f06e6d46";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.0.3";
+  version = "1.0.4";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "0aj9iklxcdlgcygy8n1rlai84qy5cx6c20z3zxsr35k7cpmma49b";
+    sha256 = "03cyjvv5ar0qh1j7civz7kb6y7aashdzg907n6flq852ilmlxn4s";
     fetchSubmodules = true;
   };
 
