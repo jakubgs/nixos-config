@@ -14,4 +14,10 @@
     hourly = 0;
     frequent = 0;
   };
+
+  # Scrub to find errors
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+  };
 }

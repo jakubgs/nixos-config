@@ -39,13 +39,6 @@
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
-  # Scrub to find errors
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    pools = [ "rpool" "DATA" ];
-  };
-
   networking = {
     hostName = "caspair";
     hostId = "9fbd8b5d";

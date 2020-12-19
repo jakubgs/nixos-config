@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../roles/security.nix
     ../../roles/base.nix
-    ../../roles/smart.nix
+    ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/netdata.nix
@@ -29,15 +29,6 @@
 
   # Upgrade kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Enable ZFS support
-  boot.supportedFilesystems = [ "zfs" ];
-  # Scrub to find errors
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    pools = [ "DATA" ];
-  };
 
   networking = {
     hostName = "arael";

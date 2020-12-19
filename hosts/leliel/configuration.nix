@@ -40,13 +40,6 @@
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
-  # Scrub to find errors
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    pools = [ "USB-HDD" ];
-  };
-
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 

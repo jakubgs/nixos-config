@@ -24,13 +24,6 @@
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
 
-  # Scrub to find errors
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    pools = [ "SYSTEM" "DATA" "MEDIA" ];
-  };
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.devices = [
     "/dev/disk/by-id/ata-SanDisk_SDSSDA120G_173025801877"
