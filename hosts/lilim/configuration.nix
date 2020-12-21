@@ -65,7 +65,6 @@
   # Power auto tuning on startup
   powerManagement.powertop.enable = true;
 
-  # Determines the NixOS release with which your system is to be compatible
-  # You should change this only after NixOS release notes say you should.
-  system.stateVersion = "20.09"; # Did you read the comment?
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "20.09";
 }

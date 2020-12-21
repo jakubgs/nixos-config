@@ -48,7 +48,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Frankfurt";
 
-  # Determines the NixOS release with which your system is to be compatible
-  # You should change this only after NixOS release notes say you should.
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.09";
 }
