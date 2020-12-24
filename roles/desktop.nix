@@ -68,7 +68,7 @@ in {
     # Documents
     evince
     # Images
-    feh gthumb gimp
+    feh gthumb gimp exiftool
     # Video
     mpv youtube-dl
     # Audio
