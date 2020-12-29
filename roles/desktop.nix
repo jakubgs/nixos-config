@@ -14,7 +14,6 @@ in {
   services.xserver = {
     enable = true;
     layout = "pl";
-    videoDrivers = [ "intel" "nvidia" ];
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
     displayManager = {

@@ -13,6 +13,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
+    ../../roles/nvidia.nix
     ../../roles/laptop.nix
     ../../roles/touchpad.nix
     ../../roles/physlock.nix

@@ -64,6 +64,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Video
+  services.xserver.videoDrivers = [ "intel" "nvidia" ];
+
   # Power Managemtn
   powerManagement.cpuFreqGovernor = "performance";
 
