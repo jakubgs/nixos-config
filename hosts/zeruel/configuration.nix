@@ -23,6 +23,9 @@
   # Upgrade kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Reboot after 5 seconds on kernel panic
+  boot.kernel.sysctl = { "kernel.panic" = 5; };
+
   networking = {
     hostName = "zeruel";
     hostId = "b9a1a20b";

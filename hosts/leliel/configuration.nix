@@ -40,6 +40,9 @@
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
+  # Reboot after 5 seconds on kernel panic
+  boot.kernel.sysctl = { "kernel.panic" = 5; };
+
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 

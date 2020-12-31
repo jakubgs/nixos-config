@@ -32,6 +32,9 @@
   # To avoid some boot errors
   boot.loader.grub.copyKernels = true;
 
+  # Reboot after 5 seconds on kernel panic
+  boot.kernel.sysctl = { "kernel.panic" = 5; };
+
   networking = {
     hostName = "melchior";
     hostId = "e5acabaa";
