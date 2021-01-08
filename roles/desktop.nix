@@ -59,7 +59,7 @@ in {
   # User packages
   users.users.sochan.packages = with pkgs; [
     # Desktop
-    xfce.thunar nitrogen scrot screenfetch
+    xfce.thunar nitrogen scrot screenfetch flameshot
     # Themes
     lxappearance lounge-gtk-theme
     # Browsers
