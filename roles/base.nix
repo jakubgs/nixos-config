@@ -50,6 +50,9 @@
   # domain use for my own infra
   networking.search = [ "magi.blue" ];
 
+  # NTP Server
+  services.chrony.enable = true;
+
   # Nix Auto Garbage Collect
   nix.gc = {
     automatic = true;
