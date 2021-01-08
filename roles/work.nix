@@ -23,12 +23,14 @@ let
 in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
+    # Comms
+    zoom-us
     # Network
     netcat insomnia ngrok tcpdump
     # Remote
     remmina
     # AWS
-    awscli
+    awscli s3cmd
     # DigitalOcean
     doctl
     # Google Cloud
