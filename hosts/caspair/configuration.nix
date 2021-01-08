@@ -30,14 +30,12 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.enable = false;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 10;
   };
-  boot.loader.efi = {
-    efiSysMountPoint = "/efi";
-    canTouchEfiVariables = true;
-  };
+
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
