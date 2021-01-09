@@ -86,9 +86,9 @@ let
     inherit proxiedServices config;
   };
 
-  machines = [ "melchior.magi.vpn" "arael.magi.vpn" "caspair.magi.vpn" ];
+  machines = [ "arael" "leliel" "caspair" "zeruel" "melchior" ];
   centralPage = pkgs.callPackage ../templates/central.index.nix {
-    inherit machines;
+    machines = map (v: "${v}.magi.vpn") machines;
   };
 in {
   services.nginx = {

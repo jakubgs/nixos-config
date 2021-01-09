@@ -29,8 +29,8 @@
             }
             .main {
                 display: grid;
-                grid-template-columns: 1;
-                grid-template-rows: repeat(3, 1fr);
+                grid-template-columns: 100%;
+                grid-template-rows: repeat(6, 1fr);
                 grid-auto-flow: column;
                 height: 100%;
                 width: 100%;
@@ -40,7 +40,7 @@
                 margin: 0px;
                 padding: 0px;
                 width: 100%;
-                height: 400px;
+                height: 600px;
                 border: none;
                 overflow: scroll;
             }
