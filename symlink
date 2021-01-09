@@ -16,8 +16,8 @@ if [[ ! -e "hosts/${HOST}/hardware-configuration.nix" ]]; then
 fi
 
 # symlink host config
-ln -vsf "${PWD}/hosts/${HOST}/configuration.nix" "${PWD}"
-ln -vsf "${PWD}/hosts/${HOST}/hardware-configuration.nix" "${PWD}"
+ln -rvsf "${PWD}/hosts/${HOST}/configuration.nix" "${PWD}"
+ln -rvsf "${PWD}/hosts/${HOST}/hardware-configuration.nix" "${PWD}"
 
 # and then the whole dir
 if [[ -h "/etc/nixos" ]]; then
