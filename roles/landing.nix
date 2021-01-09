@@ -11,7 +11,7 @@ let
   # Nginx path as 'name' and rest of config as 'value'.
   proxiedServices = []
     ++ optional services.nginx.gitweb.enable {
-      name ="/git/";
+      name ="/gitweb/";
       title = "WebGit";
       value = {
         proxyPass = "http://localhost:80/gitweb/";
