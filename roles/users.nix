@@ -39,6 +39,6 @@ in {
         isExecutable = true;
         inherit (pkgs) bash git coreutils findutils gnused;
       };
-    in "${dotfilesSh}";
+    in "${dotfilesSh} 2> /dev/null";
   };
 }
