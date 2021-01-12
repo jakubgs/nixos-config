@@ -6,7 +6,8 @@
     # utilities
     file zsh bash wget curl manpages sudo pass bc rename sqlite
     # building
-    gnumake gcc unrar unzip zip envsubst entr patchelfUnstable
+    gnumake gcc autoconf automake patchelfUnstable
+    unrar unzip zip envsubst entr
     # processes
     dtach reptyr pstree killall
     # monitoring
