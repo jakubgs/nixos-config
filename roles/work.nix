@@ -4,6 +4,7 @@
 
 let
   unstablePkgs = import <nixos-unstable> { };
+  aliyun-cli = pkgs.callPackage ../pkgs/aliyun-cli.nix { };
 
   # For details see: https://nixos.wiki/wiki/Python
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
@@ -29,14 +30,9 @@ in {
     netcat insomnia ngrok tcpdump
     # Remote
     remmina
-    # AWS
-    awscli s3cmd
-    # DigitalOcean
-    doctl
-    # Google Cloud
-    google-cloud-sdk
-    # Scaleway
-    scaleway-cli
+    # Cloud
+    awscli s3cmd doctl google-cloud-sdk
+    scaleway-cli aliyun-cli
     # General dev
     pkg-config
     # Infra dev
