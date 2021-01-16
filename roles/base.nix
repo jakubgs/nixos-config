@@ -27,8 +27,6 @@
     lsscsi hddtemp hdparm perf-tools
     # security
     openssl
-  ] ++ lib.optionals (!config.boot.loader.raspberryPi.enable) [
-    gitAndTools.git-annex 
   ];
 
   # Shell
