@@ -74,7 +74,7 @@ let
         proxyPass = "http://localhost:${toString services.prometheus.alertmanager.port}/";
       };
     }
-    ++ optional services.prometheus.alertmanager.enable {
+    ++ optional services.grafana.enable {
       name ="/grafana/";
       title = "Grafana";
       value = {
