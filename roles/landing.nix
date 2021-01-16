@@ -80,6 +80,13 @@ let
       value = {
         proxyPass = "http://localhost:${toString services.grafana.port}/";
       };
+    }
+    ++ optional services.gossa.enable {
+      name ="/gossa/";
+      title = "Gossa";
+      value = {
+        proxyPass = "http://localhost:${toString services.gossa.port}/gossa/";
+      };
     };
 
   landingPage = pkgs.callPackage ../templates/landing.index.nix {
