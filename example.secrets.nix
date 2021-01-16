@@ -21,4 +21,6 @@
   prometheusDiscordWebHook = "CHANGE_ME";
   # Grafana first admin user password
   grafanaAdminPassword = "CHANGE_ME";
+  # Password for landing page created by htpasswd
+  landingHtPasswd = "CHANGE_ME";
 }

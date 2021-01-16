@@ -4,6 +4,8 @@ let
   inherit (config) services;
   inherit (lib) types mkEnableOption mkOption mkIf listToAttrs catAttrs;
 
+  secrets = import ../secrets.nix;
+
   cfg = config.services.landing;
 
   landingPage = pkgs.callPackage ../templates/landing.index.nix {
@@ -58,7 +60,7 @@ in {
 
       virtualHosts = {
         "${config.networking.hostName}.${config.networking.domain}" = {
-          basicAuthFile = "${../files/htpasswd}";
+          basicAuthFile = pkgs.writeText "htpasswd" secrets.landingHtPasswd;
 
           locations = {
             "= /" = {
