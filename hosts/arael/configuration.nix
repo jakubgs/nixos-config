@@ -13,6 +13,7 @@
     ../../roles/syncthing.nix
     ../../roles/gitweb.nix
     ../../roles/netdata.nix
+    ../../roles/gossa.nix
     ../../roles/landing.nix
     ../../roles/prometheus.nix
     ../../roles/alertmanager.nix
