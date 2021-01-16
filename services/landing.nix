@@ -60,8 +60,8 @@ in {
 
       virtualHosts = {
         "${config.networking.hostName}.${config.networking.domain}" = {
+          default = true;
           basicAuthFile = pkgs.writeText "htpasswd" secrets.landingHtPasswd;
-
           locations = {
             "= /" = {
               root = pkgs.writeTextDir "index.html" landingPage;
