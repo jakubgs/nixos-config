@@ -1,6 +1,7 @@
 { lib, config, ... }:
 
 let
+  inherit (config) services;
   secrets = import ../secrets.nix;
 
   fqdn = with config.networking; "${hostName}.${domain}";
@@ -24,13 +25,22 @@ in {
 
     provision = {
       enable = true;
-      datasources =
-        lib.optionals (config.services.prometheus.enable) [{
-          name = "localhost";
-          type = "prometheus";
-          url = "http://localhost:${toString config.services.prometheus.port}/";
-          isDefault = true;
+      datasources = lib.optionals (config.services.prometheus.enable) [{
+        name = "localhost";
+        type = "prometheus";
+        url = "http://localhost:${toString config.services.prometheus.port}/";
+        isDefault = true;
       }];
     };
+  };
+
+  services.landing = {
+    proxyServices = [{
+      name = "/grafana/";
+      title = "Grafana";
+      value = {
+        proxyPass = "http://localhost:${toString services.grafana.port}/";
+      };
+    }];
   };
 }

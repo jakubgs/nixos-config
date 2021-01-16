@@ -1,7 +1,7 @@
-{ proxiedServices, lib, config }:
+{ proxyServices, lib, config }:
 
 let
-  sortedServices = lib.sort ((a: b: a.title < b.title)) proxiedServices;
+  sortedServices = lib.sort ((a: b: a.title < b.title)) proxyServices;
 in ''
 <!doctype html>
 <html>

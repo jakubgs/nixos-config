@@ -33,4 +33,14 @@ in {
     mpd.host = "localhost";
     webPort = 8001;
   };
+
+  services.landing = {
+    proxyServices = [{
+      name = "/mpd/";
+      title = "YMPD";
+      value = {
+        proxyPass = "http://localhost:${toString services.ympd.webPort}/";
+      };
+    }];
+  };
 }

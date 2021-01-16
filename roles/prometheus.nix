@@ -1,6 +1,7 @@
 { lib, config, ... }:
 
 let
+  inherit (config) services;
   fqdn = with config.networking; "${hostName}.${domain}";
 
   hosts = {
@@ -10,31 +11,28 @@ let
     "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; };
   };
 
-  /* helper for filtering hosts by available service port */
+  # helper for filtering hosts by available service port
   hostsWithPort = service: lib.filterAttrs (n: v: lib.hasAttr service v) hosts;
 
-  /* helper for generating scrape targets */
-  genTargets = service: lib.mapAttrsToList (
-    host: val: "${host}:${toString (lib.getAttr service val)}"
-  ) (hostsWithPort service);
+  # helper for generating scrape targets
+  genTargets = service:
+    lib.mapAttrsToList
+    (host: val: "${host}:${toString (lib.getAttr service val)}")
+    (hostsWithPort service);
 
-  /* helper for generating scrape configs */
+  # helper for generating scrape configs
   genScrapeJob = name: path: {
     job_name = name;
     metrics_path = path;
     scheme = "http";
     honor_labels = true;
     params = { format = [ "prometheus" ]; };
-    static_configs = [{ 
-      targets = genTargets name;
+    static_configs = [{ targets = genTargets name; }];
+    relabel_configs = [{
+      source_labels = [ "__address__" ];
+      target_label = "instance";
+      regex = "([a-z.-]+):[0-9]+";
     }];
-    relabel_configs = [
-      {
-        source_labels = ["__address__"];
-        target_label = "instance";
-        regex = "([a-z.-]+):[0-9]+";
-      }
-    ];
   };
 in {
   services.prometheus = {
@@ -61,5 +59,16 @@ in {
       ../files/prometheus/rules/netdata.yml
       ../files/prometheus/rules/nimbus.yml
     ];
+  };
+
+  services.landing = {
+    proxyServices = [{
+      name = "/alertmanager/";
+      title = "AlertManager";
+      value = {
+        proxyPass =
+          "http://localhost:${toString services.prometheus.alertmanager.port}/";
+      };
+    }];
   };
 }

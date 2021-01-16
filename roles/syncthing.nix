@@ -2,6 +2,7 @@
 
 
 let
+  inherit (config) services;
   syncthingHosts = ["caspair" "melchior" "arael" "lilim"];
   notThisHost = h: h != config.networking.hostName;
   otherHosts = builtins.filter notThisHost syncthingHosts;
@@ -46,6 +47,26 @@ in {
         "/mnt/mobile" = { id = "mobile"; type = "sendreceive"; devices = otherHosts; };
       };
     };
+  };
+
+  services.landing = {
+    proxyServices = [
+      { 
+        name ="/sync/";
+        title = "SyncThing";
+        value = {
+          extraConfig = ''
+            proxy_set_header Host localhost;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_read_timeout 600s;
+            proxy_send_timeout 600s;
+          '';
+          proxyPass = "http://${services.syncthing.guiAddress}/";
+        };
+      }
+    ];
   };
 
   # Bump the inotify limit

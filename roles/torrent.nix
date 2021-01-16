@@ -47,4 +47,20 @@ in {
     rpcUser = torrentUser;
     rpcPass = secrets.rpcPassword;
   };
+
+  services.landing = {
+    proxyServices = [
+      {
+        name ="/torrent/";
+        title = "Transmission";
+        value = {
+          proxyPass = "http://localhost:${toString services.transmission.port}/";
+          extraConfig = ''
+            proxy_pass_request_headers on;
+            proxy_pass_header Authorization;
+          '';
+        };
+      }
+    ];
+  };
 }

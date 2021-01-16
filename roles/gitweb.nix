@@ -12,4 +12,17 @@
     projectroot = "/git";
     gitwebTheme = true;
   };
+
+  services.landing = {
+    proxyServices = [{
+      name = "/gitweb/";
+      title = "WebGit";
+      value = {
+        proxyPass = "http://localhost:80/gitweb/";
+        extraConfig = ''
+          proxy_set_header Host default;
+        '';
+      };
+    }];
+  };
 }
