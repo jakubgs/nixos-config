@@ -18,6 +18,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/efi" =
+    { device = "/dev/disk/by-uuid/9C9E-FCCC";
+      fsType = "vfat";
+    };
+
   fileSystems."/nix" =
     { device = "rpool/nix";
       fsType = "zfs";
@@ -28,13 +33,18 @@
       fsType = "zfs";
     };
 
-  fileSystems."/efi" =
-    { device = "/dev/disk/by-uuid/9C9E-FCCC";
-      fsType = "vfat";
+  fileSystems."/home/sochan/.local/share/Steam" =
+    { device = "rpool/steam";
+      fsType = "zfs";
     };
 
-  fileSystems."/mnt/git" =
-    { device = "DATA/git";
+  fileSystems."/mnt/music" =
+    { device = "DATA/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "DATA/mobile";
       fsType = "zfs";
     };
 
@@ -48,14 +58,15 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/music" =
-    { device = "DATA/music";
+  fileSystems."/mnt/git" =
+    { device = "DATA/git";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/mobile" =
-    { device = "DATA/mobile";
-      fsType = "zfs";
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "bind" ];
     };
 
   swapDevices = [ ];
