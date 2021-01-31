@@ -8,6 +8,7 @@ in {
     networks = {
       "MAGI" = { psk = secrets.wifiMagiPassword; };
       "MAGI 5Ghz" = { psk = secrets.wifiMagiPassword; };
+      "MAGI v2" = { psk = secrets.wifiMagiPassword; };
     };
   };
 }
