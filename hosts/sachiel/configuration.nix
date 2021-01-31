@@ -22,6 +22,8 @@
   };
   # Latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "ehci_pci" "nvme" ];
+  boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
