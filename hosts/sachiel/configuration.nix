@@ -16,7 +16,10 @@
   # Boot
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.generic-extlinux-compatible = {
+    enable = true;
+    configurationLimit = 10;
+  };
   # Latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
