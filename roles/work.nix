@@ -43,6 +43,8 @@ in {
     go
     # Python dev
     myPython
+    # Ruby dev
+    ruby_2_7
     # Mobile dev
     fastlane apktool jdk8
     # Utils
