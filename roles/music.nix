@@ -39,7 +39,7 @@ in {
       name = "/mpd/";
       title = "YMPD";
       value = {
-        proxyPass = "http://localhost:${toString services.ympd.webPort}/";
+        proxyPass = "http://localhost:${toString config.services.ympd.webPort}/";
       };
     }];
   };
