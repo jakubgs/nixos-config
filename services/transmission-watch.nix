@@ -8,12 +8,22 @@ with lib;
 
 let
   cfg = config.services.transmission-watch;
+
   # script for watching for new *.torrent files
-  watch-script = pkgs.substituteAll {
+  addTorrentScript = pkgs.substituteAll {
+    src = ./transmission-add.sh;
+    isExecutable = true;
+    inotifytools = pkgs.inotify-tools;
+    inherit (cfg) rpcAddr rpcUser rpcPass;
+    inherit (pkgs) transmission coreutils;
+  };
+
+  watchScript = pkgs.substituteAll {
     src = ./transmission-watch.sh;
     isExecutable = true;
     inotifytools = pkgs.inotify-tools;
-    inherit (pkgs) coreutils transmission;
+    inherit addTorrentScript;
+    inherit (pkgs) coreutils;
   };
 in {
   options = {
@@ -68,7 +78,7 @@ in {
     systemd.services.transmission-watch = {
       enable = true;
       serviceConfig = {
-        ExecStart = "${watch-script} ${cfg.watchDir} ${cfg.downloadDir}";
+        ExecStart = "${watchScript} ${cfg.watchDir} ${cfg.downloadDir}";
         Restart = "on-failure";
       };
       environment = {
