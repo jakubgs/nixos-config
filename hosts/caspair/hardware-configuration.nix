@@ -18,7 +18,7 @@
       fsType = "zfs";
     };
 
-  fileSystems."/efi" =
+  fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9C9E-FCCC";
       fsType = "vfat";
     };
@@ -63,11 +63,11 @@
       fsType = "zfs";
     };
 
-  fileSystems."/git" =
-    { device = "/mnt/git";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  #fileSystems."/git" =
+  #  { device = "/mnt/git";
+  #    fsType = "none";
+  #    options = [ "bind" ];
+  #  };
 
   swapDevices = [ ];
 
