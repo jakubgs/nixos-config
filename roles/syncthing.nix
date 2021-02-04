@@ -19,7 +19,7 @@ in {
     declarative = {
       devices = lib.filterAttrs (h: v: notThisHost h) {
         caspair = { # desktop
-          id = "3WCZ4ZA-XPW2B2T-7BE2FP2-Z7TO63K-IOFJD4V-QTS6W7R-5UNDPAJ-DQJOSAU";
+          id = "RNHJNYU-IVWMAZT-OL667WV-Y7NOURO-WVT6IHS-MWEBAS6-SDZVQ5C-3MXHYQ5";
           addresses = [ "tcp://caspair.magi.vpn:22000" ];
         };
         melchior = { # server
