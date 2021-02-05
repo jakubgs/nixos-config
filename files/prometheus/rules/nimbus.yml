@@ -4,7 +4,7 @@ groups:
     rules:
     # A decrease in Eth balance indicates issues with the validator
     - alert: 'ValidatorEthBalanceDecrease'
-      expr: 'rate(attached_validator_balance[1m]) < 0'
+      expr: 'rate(attached_validator_balance[5m]) < 0'
       annotations:
         summary: 'Validator balance decreased on {{ $labels.instance }}'
         description: '{{ $labels.instance }} decrease in Eth balance of validator was detected.'
