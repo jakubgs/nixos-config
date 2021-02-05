@@ -9,7 +9,7 @@ groups:
         summary: 'Validator balance decreased on {{ $labels.instance }}'
         description: '{{ $labels.instance }} decrease in Eth balance of validator was detected.'
         # This metric is given in Wei, so we convert it to Eth.
-        current_value: '{{ $value }} * (10^18)'
+        current_value: '{{ $value }} * (10^9)'
 
     # Noticeable drop in number of peers indicates connectivity issues.
     - alert: 'ValidatorPeerCountDecrease'
