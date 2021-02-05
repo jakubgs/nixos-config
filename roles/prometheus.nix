@@ -63,11 +63,10 @@ in {
 
   services.landing = {
     proxyServices = [{
-      name = "/alertmanager/";
-      title = "AlertManager";
+      name ="/prometheus/";
+      title = "Prometheus";
       value = {
-        proxyPass =
-          "http://localhost:${toString services.prometheus.alertmanager.port}/";
+        proxyPass = "http://localhost:${toString services.prometheus.port}/";
       };
     }];
   };

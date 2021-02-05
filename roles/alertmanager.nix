@@ -35,4 +35,15 @@ in {
       { static_configs = [ { targets = [ "localhost:9093" ]; } ]; }
     ];
   };
+
+  services.landing = {
+    proxyServices = [{
+      name = "/alertmanager/";
+      title = "AlertManager";
+      value = {
+        proxyPass =
+          "http://localhost:${toString config.services.prometheus.alertmanager.port}/";
+      };
+    }];
+  };
 }
