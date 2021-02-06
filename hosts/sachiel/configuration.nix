@@ -26,6 +26,7 @@
   boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
 
   # PCI: rockchip: Workaround bus scan crashes with some PCIe devices 
+  boot.kernelParams = [ "pcie_rk_bus_scan_delay=500" ];
   boot.kernelPatches = [{
     name = "rockpro64-pcie-scan-sleep.patch";
     patch = ../../files/patches/rockpro64-pcie-scan-sleep.patch;
