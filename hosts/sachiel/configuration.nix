@@ -25,6 +25,12 @@
   boot.kernelModules = [ "ehci_pci" "nvme" ];
   boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
 
+  # PCI: rockchip: Workaround bus scan crashes with some PCIe devices 
+  boot.kernelPatches = [{
+    name = "rockpro64-pcie-scan-sleep.patch";
+    patch = ../../files/patches/rockpro64-pcie-scan-sleep.patch;
+  }];
+
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
