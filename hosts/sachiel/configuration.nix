@@ -24,7 +24,7 @@
   boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_4_4.override {
     argsOverride = rec {
       src = pkgs.fetchzip {
-            url = "https://github.com/friendlyarm/kernel-rockchip/archive/946f34ac1351f1b5c6e3c069f757a93fdc33b915.zip";
+            url = "https://github.com/friendlyarm/kernel-rockchip/archive/3dd9af3221d2a4ea4caf2865bac5fe9aaf2e2643.zip";
             sha256 = "0x4bfw90bc3diz8763frjscs5sq7lmc4ij03c0vgxr6ahr9axm5c";
       };
       version = "4.4.179";
