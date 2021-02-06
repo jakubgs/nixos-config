@@ -21,16 +21,18 @@
     configurationLimit = 10;
   };
   # Latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_4_4.override {
+    argsOverride = rec {
+      src = pkgs.fetchzip {
+            url = "https://github.com/friendlyarm/kernel-rockchip/archive/946f34ac1351f1b5c6e3c069f757a93fdc33b915.zip";
+            sha256 = "0x4bfw90bc3diz8763frjscs5sq7lmc4ij03c0vgxr6ahr9axm5c";
+      };
+      version = "4.4.179";
+      modDirVersion = "4.4.179";
+      };
+  });
   boot.kernelModules = [ "ehci_pci" "nvme" ];
   boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
-
-  # PCI: rockchip: Workaround bus scan crashes with some PCIe devices 
-  boot.kernelParams = [ "pcie_rk_bus_scan_delay=500" ];
-  boot.kernelPatches = [{
-    name = "rockpro64-pcie-scan-sleep.patch";
-    patch = ../../files/patches/rockpro64-pcie-scan-sleep.patch;
-  }];
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
