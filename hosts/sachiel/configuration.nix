@@ -31,6 +31,11 @@
       modDirVersion = "4.4.179";
       };
   });
+  # https://github.com/NixOS/nixpkgs/issues/64916
+  boot.kernelPatches = [{
+    name = "aarch64-march-fix.patch";
+    patch = ./aarch64-march-fix.patch;
+  }];
   boot.kernelModules = [ "ehci_pci" "nvme" ];
   boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
 
