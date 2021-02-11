@@ -27,7 +27,7 @@ in {
     "statsd" = { "enabled" = "no"; };
     "plugins" = {
       "idlejitter" = "no";
-      "python.d" = "no";
+      "python.d" = "yes";
       "node.d" = "no";
       "charts.d" = "no";
       "fping" = "no";
