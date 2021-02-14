@@ -1,0 +1,28 @@
+{
+  boot.kernelPackages = pkgs.linuxPackages_5_10;
+  boot.kernelPatches = [{
+    name = "pcie-rockchip-config.patch";
+    patch = null;
+    extraConfig = ''
+      CONFIG_LOCALVERSION_AUTO n
+      CONFIG_COMPILE_TEST y
+      CONFIG_NVME_CORE y
+      CONFIG_BLK_DEV_NVME y
+      CONFIG_NVME_MULTIPATH y
+      CONFIG_PCIE_ROCKCHIP y
+      CONFIG_PCIE_ROCKCHIP_HOST y
+      CONFIG_PCIE_ROCKCHIP_EP y
+      CONFIG_ROCKCHIP_THERMAL y
+      CONFIG_VIDEO_ROCKCHIP_RGA y
+      CONFIG_ROCKCHIP_LVDS y
+      CONFIG_ROCKCHIP_MBOX y
+      CONFIG_DEVFREQ_EVENT_ROCKCHIP_DFI y
+      CONFIG_ROCKCHIP_SARADC y
+      CONFIG_PHY_ROCKCHIP_DP y
+      CONFIG_PHY_ROCKCHIP_INNO_HDMI y
+      CONFIG_PHY_ROCKCHIP_INNO_USB3 y
+      CONFIG_PHY_ROCKCHIP_PCIE y
+      CONFIG_PHY_ROCKCHIP_USB y
+    '';
+  }];
+}
