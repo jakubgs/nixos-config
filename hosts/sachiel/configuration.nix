@@ -24,14 +24,15 @@
   boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_4_4.override {
     argsOverride = rec {
       src = pkgs.fetchzip {
-            url = "https://github.com/friendlyarm/kernel-rockchip/archive/3dd9af3221d2a4ea4caf2865bac5fe9aaf2e2643.zip";
-            sha256 = "0x4bfw90bc3diz8763frjscs5sq7lmc4ij03c0vgxr6ahr9axm5c";
+        url = "https://github.com/friendlyarm/kernel-rockchip/archive/3dd9af3221d2a4ea4caf2865bac5fe9aaf2e2643.zip";
+        sha256 = "0x4bfw90bc3diz8763frjscs5sq7lmc4ij03c0vgxr6ahr9axm5c";
       };
       version = "4.4.179";
       modDirVersion = "4.4.179";
-      };
+    };
   });
-  # https://github.com/NixOS/nixpkgs/issues/64916
+  # Fix for Error: selected processor does not support `crc32x w0,w0,x1'
+  # See: https://github.com/NixOS/nixpkgs/issues/64916
   boot.kernelPatches = [{
     name = "aarch64-march-fix.patch";
     patch = ./aarch64-march-fix.patch;
