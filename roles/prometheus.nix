@@ -7,6 +7,7 @@ let
   hosts = {
     "arael.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
+    "lilim.magi.vpn" = { netdata = 8000; };
     "leliel.magi.vpn" = { netdata = 8000; };
     "sachiel.magi.vpn" = { netdata = 8000; };
     "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; };
