@@ -13,6 +13,7 @@ fi
   --recursive \
   --event=create \
   --event=close_write \
+  --include='\.torrent' \
   --format='%w|%f' \
   ${WATCH_DIR} | {
     while IFS='|' read -r PATH FILE; do
