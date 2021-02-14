@@ -13,6 +13,7 @@
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/distbuild.nix
   ];
 
   # Boot
