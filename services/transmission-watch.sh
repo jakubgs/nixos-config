@@ -20,6 +20,10 @@ fi
       FULLPATH="${PATH}${FILE}"
       SUBDIR="${PATH#$WATCH_DIR/}"
 
+      if [[ ! -f "${FULLPATH}" ]]; then
+        echo "No such file: '${FULLPATH}'"
+        continue
+      fi
       if [[ -d "${FULLPATH}" ]]; then
         echo "New directory created: '${FULLPATH}'"
         continue
