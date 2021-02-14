@@ -18,10 +18,7 @@
   # Boot
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible = {
-    enable = true;
-    configurationLimit = 10;
-  };
+  boot.loader.generic-extlinux-compatible.enable = true;
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
