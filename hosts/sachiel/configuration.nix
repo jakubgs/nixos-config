@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./rockchip-kernel-config.nix
     ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
@@ -12,7 +13,6 @@
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
-    ./kernels/nixos-5.10-config.nix
   ];
 
   # Boot
@@ -22,10 +22,6 @@
     enable = true;
     configurationLimit = 10;
   };
-  # Latest kernel
-  # https://github.com/armbian/build/tree/804c57dd/patch/kernel/rockchip64-dev
-  boot.kernelModules = [ "ehci_pci" "nvme" ];
-  boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" ];
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
