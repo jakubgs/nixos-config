@@ -21,8 +21,8 @@ in {
           ]
         );
       in ''
-        /mnt/melchior ${melchiorConf}
-        /mnt/leliel ${lelielConf}
+        /nfs/melchior ${melchiorConf} --timeout 30
+        /nfs/leliel ${lelielConf} --timeout 30
       '';
   };
 }
