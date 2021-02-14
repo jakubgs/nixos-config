@@ -8,14 +8,29 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "nvme" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
+    { device = "rpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/261e7c3f-dc5e-4b36-b356-e4782c20e5c7";
       fsType = "ext4";
+    };
+
+  fileSystems."/nix" =
+    { device = "rpool/nix";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "rpool/home";
+      fsType = "zfs";
     };
 
   swapDevices = [ ];
