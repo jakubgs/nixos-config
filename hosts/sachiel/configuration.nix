@@ -57,9 +57,6 @@
   # Miscellaneous
   time.timeZone = "Europe/Warsaw";
 
-  # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-
   # Enable sound.
   sound.enable = true;
 
