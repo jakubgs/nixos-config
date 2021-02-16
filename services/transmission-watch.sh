@@ -11,7 +11,6 @@ fi
 @inotifytools@/bin/inotifywait \
   --monitor \
   --recursive \
-  --event=create \
   --event=close_write \
   --include='\.torrent' \
   --format='%w|%f' \
