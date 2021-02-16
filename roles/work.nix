@@ -34,7 +34,7 @@ in {
     awscli s3cmd doctl google-cloud-sdk
     scaleway-cli aliyun-cli
     # General dev
-    pkg-config
+    pkg-config shellcheck
     # Infra dev
     unstablePkgs.terraform_0_13
     # NodeJS dev
