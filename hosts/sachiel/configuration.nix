@@ -6,6 +6,7 @@
     ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
+    ../../roles/smart.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/netdata.nix
@@ -13,6 +14,8 @@
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
     ../../roles/landing.nix
+    ../../roles/nfs.nix
+    ../../roles/music.nix
     ../../roles/distbuild.nix
     ../../roles/torrent.nix
   ];
