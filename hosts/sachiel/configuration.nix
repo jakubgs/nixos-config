@@ -12,8 +12,10 @@
     ../../roles/netdata.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
+    ../../roles/syncthing.nix
     ../../roles/landing.nix
     ../../roles/distbuild.nix
+    ../../roles/torrent.nix
   ];
 
   # Boot
