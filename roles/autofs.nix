@@ -20,9 +20,15 @@ in {
             "git" "data" "music" "photos" "torrent"
           ]
         );
+        sachielConf = pkgs.writeText "autofs-sachiel" (
+          genHostConfig "sachiel.magi.vpn" [
+            "git" "data" "music" "photos" "torrent"
+          ]
+        );
       in ''
         /nfs/melchior ${melchiorConf} --timeout 30
         /nfs/leliel ${lelielConf} --timeout 30
+        /nfs/sachiel ${sachielConf} --timeout 30
       '';
   };
 }
