@@ -36,7 +36,7 @@ in {
     # General dev
     pkg-config shellcheck
     # Infra dev
-    unstablePkgs.terraform_0_13
+    unstablePkgs.terraform_0_14
     # NodeJS dev
     unstablePkgs.nodejs-14_x yarn
     # GoLang dev
