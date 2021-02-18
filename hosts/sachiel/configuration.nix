@@ -63,6 +63,10 @@
 
   # Enable sound.
   sound.enable = true;
+  boot = { # fix for USB not being default card
+    extraModprobeConfig = "options snd_usb_audio index=0";
+    blacklistedKernelModules = [ "snd_hda_intel" ];
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.09";
