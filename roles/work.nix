@@ -24,6 +24,8 @@ let
 in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
+    # DevOps
+    nixopsUnstable
     # Comms
     zoom-us
     # Network
