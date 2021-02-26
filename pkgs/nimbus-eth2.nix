@@ -32,9 +32,8 @@ in pkgs.stdenv.mkDerivation rec {
     export NIMBLE_LINK_SCRIPT=$PWD/vendor/nimbus-build-system/scripts/create_nimble_link.sh
     export NIMBLE_DIR=$PWD/vendor/.nimble
     export PWD_CMD=$(which pwd)
-    for f in `find $PWD/vendor/nimbus-build-system/scripts -type f -name '*.sh'`; do
-      patchShebangs $f
-    done
+    patchShebangs scripts > /dev/null
+    patchShebangs $PWD/vendor/nimbus-build-system/scripts > /dev/null
     for dep_dir in $(find vendor -type d -maxdepth 1); do
         pushd "$dep_dir" >/dev/null
         $NIMBLE_LINK_SCRIPT "$dep_dir"
