@@ -16,7 +16,6 @@
     ../../roles/landing.nix
     ../../roles/nfs.nix
     ../../roles/music.nix
-    ../../roles/distbuild.nix
     ../../roles/torrent.nix
   ];
 
