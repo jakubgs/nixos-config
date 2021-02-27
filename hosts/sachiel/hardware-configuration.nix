@@ -69,7 +69,9 @@
       fsType = "zfs";
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/09a75307-8dda-4e21-9a91-709d0dc3338a"; }
+    ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
