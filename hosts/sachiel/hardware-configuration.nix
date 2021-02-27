@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" ];
+  boot.initrd.availableKernelModules = [ "nvme" "uas" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -18,11 +18,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/261e7c3f-dc5e-4b36-b356-e4782c20e5c7";
-      fsType = "ext4";
-    };
-
   fileSystems."/nix" =
     { device = "rpool/nix";
       fsType = "zfs";
@@ -30,6 +25,47 @@
 
   fileSystems."/home" =
     { device = "rpool/home";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/261e7c3f-dc5e-4b36-b356-e4782c20e5c7";
+      fsType = "ext4";
+    };
+
+  fileSystems."/mnt/torrent" =
+    { device = "USB-HDD/torrent";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "USB-HDD/photos";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "USB-HDD/mobile";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "USB-HDD/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "USB-HDD/git";
+      fsType = "zfs";
+    };
+
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  fileSystems."/mnt/data" =
+    { device = "USB-HDD/data";
       fsType = "zfs";
     };
 
