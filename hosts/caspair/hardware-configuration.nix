@@ -41,26 +41,31 @@
   fileSystems."/mnt/music" =
     { device = "DATA/music";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/mobile" =
     { device = "DATA/mobile";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/data" =
     { device = "DATA/data";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/photos" =
     { device = "DATA/photos";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/git" =
     { device = "DATA/git";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   #fileSystems."/git" =
