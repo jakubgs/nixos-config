@@ -48,7 +48,7 @@
   hardware.enableRedistributableFirmware = true;
 
   # Lower power usage and heat generation
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.cpuFreqGovernor = "ondemand";
   powerManagement.cpufreq.min = 408000;
   powerManagement.cpufreq.max = 1416000;
 
