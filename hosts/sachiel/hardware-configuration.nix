@@ -36,37 +36,43 @@
   fileSystems."/mnt/torrent" =
     { device = "USB-HDD/torrent";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/photos" =
     { device = "USB-HDD/photos";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/mobile" =
     { device = "USB-HDD/mobile";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/music" =
     { device = "USB-HDD/music";
       fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/git" =
     { device = "USB-HDD/git";
       fsType = "zfs";
-    };
-
-  fileSystems."/git" =
-    { device = "/mnt/git";
-      fsType = "none";
-      options = [ "bind" ];
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/data" =
     { device = "USB-HDD/data";
       fsType = "zfs";
+      options = [ "nofail" ];
+    };
+
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "bind" "nofail" ];
     };
 
   swapDevices =
