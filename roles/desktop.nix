@@ -69,7 +69,7 @@ in {
     # Images
     feh gthumb gimp exiftool
     # Video
-    mpv youtube-dl
+    mpv youtube-dl ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
