@@ -23,7 +23,6 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   buildPhase = ''
-    set -x
     make build
   '';
 
