@@ -12,7 +12,7 @@ let
     # Development
     setuptools retry yapf mohawk
     # Devops
-    ansible boto3 wakeonlan PyGithub
+    ansible boto3 wakeonlan PyGithub consul
     # Security
     pyopenssl cryptography passlib
     # Databases
