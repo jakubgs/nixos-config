@@ -105,4 +105,7 @@ in {
 
   # Fix Gnome Apps that require dconf
   programs.dconf.enable = true;
+
+  # Enable clipboard manager
+  services.clipmenu.enable = true;
 }
