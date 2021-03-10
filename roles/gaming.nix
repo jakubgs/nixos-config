@@ -15,5 +15,7 @@
     winetricks
     corefonts
     xboxdrv
+    # Games
+    #dwarf-fortress-packages.dwarf-fortress-full
   ];
 }
