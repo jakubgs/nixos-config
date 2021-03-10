@@ -4,6 +4,10 @@ let
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
+  imports = [
+    ./clipmenu.nix
+  ];
+
   # Accept unfree licenses
   nixpkgs.config.allowUnfree = true;
 
@@ -105,7 +109,4 @@ in {
 
   # Fix Gnome Apps that require dconf
   programs.dconf.enable = true;
-
-  # Enable clipboard manager
-  services.clipmenu.enable = true;
 }
