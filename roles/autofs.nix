@@ -1,8 +1,9 @@
 { lib, pkgs, ... }:
 
 let
+  defaultOptions = "async,noac,soft,rsize=8192,wsize=8192";
   genHostConfig = ip: paths: lib.concatStringsSep "\n" (
-    map (p: "${p} -fstype=nfs,vers=4,async,noac,soft ${ip}:/mnt/${p}") paths
+    map (p: "${p} -fstype=nfs,vers=4,${defaultOptions} ${ip}:/mnt/${p}") paths
   );
 in {
   services.autofs = {
