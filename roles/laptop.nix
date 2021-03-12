@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./trackpoint.nix
+  ];
+
   # allow brightness control by video group
   hardware.acpilight.enable = true;
 

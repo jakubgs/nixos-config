@@ -10,4 +10,9 @@
       Option "TouchpadOff" "1"
     '';
   };
+
+  hardware.trackpoint = {
+    enable = true;
+    device = "Elan TrackPoint";
+  };
 }
