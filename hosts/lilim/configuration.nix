@@ -33,9 +33,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
 
-  # Upgrade kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # Scrub to find errors
   services.zfs.autoScrub = {
     enable = true;
