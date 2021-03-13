@@ -5,7 +5,10 @@
     ./trackpoint.nix
   ];
 
-  # allow brightness control by video group
+  # Fix brightness keys on Thinkpad T480s.
+  boot.kernelParams = [ "acpi_osi=" ];
+
+  # Allow brightness control by video group.
   hardware.acpilight.enable = true;
 
   # TLP power management daemon
