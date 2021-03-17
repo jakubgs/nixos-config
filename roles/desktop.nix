@@ -49,7 +49,7 @@
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
-    gnome3.evolution discord
+    gnome3.evolution protonmail-bridge discord
     # Torrent
     transmission-remote-gtk
     # Coding
