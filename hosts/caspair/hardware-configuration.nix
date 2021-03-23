@@ -68,6 +68,12 @@
       options = [ "nofail" ];
     };
 
+  fileSystems."/mnt/games" =
+    { device = "DATA/games";
+      fsType = "zfs";
+      options = [ "nofail" ];
+    };
+
   #fileSystems."/git" =
   #  { device = "/mnt/git";
   #    fsType = "none";
