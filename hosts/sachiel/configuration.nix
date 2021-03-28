@@ -18,6 +18,7 @@
     ../../roles/gossa.nix
     ../../roles/music.nix
     ../../roles/torrent.nix
+    ../../roles/mikrotik.nix
   ];
 
   # Boot

@@ -9,7 +9,7 @@ let
     "caspair.magi.vpn" = { netdata = 8000; };
     "lilim.magi.vpn" = { netdata = 8000; };
     "leliel.magi.vpn" = { netdata = 8000; };
-    "sachiel.magi.vpn" = { netdata = 8000; };
+    "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; };
     "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; };
   };
 
@@ -31,7 +31,7 @@ let
     params = { format = [ "prometheus" ]; };
     static_configs = [{ targets = genTargets name; }];
     relabel_configs = [{
-      source_labels = [ "__address__" ];
+      source_labels = ["__address__"];
       target_label = "instance";
       regex = "([a-z.-]+):[0-9]+";
     }];
@@ -55,6 +55,7 @@ in {
     scrapeConfigs = [
       (genScrapeJob "netdata" "/api/v1/allmetrics")
       (genScrapeJob "nimbus" "/metrics")
+      (genScrapeJob "mikrotik" "/metrics")
     ];
 
     ruleFiles = [

@@ -23,4 +23,6 @@
   grafanaAdminPassword = "CHANGE_ME";
   # Password for landing page created by htpasswd
   landingHtPasswd = "CHANGE_ME";
+  # Password for MikroTik read-only prometheus user
+  mikrotikPassword = "CHANGE_ME";
 }
