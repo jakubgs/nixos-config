@@ -23,9 +23,10 @@ let
     (hostsWithPort service);
 
   # helper for generating scrape configs
-  genScrapeJob = name: path: {
+  genScrapeJob = { name, path, interval ? "60s" }: {
     job_name = name;
     metrics_path = path;
+    scrape_interval = interval;
     scheme = "http";
     honor_labels = true;
     params = { format = [ "prometheus" ]; };
@@ -53,9 +54,9 @@ in {
     };
 
     scrapeConfigs = [
-      (genScrapeJob "netdata" "/api/v1/allmetrics")
-      (genScrapeJob "nimbus" "/metrics")
-      (genScrapeJob "mikrotik" "/metrics")
+      (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
+      (genScrapeJob {name = "nimbus";   path = "/metrics";})
+      (genScrapeJob {name = "mikrotik"; path = "/metrics"; interval = "30s";})
     ];
 
     ruleFiles = [
