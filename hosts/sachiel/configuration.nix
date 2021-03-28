@@ -15,6 +15,7 @@
     ../../roles/syncthing.nix
     ../../roles/landing.nix
     ../../roles/nfs.nix
+    ../../roles/gossa.nix
     ../../roles/music.nix
     ../../roles/torrent.nix
   ];
