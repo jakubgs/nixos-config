@@ -26,7 +26,7 @@
     ../../roles/landing.nix
     ../../roles/crypto.nix
     ../../roles/optical.nix
-    ../../roles/hosts.nix
+    ../../roles/dnsmasq.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
