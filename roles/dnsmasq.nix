@@ -5,11 +5,9 @@ let
   repoUrl = "https://github.com/notracking/hosts-blocklists";
   commit = "dfc5d3e1bc16c687a0e2a1d6bdf023cfa89574ec";
   fetch = file: sha256: pkgs.fetchurl {
-    url = "${repoUrl}/raw/${commit}/${file}";
+    url = "${repoUrl}/raw/${commit}/${file}.txt";
     inherit sha256;
   };
-  domainsTxt = fetch "domains.txt" "1xj4bipyy2crfc4dkhqnvfsfc2j6779n9gfqxnssr3xnza9mcrlc";
-  hostnamesTxt = fetch "hostnames.txt" "004s4lk1an2gbklnc37rsxwqw6dh2d30x109kdzd99d6k05yyiwf";
 in {
   services.dnsmasq = {
     enable = true;
@@ -20,12 +18,10 @@ in {
       bogus-priv
       bind-interfaces
       cache-size=10000
-      log-queries
-      log-facility=/tmp/ad-block.log
       local-ttl=300
 
-      conf-file=${domainsTxt}
-      addn-hosts=${hostnamesTxt}
+      conf-file=${fetch "domains" "1xj4bipyy2crfc4dkhqnvfsfc2j6779n9gfqxnssr3xnza9mcrlc"}
+      addn-hosts=${fetch "hostnames" "004s4lk1an2gbklnc37rsxwqw6dh2d30x109kdzd99d6k05yyiwf"}
     '';
   };
 }
