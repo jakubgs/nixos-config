@@ -5,16 +5,16 @@
 }:
 
 let
-  rev = "77ee2107";
+  rev = "61669f26";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.0.10";
+  version = "1.1.0";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "1hfmdm0swz94x95nai6b3447lvvdab6gh17a6pk05jr43gnznxwl";
+    sha256 = "1b6w7z3dlbpc5xg8rrva3dsbgvys1aw34c0vpq80yjlf0df8bw2d";
     fetchSubmodules = true;
   };
 
@@ -22,7 +22,7 @@ in pkgs.stdenv.mkDerivation rec {
 
   nativeBuildInputs = with pkgs; [ which nim ];
 
-  NIMFLAGS = "-d:insecure -d:testnet_servers_image --debugger:native" 
+  NIMFLAGS = "-d:testnet_servers_image --debugger:native" 
     + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
   buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
