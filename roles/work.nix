@@ -10,7 +10,7 @@ let
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
     ipython pip
     # Development
-    setuptools retry yapf mohawk grip
+    setuptools retry yapf mohawk grip pyyaml
     # Devops
     ansible boto3 wakeonlan PyGithub consul
     # Security
