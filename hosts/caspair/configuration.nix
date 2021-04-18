@@ -12,6 +12,7 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
+    ../../roles/bluetooth.nix
     ../../roles/physlock.nix
     ../../roles/printer.nix
     ../../roles/gaming.nix

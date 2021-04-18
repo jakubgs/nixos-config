@@ -1,3 +1,4 @@
+# Laptop, Thinkpad 480s
 { config, pkgs, ... }:
 
 {
@@ -15,6 +16,7 @@
     ../../roles/desktop.nix
     ../../roles/nvidia.nix
     ../../roles/laptop.nix
+    ../../roles/bluetooth.nix
     ../../roles/physlock.nix
     ../../roles/docker.nix
     ../../roles/zerotier.nix
