@@ -33,8 +33,8 @@ in pkgs.stdenv.mkDerivation {
       > $out/domains
 
     cat $srcs \
-      | grep -e '0.0.0.0' \
-      | grep -v ${pkgs.lib.concatStringsSep " -e " excludes} \
+      | grep -e '^0.0.0.0' \
+      | grep -v -e ${pkgs.lib.concatStringsSep " -e " excludes} \
       | sort -u \
       > $out/hosts
   '';
