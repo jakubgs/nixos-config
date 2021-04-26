@@ -74,6 +74,12 @@
       options = [ "nofail" ];
     };
 
+  fileSystems."/mnt/vms" =
+    { device = "DATA/vms";
+      fsType = "zfs";
+      options = [ "nofail" ];
+    };
+
   #fileSystems."/git" =
   #  { device = "/mnt/git";
   #    fsType = "none";
