@@ -34,7 +34,7 @@ in {
     remmina
     # Cloud
     awscli s3cmd doctl google-cloud-sdk
-    scaleway-cli aliyun-cli
+    scaleway-cli aliyun-cli hcloud
     # General dev
     github-cli pkg-config shellcheck
     # Infra dev
