@@ -1,6 +1,13 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  # Noevim 0.5.0 is not releaed yet and not merged into nixpkgs.
+  # https://github.com/NixOS/nixpkgs/pull/110837
+  neovimNixpkgs = import (pkgs.fetchzip {
+    url = "https://github.com/rvolosatovs/nixpkgs/archive/517f1b4a6127226d11a6be06246fc2af1ab88ff4.zip";
+    sha256 = "05cxcaj3vgk81brx7w6bndxgc502rmmcmnrqgllbc57dyfq4fm4i";
+  }) {};
+in {
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
@@ -13,7 +20,7 @@
     # monitoring
     htop iotop iftop multitail
     # dev tools
-    neovim jq tmux fzf silver-searcher
+    neovimNixpkgs.neovim jq tmux fzf silver-searcher
     git qrencode
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
