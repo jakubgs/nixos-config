@@ -12,12 +12,13 @@
     ../../roles/nfs.nix
     ../../roles/music.nix
     ../../roles/autofs.nix
-    ../../roles/docker.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
+    ../../roles/gossa.nix
     ../../roles/landing.nix
     ../../roles/torrent.nix
+    ../../roles/mikrotik.nix
   ];
 
   # Boot
