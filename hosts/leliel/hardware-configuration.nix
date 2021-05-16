@@ -29,12 +29,6 @@
       options = [ "nofail" ];
     };
 
-  fileSystems."/mnt/git" =
-    { device = "USB-HDD/git";
-      fsType = "zfs";
-      options = [ "nofail" ];
-    };
-
   fileSystems."/mnt/mobile" =
     { device = "USB-HDD/mobile";
       fsType = "zfs";
@@ -57,6 +51,18 @@
     { device = "USB-HDD/torrent";
       fsType = "zfs";
       options = [ "nofail" ];
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "USB-HDD/git";
+      fsType = "zfs";
+      options = [ "nofail" ];
+    };
+
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "bind" "nofail" ];
     };
 
   swapDevices = [ ];
