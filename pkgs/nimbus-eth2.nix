@@ -5,16 +5,16 @@
 }:
 
 let
-  rev = "e1a8049e";
+  rev = "eb55fe24";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.2.0";
+  version = "1.3.0";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "1bn0gpyj4qbhs3xs907dbvv6g3jj90mhgbpipdsxdnms535cbiqc";
+    sha256 = "1rn025m9z05k3p6n6y0jbc164c5n2xsrfm2abv65k9h1pbbmxjac";
     fetchSubmodules = true;
   };
 
