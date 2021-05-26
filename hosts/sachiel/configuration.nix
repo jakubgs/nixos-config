@@ -24,24 +24,28 @@
   # Boot
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.generic-extlinux-compatible = {
+    enable = true;
+    configurationLimit = 30;
+  };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.linuxPackages_5_10;
+  boot.kernelPackages = pkgs.linuxPackages_5_11;
   boot.kernelPatches = [{
     name = "pcie-rockchip-config.patch";
     patch = null;
     extraConfig = ''
       NVME_CORE y
-      BLK_DEV_NVME y
       NVME_MULTIPATH y
+      BLK_DEV_NVME y
+      PHY_ROCKCHIP_PCIE y
       PCIE_ROCKCHIP y
       PCIE_ROCKCHIP_EP y
       PCIE_ROCKCHIP_HOST y
-      PHY_ROCKCHIP_DP y
-      PHY_ROCKCHIP_PCIE y
-      PHY_ROCKCHIP_USB y
     '';
   }];
+
+  # UART debug console bitrates.
+  services.mingetty.serialSpeed = [ 1500000 ];
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
