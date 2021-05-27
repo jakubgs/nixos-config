@@ -10,9 +10,9 @@ let
   myPythonPkgs = python-packages: with (pkgs.python38Packages); [
     ipython pip
     # Development
-    setuptools retry yapf mohawk grip pyyaml
+    setuptools retry yapf mohawk grip pyyaml jinja2
     # Devops
-    ansible boto3 wakeonlan PyGithub consul jinja2
+    ansible boto3 wakeonlan PyGithub consul python-hosts
     # Security
     pyopenssl cryptography passlib
     # Databases
@@ -26,6 +26,8 @@ in {
   users.users.sochan.packages = with pkgs; [
     # DevOps
     nixopsUnstable
+    # Security
+    bitwarden-cli
     # Comms
     zoom-us
     # Network
