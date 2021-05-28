@@ -41,10 +41,6 @@
     keyMap = "pl";
   };
 
-  # Lower priority of builds to not Disturb other processes
-  nix.daemonNiceLevel = 19;
-  nix.daemonIONiceLevel = 7;
-
   # Set your time zone.
   time.timeZone = "Europe/Frankfurt";
 

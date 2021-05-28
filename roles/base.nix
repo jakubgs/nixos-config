@@ -8,6 +8,10 @@ let
     sha256 = "05cxcaj3vgk81brx7w6bndxgc502rmmcmnrqgllbc57dyfq4fm4i";
   }) {};
 in {
+  imports = [
+    ./nix.nix
+  ];
+
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
@@ -58,10 +62,4 @@ in {
 
   # NTP Server
   services.chrony.enable = true;
-
-  # Nix Auto Garbage Collect
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 15";
-  };
 }
