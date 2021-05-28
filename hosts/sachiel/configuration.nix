@@ -34,12 +34,7 @@
     name = "pcie-rockchip-config.patch";
     patch = null;
     extraConfig = ''
-      NVME_CORE y
-      NVME_MULTIPATH y
-      BLK_DEV_NVME y
       PHY_ROCKCHIP_PCIE y
-      PCIE_ROCKCHIP y
-      PCIE_ROCKCHIP_EP y
       PCIE_ROCKCHIP_HOST y
     '';
   }];
