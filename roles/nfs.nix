@@ -33,4 +33,13 @@ in {
     # exported shares
     exports = lib.concatStringsSep "" fsExports;
   };
+
+  # Increase network window size
+  boot.kernel.sysctl = {
+    "net.core.rmem_default" = 262144;
+    "net.core.wmem_default" = 262144;
+    "net.core.rmem_max" = 262144;
+    "net.core.wmem_max" = 262144;
+    "net.core.netdev_max_backlog" = 300000;
+  };
 }
