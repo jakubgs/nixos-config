@@ -14,6 +14,7 @@
       NVME_MULTIPATH y
       BLK_DEV_NVME y
       PCIE_ROCKCHIP y
+      PHY_ROCKCHIP_PCIE y
     '';
   }];
 
