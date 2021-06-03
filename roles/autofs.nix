@@ -1,10 +1,10 @@
 { lib, pkgs, ... }:
 
 let
-  defaultOptions = "async,noac,soft,rsize=8192,wsize=8192";
+  defaultOptions = "async,noac,soft,rsize=262144,wsize=262144";
   genHostConfig = ip: paths:
     lib.concatStringsSep "\n" (
-      map (p: "${p} -fstype=nfs,vers=4,${defaultOptions} ${ip}:/mnt/${p}") paths
+      map (p: "${p} -fstype=nfs,${defaultOptions} ${ip}:/mnt/${p}") paths
     );
 in {
   services.autofs = {
@@ -12,25 +12,25 @@ in {
     timeout = 60;
     autoMaster =
       let
-        melchiorConf = pkgs.writeText "autofs-melchior" (
+        melchior = pkgs.writeText "autofs-melchior" (
           genHostConfig "melchior.magi.vpn" [
             "git" "data" "music" "photos" "torrent" "backup"
           ]
         );
-        lelielConf = pkgs.writeText "autofs-leliel" (
+        leliel = pkgs.writeText "autofs-leliel" (
           genHostConfig "leliel.magi.vpn" [
             "git" "data" "music" "photos" "torrent"
           ]
         );
-        sachielConf = pkgs.writeText "autofs-sachiel" (
+        sachiel = pkgs.writeText "autofs-sachiel" (
           genHostConfig "sachiel.magi.vpn" [
             "git" "data" "music" "photos" "torrent"
           ]
         );
       in ''
-        /nfs/melchior ${melchiorConf} --timeout 3
-        /nfs/sachiel  ${sachielConf}  --timeout 3
-        /nfs/leliel   ${lelielConf}   --timeout 3
+        /nfs/melchior ${melchior} --timeout 3
+        /nfs/sachiel  ${sachiel}  --timeout 3
+        /nfs/leliel   ${leliel}   --timeout 3
       '';
   };
 }
