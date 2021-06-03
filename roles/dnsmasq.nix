@@ -10,7 +10,6 @@ in {
       listen-address=::1,127.0.0.1
       domain-needed
       bogus-priv
-      bind-interfaces
       cache-size=10000
       local-ttl=300
 
