@@ -24,6 +24,7 @@ in {
     extraConfig = ''
       password   "${secrets.mpdPassword}@read,add,control,admin"
       mixer_type "software"
+      audio_buffer_size "8192"
     '';
   };
 
