@@ -1,20 +1,20 @@
 { pkgs ? import <nixpkgs> { }, webui ? pkgs.fetchzip {
-  name = "gossa-ui-26b93fd4b";
+  name = "gossa-ui-a057f08e";
   url =
-    "https://github.com/pldubouilh/gossa-ui/archive/26b93fd4bd969143105c23bc1bc644eeba000e13.zip";
-  sha256 = "1va0kqawma9wavm0z59hnwywzivfm4c2bzjg7vjfipwhwkad6xgd";
+    "https://github.com/pldubouilh/gossa-ui/archive/a057f08e1d9fdbb9556c7f36626cd91f41d267d9.zip";
+  sha256 = "1wc2va74dns3wn1cd5m2chqqiqgs75pczdc8r0zvwzcc5i066fh6";
 } }:
 
 pkgs.stdenv.mkDerivation rec {
   pname = "gossa";
-  version = "0.1.7.1";
+  version = "0.1.8.0";
   goPackagePath = "github.com/pldubouilh/gossa";
 
   buildInputs = with pkgs; [ go perl ];
 
   src = pkgs.fetchzip {
     url = "https://github.com/pldubouilh/gossa/archive/v${version}.zip";
-    sha256 = "0z49w8hzx3a70nbwhjy0d26nz8rijy9s0jjm9hka7vr66ldjwzw7";
+    sha256 = "0pd3wmrfadan3k5gvjhpcznjhariqvh23a95fw273c6r8smqx50g";
   };
 
   configurePhase = ''
