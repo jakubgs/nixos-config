@@ -7,7 +7,6 @@ in {
     enable = true;
     resolveLocalQueries = true;
     extraConfig = ''
-      listen-address=127.0.0.1
       domain-needed
       bogus-priv
       cache-size=10000
