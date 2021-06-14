@@ -29,7 +29,6 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.linuxPackages_5_11;
   boot.kernelPatches = [{
     name = "pcie-rockchip-config.patch";
     patch = null;
@@ -40,7 +39,7 @@
   }];
 
   # UART debug console bitrates.
-  services.mingetty.serialSpeed = [ 1500000 ];
+  services.getty.serialSpeed = [ 1500000 ];
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
