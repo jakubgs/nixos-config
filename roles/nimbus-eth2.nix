@@ -17,7 +17,7 @@ in {
   # Directory Watcher - Recursively starts torrents
   services.nimbus-eth2 = {
     enable = true;
-    logLevel = "debug";
+    logLevel = "info";
     dataDir = "/mnt/data/nimbus-eth2";
     publicIp = secrets.nimbusPublicIp;
     web3Url = secrets.nimbusWeb3Url;
