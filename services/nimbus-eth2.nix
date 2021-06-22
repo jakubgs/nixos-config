@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) types mkEnableOption mkOption mkIf toUpper;
+  inherit (lib) types mkEnableOption mkOption mkIf toUpper boolToString;
 
   cfg = config.services.nimbus-eth2;
   # script for watching for new *.torrent files
@@ -48,6 +48,14 @@ in {
           description = "URL for the Web3 RPC endpoint.";
         };
 
+        doppelganger = mkOption {
+          type = types.bool;
+          default = true;
+          description = ''
+            Protection against slashing due to double-voting.
+            Means you will miss two attestations when restarting.
+          '';
+        };
 
         listenPort = mkOption {
           type = types.int;
@@ -102,6 +110,7 @@ in {
             --metrics \
             --metrics-address=0.0.0.0 \
             --metrics-port=${toString cfg.metricsPort}
+            --doppelganger-detection=${boolToString cfg.doppelganger}
         '';
         Restart = "on-failure";
       };
