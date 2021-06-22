@@ -115,8 +115,8 @@ in {
             --rpc-port=${toString cfg.rpcPort} \
             --metrics \
             --metrics-address=0.0.0.0 \
-            --metrics-port=${toString cfg.metricsPort}
-            --subscribe-all-subnets=${boolToString cfg.subAllSubnets}
+            --metrics-port=${toString cfg.metricsPort} \
+            --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger}
         '';
         Restart = "on-failure";
