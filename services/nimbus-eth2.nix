@@ -48,6 +48,12 @@ in {
           description = "URL for the Web3 RPC endpoint.";
         };
 
+        subAllSubnets = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Subscribe to all attestation subnet topics.";
+        };
+
         doppelganger = mkOption {
           type = types.bool;
           default = true;
@@ -110,6 +116,7 @@ in {
             --metrics \
             --metrics-address=0.0.0.0 \
             --metrics-port=${toString cfg.metricsPort}
+            --subscribe-all-subnets=${boolToString cfg.subAllSubnets}
             --doppelganger-detection=${boolToString cfg.doppelganger}
         '';
         Restart = "on-failure";
