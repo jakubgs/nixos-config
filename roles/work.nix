@@ -30,6 +30,8 @@ in {
     bitwarden-cli
     # Comms
     zoom-us
+    # Databases
+    robomongo
     # Network
     netcat insomnia ngrok tcpdump
     # Remote
@@ -40,7 +42,7 @@ in {
     # General dev
     github-cli pkg-config shellcheck
     # Infra dev
-    unstablePkgs.terraform_0_14
+    unstablePkgs.terraform_1_0
     # NodeJS dev
     unstablePkgs.nodejs-14_x yarn
     # GoLang dev
