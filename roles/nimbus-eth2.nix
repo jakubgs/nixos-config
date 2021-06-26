@@ -22,7 +22,7 @@ in {
     publicIp = secrets.nimbusPublicIp;
     web3Url = secrets.nimbusWeb3Url;
     /* Higher resource usage for small increase in rewards. */
-    subAllSubnets = true;
+    subAllSubnets = false;
     /* Costs two slot rewards at restart if enabled. */
     doppelganger = false;
   };
