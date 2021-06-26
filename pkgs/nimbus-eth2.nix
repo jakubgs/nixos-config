@@ -45,7 +45,7 @@ in pkgs.stdenv.mkDerivation rec {
     # Fix for Nim compiler calling git rev-parse
     export PATH=$PATH:${fakeGit}/bin
     make -j$NIX_BUILD_CORES \
-      nimbus_beacon_node nimbus_signing_process \
+      nimbus_beacon_node nimbus_signing_process ncli_db \
       NIMFLAGS='${NIMFLAGS}' \
       USE_LIBBACKTRACE=0 \
       USE_SYSTEM_NIM=1
@@ -53,6 +53,7 @@ in pkgs.stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
+    cp build/ncli_db $out/bin
     cp build/nimbus_beacon_node $out/bin
     cp build/nimbus_signing_process $out/bin
   '';
