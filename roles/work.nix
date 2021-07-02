@@ -27,7 +27,7 @@ in {
     # DevOps
     nixopsUnstable
     # Security
-    bitwarden-cli
+    unstablePkgs.bitwarden-cli
     # Comms
     zoom-us
     # Databases
