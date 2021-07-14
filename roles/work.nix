@@ -12,7 +12,7 @@ let
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
     # Devops
-    ansible boto3 wakeonlan PyGithub consul python-hosts
+    boto3 wakeonlan PyGithub consul python-hosts
     # Security
     pyopenssl cryptography passlib
     # Databases
@@ -25,7 +25,7 @@ in {
   # Packages required for work
   users.users.sochan.packages = with pkgs; [
     # DevOps
-    nixopsUnstable
+    nixopsUnstable unstablePkgs.ansible_2_11
     # Security
     unstablePkgs.bitwarden-cli
     # Comms
