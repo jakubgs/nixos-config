@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> { }
-, excludes ? [ "linkedin.com" "web.whatsapp.com" ] }:
+, excludes ? [ "linkedin.com" "web.whatsapp.com" "pstmrk.it" ] }:
 
 let
   inherit (pkgs) fetchurl;
@@ -30,6 +30,7 @@ in pkgs.stdenv.mkDerivation {
 
     cat $src \
       | grep -v -e '^\s*#' \
+      | grep -v -e ${pkgs.lib.concatStringsSep " -e " excludes} \
       > $out/domains
 
     cat $srcs \
