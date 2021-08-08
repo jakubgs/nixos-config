@@ -28,12 +28,12 @@ in {
     enable = true;
     timeout = 60;
     autoMaster = ''
-      /nfs/melchior  ${genShareConfigFile "melchior.magi.vpn" genNfsShare}  --timeout 3
+      #/nfs/melchior  ${genShareConfigFile "melchior.magi.vpn" genNfsShare}  --timeout 3
+      #/nfs/leliel    ${genShareConfigFile "leliel.magi.vpn"   genNfsShare}  --timeout 3
       /nfs/sachiel   ${genShareConfigFile "sachiel.magi.vpn"  genNfsShare}  --timeout 3
-      /nfs/leliel    ${genShareConfigFile "leliel.magi.vpn"   genNfsShare}  --timeout 3
-      /cifs/melchior ${genShareConfigFile "melchior.magi.vpn" genCifsShare} --timeout 3
+      #/cifs/melchior ${genShareConfigFile "melchior.magi.vpn" genCifsShare} --timeout 3
+      #/cifs/leliel   ${genShareConfigFile "leliel.magi.vpn"   genCifsShare} --timeout 3
       /cifs/sachiel  ${genShareConfigFile "sachiel.magi.vpn"  genCifsShare} --timeout 3
-      /cifs/leliel   ${genShareConfigFile "leliel.magi.vpn"   genCifsShare} --timeout 3
     '';
   };
 }
