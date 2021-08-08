@@ -9,7 +9,6 @@ in {
     extraConfig = ''
       listen-address=127.0.0.1
       interface=lo
-      domain-needed
       bogus-priv
       cache-size=10000
       local-ttl=300
