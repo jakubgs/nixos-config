@@ -24,11 +24,11 @@ let
     public = [
       "/mnt/ania"
       "/mnt/music"
+      "/mnt/photos"
       "/mnt/torrent/movies"
     ];
     private = [
-      "/mnt/data/data"
-      "/mnt/data/sync"
+      "/mnt/data"
       "/mnt/backup"
       "/mnt/torrent"
     ];
