@@ -15,7 +15,7 @@ in {
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash wget curl manpages sudo pass bc rename sqlite
+    file zsh bash wget curl manpages sudo pass bc rename sqlite uptimed
     # building
     gnumake gcc autoconf automake patchelfUnstable
     unrar unzip zip envsubst entr
@@ -62,4 +62,7 @@ in {
 
   # NTP Server
   services.chrony.enable = true;
+
+  # Uptime tracker
+  services.uptimed.enable = true;
 }
