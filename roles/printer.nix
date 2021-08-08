@@ -12,7 +12,7 @@
     {
       name = "HL2130";
       description = "Brother HL-2130";
-      deviceUri = "ipp://printer/ipp/port1";
+      deviceUri = "ipp://192.168.1.100/ipp/port1";
       model = "drv:///brlaser.drv/br2140.ppd";
       ppdOptions = { PageSize = "A4"; };
     }
