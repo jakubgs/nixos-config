@@ -28,8 +28,8 @@ let
       "/mnt/torrent/movies"
     ];
     private = [
+      "/mnt/git"
       "/mnt/data"
-      "/mnt/backup"
       "/mnt/torrent"
     ];
   };
