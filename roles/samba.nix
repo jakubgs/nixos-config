@@ -43,7 +43,6 @@ in {
 
   # Daemon
   services.samba.enable = true;
-  services.samba.syncPasswordsByPam = true;
   services.samba.extraConfig = ''
     netbios name = ${config.networking.hostName}
     name resolve order = bcast host
