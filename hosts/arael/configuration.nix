@@ -28,9 +28,6 @@
   # No need to tinker with AWS bootloader
   boot.loader.grub.device = "nodev";
 
-  # Upgrade kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking = {
     hostName = "arael";
     hostId = "43bd2a4e";
