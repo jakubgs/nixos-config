@@ -28,8 +28,6 @@ in {
     nixopsUnstable unstablePkgs.ansible_2_11
     # Security
     unstablePkgs.bitwarden-cli
-    # Comms
-    zoom-us
     # Databases
     robomongo
     # Network
@@ -46,7 +44,7 @@ in {
     # NodeJS dev
     unstablePkgs.nodejs-14_x yarn
     # GoLang dev
-    go
+    go_1_15 gocode gopls go-protobuf
     # Python dev
     myPython
     # Ruby dev
