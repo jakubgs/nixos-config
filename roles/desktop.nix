@@ -15,8 +15,8 @@
     rxvt_unicode ranger rofi
     # Xorg Tools
     glxinfo xsel libdrm xorg.xmodmap
-    # Keyboard
-    xcape xbindkeys xclip xkbset 
+    # Keyboard & Mouse
+    xcape xbindkeys xclip xkbset
     # Network
     networkmanagerapplet
     # System
@@ -49,7 +49,7 @@
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
-    evolution protonmail-bridge discord
+    gnome3.geary protonmail-bridge discord
     # Torrent
     transmission-remote-gtk
     # Coding
