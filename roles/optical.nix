@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  users.users.sochan.packages = with pkgs; [
+  users.users.jakubgs.packages = with pkgs; [
     brasero dvdplusrwtools udftools cryptsetup
   ];
 }

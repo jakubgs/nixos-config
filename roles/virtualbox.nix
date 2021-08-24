@@ -6,5 +6,5 @@
     enableExtensionPack = true;
   };
 
-  users.extraGroups.vboxusers.members = [ "sochan" ];
+  users.extraGroups.vboxusers.members = [ "jakubgs" ];
 }

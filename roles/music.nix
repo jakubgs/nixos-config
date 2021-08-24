@@ -15,8 +15,8 @@ in {
   # Daemon
   services.mpd = {
     enable = true;
-    user = "sochan";
-    group = "sochan";
+    user = "jakubgs";
+    group = "jakubgs";
     network.port = 6600;
     network.listenAddress = "0.0.0.0";
     musicDirectory = "/mnt/music";

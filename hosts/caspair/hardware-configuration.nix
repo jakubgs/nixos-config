@@ -33,7 +33,7 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home/sochan/.local/share/Steam" =
+  fileSystems."/home/jakubgs/.local/share/Steam" =
     { device = "rpool/steam";
       fsType = "zfs";
     };

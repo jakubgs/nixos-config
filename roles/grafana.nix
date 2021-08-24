@@ -19,7 +19,7 @@ in {
     };
 
     security = {
-      adminUser = "sochan";
+      adminUser = "jakubgs";
       adminPassword = secrets.grafanaAdminPassword;
     };
 

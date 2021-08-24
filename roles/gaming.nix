@@ -10,7 +10,7 @@
   services.ratbagd.enable = true;
 
   # Packages required for work
-  users.users.sochan.packages = with pkgs; [
+  users.users.jakubgs.packages = with pkgs; [
     steam
     lutris
     corefonts

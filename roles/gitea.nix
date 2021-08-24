@@ -6,7 +6,7 @@
     useWizard = false;
     disableRegistration = true;
 
-    user = "sochan";
+    user = "jakubgs";
     httpPort = 9080;
     httpAddress = "127.0.0.1";
     repositoryRoot = "/git";
@@ -21,7 +21,7 @@
 
     database = {
       type = "sqlite3";
-      user = "sochan";
+      user = "jakubgs";
       #host
       #name
       #port

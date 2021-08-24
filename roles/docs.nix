@@ -7,5 +7,5 @@ let
   };
 in {
   # Packages required for work
-  users.users.sochan.packages = with pkgs; [ pandoc myTexLive ];
+  users.users.jakubgs.packages = with pkgs; [ pandoc myTexLive ];
 }

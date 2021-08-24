@@ -14,7 +14,7 @@ let
       map (p: "${p} -fstype=nfs,${defaultNfsOptions} ${addr}:/mnt/${p}") paths
     );
 
-  defaultCifsOptions = "rw,credentials=/home/sochan/.smbcredentials";
+  defaultCifsOptions = "rw,credentials=/home/jakubgs/.smbcredentials";
   genCifsShare = addr: paths:
     lib.concatStringsSep "\n" (
       map (p: "${p} -fstype=cifs,${defaultCifsOptions} ://${addr}/${p}") paths

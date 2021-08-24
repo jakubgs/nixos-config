@@ -6,7 +6,7 @@
     {
       hostName = "caspair.magi.vpn";
       systems = ["x86_64-linux" "aarch64-linux"];
-      sshKey = "/home/sochan/.ssh/builder/id_rsa";
+      sshKey = "/home/jakubgs/.ssh/builder/id_rsa";
       sshUser = "builder";
       maxJobs = 1;
       speedFactor = 2;

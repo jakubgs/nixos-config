@@ -18,5 +18,5 @@
     onShutdown = "shutdown";
   };
 
-  users.users.sochan.extraGroups = [ "libvirtd" ];
+  users.users.jakubgs.extraGroups = [ "libvirtd" ];
 }

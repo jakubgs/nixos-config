@@ -9,12 +9,12 @@
     authentication = ''
       host all all 127.0.0.1/32 trust
     '';
-    ensureDatabases = [ "sochan" ];
+    ensureDatabases = [ "jakubgs" ];
     ensureUsers = [
       {
-        name = "sochan";
+        name = "jakubgs";
         ensurePermissions = {
-          "DATABASE sochan" = "ALL PRIVILEGES";
+          "DATABASE jakubgs" = "ALL PRIVILEGES";
           "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
         };
       }

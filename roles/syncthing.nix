@@ -9,10 +9,10 @@ let
 in {
   services.syncthing = {
     enable = true;
-    user = "sochan";
-    group = "sochan";
-    configDir = "/home/sochan/.syncthing/config";
-    dataDir = "/home/sochan/.syncthing";
+    user = "jakubgs";
+    group = "jakubgs";
+    configDir = "/home/jakubgs/.syncthing/config";
+    dataDir = "/home/jakubgs/.syncthing";
     guiAddress = "127.0.0.1:8384";
     openDefaultPorts = true;
 

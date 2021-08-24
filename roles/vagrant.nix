@@ -2,7 +2,7 @@
 
 {
   # Install vagrant
-  users.users.sochan.packages = with pkgs; [ vagrant ];
+  users.users.jakubgs.packages = with pkgs; [ vagrant ];
 
   # Required for vagrant
   boot.kernelParams = pkgs.lib.mkForce [ "ipv6.disable=0" ];

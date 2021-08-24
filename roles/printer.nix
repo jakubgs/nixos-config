@@ -19,7 +19,7 @@
   ];
 
   # User packages
-  users.users.sochan.packages = with pkgs; [
+  users.users.jakubgs.packages = with pkgs; [
     a2ps enscript
   ];
 }

@@ -4,7 +4,7 @@ let
   secrets = import ../secrets.nix;
   listenPort = 9091;
   torrentDir = "/mnt/torrent";
-  torrentUser = "sochan";
+  torrentUser = "jakubgs";
 in {
   imports = [
     ../services/transmission-watch.nix

@@ -2,7 +2,7 @@
 
 {
   # Packages required for work
-  users.users.sochan.packages = with pkgs; [
+  users.users.jakubgs.packages = with pkgs; [
     ledger-live-desktop
   ];
 

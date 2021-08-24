@@ -23,7 +23,7 @@ let
   myPython = pkgs.python38.withPackages myPythonPkgs;
 in {
   # Packages required for work
-  users.users.sochan.packages = with pkgs; [
+  users.users.jakubgs.packages = with pkgs; [
     # DevOps
     nixopsUnstable unstablePkgs.ansible_2_11
     # Security
@@ -59,7 +59,7 @@ in {
 
   # Android development Tool
   programs.adb.enable = true;
-  users.users.sochan.extraGroups = [ "adbusers" ];
+  users.users.jakubgs.extraGroups = [ "adbusers" ];
 
   # Simplify accessing Status hosts
   networking.search = [ "statusim.net" "hosts.dap.ps" ];
