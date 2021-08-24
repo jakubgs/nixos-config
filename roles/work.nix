@@ -44,7 +44,7 @@ in {
     # NodeJS dev
     unstablePkgs.nodejs-14_x yarn
     # GoLang dev
-    go_1_15 gocode gopls go-protobuf
+    go_1_16 gocode gopls go-protobuf
     # Python dev
     myPython
     # Ruby dev
