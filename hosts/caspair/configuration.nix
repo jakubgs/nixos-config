@@ -22,7 +22,6 @@
     ../../roles/syncthing.nix
     ../../roles/work.nix
     ../../roles/docs.nix
-    ../../roles/qemu.nix
     ../../roles/netdata.nix
     ../../roles/landing.nix
     ../../roles/crypto.nix
