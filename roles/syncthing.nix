@@ -30,7 +30,7 @@ in {
           id = "IQOAEJV-4CAZQJA-5WZQWPU-WHAWIXD-RNWKSLH-I27MIAX-S4UH2EP-5YDCJQF";
           addresses = [ "tcp://lilim.magi.vpn:22000" ];
         };
-        arael = { # cloud
+        arael = { # aws
           id = "3LSSBGT-OCETH6T-XXVBYAL-G5ULPYN-CYEA6QL-J2LYOBI-3EVTOPR-CLJBCQO";
           addresses = [ "tcp://arael.magi.vpn:22000" ];
         };
@@ -38,9 +38,13 @@ in {
           id = "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ";
           addresses = [ "tcp://leliel.magi.vpn:22000" ];
         };
-        sachiel = { # rpi4b
+        sachiel = { # nanopct4
           id = "F3AWACC-ALG2TJQ-442WT46-HJ7GGEO-BKXDCSH-5V2RMJJ-DJ42I7A-T7CHEQK";
           addresses = [ "tcp://sachiel.magi.vpn:22000" ];
+        };
+        bardiel = { # hetzner
+          id = "WD32426-3YNRIMP-5VRQJMK-WRRKRVY-ARDEWOM-X37O6LV-W3VLZDM-IXLGMAC";
+          addresses = [ "tcp://bardiel.magi.vpn:22000" ];
         };
       };
       folders = {

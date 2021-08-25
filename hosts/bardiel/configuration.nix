@@ -11,7 +11,7 @@
     ../../roles/zerotier.nix
     ../../roles/landing.nix
     ../../roles/netdata.nix
-    #../../roles/syncthing.nix
+    ../../roles/syncthing.nix
     #../../roles/gitweb.nix
     #../../roles/gossa.nix
     #../../roles/prometheus.nix
