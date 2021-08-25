@@ -9,12 +9,11 @@
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/zerotier.nix
-    #../../roles/netdata.nix
+    ../../roles/landing.nix
+    ../../roles/netdata.nix
     #../../roles/syncthing.nix
     #../../roles/gitweb.nix
-    #../../roles/netdata.nix
     #../../roles/gossa.nix
-    #../../roles/landing.nix
     #../../roles/prometheus.nix
     #../../roles/alertmanager.nix
     #../../roles/grafana.nix

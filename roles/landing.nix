@@ -7,6 +7,6 @@
 
   services.landing = {
     enable = true;
-    machines = [ "arael" "leliel" "caspair" "zeruel" "melchior" ];
+    machines = [ "arael" "bardiel" "leliel" "caspair" "zeruel" "melchior" ];
   };
 }
