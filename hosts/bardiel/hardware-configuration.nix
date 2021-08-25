@@ -18,13 +18,38 @@
       fsType = "zfs";
     };
 
+  fileSystems."/nix" =
+    { device = "rpool/nix";
+      fsType = "zfs";
+    };
+
   fileSystems."/home" =
     { device = "rpool/home";
       fsType = "zfs";
     };
 
-  fileSystems."/nix" =
-    { device = "rpool/nix";
+  fileSystems."/mnt/data" =
+    { device = "rpool/DATA/data";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "rpool/DATA/git";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "rpool/DATA/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "rpool/DATA/mobile";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "rpool/DATA/photos";
       fsType = "zfs";
     };
 
