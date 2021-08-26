@@ -57,6 +57,13 @@ in {
     };
   };
 
+  # Wait for volumes to be mounted.
+  systemd.services.syncthing.after = lib.mkForce [
+    "network.target" "mnt-data.mount"
+    "mnt-git.mount" "mnt-mobile.mount"
+    "mnt-music.mount" "mnt-photos.mount"
+  ];
+
   services.landing = {
     proxyServices = [
       { 
