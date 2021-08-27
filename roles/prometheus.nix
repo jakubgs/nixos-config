@@ -5,7 +5,7 @@ let
   fqdn = with config.networking; "${hostName}.${domain}";
 
   hosts = {
-    "arael.magi.vpn" = { netdata = 8000; };
+    "bardiel.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
     "lilim.magi.vpn" = { netdata = 8000; };
     "leliel.magi.vpn" = { netdata = 8000; };

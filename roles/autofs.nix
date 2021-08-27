@@ -3,9 +3,9 @@
 let
   hostShares = {
     "melchior.magi.vpn" = [ "git" "data" "music" "photos" "torrent" "backup" ];
+    "bardiel.magi.vpn" =  [ "git" "data" "music" "photos" "torrent" ];
     "sachiel.magi.vpn" =  [ "git" "data" "music" "photos" "torrent" ];
     "leliel.magi.vpn" =   [ "git" "data" "music" "photos" "torrent" ];
-    "arael.magi.vpn" =    [ "git" "data" "music" "photos" "torrent" ];
   };
 
   defaultNfsOptions = "async,noac,soft,rsize=262144,wsize=262144";
@@ -31,8 +31,8 @@ in {
     autoMaster = ''
       #/nfs/melchior  ${genShareConfigFile "melchior.magi.vpn" genNfsShare}  --timeout 3
       #/nfs/leliel    ${genShareConfigFile "leliel.magi.vpn"   genNfsShare}  --timeout 3
-      /nfs/sachiel   ${genShareConfigFile "sachiel.magi.vpn"  genNfsShare}  --timeout 3
-      /nfs/arael     ${genShareConfigFile "arael.magi.vpn"    genNfsShare}  --timeout 3
+      /nfs/sachiel    ${genShareConfigFile "sachiel.magi.vpn"  genNfsShare}  --timeout 3
+      /nfs/bardiel    ${genShareConfigFile "bardiel.magi.vpn"  genNfsShare}  --timeout 3
       #/cifs/melchior ${genShareConfigFile "melchior.magi.vpn" genCifsShare} --timeout 3
       #/cifs/leliel   ${genShareConfigFile "leliel.magi.vpn"   genCifsShare} --timeout 3
       /cifs/sachiel  ${genShareConfigFile "sachiel.magi.vpn"  genCifsShare} --timeout 3

@@ -3,7 +3,7 @@
 
 let
   inherit (config) services;
-  syncthingHosts = ["caspair" "melchior" "arael" "lilim"];
+  syncthingHosts = ["bardiel" "caspair" "melchior" "lilim"];
   notThisHost = h: h != config.networking.hostName;
   otherHosts = builtins.filter notThisHost syncthingHosts;
 in {
@@ -29,10 +29,6 @@ in {
         lilim = { # laptop
           id = "IQOAEJV-4CAZQJA-5WZQWPU-WHAWIXD-RNWKSLH-I27MIAX-S4UH2EP-5YDCJQF";
           addresses = [ "tcp://lilim.magi.vpn:22000" ];
-        };
-        arael = { # aws
-          id = "3LSSBGT-OCETH6T-XXVBYAL-G5ULPYN-CYEA6QL-J2LYOBI-3EVTOPR-CLJBCQO";
-          addresses = [ "tcp://arael.magi.vpn:22000" ];
         };
         leliel = { # rpi4b
           id = "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ";
