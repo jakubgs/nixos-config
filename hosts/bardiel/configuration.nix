@@ -15,8 +15,8 @@
     ../../roles/prometheus.nix
     ../../roles/alertmanager.nix
     ../../roles/grafana.nix
-    #../../roles/gitweb.nix
-    #../../roles/gossa.nix
+    ../../roles/gitweb.nix
+    ../../roles/gossa.nix
   ];
 
   # Use the GRUB 2 boot loader.
