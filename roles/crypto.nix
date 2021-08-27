@@ -1,12 +1,19 @@
 { pkgs, ... }:
 
-{
+let
+  unstablePkgs = import <nixos-unstable> { };
+in {
   # Packages required for work
-  users.users.jakubgs.packages = with pkgs; [
+  users.users.jakubgs.packages = with unstablePkgs; [
     ledger-live-desktop
   ];
 
-  # https://github.com/LedgerHQ/udev-rules
   # Enable udev rules for Ledger
   hardware.ledger.enable = true;
+
+  # Fix permissions
+  # https://github.com/LedgerHQ/udev-rules/blob/master/20-hw1.rules
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0001|1011|1015", MODE="0666", GROUP="adm"
+  '';
 }
