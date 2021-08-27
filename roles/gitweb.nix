@@ -1,10 +1,14 @@
-{ ... }:
+{ config, ... }:
 
 {
   # Hosting
   services.nginx = {
     enable = true;
-    gitweb.enable = true;
+    gitweb = {
+      enable = true;
+      location = "/gitweb";
+      virtualHost = "${config.networking.hostName}.${config.networking.domain}";
+    };
   };
 
   # Service
