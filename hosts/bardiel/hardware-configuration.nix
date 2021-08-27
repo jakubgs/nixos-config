@@ -29,28 +29,33 @@
     };
 
   fileSystems."/mnt/data" =
-    { device = "rpool/DATA/data";
+    { device = "rpool/secret/data";
       fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/git" =
-    { device = "rpool/DATA/git";
+    { device = "rpool/secret/git";
       fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/music" =
-    { device = "rpool/DATA/music";
+    { device = "rpool/secret/music";
       fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/mobile" =
-    { device = "rpool/DATA/mobile";
+    { device = "rpool/secret/mobile";
       fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/photos" =
-    { device = "rpool/DATA/photos";
+    { device = "rpool/secret/photos";
       fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   swapDevices = [ ];
