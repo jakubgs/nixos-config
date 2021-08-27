@@ -9,7 +9,7 @@
 
   # Service
   services.gitweb = {
-    projectroot = "/git";
+    projectroot = "/mnt/git";
     gitwebTheme = true;
   };
 
