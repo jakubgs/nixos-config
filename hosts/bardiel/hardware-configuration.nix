@@ -28,6 +28,12 @@
       fsType = "zfs";
     };
 
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "bind" ];
+     };
+
   fileSystems."/mnt/data" =
     { device = "rpool/secret/data";
       fsType = "zfs";

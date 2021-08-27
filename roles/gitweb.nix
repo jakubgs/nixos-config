@@ -13,7 +13,7 @@
 
   # Service
   services.gitweb = {
-    projectroot = "/mnt/git";
+    projectroot = "/git";
     gitwebTheme = true;
   };
 
