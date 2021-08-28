@@ -64,6 +64,9 @@ in {
   # Simplify accessing Status hosts
   networking.search = [ "statusim.net" "hosts.dap.ps" ];
 
+  # For emergency use during DNS issues
+  #networking.extraHosts = lib.readFile /home/jakubgs/statusim_hosts;
+
   # Disable Garbage Collection
   nix.gc.automatic = lib.mkForce false;
 }
