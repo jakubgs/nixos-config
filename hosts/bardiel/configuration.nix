@@ -16,6 +16,8 @@
     ../../roles/alertmanager.nix
     ../../roles/grafana.nix
     ../../roles/gitweb.nix
+    ../../roles/nfs.nix
+    ../../roles/samba.nix
     ../../roles/gossa.nix
   ];
 
