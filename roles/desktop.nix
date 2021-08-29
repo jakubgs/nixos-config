@@ -39,7 +39,7 @@
     # Themes
     lxappearance lounge-gtk-theme
     # Browsers
-    brave chromium
+    brave ungoogled-chromium
     # Documents
     evince
     # Images
