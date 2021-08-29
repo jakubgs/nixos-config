@@ -1,16 +1,17 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "caspair.magi.vpn";
+      hostName = "bardiel.magi.vpn";
       systems = ["x86_64-linux" "aarch64-linux"];
-      sshKey = "/home/jakubgs/.ssh/builder/id_rsa";
-      sshUser = "builder";
-      maxJobs = 1;
-      speedFactor = 2;
+      sshKey = "/home/jakubgs/.ssh/id_rsa";
+      sshUser = "jakubgs";
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+      mandatoryFeatures = [ ];
+      speedFactor = 1;
+      maxJobs = 1;
     }
   ];
 
