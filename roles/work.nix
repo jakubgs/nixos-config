@@ -31,7 +31,7 @@ in {
     # Databases
     robomongo
     # Network
-    netcat insomnia ngrok tcpdump
+    netcat insomnia ngrok tcpdump whois
     # Remote
     remmina
     # Cloud
