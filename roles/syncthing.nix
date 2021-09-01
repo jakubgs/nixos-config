@@ -7,6 +7,11 @@ let
   notThisHost = h: h != config.networking.hostName;
   otherHosts = builtins.filter notThisHost syncthingHosts;
 in {
+  # Firewall
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [ 22000 ];
+  networking.firewall.interfaces."zt*".allowedUDPPorts = [ 22000 21027 ];
+
+  # Service
   services.syncthing = {
     enable = true;
     user = "jakubgs";
@@ -14,7 +19,6 @@ in {
     configDir = "/home/jakubgs/.syncthing/config";
     dataDir = "/home/jakubgs/.syncthing";
     guiAddress = "127.0.0.1:8384";
-    openDefaultPorts = true;
 
     declarative = {
       devices = lib.filterAttrs (h: v: notThisHost h) {
