@@ -21,8 +21,8 @@ let
   '') fileSystems;
 in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 111 2049 4000 4001 4002 ];
-  networking.firewall.allowedUDPPorts = [ 111 2049 4000 4001 4002 ];
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [ 111 2049 4000 4001 4002 ];
+  networking.firewall.interfaces."zt*".allowedUDPPorts = [ 111 2049 4000 4001 4002 ];
 
   # Daemon
   services.nfs.server = {

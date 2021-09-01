@@ -5,7 +5,7 @@ let
   listenPort = 8000;
 in {
   # Firewall
-  networking.firewall.allowedTCPPorts = [ listenPort ];
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [ listenPort ];
 
   # Daemon
   services.netdata.enable = true;
