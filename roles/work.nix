@@ -53,6 +53,8 @@ in {
     fastlane apktool jdk8
     # Utils
     jsonnet appimage-run unixtools.xxd bvi
+    # Video Recording
+    obs-studio
     # Docs
     #libreoffice
   ];
