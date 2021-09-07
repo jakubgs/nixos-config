@@ -27,7 +27,7 @@ in {
     # DevOps
     nixopsUnstable unstablePkgs.ansible_2_11
     # Security
-    unstablePkgs.bitwarden-cli
+    unstablePkgs.bitwarden-cli oathToolkit
     # Databases
     robomongo
     # Network
