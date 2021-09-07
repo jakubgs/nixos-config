@@ -5,7 +5,6 @@
 {
   imports = [
     (modulesPath + "/virtualisation/digital-ocean-config.nix")
-    ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/users.nix
     ../../roles/locate.nix

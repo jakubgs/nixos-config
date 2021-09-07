@@ -6,7 +6,6 @@
     ./hardware-configuration.nix
     # See: https://github.com/NixOS/nixos-hardware
     <nixos-hardware/lenovo/thinkpad/t480s>
-    ../../roles/security.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
     ../../roles/users.nix

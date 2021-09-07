@@ -3,7 +3,7 @@
 {
   imports = [
     ./nix.nix
-    ./firewall.nix
+    ./security.nix
   ];
 
   # Packages
