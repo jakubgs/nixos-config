@@ -52,7 +52,7 @@ in {
     # Mobile dev
     fastlane apktool jdk8
     # Utils
-    jsonnet appimage-run unixtools.xxd bvi
+    jsonnet appimage-run unixtools.xxd bvi binutils-unwrapped
     # Video Recording
     obs-studio
     # Docs
