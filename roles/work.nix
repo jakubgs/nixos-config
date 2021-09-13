@@ -3,7 +3,7 @@
 # This file includes setup for things required for work
 
 let
-  unstablePkgs = import <nixos-unstable> { };
+  unstable = import <nixos-unstable> { };
   aliyun-cli = pkgs.callPackage ../pkgs/aliyun-cli.nix { };
 
   # For details see: https://nixos.wiki/wiki/Python
@@ -25,9 +25,9 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    nixopsUnstable unstablePkgs.ansible_2_11
+    nixopsUnstable unstable.ansible_2_11
     # Security
-    unstablePkgs.bitwarden-cli oathToolkit
+    unstable.bitwarden-cli oathToolkit
     # Databases
     robomongo
     # Network
@@ -40,9 +40,9 @@ in {
     # General dev
     github-cli pkg-config shellcheck
     # Infra dev
-    unstablePkgs.terraform_1_0
+    unstable.terraform_1_0
     # NodeJS dev
-    unstablePkgs.nodejs-14_x yarn
+    nodejs-14_x yarn
     # GoLang dev
     go_1_16 gocode gopls go-protobuf
     # Python dev
