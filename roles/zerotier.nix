@@ -20,7 +20,8 @@ in {
 
   # Hosts Entries
   networking.hosts = {
-    "10.2.2.1"  = [ "melchior.magi.vpn" ]; # server
+    "10.2.2.1"  = [ "eve.magi.vpn"      ]; # router
+    "10.2.2.10" = [ "melchior.magi.vpn" ]; # server
     "10.2.2.11" = [ "caspair.magi.vpn"  ]; # desktop
     "10.2.2.12" = [ "lilim.magi.vpn"    ]; # laptop
     "10.2.2.13" = [ "ramiel.magi.vpn"   ]; # phone
