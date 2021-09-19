@@ -1,6 +1,12 @@
 # Description
 
-This is a configuration for my Raspberry Pi 4B device.
+Configuration for Raspberry Pi 4B device.
+
+# Hardware
+
+* Broadcom BCM2711
+* Quad-core ARM-8 Cortex-A72
+* RAM 8 GB
 
 # SD Card Creation
 
