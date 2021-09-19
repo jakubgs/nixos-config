@@ -52,7 +52,7 @@
   networking.enableIPv6 = false;
 
   # domain use for my own infra
-  networking.search = [ "magi.blue" ];
+  networking.search = [ "magi.blue" "magi.lan" ];
 
   # NTP Server
   services.chrony.enable = true;
