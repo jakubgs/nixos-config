@@ -25,7 +25,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    nixopsUnstable unstable.ansible_2_11
+    nixopsUnstable ansible_2_11
     # Security
     unstable.bitwarden-cli oathToolkit
     # Databases
@@ -44,7 +44,7 @@ in {
     # NodeJS dev
     nodejs-14_x yarn
     # GoLang dev
-    go_1_16 gocode gopls go-protobuf
+    unstable.go_1_17 gocode gopls go-protobuf
     # Python dev
     myPython
     # Ruby dev
