@@ -25,7 +25,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    nixopsUnstable ansible_2_11
+    ansible_2_11
     # Security
     unstable.bitwarden-cli oathToolkit
     # Databases
@@ -56,7 +56,7 @@ in {
     # Video Recording
     obs-studio
     # Docs
-    #libreoffice
+    mdbook
   ];
 
   # Android development Tool
