@@ -5,6 +5,7 @@ let
   fqdn = with config.networking; "${hostName}.${domain}";
 
   hosts = {
+    "eve.magi.vpn" = { openwrt = 9100; };
     "bardiel.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
     "lilim.magi.vpn" = { netdata = 8000; };
@@ -57,6 +58,7 @@ in {
       (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
       (genScrapeJob {name = "nimbus";   path = "/metrics";})
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
+      (genScrapeJob {name = "openwrt";  path = "/metrics";})
     ];
 
     ruleFiles = [
