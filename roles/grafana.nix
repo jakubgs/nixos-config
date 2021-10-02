@@ -30,6 +30,7 @@ in {
         type = "prometheus";
         url = "http://localhost:${toString config.services.prometheus.port}/";
         isDefault = true;
+        jsonData = { timeInterval = "10s"; };
       }];
     };
   };
