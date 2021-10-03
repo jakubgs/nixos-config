@@ -4,6 +4,7 @@
   imports = [
     ./xserver.nix
     ./clipmenu.nix
+    ../services/protonmail-bridge.nix
   ];
 
   # Accept unfree licenses
@@ -49,12 +50,15 @@
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     # Communication
-    gnome3.geary protonmail-bridge discord
+    gnome3.geary discord
     # Torrent
     transmission-remote-gtk
     # Coding
     zeal
   ];
+
+  # Enable service that bridges SMTP with ProtonMail
+  services.protonmail-bridge.enable = true;
 
   # Keyring for app credentials
   services.gnome.gnome-keyring.enable = true;
