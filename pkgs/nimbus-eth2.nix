@@ -5,30 +5,33 @@
 }:
 
 let
-  rev = "07a1c571";
+  rev = "05eb8846";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.4.1";
+  version = "1.5.0";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "1ywppf340c7hfzkrxwdvsdhsqck9hxly2p8nfxpa9sr0h0sppimn";
+    sha256 = "00q1cakhlbkfl642208ycg0jz7xwg2v44ygm4v4f3ns6yyjnhpw1";
     fetchSubmodules = true;
   };
 
   dontStrip = true; # leave debugging symbols in
 
-  nativeBuildInputs = with pkgs; [ which nim ];
+  nativeBuildInputs = with pkgs; [ which ];
 
   NIMFLAGS = "-d:testnet_servers_image --debugger:native" 
     + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
+  preBuildPhases = [ "buildCompiler" ];
   buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
 
-  # Generate vendor/.nimble contents with correct paths
+  # Generate vendor/.nimble contents with correct paths.
   configurePhase = ''
+    # Fix for Nim compiler calling git rev-parse
+    export PATH=$PATH:${fakeGit}/bin
     export NIMBLE_LINK_SCRIPT=$PWD/vendor/nimbus-build-system/scripts/create_nimble_link.sh
     export NIMBLE_DIR=$PWD/vendor/.nimble
     export PWD_CMD=$(which pwd)
@@ -41,9 +44,15 @@ in pkgs.stdenv.mkDerivation rec {
     done
   '';
 
+  # Nimbus uses it's own specific Nim version bound as a Git submodule.
+  buildCompiler = ''
+    # Necessary for nim cache creation
+    export HOME=$PWD
+    make build-nim
+    export PATH="$PWD/vendor/nimbus-build-system/vendor/Nim/bin:$PATH"
+  '';
+
   buildPhase = ''
-    # Fix for Nim compiler calling git rev-parse
-    export PATH=$PATH:${fakeGit}/bin
     make -j$NIX_BUILD_CORES \
       nimbus_beacon_node nimbus_signing_process ncli_db \
       NIMFLAGS='${NIMFLAGS}' \

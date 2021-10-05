@@ -36,6 +36,12 @@ in {
           description = "Logging level for the node.";
         };
 
+        threadsNumber = mkOption {
+          type = types.int;
+          default = 1;
+          description = "Number of worker threads. Use 0 to detect CPU cores.";
+        };
+
         publicIp = mkOption {
           type = types.str;
           default = "";
@@ -92,6 +98,18 @@ in {
           default = 8545;
           description = "RPC JSON REST endpoint listen port.";
         };
+
+        restAddr = mkOption {
+          type = types.str;
+          default = "127.0.0.1";
+          description = "Listening address of the REST API server";
+        };
+
+        restPort = mkOption {
+          type = types.int;
+          default = 5052;
+          description = "Port for the REST API server";
+        };
       };
     };
   };
@@ -108,11 +126,15 @@ in {
             --web3-url=${cfg.web3Url} \
             --nat=extip:${cfg.publicIp} \
             --log-level=${toUpper cfg.logLevel} \
+            --num-threads=${toString cfg.threadsNumber} \
             --tcp-port=${toString cfg.listenPort} \
             --udp-port=${toString cfg.discoverPort} \
             --rpc \
             --rpc-address=${cfg.rpcAddr} \
             --rpc-port=${toString cfg.rpcPort} \
+            --rest \
+            --rest-address=${cfg.restAddr} \
+            --rest-port=${toString cfg.restPort} \
             --metrics \
             --metrics-address=0.0.0.0 \
             --metrics-port=${toString cfg.metricsPort} \
