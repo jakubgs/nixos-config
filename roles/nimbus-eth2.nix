@@ -21,6 +21,7 @@ in {
     dataDir = "/mnt/data/nimbus-eth2";
     publicIp = secrets.nimbusPublicIp;
     web3Url = secrets.nimbusWeb3Url;
+    threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
     subAllSubnets = false;
     /* Costs two slot rewards at restart if enabled. */
