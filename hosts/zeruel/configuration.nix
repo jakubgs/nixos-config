@@ -16,7 +16,7 @@
 
   # SWAP due to low memory
   swapDevices = [
-    { device = "/swapfile"; size = 2048; }
+    { device = "/swapfile"; size = 4096; }
   ];
 
   # Upgrade kernel
