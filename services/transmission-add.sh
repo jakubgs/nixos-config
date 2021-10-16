@@ -14,7 +14,7 @@ fi
 echo "Adding torrent: '$(@coreutils@/bin/basename "${TORRENT_FILE}")'"
 echo "Download dir: '${DOWNLOAD_DIR}'"
 
-@transmission@/bin/transmission-remote ${RPC_ADDR} \
+exec @transmission@/bin/transmission-remote ${RPC_ADDR} \
   --no-trash-torrent \
   --auth "${RPC_AUTH}" \
   --add "${TORRENT_FILE}" \
