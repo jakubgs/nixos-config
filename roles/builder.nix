@@ -5,8 +5,8 @@
 
   users.users.builder = {
     uid = 4000;
+    isSystemUser = true;
     createHome = false;
-    isNormalUser = false;
     useDefaultShell = false;
     group = "users";
     extraGroups = [ "kvm" ];
