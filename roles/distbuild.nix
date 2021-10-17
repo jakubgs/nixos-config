@@ -6,7 +6,6 @@
     {
       hostName = "bardiel.magi.vpn";
       systems = ["x86_64-linux" "aarch64-linux"];
-      sshKey = "/home/jakubgs/.ssh/id_rsa";
       sshUser = "jakubgs";
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       mandatoryFeatures = [ ];
