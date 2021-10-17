@@ -6,7 +6,8 @@
     {
       hostName = "bardiel.magi.vpn";
       systems = ["x86_64-linux" "aarch64-linux"];
-      sshUser = "jakubgs";
+      sshKey = "/home/jakubgs/.ssh/nixos/builder/id_rsa";
+      sshUser = "builder";
       supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       mandatoryFeatures = [ ];
       speedFactor = 1;
