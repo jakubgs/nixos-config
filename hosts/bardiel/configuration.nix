@@ -17,6 +17,7 @@
     ../../roles/gitweb.nix
     ../../roles/nfs.nix
     ../../roles/gossa.nix
+    ../../roles/builder.nix
   ];
 
   # Use the GRUB 2 boot loader.
