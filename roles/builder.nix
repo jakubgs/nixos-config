@@ -6,8 +6,8 @@
   users.users.builder = {
     uid = 4000;
     isSystemUser = true;
+    useDefaultShell = true;
     createHome = false;
-    useDefaultShell = false;
     group = "users";
     extraGroups = [ "kvm" ];
     openssh.authorizedKeys.keys = [
