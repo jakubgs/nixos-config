@@ -11,34 +11,29 @@ fi
 @inotifytools@/bin/inotifywait \
   --monitor \
   --recursive \
-  --event=create \
+  --format='%e|%w|%f' \
+  --event=attrib \
   --event=close_write \
-  --format='%w|%f' \
+  --include '.*.torrent$' \
   ${WATCH_DIR} | {
-    while IFS='|' read -r PATH FILE; do
+    while IFS='|' read -r EVENT PATH FILE; do
       FULLPATH="${PATH}${FILE}"
       SUBDIR="${PATH#$WATCH_DIR/}"
 
       if [[ ! -f "${FULLPATH}" ]]; then
-        echo "No such file: '${FULLPATH}'"
-        continue
-      fi
-      if [[ -d "${FULLPATH}" ]]; then
-        echo "New directory created: '${FULLPATH}'"
-        continue
-      fi
-      if [[ "${FULLPATH}" != *.torrent ]]; then
-        echo "Not a torrent file: '${FULLPATH}'"
-        continue
+        echo "No such file: '${FULLPATH}'"; exit 1
+      elif [[ -d "${FULLPATH}" ]]; then
+        echo "New directory created: '${FULLPATH}'"; exit 1
       fi
 
       @addTorrentScript@ "${FULLPATH}" "${DOWNLOAD_DIR}/${SUBDIR}"
 
       if [[ $? -eq 0 ]]; then
+        echo "Removing torrent file: '${FULLPATH}'"
         @coreutils@/bin/rm -vf "${FULLPATH}"
       else
+        echo "Failed to add torrent: '${FULLPATH}'"
         @coreutils@/bin/mv "${FULLPATH}" "${FULLPATH}.failed"
-        echo "Failed to add torrent!"
       fi
     done 
   }
