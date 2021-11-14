@@ -10,7 +10,7 @@ let
     "caspair.magi.vpn" = { netdata = 8000; };
     "lilim.magi.vpn" = { netdata = 8000; };
     "leliel.magi.vpn" = { netdata = 8000; };
-    "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; };
+    "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; mtr = 8080; };
     "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; };
   };
 
@@ -59,6 +59,7 @@ in {
       (genScrapeJob {name = "nimbus";   path = "/metrics";})
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
       (genScrapeJob {name = "openwrt";  path = "/metrics";})
+      (genScrapeJob {name = "mtr";      path = "/metrics";})
     ];
 
     ruleFiles = [
