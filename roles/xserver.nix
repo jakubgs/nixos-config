@@ -1,12 +1,7 @@
 { pkgs, ... }:
 
 let
-  # Necessary to fix broken Inconsolata font
-  # https://github.com/googlefonts/Inconsolata/issues/42
-  oldPackages = import (pkgs.fetchzip {
-    url = "https://github.com/NixOS/nixpkgs/archive/47e580e291ff40bbde191e9fed35128727963b0c.zip";
-    sha256 = "1fnz42w2p6avnz76p8n0dr2lvdgv1v1kipysih61mdakr4lc2fs8";
-  }) { };
+  unstable = import <nixos-unstable> { };
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
@@ -47,8 +42,12 @@ in {
       };
     };
     fonts = with pkgs; [
-      terminus_font oldPackages.inconsolata
-      corefonts fira-code dejavu_fonts ubuntu_font_family
+      unstable.inconsolata
+      terminus_font
+      corefonts
+      fira-code
+      dejavu_fonts
+      ubuntu_font_family
     ];
   };
 }
