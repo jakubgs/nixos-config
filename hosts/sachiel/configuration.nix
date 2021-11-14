@@ -19,6 +19,7 @@
     ../../roles/music.nix
     ../../roles/torrent.nix
     ../../roles/mikrotik.nix
+    ../../roles/mtr-exporter.nix
   ];
 
   # Boot
