@@ -5,6 +5,9 @@
     ../services/mtr-exporter.nix
   ];
 
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+
   services.mtr-exporter = {
     enable = true;
     target = "vectra.pl";
