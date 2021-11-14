@@ -1,0 +1,63 @@
+diff --git a/cmd/mtr-exporter/mtr.go b/cmd/mtr-exporter/mtr.go
+index 7d26fe0..92dfd66 100644
+--- a/cmd/mtr-exporter/mtr.go
++++ b/cmd/mtr-exporter/mtr.go
+@@ -3,6 +3,7 @@ package main
+ import (
+ 	"encoding/json"
+ 	"io"
++	"strconv"
+ )
+ 
+ type mtrResult struct {
+@@ -17,14 +18,14 @@ type mtrReport struct {
+ type mtrMtr struct {
+ 	Src        string `json:"src"`
+ 	Dst        string `json:"dst"`
+-	Tos        string `json:"tos"`
++	Tos        int64  `json:"tos"`
+ 	PSize      string `json:"psize"`
+ 	BitPattern string `json:"bitpattern"`
+-	Tests      string `json:"tests"`
++	Tests      int64  `json:"tests"`
+ }
+ 
+ type mtrHub struct {
+-	Count string  `json:"count"`
++	Count int64   `json:"count"`
+ 	Host  string  `json:"host"`
+ 	Loss  float64 `json:"Loss%"`
+ 	Snt   int64   `json:"Snt"`
+@@ -49,9 +50,9 @@ func (mtr *mtrMtr) Labels() map[string]string {
+ 	return map[string]string{
+ 		"src":        mtr.Src,
+ 		"dst":        mtr.Dst,
+-		"tos":        mtr.Tos,
++		"tos":        strconv.FormatInt(mtr.Tos, 10),
+ 		"psize":      mtr.PSize,
+ 		"bitpattern": mtr.BitPattern,
+-		"tests":      mtr.Tests,
++		"tests":      strconv.FormatInt(mtr.Tests, 10),
+ 	}
+ }
+diff --git a/cmd/mtr-exporter/prometheus.go b/cmd/mtr-exporter/prometheus.go
+index 5829220..d04cd70 100644
+--- a/cmd/mtr-exporter/prometheus.go
++++ b/cmd/mtr-exporter/prometheus.go
+@@ -5,6 +5,7 @@ import (
+ 	"io"
+ 	"net/http"
+ 	"sort"
++	"strconv"
+ 	"strings"
+ 	"time"
+ )
+@@ -43,7 +44,7 @@ func (job *mtrJob) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+ 
+ 	for i, hub := range report.Hubs {
+ 		labels["host"] = hub.Host
+-		labels["count"] = hub.Count
++		labels["count"] = strconv.FormatInt(hub.Count, 10)
+ 		// mark last hub to have it easily identified
+ 		if i < (len(report.Hubs) - 1) {
+ 			hub.writeMetrics(w, labels2Prom(labels), tsMs)
