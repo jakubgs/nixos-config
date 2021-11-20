@@ -15,6 +15,7 @@ in {
     rootUrl = "%(protocol)s://%(domain)s:%(http_port)s/grafana/";
     extraOptions = {
       SERVER_SERVE_FROM_SUB_PATH = "true";
+      SECURITY_ALLOW_EMBEDDING = "true";
       AUTH_BASIC_ENABLED = "true";
     };
 
