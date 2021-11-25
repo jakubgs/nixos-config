@@ -39,9 +39,6 @@
     '';
   }];
 
-  # UART debug console bitrates.
-  services.getty.serialSpeed = [ 1500000 ];
-
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
