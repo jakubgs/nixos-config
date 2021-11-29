@@ -85,5 +85,7 @@
       options = [ "nofail" ];
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/64c71a04-655a-4ef5-996f-f2cadb801e72"; }
+    ];
 }

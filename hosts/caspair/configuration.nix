@@ -36,6 +36,9 @@
     configurationLimit = 10;
   };
 
+  # Resume
+  boot.resumeDevice = "/dev/disk/by-uuid/64c71a04-655a-4ef5-996f-f2cadb801e72";
+
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
 
