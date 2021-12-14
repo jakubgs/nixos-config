@@ -16,7 +16,6 @@ in {
   # Daemon
   services.transmission = {
     enable = true;
-    port = listenPort;
     home = torrentDir;
     user = torrentUser;
     group = torrentUser;
@@ -25,6 +24,7 @@ in {
       incomplete-dir-enabled = false;
       rename-partial-files = true;
       # RPC
+      rpc-port = listenPort;
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = true;
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
