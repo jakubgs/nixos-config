@@ -56,7 +56,7 @@ in {
     # Video Recording
     obs-studio
     # Docs
-    mdbook
+    mdbook hugo
   ];
 
   # Android development Tool
