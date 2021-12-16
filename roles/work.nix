@@ -3,7 +3,6 @@
 # This file includes setup for things required for work
 
 let
-  unstable = import <nixos-unstable> { };
   aliyun-cli = pkgs.callPackage ../pkgs/aliyun-cli.nix { };
 
   # For details see: https://nixos.wiki/wiki/Python
@@ -27,7 +26,7 @@ in {
     # DevOps
     ansible_2_11
     # Security
-    unstable.bitwarden-cli oathToolkit
+    bitwarden-cli oathToolkit
     # Databases
     robomongo
     # Network
@@ -40,11 +39,11 @@ in {
     # General dev
     github-cli pkg-config shellcheck
     # Infra dev
-    unstable.terraform_1_0
+    terraform_1_0
     # NodeJS dev
     nodejs-14_x yarn
     # GoLang dev
-    unstable.go_1_17 gocode gopls go-protobuf
+    go_1_17 gocode gopls go-protobuf
     # Python dev
     myPython
     # Ruby dev
