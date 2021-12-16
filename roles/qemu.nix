@@ -12,11 +12,14 @@
 
   virtualisation.libvirtd = {
     enable = true;
-    qemuOvmf = true;
-    qemuRunAsRoot = true;
-    qemuPackage = pkgs.qemu_kvm;
     onBoot = "ignore";
     onShutdown = "shutdown";
+
+    qemu = {
+      runAsRoot = true;
+      package = pkgs.qemu_kvm;
+      ovmf = { enable = true; };
+    };
   };
 
   users.users.jakubgs.extraGroups = [ "libvirtd" ];
