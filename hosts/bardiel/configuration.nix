@@ -20,13 +20,25 @@
     ../../roles/builder.nix
   ];
 
+  #nix.useSandbox = false;
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.requestEncryptionCredentials = false;
+
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.devices = [
-    "/dev/disk/by-id/ata-ST2000NM0033-9ZM175_Z1X12D5D"
-    "/dev/disk/by-id/ata-WDC_WD2000FYYZ-01UL1B1_WD-WCC1P1092953"
-  ];
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    mirroredBoots = [
+      {
+        devices = ["/dev/disk/by-id/ata-WDC_WD2000FYYZ-01UL1B1_WD-WCC1P1092953"];
+        path = "/boot";
+      }
+      {
+        devices = ["/dev/disk/by-id/ata-ST2000NM0033-9ZM175_Z1X12D5D"];
+        path = "/boot2";
+      }
+    ];
+  };
 
   networking = {
     hostName = "bardiel";

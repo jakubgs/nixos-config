@@ -28,11 +28,15 @@
       fsType = "zfs";
     };
 
-  fileSystems."/git" =
-    { device = "/mnt/git";
-      fsType = "none";
-      options = [ "bind" ];
-     };
+  fileSystems."/boot2" =
+    { device = "/dev/disk/by-uuid/42277106-1671-4f63-a4d6-67564224ed92";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/e3617ef9-e4c3-4b74-9046-2dfdddeb6988";
+      fsType = "ext4";
+    };
 
   fileSystems."/mnt/data" =
     { device = "rpool/secret/data";
@@ -46,14 +50,14 @@
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/mnt/music" =
-    { device = "rpool/secret/music";
+  fileSystems."/mnt/mobile" =
+    { device = "rpool/secret/mobile";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/mnt/mobile" =
-    { device = "rpool/secret/mobile";
+  fileSystems."/mnt/music" =
+    { device = "rpool/secret/music";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
@@ -64,7 +68,13 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "noauto" "nofail" "bind" ];
+    };
+
   swapDevices = [ ];
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
-
