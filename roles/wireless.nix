@@ -7,7 +7,7 @@ in {
     interfaces = [ "wlan0" ];
     networks = let
       # Order matters, last has highest priority.
-      names = [ "MAGI v2" "MAGI" "MAGI 5Ghz" ];
+      names = [ "MAGI" "MAGI 5Ghz" "MAGI v2" ];
     in lib.listToAttrs (lib.imap0 (idx: name: {
       inherit name;
       value = {
