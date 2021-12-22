@@ -2,12 +2,11 @@
 
 let
   secrets = import ../secrets.nix;
-  fqdn = with config.networking; "${hostName}.${domain}";
 in {
   services.prometheus.alertmanager = {
     enable = true;
     port = 9093;
-    webExternalUrl = "http://${fqdn}/alertmanager/";
+    webExternalUrl = "http://${config.lib.f.fqdn}/alertmanager/";
     extraFlags = [ "--web.route-prefix=/" ];
 
     configuration = {

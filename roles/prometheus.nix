@@ -2,7 +2,6 @@
 
 let
   inherit (config) services;
-  fqdn = with config.networking; "${hostName}.${domain}";
 
   hosts = {
     "eve.magi.vpn" = { openwrt = 9100; };
@@ -45,7 +44,7 @@ in {
     checkConfig = true;
     extraFlags = [
       "--storage.tsdb.retention=30d"
-      "--web.external-url=http://${fqdn}/prometheus/"
+      "--web.external-url=http://${config.lib.f.fqdn}/prometheus/"
       "--web.route-prefix=/"
     ];
 

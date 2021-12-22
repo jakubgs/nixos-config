@@ -3,15 +3,13 @@
 let
   inherit (config) services;
   secrets = import ../secrets.nix;
-
-  fqdn = with config.networking; "${hostName}.${domain}";
 in {
   services.grafana = {
     enable = true;
     protocol = "http";
     addr = "127.0.0.1";
     port = 3000;
-    domain = fqdn;
+    domain = config.lib.f.fqdn;
     rootUrl = "%(protocol)s://%(domain)s:%(http_port)s/grafana/";
     extraOptions = {
       SERVER_SERVE_FROM_SUB_PATH = "true";

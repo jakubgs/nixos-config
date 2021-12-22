@@ -2,6 +2,9 @@
 
 let
   sortedServices = lib.sort ((a: b: a.title < b.title)) proxyServices;
+  hostname = config.networking.hostName;
+  fqdn = config.lib.f.fqdn;
+  grafanaUrl = "http://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
 in ''
 <!doctype html>
 <html>
@@ -13,20 +16,26 @@ in ''
         <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script>--!>
     </head>
     <style>
+        :root {
+            --font-color: #eaeaea;
+            --bg-color: #222222;
+            --fg-color: #393939;
+            --border-color: #404040;
+        }
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: silver;
             margin-left: 10%;
             margin-right: 10%;
-            color: #eaeaea;
-            background-color: #222222;
+            color: var(--font-color);
+            background-color: var(--bg-color);
             /* Text alignment */
             text-align: center;
             vertical-align: middle;
         }
         a {
             text-size: 3em;
-            color: #eaeaea;
+            color: var(--font-color);
             text-decoration: none;
         }
         .hostname {
@@ -43,21 +52,26 @@ in ''
             border-radius: 0.3ex;
             margin: 0.1em;
             padding: 0.5em;
-            border: 1px solid #404040;
-            background-color: #393939;
+            border: 1px solid var(--border-color);
+            background-color: var(--fg-color);
         }
         .service:hover {
-            border: 1px solid #393939;
-            background-color: #404040;
+            border: 1px solid var(--fg-color);
+            background-color: var(--border-color);
+        }
+        .graph {
+            padding: 0;
         }
     </style>
     <body>
         <header class="row center-text">
-            <h1 class="hostname">⛁ ${config.networking.hostName}</h1>
+            <h1 class="hostname">⛁ ${hostname}</h1>
         </header>
+        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=4" width="100%" height="200" frameborder="0"></iframe>
+        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=2" width="100%" height="200" frameborder="0"></iframe>
         <div class="main">
 ${lib.concatStringsSep "\n" (builtins.map (service: ''
-<a class="service" href="${service.name}">${service.title}</a>
+            <a class="service" href="${service.name}">${service.title}</a>
 '') sortedServices)}
         </div>
     </body>
