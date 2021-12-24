@@ -1,7 +1,7 @@
-{ ... }:
+{ config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  password = config.lib.f.pass "service/landing/htpasswd";
 in {
   services.prometheus.exporters = {
     mikrotik = {
@@ -15,7 +15,7 @@ in {
             name = "adam";
             address = "192.168.1.2";
             user = "prometheus";
-            password = secrets.mikrotikPassword;
+            password = password;
           }
         ];
         features = {

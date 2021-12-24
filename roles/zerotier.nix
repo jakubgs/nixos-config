@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  network = config.lib.f.pass "service/zerotier/magi";
 in {
   # Accept license
   nixpkgs.config.allowUnfree = true;
@@ -16,7 +16,7 @@ in {
 
   # Daemon
   services.zerotierone.enable = true;
-  services.zerotierone.joinNetworks = [ secrets.zeroTierNetwork ];
+  services.zerotierone.joinNetworks = [ network ];
 
   # Hosts Entries
   networking.hosts = {

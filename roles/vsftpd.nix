@@ -1,9 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 let
-  secrets = import ../secrets.nix;
-
   ftpUser = "anon";
+  ftpPass = config.lib.f.pass "service/vsftpd/pass";
   listenPort = 9999;
   pasvPorts = {
     min = 51000;
@@ -14,7 +13,7 @@ in {
   users.extraUsers.anon = {
     createHome = true;
     isNormalUser = true;
-    hashedPassword = secrets.ftpAnonUserPassword;
+    hashedPassword = ftpPass;
     extraGroups = [ "ftp" ];
   };
 

@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  hashedPass = config.lib.f.pass "hosts/users/jakubgs/pass-hash";
 in {
   # Give extra permissions with Nix
   nix.trustedUsers = [ "jakubgs" ];
@@ -18,7 +18,7 @@ in {
     isNormalUser = true;
     useDefaultShell = true;
     group = "jakubgs";
-    hashedPassword = secrets.userHashedPassword;
+    hashedPassword = hashedPass;
     extraGroups = [
       "wheel" "audio" "dialout" "video" "disk"
       "adm" "tty" "systemd-journal" "docker"

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  password = config.lib.f.pass "service/mpd/pass";
 in {
   # Clients
   environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];
@@ -22,7 +22,7 @@ in {
     musicDirectory = "/mnt/music";
     playlistDirectory = "/mnt/music/_playlists";
     extraConfig = ''
-      password   "${secrets.mpdPassword}@read,add,control,admin"
+      password   "${password}@read,add,control,admin"
       mixer_type "software"
       audio_buffer_size "8192"
     '';

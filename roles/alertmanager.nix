@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  webhook = config.lib.f.pass "service/alertmanager/discord-webhook";
 in {
   services.prometheus.alertmanager = {
     enable = true;
@@ -21,7 +21,7 @@ in {
           name = "discord-alerts";
           /* Discord accepts Slack API payloads under /slack. */
           slack_configs = [
-            { api_url = "${secrets.prometheusDiscordWebHook}/slack";
+            { api_url = "${webhook}/slack";
               channel = "alerts"; }
           ];
         }

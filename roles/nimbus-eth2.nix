@@ -1,7 +1,8 @@
-{ ... }:
+{ config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  nimbusPublicIp = config.lib.f.pass "service/nimbus/public-ip";
+  nimbusWeb3Url = config.lib.f.pass "service/nimbus/web3-url";
 
   listenPort = 9000;
   discoverPort = 9000;
@@ -19,8 +20,8 @@ in {
     enable = true;
     logLevel = "info";
     dataDir = "/mnt/data/nimbus-eth2";
-    publicIp = secrets.nimbusPublicIp;
-    web3Url = secrets.nimbusWeb3Url;
+    publicIp = nimbusPublicIp;
+    web3Url = nimbusWeb3Url;
     threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
     subAllSubnets = false;

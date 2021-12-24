@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  dbPass = config.lib.f.pass "service/nextcloud/db/pass";
+  adminPass = config.lib.f.pass "service/nextcloud/admin/pass";
+
   listenPort = 8002;
 in {
   # Firewall
@@ -40,7 +42,7 @@ in {
       extraTrustedDomains = [ "melchior.magi" ];
       adminuser = "admin";
       adminpassFile = toString (
-        pkgs.writeText "admin-pass-file" secrets.nextCloudAdminPass
+        pkgs.writeText "admin-pass-file" adminPass
       );
     };
   };
@@ -50,7 +52,7 @@ in {
     dbhost = "/run/postgresql";
     dbname = "nextcloud";
     dbuser = "nextcloud";
-    dbpass = secrets.nextCloudDBPass;
+    dbpass = dbPass;
   };
 
   systemd.services.nextcloud-setup = {

@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 let
-  secrets = import ../secrets.nix;
+  password = config.lib.f.pass "service/wifi/magi/pass";
 in {
   networking.wireless = {
     enable = true;
@@ -11,7 +11,7 @@ in {
     in lib.listToAttrs (lib.imap0 (idx: name: {
       inherit name;
       value = {
-        psk = secrets.wifiMagiPassword;
+        psk = password;
         priority = idx;
       };
     }) names);

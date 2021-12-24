@@ -1,10 +1,10 @@
 { config, ... }:
 
 let
-  secrets = import ../secrets.nix;
   listenPort = 9091;
   torrentDir = "/mnt/torrent";
-  torrentUser = "jakubgs";
+  username = "jakubgs";
+  password = config.lib.f.pass "service/transmission/pass";
 in {
   imports = [
     ../services/transmission-watch.nix
@@ -17,8 +17,8 @@ in {
   services.transmission = {
     enable = true;
     home = torrentDir;
-    user = torrentUser;
-    group = torrentUser;
+    user = username;
+    group = username;
     settings = {
       download-dir = torrentDir;
       incomplete-dir-enabled = false;
@@ -30,8 +30,8 @@ in {
       rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
       rpc-host-whitelist = "melchior.magi.vpn,melchior.magi.local";
       rpc-authentication-required = true;
-      rpc-username = torrentUser;
-      rpc-password = secrets.rpcPassword;
+      rpc-username = username;
+      rpc-password = password;
       # separate service watches for torrent files to start
       watch-dir-enabled = false;
       # limits
@@ -44,8 +44,8 @@ in {
     enable = true;
     watchDir = "${torrentDir}/watched";
     downloadDir = torrentDir;
-    rpcUser = torrentUser;
-    rpcPass = secrets.rpcPassword;
+    rpcUser = username;
+    rpcPass = password;
   };
 
   services.landing = {

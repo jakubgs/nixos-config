@@ -2,7 +2,7 @@
 
 let
   inherit (config) services;
-  secrets = import ../secrets.nix;
+  password = config.lib.f.pass "service/grafana/pass";
 in {
   services.grafana = {
     enable = true;
@@ -19,7 +19,7 @@ in {
 
     security = {
       adminUser = "jakubgs";
-      adminPassword = secrets.grafanaAdminPassword;
+      adminPassword = password;
     };
 
     provision = {

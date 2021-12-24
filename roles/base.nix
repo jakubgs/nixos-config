@@ -4,6 +4,7 @@
   imports = [
     ./nix.nix
     ./helpers.nix
+    ./secrets.nix
     ./security.nix
   ];
 
