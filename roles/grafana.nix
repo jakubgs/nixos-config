@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   inherit (config) services;
@@ -9,7 +9,7 @@ in {
     protocol = "http";
     addr = "127.0.0.1";
     port = 3000;
-    domain = config.lib.f.fqdn;
+    domain = pkgs.lib.fqdn;
     rootUrl = "%(protocol)s://%(domain)s:%(http_port)s/grafana/";
     extraOptions = {
       SERVER_SERVE_FROM_SUB_PATH = "true";

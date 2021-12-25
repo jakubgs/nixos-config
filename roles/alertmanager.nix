@@ -6,7 +6,7 @@ in {
   services.prometheus.alertmanager = {
     enable = true;
     port = 9093;
-    webExternalUrl = "http://${config.lib.f.fqdn}/alertmanager/";
+    webExternalUrl = "http://${pkgs.lib.fqdn}/alertmanager/";
     extraFlags = [ "--web.route-prefix=/" ];
 
     configuration = {
