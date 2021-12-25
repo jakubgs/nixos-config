@@ -1,7 +1,7 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
-  network = config.lib.f.pass "service/zerotier/magi";
+  network = pkgs.lib.secret "service/zerotier/magi";
 in {
   # Accept license
   nixpkgs.config.allowUnfree = true;

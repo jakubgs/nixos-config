@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 let
   ftpUser = "anon";
-  ftpPass = config.lib.f.pass "service/vsftpd/pass";
+  ftpPass = pkgs.lib.secret "service/vsftpd/pass";
   listenPort = 9999;
   pasvPorts = {
     min = 51000;

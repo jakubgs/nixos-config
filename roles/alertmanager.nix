@@ -1,7 +1,7 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
-  webhook = config.lib.f.pass "service/alertmanager/discord-webhook";
+  webhook = pkgs.lib.secret "service/alertmanager/discord-webhook";
 in {
   services.prometheus.alertmanager = {
     enable = true;

@@ -1,8 +1,8 @@
-{ config, ... }:
+{ pkgs, ... }:
 
 let
-  nimbusPublicIp = config.lib.f.pass "service/nimbus/public-ip";
-  nimbusWeb3Url = config.lib.f.pass "service/nimbus/web3-url";
+  nimbusPublicIp = pkgs.lib.secret "service/nimbus/public-ip";
+  nimbusWeb3Url = pkgs.lib.secret "service/nimbus/web3-url";
 
   listenPort = 9000;
   discoverPort = 9000;

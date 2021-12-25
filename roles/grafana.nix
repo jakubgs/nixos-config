@@ -2,7 +2,7 @@
 
 let
   inherit (config) services;
-  password = config.lib.f.pass "service/grafana/pass";
+  password = pkgs.lib.secret "service/grafana/pass";
 in {
   services.grafana = {
     enable = true;

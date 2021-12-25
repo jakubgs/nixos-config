@@ -7,9 +7,19 @@ let
   # Not all hosts have password-store and gpg keys.
   # Using secrets.nix as override for remote servers.
   overrideSecrets =
-    if builtins.pathExists ../secrets.nix
-    then import ../secrets.nix
-    else {};
+    if builtins.pathExists ../secrets.nix then import ../secrets.nix else { };
+
+  # builtins.exec expects stdout to be a Nix expression.
+  sudoPass = pkgs.writeScript "pass" ''
+    sudo -u jakubgs pass $@ | awk '{ print "\""$0"\""}'
+  '';
+
+  secretFunc = path:
+    assert (lib.assertMsg (lib.isString path)
+      "Secret path has to be a string!");
+    assert (lib.assertMsg (path != "") "Secret path can't be empty!");
+    let passQuery = lib.removeSuffix "\n" (builtins.exec [ sudoPass path ]);
+    in lib.attrByPath [ path ] passQuery overrideSecrets;
 in {
   # Allows for use of builtins.exec to call pass.
   # TODO: Replace with nix-plugins in the future.
@@ -19,18 +29,7 @@ in {
 
   # Helper function for querying pass for secrets in Nix.
   # First checks secrets.nix file for the given path.
-  lib.f = let
-    # builtins.exec expects stdout to be a Nix expression.
-    sudoPass = pkgs.writeScript "pass" ''
-      sudo -u jakubgs pass $@ | awk '{ print "\""$0"\""}'
-    '';
-  in {
-    pass = path: 
-        assert (lib.assertMsg (lib.isString path) "Secret path has to be a string!");
-        assert (lib.assertMsg (path != "") "Secret path can't be empty!");
-      let
-        passQuery = lib.removeSuffix "\n" (builtins.exec [sudoPass path]);
-      in
-        lib.attrByPath [path] passQuery overrideSecrets;
-  };
+  nixpkgs.overlays = [
+    (prev: final: { lib = final.lib // { secret = secretFunc; }; })
+  ];
 }

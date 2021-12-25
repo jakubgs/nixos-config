@@ -4,7 +4,7 @@ let
   inherit (config) services;
   inherit (lib) types mkEnableOption mkOption mkIf listToAttrs catAttrs;
 
-  htpasswd = config.lib.f.pass "service/landing/htpasswd";
+  htpasswd = pkgs.lib.secret "service/landing/htpasswd";
 
   cfg = config.services.landing;
 

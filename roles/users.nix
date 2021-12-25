@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
-  hashedPass = config.lib.f.pass "hosts/users/jakubgs/pass-hash";
+  hashedPass = pkgs.lib.secret "hosts/users/jakubgs/pass-hash";
 in {
   # Give extra permissions with Nix
   nix.trustedUsers = [ "jakubgs" ];

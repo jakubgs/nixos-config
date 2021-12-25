@@ -1,7 +1,7 @@
-{ config, ... }:
+{ pkgs, ... }:
 
 let
-  password = config.lib.f.pass "service/landing/htpasswd";
+  password = pkgs.lib.secret "service/landing/htpasswd";
 in {
   services.prometheus.exporters = {
     mikrotik = {

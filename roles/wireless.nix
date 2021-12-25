@@ -1,6 +1,7 @@
-{ config, lib, ... }:
+{ pkgs, lib, ... }:
+
 let
-  password = config.lib.f.pass "service/wifi/magi/pass";
+  password = pkgs.lib.secret "service/wifi/magi/pass";
 in {
   networking.wireless = {
     enable = true;
