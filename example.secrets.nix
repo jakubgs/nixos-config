@@ -1,3 +1,6 @@
+# This file is used to load local overrides for secrets fetche
+# by the 'secret' function defined in 'roles/secrets.nix'.
+# If not found the key is then used to query 'password-store'.
 {
   # user password made with mkpasswd -m sha-512
   "hosts/users/jakubgs/pass-hash" = "CHANGE_ME";
