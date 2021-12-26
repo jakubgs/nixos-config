@@ -8,6 +8,7 @@ with lib;
 
 let
   cfg = config.services.transmission-watch;
+  rpcPort = config.services.transmission.settings.rpc-port;
 
   # script for watching for new *.torrent files
   addTorrentScript = pkgs.substituteAll {
@@ -49,7 +50,7 @@ in {
 
         rpcAddr = mkOption {
           type = types.str;
-          default = "localhost:${toString config.services.transmission.port}";
+          default = "localhost:${toString rpcPort}";
           description = ''
             URL for the Transmission RPC port.
           '';
