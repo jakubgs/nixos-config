@@ -1,8 +1,6 @@
-{ pkgs, ... }:
+{ secret, ... }:
 
-let
-  password = pkgs.lib.secret "service/landing/htpasswd";
-in {
+{
   services.prometheus.exporters = {
     mikrotik = {
       enable = true;
@@ -15,7 +13,7 @@ in {
             name = "adam";
             address = "192.168.1.2";
             user = "prometheus";
-            password = password;
+            password = secret "service/landing/htpasswd";
           }
         ];
         features = {

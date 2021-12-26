@@ -1,8 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, secret, ... }:
 
-let
-  hashedPass = pkgs.lib.secret "hosts/users/jakubgs/pass-hash";
-in {
+{
   # Give extra permissions with Nix
   nix.trustedUsers = [ "jakubgs" ];
 
@@ -18,7 +16,7 @@ in {
     isNormalUser = true;
     useDefaultShell = true;
     group = "jakubgs";
-    hashedPassword = hashedPass;
+    hashedPassword = secret "hosts/users/jakubgs/pass-hash";
     extraGroups = [
       "wheel" "audio" "dialout" "video" "disk"
       "adm" "tty" "systemd-journal" "docker"

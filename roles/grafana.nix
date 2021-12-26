@@ -2,7 +2,6 @@
 
 let
   inherit (config) services;
-  password = secret "service/grafana/pass";
 in {
   services.grafana = {
     enable = true;
@@ -19,7 +18,7 @@ in {
 
     security = {
       adminUser = "jakubgs";
-      adminPassword = password;
+      adminPassword = secret "service/grafana/pass";
     };
 
     provision = {

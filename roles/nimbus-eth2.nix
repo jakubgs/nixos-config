@@ -1,9 +1,6 @@
-{ pkgs, ... }:
+{ secret, ... }:
 
 let
-  nimbusPublicIp = pkgs.lib.secret "service/nimbus/public-ip";
-  nimbusWeb3Url = pkgs.lib.secret "service/nimbus/web3-url";
-
   listenPort = 9000;
   discoverPort = 9000;
 in {
@@ -20,8 +17,8 @@ in {
     enable = true;
     logLevel = "info";
     dataDir = "/mnt/data/nimbus-eth2";
-    publicIp = nimbusPublicIp;
-    web3Url = nimbusWeb3Url;
+    publicIp = secret "service/nimbus/public-ip";
+    web3Url = secret "service/nimbus/web3-url";
     threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
     subAllSubnets = false;

@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, config, secret, ... }:
 
 let
-  password = pkgs.lib.secret "service/mpd/pass";
+  password = secret "service/mpd/pass";
 in {
   # Clients
   environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];

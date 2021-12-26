@@ -1,8 +1,6 @@
-{ pkgs, lib, ... }:
+{ lib, secret, ... }:
 
-let
-  password = pkgs.lib.secret "service/wifi/magi/pass";
-in {
+{
   networking.wireless = {
     enable = true;
     interfaces = [ "wlan0" ];
@@ -12,7 +10,7 @@ in {
     in lib.listToAttrs (lib.imap0 (idx: name: {
       inherit name;
       value = {
-        psk = password;
+        psk = secret "service/wifi/magi/pass";
         priority = idx;
       };
     }) names);

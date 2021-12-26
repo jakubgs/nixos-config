@@ -14,6 +14,8 @@ let
     sudo -u jakubgs pass $@ | awk '{ print "\""$0"\""}'
   '';
 
+  # Helper function for querying pass for secrets in Nix.
+  # First checks secrets.nix file for the given path.
   secretFunc = path:
     assert (lib.assertMsg (lib.isString path)
       "Secret path has to be a string!");
@@ -27,9 +29,7 @@ in {
     allow-unsafe-native-code-during-evaluation = true
   '';
 
-  # Helper function for querying pass for secrets in Nix.
-  # First checks secrets.nix file for the given path.
-  nixpkgs.overlays = [
-    (prev: final: { lib = final.lib // { secret = secretFunc; }; })
-  ];
+  # Make helper function vailable in module arguments.
+  # WARNING: Can cause infinite recursion errors!
+  _module.args.secret = secretFunc;
 }

@@ -1,10 +1,10 @@
-{ pkgs, config, ... }:
+{ config, secret, ... }:
 
 let
   listenPort = 9091;
   torrentDir = "/mnt/torrent";
   username = "jakubgs";
-  password = pkgs.lib.secret "service/transmission/pass";
+  password = secret "service/transmission/pass";
 in {
   imports = [
     ../services/transmission-watch.nix

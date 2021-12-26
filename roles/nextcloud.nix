@@ -1,8 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, secret, ... }:
 
 let
-  dbPass = pkgs.lib.secret "service/nextcloud/db/pass";
-  adminPass = pkgs.lib.secret "service/nextcloud/admin/pass";
+  dbPass = secret "service/nextcloud/db/pass";
+  adminPass = secret "service/nextcloud/admin/pass";
 
   listenPort = 8002;
 in {

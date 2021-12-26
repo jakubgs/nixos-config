@@ -1,10 +1,10 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, secret, ... }:
 
 let
   inherit (config) services;
   inherit (lib) types mkEnableOption mkOption mkIf listToAttrs catAttrs;
 
-  htpasswd = pkgs.lib.secret "service/landing/htpasswd";
+  htpasswd = secret "service/landing/htpasswd";
 
   cfg = config.services.landing;
 
