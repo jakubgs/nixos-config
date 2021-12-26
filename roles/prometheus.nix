@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 
 let
   inherit (config) services;
@@ -44,7 +44,7 @@ in {
     checkConfig = true;
     extraFlags = [
       "--storage.tsdb.retention=30d"
-      "--web.external-url=http://${pkgs.lib.fqdn}/prometheus/"
+      "--web.external-url=http://${config.networking.fqdn}/prometheus/"
       "--web.route-prefix=/"
     ];
 

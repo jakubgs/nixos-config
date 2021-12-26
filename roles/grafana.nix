@@ -1,15 +1,15 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, secret, fqdn, ... }:
 
 let
   inherit (config) services;
-  password = pkgs.lib.secret "service/grafana/pass";
+  password = secret "service/grafana/pass";
 in {
   services.grafana = {
     enable = true;
     protocol = "http";
     addr = "127.0.0.1";
     port = 3000;
-    domain = pkgs.lib.fqdn;
+    domain = config.networking.fqdn;
     rootUrl = "%(protocol)s://%(domain)s:%(http_port)s/grafana/";
     extraOptions = {
       SERVER_SERVE_FROM_SUB_PATH = "true";

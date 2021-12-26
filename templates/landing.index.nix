@@ -1,8 +1,9 @@
-{ pkgs, lib, config, proxyServices }:
+{ lib, config, proxyServices }:
 
 let
   sortedServices = lib.sort ((a: b: a.title < b.title)) proxyServices;
   hostname = config.networking.hostName;
+  fqdn = config.networking.fqdn;
   grafanaUrl = "http://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
 in ''
 <!doctype html>
@@ -66,8 +67,8 @@ in ''
         <header class="row center-text">
             <h1 class="hostname">⛁ ${hostname}</h1>
         </header>
-        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${pkgs.lib.fqdn}&amp;panelId=4" width="100%" height="200" frameborder="0"></iframe>
-        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${pkgs.lib.fqdn}&amp;panelId=2" width="100%" height="200" frameborder="0"></iframe>
+        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=4" width="100%" height="200" frameborder="0"></iframe>
+        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=2" width="100%" height="200" frameborder="0"></iframe>
         <div class="main">
 ${lib.concatStringsSep "\n" (builtins.map (service: ''
             <a class="service" href="${service.name}">${service.title}</a>
