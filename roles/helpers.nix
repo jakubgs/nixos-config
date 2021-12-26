@@ -1,4 +1,4 @@
-{ lib, config, types, ... }:
+{ lib, ... }:
 
 let
   inherit (lib) concatStringsSep splitString drop;
@@ -10,6 +10,6 @@ let
 in {
   # Helpers avaialble under pkgs.lib.
   nixpkgs.overlays = [
-    (prev: final: { lib = final.lib // newLib; })
+    (_: prev: { lib = prev.lib // newLib; })
   ];
 }

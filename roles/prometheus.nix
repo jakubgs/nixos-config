@@ -14,7 +14,7 @@ let
   };
 
   # helper for filtering hosts by available service port
-  hostsWithPort = service: lib.filterAttrs (n: v: lib.hasAttr service v) hosts;
+  hostsWithPort = service: lib.filterAttrs (_: v: lib.hasAttr service v) hosts;
 
   # helper for generating scrape targets
   genTargets = service:

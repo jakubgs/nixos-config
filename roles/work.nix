@@ -6,7 +6,7 @@ let
   aliyun-cli = pkgs.callPackage ../pkgs/aliyun-cli.nix { };
 
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = python-packages: with (pkgs.python38Packages); [
+  myPythonPkgs = _: with (pkgs.python38Packages); [
     ipython pip
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2

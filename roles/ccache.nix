@@ -3,7 +3,7 @@
 {
   # This enables compilation cache via ccacheStdenv.
   # WARNING: /var/cache/ccache needs to exist + nixbld group
-   nixpkgs.overlays = [ (self: super: {
+   nixpkgs.overlays = [ (_: super: {
      ccacheWrapper = super.ccacheWrapper.override {
        extraConfig = ''
          export CCACHE_COMPRESS=1

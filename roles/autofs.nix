@@ -20,8 +20,8 @@ let
       map (p: "${p} -fstype=cifs,${defaultCifsOptions} ://${host}.magi.vpn/${p}") paths
     );
 
-  genShareConfigFile = host: genFunc:
-    pkgs.writeText "autofs-${host}" (genFunc host (builtins.getAttr host hostShares));
+  genShareConfigFile = host: shares: genFunc:
+    pkgs.writeText "autofs-${host}" (genFunc host shares);
 in {
   environment.systemPackages = with pkgs; [ cifs-utils ];
 
@@ -30,10 +30,10 @@ in {
     timeout = 60;
     autoMaster = 
       lib.concatStrings (lib.mapAttrsToList (host: shares: ''
-        /nfs/${host}  ${genShareConfigFile host genNfsShare}  --timeout 3
+        /nfs/${host}  ${genShareConfigFile host shares genNfsShare}  --timeout 3
       '') hostShares) +
       lib.concatStrings (lib.mapAttrsToList (host: shares: ''
-        /cifs/${host} ${genShareConfigFile host genCifsShare} --timeout 3
+        /cifs/${host} ${genShareConfigFile host shares genCifsShare} --timeout 3
       '') hostShares);
   };
 }

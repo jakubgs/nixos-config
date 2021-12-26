@@ -1,13 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
-let
-  unstablePkgs = import <nixos-unstable> { };
-in {
+{
   # Enable clipboard manager
-  services.clipmenu = {
-    enable = true;
-    package = unstablePkgs.clipmenu;
-  };
+  services.clipmenu.enable = true;
 
   # Ignore my script for finding secrets
   systemd.user.services.clipmenu = {

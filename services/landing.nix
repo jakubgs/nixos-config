@@ -73,12 +73,12 @@ in {
             };
           } // listToAttrs cfg.proxyServices
             # Pages combining multiple dashboards
-            // listToAttrs (map (name: {
-              name = "= /central${name}";
+            // listToAttrs (map (subpath: {
+              name = "= /central${subpath}";
               value = {
                 root = pkgs.writeTextDir "central.html"
                   (pkgs.callPackage ../templates/central.index.nix {
-                    subpath = name;
+                    inherit subpath;
                     inherit (cfg) machines;
                   });
                 tryFiles = "/central.html =404";

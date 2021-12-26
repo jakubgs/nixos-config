@@ -7,11 +7,11 @@
     networks = let
       # Order matters, last has highest priority.
       names = [ "MAGI" "MAGI 5Ghz" "MAGI v2" ];
-    in lib.listToAttrs (lib.imap0 (idx: name: {
+    in lib.listToAttrs (lib.imap0 (priority: name: {
       inherit name;
       value = {
         psk = secret "service/wifi/magi/pass";
-        priority = idx;
+        inherit priority;
       };
     }) names);
   };

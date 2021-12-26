@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ config, secret, ... }:
 
 let
   network = secret "service/zerotier/magi";

@@ -1,4 +1,4 @@
-{ lib, config, secret, fqdn, ... }:
+{ lib, config, secret, ... }:
 
 let
   inherit (config) services;
