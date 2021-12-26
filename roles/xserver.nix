@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-  unstable = import <nixos-unstable> { };
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
@@ -42,7 +41,7 @@ in {
       };
     };
     fonts = with pkgs; [
-      unstable.inconsolata
+      inconsolata
       terminus_font
       corefonts
       fira-code

@@ -13,7 +13,7 @@
     # utilities
     file zsh bash wget curl manpages sudo pass bc rename sqlite uptimed
     # building
-    gnumake gcc autoconf automake patchelfUnstable
+    gnumake gcc autoconf automake patchelf
     unrar unzip zip envsubst entr
     # processes
     dtach reptyr pstree killall

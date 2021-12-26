@@ -1,10 +1,8 @@
-{ ... }:
+{ unstable, ... }:
 
-let
-  unstablePkgs = import <nixos-unstable> { };
-in {
+{
   # Packages required for work
-  users.users.jakubgs.packages = with unstablePkgs; [
+  users.users.jakubgs.packages = with unstable; [
     ledger-live-desktop
   ];
 
