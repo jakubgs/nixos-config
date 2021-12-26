@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ pkgs, config, lib, secret, ... }:
 
 let
   listenPort = 9091;
@@ -38,6 +38,10 @@ in {
       download-queue-size = 30;
     };
   };
+
+  systemd.services.syncthing.after = lib.mkForce [
+    "network.target" (pkgs.lib.pathToService torrentDir)
+  ];
 
   # Directory Watcher - Recursively starts torrents
   services.transmission-watch = {
