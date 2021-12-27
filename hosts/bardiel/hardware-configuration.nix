@@ -28,13 +28,13 @@
       fsType = "zfs";
     };
 
-  fileSystems."/boot2" =
-    { device = "/dev/disk/by-uuid/42277106-1671-4f63-a4d6-67564224ed92";
+  fileSystems."/boot1" =
+    { device = "/dev/disk/by-uuid/e3617ef9-e4c3-4b74-9046-2dfdddeb6988";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/e3617ef9-e4c3-4b74-9046-2dfdddeb6988";
+  fileSystems."/boot2" =
+    { device = "/dev/disk/by-uuid/42277106-1671-4f63-a4d6-67564224ed92";
       fsType = "ext4";
     };
 
