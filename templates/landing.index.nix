@@ -5,6 +5,12 @@ let
   hostname = config.networking.hostName;
   fqdn = config.networking.fqdn;
   grafanaUrl = "http://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
+  graphs = [
+    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=4"
+    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=2"
+    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=6"
+    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=26"
+  ];
 in ''
 <!doctype html>
 <html>
@@ -41,7 +47,7 @@ in ''
         .hostname {
             font-family: monospace;
         }
-        .main {
+        .services {
             display: grid;
             grid-template-columns: repeat(4, minmax(20em, 1fr));
         }
@@ -59,6 +65,10 @@ in ''
             border: 1px solid var(--fg-color);
             background-color: var(--border-color);
         }
+        .graphs {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(20em, 1fr));
+        }
         .graph {
             padding: 0;
         }
@@ -67,9 +77,14 @@ in ''
         <header class="row center-text">
             <h1 class="hostname">⛁ ${hostname}</h1>
         </header>
-        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=4" width="100%" height="200" frameborder="0"></iframe>
-        <iframe class="service graph" src="${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=2" width="100%" height="200" frameborder="0"></iframe>
-        <div class="main">
+        <div class="graphs">
+${lib.concatStringsSep "\n" (builtins.map (graph: ''
+          <div class="service graph">
+            <iframe src="${graph}" width="100%" height="100%" frameborder="0"></iframe>
+          </div>
+'') graphs)}
+        </div>
+        <div class="services">
 ${lib.concatStringsSep "\n" (builtins.map (service: ''
             <a class="service" href="${service.name}">${service.title}</a>
 '') sortedServices)}
