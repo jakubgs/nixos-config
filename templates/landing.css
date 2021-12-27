@@ -1,0 +1,59 @@
+:root {
+    --font-color: #eaeaea;
+    --bg-color: #111217;
+    --fg-color: #181b1f;
+    --border-color: #35383e;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: silver;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    /* Text alignment */
+    text-align: center;
+    vertical-align: middle;
+}
+
+a {
+    text-size: 3em;
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+.hostname {
+    font-family: monospace;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(20em, 1fr));
+}
+
+.service {
+    font-size: 3em;
+    line-height: 160px;
+    display: block;
+    border-radius: 0.3ex;
+    margin: 0.1em;
+    padding: 0.5em;
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+}
+
+.service:hover {
+    border: 1px solid var(--fg-color);
+    background-color: var(--border-color);
+}
+
+.graphs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(20em, 1fr));
+}
+
+.graph {
+    padding: 0;
+    border-radius: 0.3ex;
+}
