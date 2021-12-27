@@ -12,9 +12,6 @@ let
     inherit config;
     inherit (cfg) proxyServices;
   };
-  centralPage = pkgs.callPackage ../templates/central.index.nix {
-    machines = map (v: "${v}.magi.vpn") cfg.machines;
-  };
 in {
   options = {
     services = {
@@ -43,12 +40,6 @@ in {
           description =
             "List of objects defining paths and Nginx proxy configs.";
         };
-
-        machines = mkOption {
-          type = types.listOf types.str;
-          default = [ ];
-          description = "List of names of hosts to include in central.";
-        };
       };
     };
   };
@@ -67,23 +58,7 @@ in {
               root = pkgs.writeTextDir "index.html" landingPage;
               tryFiles = "/index.html =404";
             };
-            "= /central/" = {
-              root = pkgs.writeTextDir "central.html" centralPage;
-              tryFiles = "/central.html =404";
-            };
-          } // listToAttrs cfg.proxyServices
-            # Pages combining multiple dashboards
-            // listToAttrs (map (subpath: {
-              name = "= /central${subpath}";
-              value = {
-                root = pkgs.writeTextDir "central.html"
-                  (pkgs.callPackage ../templates/central.index.nix {
-                    inherit subpath;
-                    inherit (cfg) machines;
-                  });
-                tryFiles = "/central.html =404";
-              };
-            }) (catAttrs "name" cfg.proxyServices));
+          } // listToAttrs cfg.proxyServices;
         };
       };
     };
