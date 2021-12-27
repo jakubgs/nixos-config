@@ -38,7 +38,7 @@ in {
   services.landing = {
     proxyServices = [{
       name = "/alertmanager/";
-      title = "AlertManager";
+      title = "Alertmanager";
       value = {
         proxyPass =
           "http://localhost:${toString config.services.prometheus.alertmanager.port}/";
