@@ -28,6 +28,7 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
+    configurationLimit = 5;
     mirroredBoots = [
       {
         devices = ["/dev/disk/by-id/ata-WDC_WD2000FYYZ-01UL1B1_WD-WCC1P1092953"];
