@@ -18,9 +18,9 @@ in ''
     <style>
         :root {
             --font-color: #eaeaea;
-            --bg-color: #222222;
-            --fg-color: #393939;
-            --border-color: #404040;
+            --bg-color: #2f3337;
+            --fg-color: #181b1f;
+            --border-color: #212428;
         }
         body {
             font-family: Arial, Helvetica, sans-serif;
