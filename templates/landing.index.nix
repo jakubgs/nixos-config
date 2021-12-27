@@ -5,12 +5,10 @@ let
   hostname = config.networking.hostName;
   fqdn = config.networking.fqdn;
   grafanaUrl = "http://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
-  graphs = [
-    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=4"
-    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=2"
-    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=6"
-    "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=26"
-  ];
+  graphIds = [4 2 6 26];
+  graphs = builtins.map (
+    id: "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=${builtins.toString id}"
+  ) graphIds;
 in ''
 <!doctype html>
 <html>
