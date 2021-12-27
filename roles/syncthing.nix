@@ -20,6 +20,9 @@ in {
     dataDir = "/home/jakubgs/.syncthing";
     guiAddress = "127.0.0.1:8384";
 
+    # Use when syncing gets stuck.
+    #extraFlags = ["--reset-deltas"];
+
     devices = lib.filterAttrs (h: _: notThisHost h) {
       caspair = { # desktop
         id = "RNHJNYU-IVWMAZT-OL667WV-Y7NOURO-WVT6IHS-MWEBAS6-SDZVQ5C-3MXHYQ5";
@@ -67,7 +70,7 @@ in {
     proxyServices = [
       { 
         name ="/sync/";
-        title = "SyncThing";
+        title = "Syncthing";
         value = {
           extraConfig = ''
             proxy_set_header Host localhost;
