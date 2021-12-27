@@ -13,7 +13,7 @@
             name = "adam";
             address = "192.168.1.2";
             user = "prometheus";
-            password = secret "service/landing/htpasswd";
+            password = secret "service/mikrotik/pass";
           }
         ];
         features = {
