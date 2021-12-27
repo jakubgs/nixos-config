@@ -71,6 +71,7 @@ in ''
         }
         .graph {
             padding: 0;
+            border-radius: 0.3ex;
         }
     </style>
     <body>
@@ -80,7 +81,7 @@ in ''
         <div class="graphs">
 ${lib.concatStringsSep "\n" (builtins.map (graph: ''
           <div class="service graph">
-            <iframe src="${graph}" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe class="graph" src="${graph}" width="100%" height="100%" frameborder="0"></iframe>
           </div>
 '') graphs)}
         </div>
