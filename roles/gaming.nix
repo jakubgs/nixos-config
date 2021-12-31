@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
   # Enable 32bit OpenGL and PulseAudio
@@ -16,7 +16,7 @@
     corefonts
     vulkan-tools
     # Wine
-    wineWowPackages.full
+    wineWowPackages.stagingFull
     winetricks
     # Mouse
     piper
