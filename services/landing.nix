@@ -2,7 +2,7 @@
 
 let
   inherit (config) services;
-  inherit (lib) types mkEnableOption mkOption mkIf listToAttrs catAttrs;
+  inherit (lib) types mkEnableOption mkOption mkIf listToAttrs;
 
   htpasswd = secret "service/landing/htpasswd";
 
@@ -18,18 +18,6 @@ in {
       landing = {
         enable =
           mkEnableOption "Enabel a fast and simple webserver for your files.";
-
-        dataDir = mkOption {
-          type = types.str;
-          default = "info";
-          description = "Directory to share with landing.";
-        };
-
-        readOnly = mkOption {
-          type = types.bool;
-          default = true;
-          description = "Read only mode (no upload, rename, move, etc...).";
-        };
 
         # This list of sets represents service proxies we support.
         # To simplify merging with 'locations' we use the 
