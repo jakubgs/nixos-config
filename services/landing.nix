@@ -38,7 +38,7 @@ in {
       enableReload = true;
 
       virtualHosts = {
-        "${config.networking.hostName}.${config.networking.domain}" = {
+        "${config.networking.fqdn}" = {
           default = true;
           basicAuthFile = pkgs.writeText "htpasswd" htpasswd;
           locations = {
