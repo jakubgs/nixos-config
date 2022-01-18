@@ -29,8 +29,9 @@
     };
 
   fileSystems."/var/lib/docker" =
-    { device = "rpool/docker";
-      fsType = "zfs";
+    { device = "/dev/disk/by-uuid/f0746471-eed1-49f0-94dc-4e84d1b5f39c";
+      fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   fileSystems."/home/jakubgs/.local/share/Steam" =
@@ -88,4 +89,6 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/fab32a97-2090-4eac-a3e1-3254e0077c06"; }
     ];
+
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
