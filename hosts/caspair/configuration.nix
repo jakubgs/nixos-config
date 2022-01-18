@@ -37,7 +37,7 @@
   };
 
   # Resume
-  boot.resumeDevice = "/dev/disk/by-uuid/64c71a04-655a-4ef5-996f-f2cadb801e72";
+  boot.resumeDevice = "/dev/disk/by-id/nvme-SAMSUNG_MZVPW256HEGL-000H1_S34ENY0J502586-part1";
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];

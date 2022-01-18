@@ -10,3 +10,4 @@ Configuration for desktop.
 * 2x Samsung SSD 860 ZFS Mirror
 * 2x WDC WD5003AZEX-0 ZFS Mirror
 * CT250MX500SSD1 (Windows)
+* SAMSUNG SM961 M.2 NVMe 256 GB
