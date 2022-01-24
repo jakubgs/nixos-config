@@ -8,6 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     virtmanager
+    qemu-utils
   ];
 
   virtualisation.libvirtd = {
@@ -21,6 +22,9 @@
       ovmf = { enable = true; };
     };
   };
+
+  # Clipboard sharing - requires spice-guest-tools
+  services.spice-vdagentd.enable = true;
 
   users.users.jakubgs.extraGroups = [ "libvirtd" ];
 }
