@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -6,7 +6,7 @@
   ];
 
   nixpkgs.overlays = [
-    (new: prev: { mtr-exporter = unstable.mtr-exporter; })
+    (new: prev: { mtr-exporter = pkgs.unstable.mtr-exporter; })
   ];
 
   # Firewall

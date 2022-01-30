@@ -4,27 +4,21 @@ This repo defines [NixOS](https://nixos.org/nixos/) configuration for my hosts.
 
 # Usage
 
-To deploy the configuration run:
+Symlink the repo to `/etc/nixos`:
 ```bash
-cp example.secrets.nix secrets.nix
-vim secrets.nix
-sudo ./symlink "${HOSTNAME}"
+sudo ln -s $(realpath nixos-config) /etc/nixos
 ```
-That should symlink the necessary host-specific files:
-
-* `hosts/${HOSTNAME}/configuration.nix`
-* `hosts/${HOSTNAME}/hardware.configuration.nix`
-
-To the repo root and link the repo root to `/etc/nixos`.
-
-To apply the changes simply use:
+Deploy the configuration for given host using `--flake`:
 ```bash
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --flake '/etc/nixos#caspair'
 ```
+If the hostname matches `--flake` is not necessary.
 
-# Nix Packages
+# Secrets
 
-To use a custom `nixpkgs` location use the `-I` flag:
-```
-sudo nixos-rebuild switch -I nixpkgs=${HOME}/nixpkgs
-```
+Secrets are fetched by [`roles/secrets.nix`](roles/secrets.nix):
+
+1. By calling [`pass`](https://www.passwordstore.org/) for given path
+2. Checking `secrets.nix` as fallback
+
+Use [`example.secrets.nix`](example.secrets.nix) to create `secrets.nix`
