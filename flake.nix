@@ -8,9 +8,9 @@
 
   outputs = { self, nixpkgs, unstable }:
     let
-      unstableOverlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
+      overlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
-      unstableModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ unstableOverlay ]; });
+      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
     in {
       nixosConfigurations = let
         # To generate host configurations for all hosts.
@@ -20,7 +20,8 @@
           name = host;
           value = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            modules = [ unstableModule ./hosts/${host}/configuration.nix ];
+            specialArgs.channels = { inherit nixpkgs unstable; };
+            modules = [ overlayModule ./hosts/${host}/configuration.nix ];
           };
         }
       ) hostnames);

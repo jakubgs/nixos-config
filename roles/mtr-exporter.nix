@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, channels, ... }:
 
 {
   imports = [
-    <nixos-unstable/nixos/modules/services/networking/mtr-exporter.nix>
+    "${channels.unstable}/nixos/modules/services/networking/mtr-exporter.nix"
   ];
 
   nixpkgs.overlays = [
-    (new: prev: { mtr-exporter = pkgs.unstable.mtr-exporter; })
+    (new: prev: { mtr-exporter = pkgs.unstable.pkgs.mtr-exporter; })
   ];
 
   # Firewall
