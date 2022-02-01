@@ -41,7 +41,7 @@ in {
     # Infra dev
     terraform_1_0
     # NodeJS dev
-    nodejs-16_x yarn
+    nodejs-16_x (yarn.override { nodejs = nodejs-16_x; })
     # GoLang dev
     go_1_17 gocode gopls go-protobuf
     # Python dev
