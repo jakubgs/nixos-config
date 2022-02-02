@@ -28,14 +28,15 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
-    configurationLimit = 5;
+    configurationLimit = 10;
+    copyKernels = true;
     mirroredBoots = [
       {
-        devices = ["/dev/disk/by-id/ata-WDC_WD2000FYYZ-01UL1B1_WD-WCC1P1092953"];
+        devices = ["/dev/disk/by-id/ata-TOSHIBA_MG04ACA400EY_586IK061F7GB"];
         path = "/boot1";
       }
       {
-        devices = ["/dev/disk/by-id/ata-ST2000NM0033-9ZM175_Z1X12D5D"];
+        devices = ["/dev/disk/by-id/ata-TOSHIBA_MG04ACA400EY_586IK063F7GB"];
         path = "/boot2";
       }
     ];

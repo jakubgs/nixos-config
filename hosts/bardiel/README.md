@@ -1,14 +1,14 @@
 # Description
 
-Configuration for Hetzner SB29 host.
+Configuration for [Hetzner EX42](https://www.hetzner.com/dedicated-rootserver/ex42) host.
 
 # Hardware
 
-* Intel Core i7-4770
-* HDD 2x HDD SATA 2,0 TB Enterprise
-* RAM 4x RAM 8192 MB DDR3
+* FUJITSU D3401-H2
+* Intel Core i7-6700 Quad-Core
+* HDD 2x HDD SATA 4.0 TB Toshiba MG04ACA4
+* RAM 4x RAM 16 GB DDR4 2133MHz PC4-17000
 
 # Installation
 
-Throught system rescue:
-https://nixos.wiki/wiki/Install_NixOS_on_Hetzner_Online
+See [`INSTALL.md`](./INSTALL.md).

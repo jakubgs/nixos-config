@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -29,12 +29,12 @@
     };
 
   fileSystems."/boot1" =
-    { device = "/dev/disk/by-uuid/e3617ef9-e4c3-4b74-9046-2dfdddeb6988";
+    { device = "/dev/disk/by-uuid/79684d7a-0a62-4d98-bc7a-2031e1629799";
       fsType = "ext4";
     };
 
   fileSystems."/boot2" =
-    { device = "/dev/disk/by-uuid/42277106-1671-4f63-a4d6-67564224ed92";
+    { device = "/dev/disk/by-uuid/ae1f33d2-f073-42fd-8bae-aee1d1d286c1";
       fsType = "ext4";
     };
 
@@ -75,9 +75,10 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/b0c6d150-becc-403d-8f4c-da8d93cdb2fb"; }
-      { device = "/dev/disk/by-uuid/c28a5342-81e9-437d-b6f3-695fada86298"; }
+    [ { device = "/dev/disk/by-uuid/8f93c05e-a6c7-40b0-8331-5da20f2f0316"; }
+      { device = "/dev/disk/by-uuid/429b6fce-b646-49b2-8f09-da62e124c705"; }
     ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
