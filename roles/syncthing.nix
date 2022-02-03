@@ -45,7 +45,7 @@ in {
         addresses = [ "tcp://sachiel.magi.vpn:22000" ];
       };
       bardiel = { # hetzner
-        id = "WD32426-3YNRIMP-5VRQJMK-WRRKRVY-ARDEWOM-X37O6LV-W3VLZDM-IXLGMAC";
+        id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
         addresses = [ "tcp://bardiel.magi.vpn:22000" ];
       };
     };
