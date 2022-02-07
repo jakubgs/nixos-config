@@ -38,7 +38,7 @@
     # Desktop
     xfce.thunar nitrogen scrot screenfetch flameshot
     # Themes
-    lxappearance lounge-gtk-theme
+    lxappearance matcha-gtk-theme vimix-gtk-themes
     # Browsers
     brave ungoogled-chromium
     # Documents
