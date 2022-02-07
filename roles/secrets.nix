@@ -4,15 +4,20 @@
 # https://elvishjerricco.github.io/2018/06/24/secure-declarative-key-management.html
 
 let
-  # Not all hosts have password-store and gpg keys.
-  # Using secrets.nix as override for remote servers.
-  overrideSecrets =
-    if builtins.pathExists ../secrets.nix then import ../secrets.nix else { };
-
   # builtins.exec expects stdout to be a Nix expression.
   sudoPass = pkgs.writeScript "pass" ''
-    sudo -u jakubgs pass $@ | awk '{ print "\""$0"\""}'
+    sudo -u jakubgs pass "$@" | awk '{ print "\""$0"\""}'
   '';
+
+  # We have to ignore if secrets.nix doesn't exit.
+  catWrap = pkgs.writeScript "cat" ''
+    cat "$@" 2>/dev/null || echo '{}'
+  '';
+
+  # Not all hosts have password-store and gpg keys.
+  # Using secrets.nix as override for remote servers and installations.
+  # FIXME: Without exec flake builds don't see uncommited files.
+  overrideSecrets = builtins.exec [ catWrap "/etc/nixos/secrets.nix" ];
 
   # Helper function for querying pass for secrets in Nix.
   # First checks secrets.nix file for the given path.
