@@ -18,7 +18,7 @@ If the hostname matches `--flake` is not necessary.
 
 Secrets are fetched by [`roles/secrets.nix`](roles/secrets.nix):
 
-1. By calling [`pass`](https://www.passwordstore.org/) for given path
-2. Checking `secrets.nix` as fallback
+1. Checking `secrets.nix` for overrides.
+2. By calling [`pass`](https://www.passwordstore.org/) for given path.
 
 Use [`example.secrets.nix`](example.secrets.nix) to create `secrets.nix`
