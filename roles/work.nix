@@ -3,8 +3,6 @@
 # This file includes setup for things required for work
 
 let
-  aliyun-cli = pkgs.callPackage ../pkgs/aliyun-cli.nix { };
-
   # For details see: https://nixos.wiki/wiki/Python
   myPythonPkgs = _: with (pkgs.python38Packages); [
     ipython pip
