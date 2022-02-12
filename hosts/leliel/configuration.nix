@@ -18,6 +18,7 @@
     ../../roles/landing.nix
     ../../roles/torrent.nix
     ../../roles/mikrotik.nix
+    ../../roles/distbuild.nix
   ];
 
   # Boot
@@ -79,7 +80,7 @@
   system.stateVersion = "20.09";
 
   # Packages
-  environment.systemPackages = with pkgs; [ raspberrypi-tools ];
+  environment.systemPackages = with pkgs; [ libraspberrypi ];
 
   # Fix for USB sound issues, doesn't seem to work
   # cat /sys/module/usbcore/parameters/autosuspend
