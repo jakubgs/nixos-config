@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ modulesPath, ... }:
 
 {
   imports = [
+    (modulesPath + "/profiles/hardened.nix")
+    (modulesPath + "/profiles/headless.nix")
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
