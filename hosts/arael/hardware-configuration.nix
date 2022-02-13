@@ -33,6 +33,23 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/nimbus" =
+    { device = "DATA/nimbus";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/nimbus/secrets" =
+    { device = "DATA/secret/secrets";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/nimbus/validators" =
+    { device = "DATA/secret/validators";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/c618951c-d116-4515-8268-52f081fae506"; }
     ];
