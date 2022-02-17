@@ -5,16 +5,16 @@
 }:
 
 let
-  rev = "bef13b6c";
+  rev = "8e033005";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
 in pkgs.stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
-  version = "1.6.0";
+  version = "1.7.0";
 
   src = pkgs.fetchgit {
     url = "https://github.com/status-im/${pname}.git";
     rev = "v${version}";
-    sha256 = "sha256-OxpqObjoom1WCH/W5Bo8GMCrOr9fLiEzb6jc1IAJNL8=";
+    sha256 = "sha256-GfHXAHOX750a06hItNt1u5ZN0HXYfvv9tnI9O9HfUJQ=";
     fetchSubmodules = true;
   };
 
@@ -32,6 +32,7 @@ in pkgs.stdenv.mkDerivation rec {
   configurePhase = ''
     # Fix for Nim compiler calling git rev-parse
     export PATH=$PATH:${fakeGit}/bin
+    export EXCLUDED_NIM_PACKAGES=""
     export NIMBLE_LINK_SCRIPT=$PWD/vendor/nimbus-build-system/scripts/create_nimble_link.sh
     export NIMBLE_DIR=$PWD/vendor/.nimble
     export PWD_CMD=$(which pwd)
