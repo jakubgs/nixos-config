@@ -16,6 +16,7 @@ in {
   services.nimbus-eth2 = {
     enable = true;
     logLevel = "info";
+    logFormat = "json";
     dataDir = "/mnt/nimbus";
     publicIp = secret "service/nimbus/public-ip";
     web3Url = secret "service/nimbus/web3-url";

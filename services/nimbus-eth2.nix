@@ -36,6 +36,12 @@ in {
           description = "Logging level for the node.";
         };
 
+        logFormat = mkOption {
+          type = types.str;
+          default = "auto";
+          description = "Logging formatting (auto, colors, nocolors, json).";
+        };
+
         threadsNumber = mkOption {
           type = types.int;
           default = 1;
@@ -126,6 +132,7 @@ in {
             --web3-url=${cfg.web3Url} \
             --nat=extip:${cfg.publicIp} \
             --log-level=${toUpper cfg.logLevel} \
+            --log-format=${cfg.logFormat} \
             --num-threads=${toString cfg.threadsNumber} \
             --tcp-port=${toString cfg.listenPort} \
             --udp-port=${toString cfg.discoverPort} \
