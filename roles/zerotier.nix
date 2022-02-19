@@ -26,7 +26,6 @@ in {
     "10.2.2.12" = [ "lilim.magi.vpn"    ]; # laptop
     "10.2.2.13" = [ "ramiel.magi.vpn"   ]; # phone
     "10.2.2.14" = [ "leliel.magi.vpn"   ]; # rasppi4
-    "10.2.2.15" = [ "zeruel.magi.vpn"   ]; # nimbus
     "10.2.2.16" = [ "sachiel.magi.vpn"  ]; # nanopct4
     "10.2.2.17" = [ "bardiel.magi.vpn"  ]; # hetzner
     "10.2.2.18" = [ "arael.magi.vpn"    ]; # hetzner
