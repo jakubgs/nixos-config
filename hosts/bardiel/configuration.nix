@@ -20,6 +20,7 @@
     ../../roles/nfs.nix
     ../../roles/gossa.nix
     ../../roles/builder.nix
+    ../../roles/nimbus-eth2.nix
   ];
 
   # Hetzner KVMs are limited, better to always force.

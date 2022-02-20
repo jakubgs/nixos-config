@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -68,6 +68,12 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/mnt/nimbus" =
+    { device = "rpool/secret/nimbus";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+     };
+
   fileSystems."/git" =
     { device = "/mnt/git";
       fsType = "none";
@@ -75,8 +81,8 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/8f93c05e-a6c7-40b0-8331-5da20f2f0316"; }
-      { device = "/dev/disk/by-uuid/429b6fce-b646-49b2-8f09-da62e124c705"; }
+    [ { device = "/dev/disk/by-uuid/04b2a3b8-c382-45df-aaa8-3c81ea39a3ec"; }
+      { device = "/dev/disk/by-uuid/6ab869d2-b6ea-4bd5-b6d0-9a89168262cb"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

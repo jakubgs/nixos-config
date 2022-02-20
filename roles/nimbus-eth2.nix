@@ -1,4 +1,4 @@
-{ secret, ... }:
+{ lib, secret, ... }:
 
 let
   listenPort = 9000;
@@ -26,4 +26,7 @@ in {
     /* Costs two slot rewards at restart if enabled. */
     doppelganger = false;
   };
+
+  # Wait for volume to be mounted
+  systemd.services.syncthing.after = lib.mkForce ["mnt-nimbus.mount"];
 }
