@@ -20,6 +20,7 @@
     ../../roles/nfs.nix
     ../../roles/gossa.nix
     ../../roles/builder.nix
+    ../../roles/invidious.nix
     ../../roles/nimbus-eth2.nix
   ];
 
