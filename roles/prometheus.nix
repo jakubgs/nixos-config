@@ -55,7 +55,7 @@ in {
 
     scrapeConfigs = [
       (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
-      (genScrapeJob {name = "nimbus";   path = "/metrics";})
+      (genScrapeJob {name = "nimbus";   path = "/metrics"; interval = "6s"; })
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
       (genScrapeJob {name = "openwrt";  path = "/metrics";})
       (genScrapeJob {name = "mtr";      path = "/metrics";})
