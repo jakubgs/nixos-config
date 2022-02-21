@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
+  inherit (lib) concatStringsSep mapAttrsToList;
+  formatConfig = ip: fqdns: 
+    concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);
+
   blockedFqdns = pkgs.callPackage ../pkgs/blocked-fqdns.nix { };
 in {
   services.dnsmasq = {
@@ -18,8 +22,16 @@ in {
       cache-size=10000
       local-ttl=300
 
+      conf-dir=/etc/dnsmasq.d/,*.conf
       conf-file=${blockedFqdns}/domains
       addn-hosts=${blockedFqdns}/hosts
     '';
+  };
+
+  # Support wildcard resolution of /etc/hosts contents.
+  environment.etc."dnsmasq.d/hosts.conf" = {
+    text = concatStringsSep "\n" (
+      mapAttrsToList formatConfig config.networking.hosts
+    );
   };
 }

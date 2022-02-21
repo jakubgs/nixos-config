@@ -17,7 +17,7 @@ in {
 
   services.nginx = {
     virtualHosts = {
-      "yt.magi.vpn" = {
+      "yt.${config.networking.hostName}.magi.vpn" = {
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}/";
         };
