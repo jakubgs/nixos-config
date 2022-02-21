@@ -1,11 +1,12 @@
 { config, ... }:
 
 let
-  cfg = config.services.invidious;
+  domain = "yt.${config.networking.hostName}.magi.vpn";
+  port = 9092;
 in {
   services.invidious = {
     enable = true;
-    port = 9092;
+    inherit port domain;
     database.createLocally = true;
     settings = {
       admins = ["jakubgs"];
@@ -17,9 +18,9 @@ in {
 
   services.nginx = {
     virtualHosts = {
-      "yt.${config.networking.hostName}.magi.vpn" = {
+      "${domain}" = {
         locations."/" = {
-          proxyPass = "http://localhost:${toString cfg.port}/";
+          proxyPass = "http://localhost:${toString port}/";
         };
       };
     };
