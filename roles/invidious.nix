@@ -13,6 +13,8 @@ in {
       external_port = 80;
       https_only = false;
       popular_enabled = false;
+      quality = "dash";
+      quality_dash = "best";
     };
   };
 
