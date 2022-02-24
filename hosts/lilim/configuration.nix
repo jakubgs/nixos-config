@@ -1,11 +1,9 @@
-# Laptop, Thinkpad 480s
-{ config, pkgs, ... }:
+{ config, pkgs, channels, ... }:
 
 {
   imports = [
+    channels.hardware.nixosModules.lenovo-thinkpad-t480s
     ./hardware-configuration.nix
-    # See: https://github.com/NixOS/nixos-hardware
-    <nixos-hardware/lenovo/thinkpad/t480s>
     ../../roles/base.nix
     ../../roles/zfs.nix
     ../../roles/users.nix

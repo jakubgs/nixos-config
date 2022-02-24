@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-21.11";
     unstable.url = "nixpkgs/nixos-unstable";
+    hardware.url = github:NixOS/nixos-hardware/master;
   };
 
-  outputs = { self, nixpkgs, unstable }:
+  outputs = { self, nixpkgs, unstable, hardware }:
     let
       overlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
@@ -20,7 +21,7 @@
           name = host;
           value = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs.channels = { inherit nixpkgs unstable; };
+            specialArgs.channels = { inherit nixpkgs unstable hardware; };
             modules = [ overlayModule ./hosts/${host}/configuration.nix ];
           };
         }
