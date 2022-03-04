@@ -18,6 +18,10 @@ in {
     };
   };
 
+  # Fix for random crashes dur to 'Invalid memory access'.
+  # https://github.com/iv-org/invidious/issues/1439
+  systemd.services.invidious.serviceConfig.Restart = "on-failure";
+
   services.nginx = {
     virtualHosts = {
       "${domain}" = {
