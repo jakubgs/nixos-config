@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, channels, ... }:
 
 {
   imports = [
@@ -49,6 +49,7 @@
     mpv youtube-dl ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
+    unstable.soundconverter
     # Communication
     gnome3.geary discord
     # Torrent
