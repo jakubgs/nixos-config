@@ -46,6 +46,9 @@
     ];
   };
 
+  # Disabled by hardened profile, big performance hit.
+  security.allowSimultaneousMultithreading = true;
+
   networking = {
     hostName = "bardiel";
     hostId = "4b16a017";
