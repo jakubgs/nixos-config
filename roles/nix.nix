@@ -2,7 +2,7 @@
 
 {
   # Upgrade from 2.3.16.
-  nix.package = pkgs.unstable.nix_2_6;
+  nix.package = pkgs.unstable.nixVersions.nix_2_7;
   nix.extraOptions = ''
     extra-experimental-features = flakes nix-command
   '';
