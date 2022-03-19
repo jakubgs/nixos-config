@@ -17,7 +17,7 @@
     ../../roles/gossa.nix
     ../../roles/landing.nix
     ../../roles/torrent.nix
-    ../../roles/mikrotik.nix
+    ../../roles/mtr-exporter.nix
     ../../roles/distbuild.nix
   ];
 
