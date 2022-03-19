@@ -8,7 +8,7 @@ let
     "bardiel.magi.vpn" = { netdata = 8000; };
     "caspair.magi.vpn" = { netdata = 8000; };
     "lilim.magi.vpn" = { netdata = 8000; };
-    "leliel.magi.vpn" = { netdata = 8000; };
+    "leliel.magi.vpn" = { netdata = 8000; mtr = 8080; };
     "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; mtr = 8080; };
     "arael.magi.vpn" = { netdata = 8000; nimbus = 9100; };
   };
