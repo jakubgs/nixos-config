@@ -74,6 +74,12 @@
       options = [ "noauto" "nofail" ];
      };
 
+  fileSystems."/var/lib/goethereum" =
+    { device = "rpool/geth";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+     };
+
   fileSystems."/git" =
     { device = "/mnt/git";
       fsType = "none";

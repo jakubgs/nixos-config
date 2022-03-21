@@ -21,6 +21,7 @@
     ../../roles/gossa.nix
     ../../roles/builder.nix
     ../../roles/invidious.nix
+    ../../roles/go-ethereum.nix
     ../../roles/nimbus-eth2.nix
   ];
 
