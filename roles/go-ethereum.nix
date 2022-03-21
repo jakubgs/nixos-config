@@ -24,13 +24,13 @@ in {
         enable = true;
         port = 18545;
         address = "0.0.0.0";
-        apis = ["net" "eth"];
+        apis = ["net" "eth" "admin"];
       };
       websocket = {
         enable = true;
         port = 18546;
         address = "0.0.0.0";
-        apis = ["net" "eth"];
+        apis = ["net" "eth" "admin"];
       };
     };
   };
