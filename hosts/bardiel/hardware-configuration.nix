@@ -74,7 +74,7 @@
       options = [ "noauto" "nofail" ];
      };
 
-  fileSystems."/var/lib/goethereum" =
+  fileSystems."/var/lib/private/goethereum" =
     { device = "rpool/geth";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
