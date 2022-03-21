@@ -20,6 +20,8 @@
   "service/nimbus/web3-url" = "CHANGE_ME";
   # Public IP of server running Nimbus Eth2 node
   "service/nimbus/public-ip" = "CHANGE_ME";
+  # Public IP of server running Geth Eth1 node
+  "service/geth/public-ip" = "CHANGE_ME";
   # Password for FTP user
   "service/vsftpd/pass" = "CHANGE_ME";
   # Discord Web Hook for Prometheus
