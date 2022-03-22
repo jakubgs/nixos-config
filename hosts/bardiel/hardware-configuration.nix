@@ -80,6 +80,12 @@
       options = [ "noauto" "nofail" ];
      };
 
+  fileSystems."/var/lib/prometheus2" =
+    { device = "rpool/prometheus";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+     };
+
   fileSystems."/git" =
     { device = "/mnt/git";
       fsType = "none";
