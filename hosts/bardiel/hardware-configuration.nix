@@ -50,6 +50,12 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "noauto" "nofail" "bind" ];
+    };
+
   fileSystems."/mnt/mobile" =
     { device = "rpool/secret/mobile";
       fsType = "zfs";
@@ -71,26 +77,20 @@
   fileSystems."/mnt/nimbus" =
     { device = "rpool/nimbus";
       fsType = "zfs";
-      options = [ "noauto" "nofail" ];
+      options = [ "nofail" ];
      };
 
   fileSystems."/var/lib/private/goethereum" =
     { device = "rpool/geth";
       fsType = "zfs";
-      options = [ "noauto" "nofail" ];
+      options = [ "nofail" ];
      };
 
   fileSystems."/var/lib/prometheus2" =
     { device = "rpool/prometheus";
       fsType = "zfs";
-      options = [ "noauto" "nofail" ];
+      options = [ "nofail" ];
      };
-
-  fileSystems."/git" =
-    { device = "/mnt/git";
-      fsType = "none";
-      options = [ "noauto" "nofail" "bind" ];
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/04b2a3b8-c382-45df-aaa8-3c81ea39a3ec"; }
