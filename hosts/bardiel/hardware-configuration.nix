@@ -69,7 +69,7 @@
     };
 
   fileSystems."/mnt/nimbus" =
-    { device = "rpool/secret/nimbus";
+    { device = "rpool/nimbus";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
      };
