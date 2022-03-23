@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   domain = "yt.${config.networking.hostName}.magi.vpn";
@@ -6,6 +6,7 @@ let
 in {
   services.invidious = {
     enable = true;
+    package = pkgs.unstable.invidious;
     inherit port domain;
     database.createLocally = true;
     settings = {
