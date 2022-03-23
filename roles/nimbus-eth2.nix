@@ -27,6 +27,13 @@ in {
     doppelganger = false;
   };
 
-  # Wait for volume to be mounted
-  systemd.services.syncthing.after = lib.mkForce ["mnt-nimbus.mount"];
+  systemd.services.nimbus-eth2 = {
+    serviceConfig = {
+      Nice = -20;
+      IOSchedulingClass = "realtime";
+      IOSchedulingPriority = 0;
+    };
+    # Wait for volume to be mounted
+    after = lib.mkForce ["mnt-nimbus.mount"];
+  };
 }
