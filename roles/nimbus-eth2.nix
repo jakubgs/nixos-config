@@ -22,7 +22,7 @@ in {
     web3Url = secret "service/nimbus/web3-url";
     threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
-    subAllSubnets = true;
+    subAllSubnets = false;
     /* Costs two slot rewards at restart if enabled. */
     doppelganger = false;
   };
