@@ -22,7 +22,6 @@ let
   };
   shares = {
     public = [
-      "/mnt/ania"
       "/mnt/music"
       "/mnt/photos"
       "/mnt/torrent/movies"
