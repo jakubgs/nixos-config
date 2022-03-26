@@ -17,6 +17,10 @@
     ../../roles/nimbus-eth2.nix
   ];
 
+  # Decrypt after boot
+  boot.zfs.forceImportRoot = true;
+  boot.zfs.requestEncryptionCredentials = false;
+
   # Bootloader
   boot.loader.grub = {
     enable = true;
