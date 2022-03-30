@@ -54,6 +54,11 @@ in {
         addresses = [ "tcp://bardiel.magi.vpn:22000" ];
         autoAcceptFolders = true;
       };
+      ramiel = { # phone
+        id = "D6YVYAJ-YJQ36WT-GS2NACX-NAOEVD6-LNKUVU2-P6IBRF3-MZGGMVS-LKFBUAS";
+        addresses = [ "tcp://ramiel.magi.vpn:22000" ];
+        autoAcceptFolders = true;
+      };
     };
 
     folders = {
