@@ -24,17 +24,17 @@
     };
 
   fileSystems."/home" =
-    { device = "rpool/home";
+    { device = "rpool/secret/home";
       fsType = "zfs";
     };
 
   fileSystems."/mnt/data" =
-    { device = "rpool/data";
+    { device = "rpool/secret/data";
       fsType = "zfs";
     };
 
   fileSystems."/mnt/git" =
-    { device = "rpool/git";
+    { device = "rpool/secret/git";
       fsType = "zfs";
     };
 
