@@ -38,7 +38,6 @@
   };
 
   # Resume
-  boot.resumeDevice = "/dev/disk/by-id/nvme-SAMSUNG_MZVPW256HEGL-000H1_S34ENY0J502586-part1";
   systemd.sleep.extraConfig = "HibernateMode=reboot";
 
   # Sensors
