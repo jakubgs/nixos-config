@@ -8,6 +8,14 @@
   # Fix brightness keys on Thinkpad T480s.
   boot.kernelParams = [ "acpi_osi=" ];
 
+  # Lid closing behaviors
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchDocked = "ignore";
+    lidSwitchExternalPower = "lock";
+    extraConfig = "HandlePowerKey=suspend";
+  };
+
   # Allow brightness control by video group.
   hardware.acpilight.enable = true;
 
