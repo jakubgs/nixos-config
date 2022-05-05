@@ -37,7 +37,7 @@ in {
     # General dev
     github-cli pkg-config shellcheck
     # Infra dev
-    terraform_1_0
+    pkgs.unstable.terraform_1
     # NodeJS dev
     nodejs-16_x (yarn.override { nodejs = nodejs-16_x; })
     # GoLang dev
