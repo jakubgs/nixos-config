@@ -41,7 +41,7 @@ in {
     # NodeJS dev
     nodejs-16_x (yarn.override { nodejs = nodejs-16_x; })
     # GoLang dev
-    go_1_17 gocode gopls go-protobuf
+    pkgs.unstable.go_1_18 gocode gopls go-protobuf
     # Python dev
     myPython
     # Ruby dev
