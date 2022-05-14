@@ -60,6 +60,8 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
+  # Avoid difference when dual-booting Windows.
+  time.hardwareClockInLocalTime = true;
 
   # Enable sound.
   sound.enable = true;
