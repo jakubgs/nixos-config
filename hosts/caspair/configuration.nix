@@ -26,7 +26,6 @@
     ../../roles/crypto.nix
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix
-    ../../roles/qemu.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
