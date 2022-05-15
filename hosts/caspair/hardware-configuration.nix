@@ -24,7 +24,7 @@
     };
 
   fileSystems."/home" =
-    { device = "rpool/home";
+    { device = "rpool/secret/home";
       fsType = "zfs";
     };
 
