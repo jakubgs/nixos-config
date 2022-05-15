@@ -34,14 +34,15 @@
       options = [ "nofail" ];
     };
 
-  fileSystems."/home/jakubgs/.local/share/Steam" =
-    { device = "rpool/steam";
-      fsType = "zfs";
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9C9E-FCCC";
       fsType = "vfat";
+    };
+
+  fileSystems."/home/jakubgs/.local/share/Steam" =
+    { device = "rpool/steam";
+      fsType = "zfs";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/vms" =
