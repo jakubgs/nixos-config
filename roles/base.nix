@@ -11,7 +11,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash wget curl manpages sudo pass bc rename sqlite uptimed
+    file zsh bash wget curl manpages sudo pass bc pv rename uptimed
     # building
     gnumake gcc autoconf automake patchelf
     unrar unzip zip envsubst entr
@@ -21,7 +21,7 @@
     htop iotop iftop multitail
     # dev tools
     neovim jq tmux fzf silver-searcher
-    git qrencode
+    git qrencode sqlite
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
