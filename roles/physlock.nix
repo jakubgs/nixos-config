@@ -9,6 +9,7 @@ in {
   services.physlock = {
     enable = true;
     allowAnyUser = true;
+    disableSysRq = false;
     lockOn = {
       suspend = true;
       hibernate = true;
