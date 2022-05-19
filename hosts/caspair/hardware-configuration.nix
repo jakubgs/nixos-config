@@ -28,20 +28,20 @@
       fsType = "zfs";
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/9C9E-FCCC";
+      fsType = "vfat";
+    };
+
   fileSystems."/var/lib/docker" =
     { device = "/dev/disk/by-uuid/1cf35940-bbdb-47e4-9d42-9e5d7116e671";
       fsType = "ext4";
       options = [ "nofail" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9C9E-FCCC";
-      fsType = "vfat";
-    };
-
   fileSystems."/home/jakubgs/.local/share/Steam" =
-    { device = "rpool/steam";
-      fsType = "zfs";
+    { device = "/dev/disk/by-uuid/25dbbbda-ab15-4f4c-ac54-36e74837b7ca";
+      fsType = "ext4";
       options = [ "nofail" ];
     };
 
