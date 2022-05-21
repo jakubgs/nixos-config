@@ -24,7 +24,7 @@ in {
     # DevOps
     ansible_2_11
     # Security
-    bitwarden-cli oathToolkit
+    pkgs.unstable.bitwarden-cli oathToolkit
     # Databases
     robomongo
     # Network
