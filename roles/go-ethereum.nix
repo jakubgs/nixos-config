@@ -7,7 +7,6 @@ in {
   services.geth = {
     "mainnet" = {
       enable = true;
-      package = pkgs.unstable.go-ethereum.geth;
       network = null; # mainnet
       syncmode = "snap";
       maxpeers = 50;
