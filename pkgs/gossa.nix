@@ -7,14 +7,14 @@
 
 pkgs.stdenv.mkDerivation rec {
   pname = "gossa";
-  version = "0.1.8.0";
+  version = "0.2.1";
   goPackagePath = "github.com/pldubouilh/gossa";
 
   buildInputs = with pkgs; [ go perl ];
 
   src = pkgs.fetchzip {
     url = "https://github.com/pldubouilh/gossa/archive/v${version}.zip";
-    sha256 = "0pd3wmrfadan3k5gvjhpcznjhariqvh23a95fw273c6r8smqx50g";
+    sha256 = "sha256-+XWeaeY3dJtCrZYxliM/58yHRzLuziAqLO58xFIPQ9I=";
   };
 
   configurePhase = ''
