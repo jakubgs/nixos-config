@@ -16,6 +16,8 @@ let
     elasticsearch psycopg2
     # Statistics
     matplotlib pandas seaborn
+    # Misc
+    backoff
   ];
   myPython = pkgs.python38.withPackages myPythonPkgs;
 in {
