@@ -11,7 +11,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash wget curl manpages sudo pass bc pv rename uptimed
+    file zsh bash man-pages sudo pass bc pv rename uptimed
     # building
     gnumake gcc autoconf automake patchelf
     unrar unzip zip envsubst entr
@@ -25,7 +25,7 @@
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
-    nmap nettools traceroute dnsutils wol iperf
+    wget curl nmap nettools traceroute dnsutils wol iperf
     # filesystems
     zfs zfstools inotify-tools ncdu lsof parted ntfs3g gptfdisk
     # network filesystems

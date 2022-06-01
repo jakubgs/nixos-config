@@ -4,7 +4,7 @@
 
 let
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = _: with (pkgs.python38Packages); [
+  myPythonPkgs = _: with (pkgs.python39Packages); [
     ipython pip
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
@@ -19,16 +19,16 @@ let
     # Misc
     backoff
   ];
-  myPython = pkgs.python38.withPackages myPythonPkgs;
+  myPython = pkgs.python39.withPackages myPythonPkgs;
 in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_11
+    ansible_2_12
     # Security
     pkgs.unstable.bitwarden-cli oathToolkit
     # Databases
-    robomongo
+    robo3t
     # Network
     netcat insomnia ngrok tcpdump whois
     # Remote
