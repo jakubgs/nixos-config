@@ -7,7 +7,7 @@
 let
   rev = "f124f22f";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
-in pkgs.stdenv.mkDerivation rec {
+in pkgs.gcc10Stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
   version = "22.5.2";
 
