@@ -7,6 +7,7 @@
 let
   rev = "f124f22f";
   fakeGit = pkgs.writeScriptBin "git" "echo ${rev}";
+  fakeLsbRelease = pkgs.writeScriptBin "lsb_release" "echo nix";
 in pkgs.gcc10Stdenv.mkDerivation rec {
   pname = "nimbus-eth2";
   version = "22.5.2";
@@ -25,13 +26,14 @@ in pkgs.gcc10Stdenv.mkDerivation rec {
   NIMFLAGS = "-d:testnet_servers_image --debugger:native" 
     + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
+  # Fix for Nim compiler calling git rev-parse
+  buildInputs = [ fakeGit fakeLsbRelease ];
+
   preBuildPhases = [ "buildCompiler" ];
   buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
 
   # Generate vendor/.nimble contents with correct paths.
   configurePhase = ''
-    # Fix for Nim compiler calling git rev-parse
-    export PATH=$PATH:${fakeGit}/bin
     export EXCLUDED_NIM_PACKAGES=""
     export NIMBLE_LINK_SCRIPT=$PWD/vendor/nimbus-build-system/scripts/create_nimble_link.sh
     export NIMBLE_DIR=$PWD/vendor/.nimble
