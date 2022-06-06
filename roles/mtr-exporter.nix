@@ -1,14 +1,6 @@
 { pkgs, channels, ... }:
 
 {
-  imports = [
-    "${channels.unstable}/nixos/modules/services/networking/mtr-exporter.nix"
-  ];
-
-  nixpkgs.overlays = [
-    (new: prev: { mtr-exporter = pkgs.unstable.pkgs.mtr-exporter; })
-  ];
-
   # Firewall
   networking.firewall.interfaces."zt*".allowedTCPPorts = [ 8080 ];
 
