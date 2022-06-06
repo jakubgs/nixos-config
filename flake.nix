@@ -20,7 +20,8 @@
         {
           name = host;
           value = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+            # Simplest way to handle one host running on ARM64.
+            system = if host == "sachiel" then "aarch64-linux" else "x86_64-linux";
             specialArgs.channels = { inherit nixpkgs unstable hardware; };
             modules = [ overlayModule ./hosts/${host}/configuration.nix ];
           };
