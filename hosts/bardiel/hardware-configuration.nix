@@ -92,6 +92,12 @@
       options = [ "nofail" ];
      };
 
+  fileSystems."/var/lib/grafana" =
+    { device = "rpool/grafana";
+      fsType = "zfs";
+      options = [ "nofail" ];
+     };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/04b2a3b8-c382-45df-aaa8-3c81ea39a3ec"; }
       { device = "/dev/disk/by-uuid/6ab869d2-b6ea-4bd5-b6d0-9a89168262cb"; }
