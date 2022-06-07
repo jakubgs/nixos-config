@@ -17,6 +17,10 @@
     ../../roles/nimbus-eth2.nix
   ];
 
+  # Fix for GLIBC errors due to 'scudo' from hardened profile.
+  # https://github.com/NixOS/nix/issues/6563
+  environment.memoryAllocator.provider = "libc";
+
   # Decrypt after boot
   boot.zfs.forceImportRoot = true;
   boot.zfs.requestEncryptionCredentials = false;
