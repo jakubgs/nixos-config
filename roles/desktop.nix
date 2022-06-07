@@ -4,6 +4,7 @@
   imports = [
     ./xserver.nix
     ./clipmenu.nix
+    ./redshift.nix
     ../services/protonmail-bridge.nix
   ];
 
