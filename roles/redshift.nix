@@ -11,11 +11,11 @@
   services.redshift = {
     enable = true;
     temperature = {
-      night = 3700;
+      night = 2700;
       day = 5500;
     };
     brightness = {
-      night = "0.7";
+      night = "0.8";
       day = "1";
     };
   };
