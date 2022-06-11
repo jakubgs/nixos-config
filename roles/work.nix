@@ -21,6 +21,11 @@ let
   ];
   myPython = pkgs.python39.withPackages myPythonPkgs;
 in {
+  imports = [
+    # Useful for SQL development.
+    ./postgres.nix
+  ];
+
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
