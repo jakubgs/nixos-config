@@ -47,7 +47,7 @@
     # Images
     feh gthumb gimp exiftool
     # Video
-    mpv pkgs.unstable.youtube-dl ffmpeg
+    mpv yt-dlp ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     unstable.soundconverter
