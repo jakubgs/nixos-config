@@ -14,7 +14,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     # Console
-    rxvt_unicode ranger rofi
+    rxvt_unicode ranger rofi w3m
     # Xorg Tools
     glxinfo xsel libdrm xorg.xmodmap
     # Keyboard & Mouse
@@ -47,7 +47,7 @@
     # Images
     feh gthumb gimp exiftool
     # Video
-    mpv youtube-dl ffmpeg
+    mpv pkgs.unstable.youtube-dl ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321
     unstable.soundconverter
