@@ -35,7 +35,7 @@ in {
     # Databases
     robo3t
     # Network
-    netcat insomnia ngrok tcpdump whois
+    netcat websocat insomnia ngrok tcpdump whois
     # Remote
     remmina
     # Cloud
