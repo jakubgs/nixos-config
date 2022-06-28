@@ -22,6 +22,10 @@ in {
       cache-size=10000
       local-ttl=300
 
+      conf-file=${pkgs.dnsmasq}/share/dnsmasq/trust-anchors.conf
+      dnssec-check-unsigned=no
+      dnssec
+
       conf-dir=/etc/dnsmasq.d/,*.conf
       conf-file=${blockedFqdns}/domains
       addn-hosts=${blockedFqdns}/hosts
