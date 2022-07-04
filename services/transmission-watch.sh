@@ -16,9 +16,9 @@ fi
   --event=close_write \
   --include '.*.torrent$' \
   ${WATCH_DIR} | {
-    while IFS='|' read -r EVENT PATH FILE; do
-      FULLPATH="${PATH}${FILE}"
-      SUBDIR="${PATH#$WATCH_DIR/}"
+    while IFS='|' read -r EVENT DIR_PATH FILE_NAME; do
+      FULLPATH="${DIR_PATH}${FILE_NAME}"
+      SUBDIR="${DIR_PATH#$WATCH_DIR/}"
 
       if [[ ! -f "${FULLPATH}" ]]; then
         echo "No such file: '${FULLPATH}'"; exit 1
