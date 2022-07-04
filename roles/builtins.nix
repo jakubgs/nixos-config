@@ -8,7 +8,7 @@ let
 
   # We have to ignore if secrets.nix doesn't exit.
   secretsSh = pkgs.writeScript "cat" ''
-    cat ./secrets.nix 2>/dev/null || echo '{}'
+    cat /etc/nixos/secrets.nix 2>/dev/null || echo '{}'
   '';
 in pkgs.writeText "example-builtins.nix" ''
   { exec, ... }:
