@@ -4,11 +4,12 @@ export DOTFILES_PATH="${HOME}/dotfiles"
 
 if [[ -d "${DOTFILES_PATH}" ]]; then
     echo "Dotfiles already cloned."
-else
-    echo "Cloning dotfiles repository..."
-    export GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-    git clone "${DOTFILES_URL}" "${DOTFILES_PATH}"
+    exit 0
 fi
+
+echo "Cloning dotfiles repository..."
+export GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+git clone "${DOTFILES_URL}" "${DOTFILES_PATH}"
 
 echo "Symlinking configuration..."
 ${DOTFILES_PATH}/bin/symlinkconf
