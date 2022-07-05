@@ -12,8 +12,8 @@ fi
   --monitor \
   --recursive \
   --format='%e|%w|%f' \
-  --event=attrib \
-  --event=close_write \
+  --event=create \
+  --event=moved_to \
   --include '.*.torrent$' \
   ${WATCH_DIR} | {
     while IFS='|' read -r EVENT DIR_PATH FILE_NAME; do
@@ -21,9 +21,9 @@ fi
       SUBDIR="${DIR_PATH#$WATCH_DIR/}"
 
       if [[ ! -f "${FULLPATH}" ]]; then
-        echo "No such file: '${FULLPATH}'"; exit 1
+        echo "No such file: '${FULLPATH}'"; continue
       elif [[ -d "${FULLPATH}" ]]; then
-        echo "New directory created: '${FULLPATH}'"; exit 1
+        echo "New directory created: '${FULLPATH}'"; continue
       fi
 
       @addTorrentScript@ "${FULLPATH}" "${DOWNLOAD_DIR}/${SUBDIR}"
