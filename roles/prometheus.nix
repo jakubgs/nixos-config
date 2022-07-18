@@ -43,7 +43,7 @@ in {
     port = 9090;
     checkConfig = true;
     extraFlags = [
-      "--storage.tsdb.retention=120d"
+      "--storage.tsdb.retention.size=40GB"
       "--web.external-url=http://${config.networking.fqdn}/prometheus/"
       "--web.route-prefix=/"
     ];
