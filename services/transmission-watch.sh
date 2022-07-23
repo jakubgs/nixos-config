@@ -13,6 +13,7 @@ fi
   --recursive \
   --format='%e|%w|%f' \
   --event=create \
+  --event=attrib \
   --event=moved_to \
   --include '.*.torrent$' \
   ${WATCH_DIR} | {
