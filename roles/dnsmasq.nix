@@ -10,11 +10,6 @@ in {
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = true;
-    servers = [
-      "1.1.1.1"
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
     extraConfig = ''
       listen-address=127.0.0.1
       interface=lo
