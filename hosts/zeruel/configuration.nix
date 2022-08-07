@@ -19,6 +19,9 @@
   # https://github.com/NixOS/nix/issues/6563
   environment.memoryAllocator.provider = "libc";
 
+  # Disabled by hardened profile, big performance hit.
+  security.allowSimultaneousMultithreading = true;
+
   # Decrypt after boot
   boot.zfs.forceImportRoot = true;
   boot.zfs.requestEncryptionCredentials = false;
