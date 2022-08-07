@@ -1,5 +1,5 @@
 export PATH="$PATH:@coreutils@/bin:@bash@/bin:@git@/bin:@findutils@/bin:@gnused@/bin"
-export DOTFILES_URL="git@github.com:jakubgs/dotfiles.git"
+export DOTFILES_URL="https://github.com/jakubgs/dotfiles.git"
 export DOTFILES_PATH="${HOME}/dotfiles"
 
 if [[ -d "${DOTFILES_PATH}" ]]; then
