@@ -102,13 +102,13 @@ zpool import -f rpool
 mount.zfs rpool/root /mnt
 mkdir -p /mnt/nix /mnt/home /mnt/boot1 /mnt/boot2
 mount.zfs rpool/nix /mnt/nix
-mount.zfs rpool/secret/home /mnt/home
+mount.zfs rpool/home /mnt/home
 mount $DISK1-part2 /mnt/boot1
 mount $DISK2-part2 /mnt/boot2
 ```
 After configuring NixOS run installation process:
 ```
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+nix-channel --add https://nixos.org/channels/nixos-22.05 nixos-22.05
 nix-channel --update
 nixos-install
 ```
