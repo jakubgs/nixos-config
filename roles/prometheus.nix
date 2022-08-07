@@ -11,6 +11,7 @@ let
     "leliel.magi.vpn" = { netdata = 8000; mtr = 8080; };
     "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; mtr = 8080; };
     "arael.magi.vpn" = { netdata = 8000; nimbus = 9100; };
+    "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; geth = 16060; };
   };
 
   # helper for filtering hosts by available service port
@@ -56,6 +57,7 @@ in {
     scrapeConfigs = [
       (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
       (genScrapeJob {name = "nimbus";   path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "geth";     path = "/debug/metrics/prometheus"; })
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
       (genScrapeJob {name = "openwrt";  path = "/metrics";})
       (genScrapeJob {name = "mtr";      path = "/metrics";})
