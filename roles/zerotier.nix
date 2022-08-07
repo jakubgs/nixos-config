@@ -29,6 +29,7 @@ in {
     "10.2.2.16" = [ "sachiel.magi.vpn"  ]; # nanopct4
     "10.2.2.17" = [ "bardiel.magi.vpn"  ]; # hetzner
     "10.2.2.18" = [ "arael.magi.vpn"    ]; # hetzner
+    "10.2.2.19" = [ "zeruel.magi.vpn"   ]; # hetzner
   };
 
   # Search the magi domain
