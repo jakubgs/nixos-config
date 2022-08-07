@@ -38,6 +38,29 @@
       fsType = "ext4";
     };
 
+  fileSystems."/var/lib/private/goethereum" =
+    { device = "DATA/geth";
+      fsType = "zfs";
+      options = [ "nofail" ];
+     };
+
+  fileSystems."/mnt/nimbus" =
+    { device = "rpool/nimbus";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/nimbus/secrets" =
+    { device = "rpool/secret/nimbus/secrets";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/nimbus/validators" =
+    { device = "rpool/secret/nimbus/validators";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
