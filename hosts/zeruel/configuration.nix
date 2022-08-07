@@ -13,6 +13,8 @@
     ../../roles/netdata.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/go-ethereum.nix
+    ../../roles/nimbus-eth2.nix
   ];
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.
