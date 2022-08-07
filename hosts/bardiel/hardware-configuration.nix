@@ -74,18 +74,6 @@
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/mnt/nimbus" =
-    { device = "rpool/nimbus";
-      fsType = "zfs";
-      options = [ "nofail" ];
-     };
-
-  fileSystems."/var/lib/private/goethereum" =
-    { device = "rpool/geth";
-      fsType = "zfs";
-      options = [ "nofail" ];
-     };
-
   fileSystems."/var/lib/prometheus2" =
     { device = "rpool/prometheus";
       fsType = "zfs";
