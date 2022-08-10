@@ -11,6 +11,7 @@ in {
       syncmode = "snap";
       maxpeers = 50;
       port = devp2pPort;
+      package = pkgs.unstable.go-ethereum.geth;
       extraArgs = [
         "--v5disc"
         "--nat=extip:${publicIp}"
