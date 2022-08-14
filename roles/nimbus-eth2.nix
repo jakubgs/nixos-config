@@ -1,8 +1,9 @@
-{ lib, secret, ... }:
+{ lib, config, secret, ... }:
 
 let
   listenPort = 9000;
   discoverPort = 9000;
+  services = config.services;
 in {
   imports = [
     ../services/nimbus-eth2.nix
@@ -19,12 +20,15 @@ in {
     logFormat = "json";
     dataDir = "/mnt/nimbus";
     publicIp = secret "service/nimbus/public-ip";
-    web3Url = secret "service/nimbus/web3-url";
     threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
     subAllSubnets = false;
     /* Costs two slot rewards at restart if enabled. */
     doppelganger = false;
+    /* If Go-Ethereum is running use it. */
+    web3Url = if services.geth.mainnet.enable
+      then "http://localhost:${builtins.toString services.geth.mainnet.http.port}/"
+      else secret "service/nimbus/web3-url";
   };
 
   systemd.services.nimbus-eth2 = {
