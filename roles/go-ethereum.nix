@@ -39,19 +39,14 @@ in {
         "--authrpc.addr=127.0.0.1"
         "--authrpc.port=8551"
         "--authrpc.vhosts=localhost,127.0.0.1"
-        "--authrpc.jwtsecret=\$CREDENTIALS_DIRECTORY/jwtsecret"
+        "--authrpc.jwtsecret=/etc/geth/jwtsecret"
       ];
     };
   };
 
   environment.etc."geth/jwtsecret" = {
-    mode = "0440";
+    # FIXME: Use LoadCredential instead.
+    mode = "0444";
     text = secret "service/nimbus/web3-jws-secret";
-  };
-
-  systemd.services."geth-mainnet" = {
-    serviceConfig = {
-      LoadCredential = [ "jwtsecret:/etc/geth/jwtsecret" ];
-    };
   };
 }
