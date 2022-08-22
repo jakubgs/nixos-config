@@ -4,6 +4,10 @@ let
   devp2pPort = 30303;
   publicIp = secret "service/geth/public-ip";
 in {
+  /* Firewall */
+  networking.firewall.allowedTCPPorts = [ devp2pPort ];
+  networking.firewall.allowedUDPPorts = [ devp2pPort ];
+
   services.geth = {
     "mainnet" = {
       enable = true;
@@ -12,10 +16,6 @@ in {
       maxpeers = 50;
       port = devp2pPort;
       package = pkgs.unstable.go-ethereum.geth;
-      extraArgs = [
-        "--v5disc"
-        "--nat=extip:${publicIp}"
-      ];
       metrics = {
         enable = true;
         port = 16060;
@@ -33,10 +33,25 @@ in {
         address = "0.0.0.0";
         apis = ["net" "eth" "admin"];
       };
+      extraArgs = [
+        "--v5disc"
+        "--nat=extip:${publicIp}"
+        "--authrpc.addr=127.0.0.1"
+        "--authrpc.port=8551"
+        "--authrpc.vhosts=localhost,127.0.0.1"
+        "--authrpc.jwtsecret=\$CREDENTIALS_DIRECTORY/jwtsecret"
+      ];
     };
   };
 
-  /* Firewall */
-  networking.firewall.allowedTCPPorts = [ devp2pPort ];
-  networking.firewall.allowedUDPPorts = [ devp2pPort ];
+  environment.etc."geth/jwtsecret" = {
+    mode = "0440";
+    text = secret "service/nimbus/web3-jws-secret";
+  };
+
+  systemd.services."geth-mainnet" = {
+    serviceConfig = {
+      LoadCredential = [ "jwtsecret:/etc/geth/jwtsecret" ];
+    };
+  };
 }
