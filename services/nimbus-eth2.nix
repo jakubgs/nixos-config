@@ -60,6 +60,12 @@ in {
           description = "URL for the Web3 RPC endpoint.";
         };
 
+        jwtSecret = mkOption {
+          type = types.str;
+          default = "";
+          description = "Path of JWT secret for Auth RPC endpoint.";
+        };
+
         subAllSubnets = mkOption {
           type = types.bool;
           default = false;
@@ -130,6 +136,7 @@ in {
             --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
             --web3-url=${cfg.web3Url} \
+            --jwt-secret=${cfg.jwtSecret} \
             --nat=extip:${cfg.publicIp} \
             --log-level=${toUpper cfg.logLevel} \
             --log-format=${cfg.logFormat} \

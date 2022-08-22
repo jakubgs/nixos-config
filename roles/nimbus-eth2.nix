@@ -29,6 +29,12 @@ in {
     web3Url = if services.geth.mainnet.enable
       then "http://localhost:${builtins.toString services.geth.mainnet.http.port}/"
       else secret "service/nimbus/web3-url";
+    jwtSecret = "/etc/nimbus-eth2/jwtsecret";
+  };
+
+  environment.etc."nimbus-eth2/jwtsecret" = {
+    mode = "0440";
+    text = secret "service/nimbus/web3-jws-secret";
   };
 
   systemd.services.nimbus-eth2 = {
