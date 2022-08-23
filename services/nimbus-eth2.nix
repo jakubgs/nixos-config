@@ -109,18 +109,6 @@ in {
           description = "Metrics port for beacon node.";
         };
 
-        rpcAddr = mkOption {
-          type = types.str;
-          default = "127.0.0.1";
-          description = "RPC JSON REST endpoint listen address.";
-        };
-
-        rpcPort = mkOption {
-          type = types.int;
-          default = 8545;
-          description = "RPC JSON REST endpoint listen port.";
-        };
-
         restAddr = mkOption {
           type = types.str;
           default = "127.0.0.1";
@@ -153,9 +141,6 @@ in {
             --num-threads=${toString cfg.threadsNumber} \
             --tcp-port=${toString cfg.listenPort} \
             --udp-port=${toString cfg.discoverPort} \
-            --rpc \
-            --rpc-address=${cfg.rpcAddr} \
-            --rpc-port=${toString cfg.rpcPort} \
             --rest \
             --rest-address=${cfg.restAddr} \
             --rest-port=${toString cfg.restPort} \
