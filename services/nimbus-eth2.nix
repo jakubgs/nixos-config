@@ -81,6 +81,16 @@ in {
           '';
         };
 
+        suggestedFeeRecipient = mkOption {
+          type = types.str;
+          default = "";
+          description = ''
+            Wallet address where transaction fee tips - priority fees,
+            unburnt portion of gas fees - will be sent.
+          '';
+        };
+
+
         listenPort = mkOption {
           type = types.int;
           default = 9000;
@@ -153,7 +163,8 @@ in {
             --metrics-address=0.0.0.0 \
             --metrics-port=${toString cfg.metricsPort} \
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
-            --doppelganger-detection=${boolToString cfg.doppelganger}
+            --doppelganger-detection=${boolToString cfg.doppelganger} \
+            --suggested-fee-recipient=${cfg.suggestedFeeRecipient}
         '';
         Restart = "on-failure";
       };

@@ -25,6 +25,8 @@ in {
     subAllSubnets = false;
     /* Costs two slot rewards at restart if enabled. */
     doppelganger = false;
+    /* Address for transaction fee/priority tips. */
+    suggestedFeeRecipient = secret "service/nimbus/fee-recipient";
     /* If Go-Ethereum is running use it. */
     web3Url = if services.geth.mainnet.enable
       then "http://localhost:${builtins.toString services.geth.mainnet.http.port}/"
