@@ -16,8 +16,9 @@ in {
   # Directory Watcher - Recursively starts torrents
   services.nimbus-eth2 = {
     enable = true;
-    logLevel = "info";
-    logFormat = "json";
+    log = { level = "info"; format = "json"; };
+    metrics = { enable = true; address = "0.0.0.0"; };
+    rest = { enable = true; address = "0.0.0.0"; };
     dataDir = "/mnt/nimbus";
     publicIp = secret "service/nimbus/public-ip";
     threadsNumber = 0; /* 0 == auto */

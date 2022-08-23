@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) types mkEnableOption mkOption mkIf toUpper boolToString;
+  inherit (lib) types mkEnableOption mkOption mkIf toUpper boolToString optionalString;
 
   cfg = config.services.nimbus-eth2;
   # script for watching for new *.torrent files
@@ -30,16 +30,18 @@ in {
           description = "Name of Eth2 network to connect to.";
         };
 
-        logLevel = mkOption {
-          type = types.str;
-          default = "info";
-          description = "Logging level for the node.";
-        };
+        log = {
+          level = mkOption {
+            type = types.str;
+            default = "info";
+            description = "Logging level for the node.";
+          };
 
-        logFormat = mkOption {
-          type = types.str;
-          default = "auto";
-          description = "Logging formatting (auto, colors, nocolors, json).";
+          format = mkOption {
+            type = types.str;
+            default = "auto";
+            description = "Logging formatting (auto, colors, nocolors, json).";
+          };
         };
 
         threadsNumber = mkOption {
@@ -90,7 +92,6 @@ in {
           '';
         };
 
-
         listenPort = mkOption {
           type = types.int;
           default = 9000;
@@ -103,22 +104,33 @@ in {
           description = "Listen port for libp2p protocol.";
         };
 
-        metricsPort = mkOption {
-          type = types.int;
-          default = 9100;
-          description = "Metrics port for beacon node.";
+        metrics = {
+          enable = lib.mkEnableOption "Nimbus Eth2 metrics endpoint";
+          address = mkOption {
+            type = types.str;
+            default = "127.0.0.1";
+            description = "Metrics address for beacon node.";
+          };
+          port = mkOption {
+            type = types.int;
+            default = 9100;
+            description = "Metrics port for beacon node.";
+          };
         };
 
-        restAddr = mkOption {
-          type = types.str;
-          default = "127.0.0.1";
-          description = "Listening address of the REST API server";
-        };
+        rest = {
+          enable = lib.mkEnableOption "Nimbus Eth2 REST API";
+          address = mkOption {
+            type = types.str;
+            default = "127.0.0.1";
+            description = "Listening address of the REST API server";
+          };
 
-        restPort = mkOption {
-          type = types.int;
-          default = 5052;
-          description = "Port for the REST API server";
+          port = mkOption {
+            type = types.int;
+            default = 5052;
+            description = "Port for the REST API server";
+          };
         };
       };
     };
@@ -136,17 +148,13 @@ in {
             --web3-url=${cfg.web3Url} \
             --jwt-secret=${cfg.jwtSecret} \
             --nat=extip:${cfg.publicIp} \
-            --log-level=${toUpper cfg.logLevel} \
-            --log-format=${cfg.logFormat} \
+            --log-level=${toUpper cfg.log.level} \
+            --log-format=${cfg.log.format} \
             --num-threads=${toString cfg.threadsNumber} \
             --tcp-port=${toString cfg.listenPort} \
             --udp-port=${toString cfg.discoverPort} \
-            --rest \
-            --rest-address=${cfg.restAddr} \
-            --rest-port=${toString cfg.restPort} \
-            --metrics \
-            --metrics-address=0.0.0.0 \
-            --metrics-port=${toString cfg.metricsPort} \
+            --rest=${boolToString cfg.rest.enable} ${optionalString cfg.rest.enable ''--rest-address=${cfg.rest.address} --rest-port=${toString cfg.rest.port} ''}\
+            --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger} \
             --suggested-fee-recipient=${cfg.suggestedFeeRecipient}
