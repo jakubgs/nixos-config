@@ -1,8 +1,8 @@
 { lib, config, secret, ... }:
 
 let
-  listenPort = 9000;
-  discoverPort = 9000;
+  listenPort = 9802; # WebDAV Source TLS/SSL
+  discoverPort = 9802; # WebDAV Source TLS/SSL
   services = config.services;
 in {
   imports = [
@@ -16,6 +16,7 @@ in {
   # Directory Watcher - Recursively starts torrents
   services.nimbus-eth2 = {
     enable = true;
+    inherit listenPort discoverPort;
     log = { level = "info"; format = "json"; };
     metrics = { enable = true; address = "0.0.0.0"; };
     rest = { enable = true; address = "0.0.0.0"; };
