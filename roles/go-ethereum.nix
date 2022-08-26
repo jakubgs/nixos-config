@@ -1,7 +1,7 @@
 { pkgs, secret, ... }:
 
 let
-  devp2pPort = 30303;
+  devp2pPort = 9800; # WebDAV Source port
   publicIp = secret "service/geth/public-ip";
 in {
   /* Firewall */
