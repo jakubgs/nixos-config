@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) types mkEnableOption mkOption mkIf toUpper boolToString optionalString;
+  inherit (lib)
+    types mkEnableOption mkOption mkIf
+    toUpper boolToString optionalString optionalAttrs;
 
   cfg = config.services.nimbus-eth2;
   # script for watching for new *.torrent files
@@ -11,6 +13,20 @@ in {
     services = {
       nimbus-eth2 = {
         enable = mkEnableOption "Nimbus Eth2 Beacon Node service.";
+
+        service = {
+          user = mkOption {
+            type = types.str;
+            default = "nimbus";
+            description = "Username for Nimbus Eth2 service.";
+          };
+
+          group = mkOption {
+            type = types.str;
+            default = "nimbus";
+            description = "Group name for Nimbus Eth2 service.";
+          };
+        };
 
         dataDir = mkOption {
           type = types.str;
@@ -137,9 +153,25 @@ in {
   };
 
   config = mkIf cfg.enable {
+    users.users = optionalAttrs (cfg.service.user == "nimbus") {
+      nimbus = {
+        group = cfg.service.group;
+        home = cfg.dataDir;
+        description = "Nimbus Eth2 service user";
+        isSystemUser = true;
+      };
+    };
+
+    users.groups = optionalAttrs (cfg.service.user == "nimbus") {
+      nimbus = { };
+    };
+
     systemd.services.nimbus-eth2 = {
       enable = true;
       serviceConfig = {
+        User = cfg.service.user;
+        Group = cfg.service.group;
+
         ExecStart = ''
           ${binaryPkg}/bin/nimbus_beacon_node \
             --network=${cfg.network} \

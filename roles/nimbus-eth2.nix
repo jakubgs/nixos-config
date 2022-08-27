@@ -36,8 +36,14 @@ in {
     jwtSecret = "/etc/nimbus-eth2/jwtsecret";
   };
 
+  # Lock UID/GID
+  users.users.nimbus.uid = 5000;
+  users.groups.nimbus.gid = 5000;
+
   environment.etc."nimbus-eth2/jwtsecret" = {
     mode = "0440";
+    user = services.nimbus-eth2.service.user;
+    group = services.nimbus-eth2.service.group;
     text = secret "service/nimbus/web3-jws-secret";
   };
 
@@ -46,6 +52,7 @@ in {
       Nice = -20;
       IOSchedulingClass = "realtime";
       IOSchedulingPriority = 0;
+      LoadCredential = [ "jwtsecret:/etc/nimbus-eth2/jwtsecret" ];
     };
     # Wait for volume to be mounted
     after = lib.mkForce ["mnt-nimbus.mount"];
