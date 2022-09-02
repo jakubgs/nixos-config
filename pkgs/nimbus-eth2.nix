@@ -1,6 +1,6 @@
 {
   pkgs ? import <nixpkgs> { },
-  # WARNING: This makes binary not portable.
+  # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true
 }:
 
@@ -19,18 +19,19 @@ in pkgs.gcc10Stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  dontStrip = true; # leave debugging symbols in
-
+  # Fix for Nim compiler calling 'git rev-parse' and 'lsb_release'.
+  buildInputs = [ fakeGit fakeLsbRelease ];
   nativeBuildInputs = with pkgs; [ which ];
 
-  NIMFLAGS = "-d:testnet_servers_image --debugger:native" 
+  enableParallelBuilding = true;
+  dontStrip = true; # Leave debugging symbols in.
+
+  NIMFLAGS = "--debugger:native"
     + pkgs.lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
-  # Fix for Nim compiler calling git rev-parse
-  buildInputs = [ fakeGit fakeLsbRelease ];
+  makeFlags = [ "nimbus_beacon_node" "ncli_db" ];
 
   preBuildPhases = [ "buildCompiler" ];
-  buildPhases = [ "unpackPhase" "configurePhase" "buildPhase" "fixupPhase" "installPhase" ];
 
   # Generate vendor/.nimble contents with correct paths.
   configurePhase = ''
@@ -51,16 +52,8 @@ in pkgs.gcc10Stdenv.mkDerivation rec {
   buildCompiler = ''
     # Necessary for nim cache creation
     export HOME=$PWD
-    make build-nim
+    make -j$NIX_BUILD_CORES build-nim
     export PATH="$PWD/vendor/nimbus-build-system/vendor/Nim/bin:$PATH"
-  '';
-
-  buildPhase = ''
-    make -j$NIX_BUILD_CORES \
-      nimbus_beacon_node ncli_db \
-      NIMFLAGS='${NIMFLAGS}' \
-      USE_LIBBACKTRACE=0 \
-      USE_SYSTEM_NIM=1
   '';
 
   installPhase = ''
