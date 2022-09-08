@@ -31,7 +31,7 @@ in {
     suggestedFeeRecipient = secret "service/nimbus/fee-recipient";
     /* If Go-Ethereum is running use it. */
     web3Url = if services.geth.mainnet.enable
-      then "http://localhost:${builtins.toString services.geth.mainnet.http.port}/"
+      then "http://localhost:${builtins.toString services.geth.mainnet.authrpc.port}/"
       else secret "service/nimbus/web3-url";
     jwtSecret = "/etc/nimbus-eth2/jwtsecret";
   };

@@ -1,4 +1,4 @@
-{ pkgs, secret, ... }:
+{ pkgs, channels, secret, ... }:
 
 let
   devp2pPort = 9800; # WebDAV Source port
@@ -14,6 +14,10 @@ let
     };
   });
 in {
+  /* Use service definition with AuthRPC options. */
+  disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
+  imports = [ "${channels.unstable}/nixos/modules/services/blockchain/ethereum/geth.nix" ];
+
   /* Firewall */
   networking.firewall.allowedTCPPorts = [ devp2pPort ];
   networking.firewall.allowedUDPPorts = [ devp2pPort ];
@@ -43,13 +47,16 @@ in {
         address = "0.0.0.0";
         apis = ["net" "eth" "admin"];
       };
+      authrpc = {
+        enable = true;
+        port = 18551;
+        address = "127.0.0.1";
+        vhosts = ["localhost" "127.0.0.1"];
+        jwtsecret = "/etc/geth/jwtsecret";
+      };
       extraArgs = [
         "--v5disc"
         "--nat=extip:${publicIp}"
-        "--authrpc.addr=127.0.0.1"
-        "--authrpc.port=8551"
-        "--authrpc.vhosts=localhost,127.0.0.1"
-        "--authrpc.jwtsecret=/etc/geth/jwtsecret"
       ];
     };
   };
