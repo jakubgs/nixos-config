@@ -55,8 +55,10 @@ in {
         jwtsecret = "/etc/geth/jwtsecret";
       };
       extraArgs = [
-        "--v5disc"
+        "--verbosity=3"
+        "--log.json=true"
         "--nat=extip:${publicIp}"
+        "--v5disc"
       ];
     };
   };
