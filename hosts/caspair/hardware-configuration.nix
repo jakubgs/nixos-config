@@ -45,6 +45,12 @@
       options = [ "nofail" ];
     };
 
+  fileSystems."/mnt/windows" =
+    { device = "/dev/disk/by-uuid/56BCBB0CBCBAE5A1";
+      fsType = "ntfs-3g";
+      options = [ "noauto" "nofail" "uid=1000" "gid=1000" ];
+    };
+
   fileSystems."/mnt/vms" =
     { device = "DATA/vms";
       fsType = "zfs";
