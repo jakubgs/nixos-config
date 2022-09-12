@@ -31,7 +31,7 @@ in {
     # DevOps
     ansible_2_12
     # Security
-    pkgs.unstable.bitwarden-cli sops oathToolkit yubikey-manager
+    bitwarden bitwarden-cli sops oathToolkit yubikey-manager
     # Databases
     robo3t
     # Network
