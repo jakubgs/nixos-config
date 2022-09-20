@@ -9,7 +9,9 @@
 
   outputs = { self, nixpkgs, unstable, hardware }:
     let
-      overlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
+      overlay = final: prev: {
+        unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
+      };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
       overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
       # To generate host configurations for all hosts.

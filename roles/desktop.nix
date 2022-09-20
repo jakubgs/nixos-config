@@ -52,7 +52,7 @@
     mpc_cli ncmpcpp vorbis-tools mpg321
     unstable.soundconverter
     # Communication
-    gnome3.geary discord
+    gnome3.geary pkgs.unstable.discord
     # Torrent
     transmission-remote-gtk
     # Coding
