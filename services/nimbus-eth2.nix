@@ -2,7 +2,7 @@
 
 let
   inherit (lib)
-    types mkEnableOption mkOption mkIf 
+    types mkEnableOption mkOption mkIf length
     escapeShellArgs literalExpression toUpper
     boolToString optionalString optionalAttrs;
 
@@ -201,8 +201,8 @@ in {
             --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger} \
-            ${escapeShellArgs cfg.extraArgs} \
-            --suggested-fee-recipient=${cfg.suggestedFeeRecipient}
+            --suggested-fee-recipient=${cfg.suggestedFeeRecipient} ${optionalString (length cfg.extraArgs > 0) "\\"}
+            ${escapeShellArgs cfg.extraArgs}
         '';
         Restart = "on-failure";
       };
