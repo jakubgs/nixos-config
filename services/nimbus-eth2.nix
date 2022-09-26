@@ -2,17 +2,23 @@
 
 let
   inherit (lib)
-    types mkEnableOption mkOption mkIf escapeShellArgs
-    toUpper boolToString optionalString optionalAttrs;
+    types mkEnableOption mkOption mkIf 
+    escapeShellArgs literalExpression toUpper
+    boolToString optionalString optionalAttrs;
 
   cfg = config.services.nimbus-eth2;
-  # script for watching for new *.torrent files
-  binaryPkg = pkgs.callPackage ../pkgs/nimbus-eth2.nix { };
 in {
   options = {
     services = {
       nimbus-eth2 = {
         enable = mkEnableOption "Nimbus Eth2 Beacon Node service.";
+
+        package = mkOption {
+          type = types.package;
+          default = pkgs.callPackage ../pkgs/nimbus-eth2.nix { };
+          defaultText = literalExpression "pkgs.go-ethereum.geth";
+          description = lib.mdDoc "Package to use as Go Ethereum node.";
+        };
 
         service = {
           user = mkOption {
@@ -179,7 +185,7 @@ in {
         Group = cfg.service.group;
 
         ExecStart = ''
-          ${binaryPkg}/bin/nimbus_beacon_node \
+          ${cfg.package}/bin/nimbus_beacon_node \
             --network=${cfg.network} \
             --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
