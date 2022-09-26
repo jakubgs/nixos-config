@@ -2,7 +2,7 @@
 
 let
   inherit (lib)
-    types mkEnableOption mkOption mkIf
+    types mkEnableOption mkOption mkIf escapeShellArgs
     toUpper boolToString optionalString optionalAttrs;
 
   cfg = config.services.nimbus-eth2;
@@ -148,6 +148,12 @@ in {
             description = "Port for the REST API server";
           };
         };
+
+        extraArgs = mkOption {
+          type = types.listOf types.str;
+          description = lib.mdDoc "Additional arguments passed to node.";
+          default = [];
+        };
       };
     };
   };
@@ -189,6 +195,7 @@ in {
             --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger} \
+            ${escapeShellArgs cfg.extraArgs} \
             --suggested-fee-recipient=${cfg.suggestedFeeRecipient}
         '';
         Restart = "on-failure";
