@@ -15,7 +15,8 @@ fi
   --event=create \
   --event=attrib \
   --event=moved_to \
-  --exclude='.*.failed$' \
+  --exclude='.*\.failed$' \
+  --exclude='.*\.crdownload$' \
   ${WATCH_DIR} | {
     while IFS='|' read -r EVENT DIR_PATH FILE_NAME; do
       FULLPATH="${DIR_PATH}${FILE_NAME}"
