@@ -15,16 +15,16 @@ fi
   --event=create \
   --event=attrib \
   --event=moved_to \
-  --include '.*.torrent$' \
+  --exclude='.*.failed$' \
   ${WATCH_DIR} | {
     while IFS='|' read -r EVENT DIR_PATH FILE_NAME; do
       FULLPATH="${DIR_PATH}${FILE_NAME}"
       SUBDIR="${DIR_PATH#$WATCH_DIR/}"
 
-      if [[ ! -f "${FULLPATH}" ]]; then
-        echo "No such file: '${FULLPATH}'"; continue
-      elif [[ -d "${FULLPATH}" ]]; then
+      if [[ -d "${FULLPATH}" ]]; then
         echo "New directory created: '${FULLPATH}'"; continue
+      elif [[ ! -f "${FULLPATH}" ]]; then
+        echo "No such file: '${FULLPATH}'"; continue
       fi
 
       @addTorrentScript@ "${FULLPATH}" "${DOWNLOAD_DIR}/${SUBDIR}"
@@ -36,5 +36,5 @@ fi
         echo "Failed to add torrent: '${FULLPATH}'"
         @coreutils@/bin/mv "${FULLPATH}" "${FULLPATH}.failed"
       fi
-    done 
+    done
   }
