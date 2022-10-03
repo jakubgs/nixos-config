@@ -59,10 +59,6 @@ in {
         title = "Transmission";
         value = {
           proxyPass = "http://localhost:${toString listenPort}/";
-          extraConfig = ''
-            proxy_pass_request_headers on;
-            proxy_pass_header Authorization;
-          '';
         };
       }
     ];
