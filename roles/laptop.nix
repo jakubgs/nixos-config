@@ -19,9 +19,6 @@
   # Allow brightness control by video group.
   hardware.acpilight.enable = true;
 
-  # Automatically detect screen layout changes.
-  services.autorandr.enable = true;
-
   # TLP power management daemon
   services.tlp = {
     enable = true;
