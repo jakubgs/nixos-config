@@ -42,6 +42,7 @@
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
+  boot.kernelPackages = pkgs.linuxPackages_5_19;
 
   networking = {
     hostName = "caspair";
