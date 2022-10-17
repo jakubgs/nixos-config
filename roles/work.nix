@@ -54,7 +54,7 @@ in {
     # Ruby dev
     ruby_2_7
     # Mobile dev
-    fastlane apktool jdk8
+    fastlane apktool jdk8 scrcpy
     # Utils
     jsonnet appimage-run unixtools.xxd bvi binutils-unwrapped
     # Video Recording
