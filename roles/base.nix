@@ -16,7 +16,7 @@
     gnumake gcc autoconf automake patchelf
     unrar unzip zip envsubst entr
     # processes
-    dtach reptyr pstree killall
+    dtach reptyr pstree killall sysstat
     # monitoring
     htop iotop iftop multitail
     # dev tools
