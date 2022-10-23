@@ -31,10 +31,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_5_19;
+
   # Scrub to find errors
   services.zfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
     pools = [ "rpool" ];
   };
 
