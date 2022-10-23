@@ -49,10 +49,9 @@
     # Video
     mpv yt-dlp ffmpeg
     # Audio
-    mpc_cli ncmpcpp vorbis-tools mpg321
-    unstable.soundconverter
+    mpc_cli ncmpcpp vorbis-tools mpg321 soundconverter
     # Communication
-    gnome3.geary pkgs.unstable.discord
+    gnome3.geary discord
     # Torrent
     transmission-remote-gtk
     # Coding
