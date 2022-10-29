@@ -11,7 +11,7 @@
   services.redshift = {
     enable = true;
     temperature = {
-      night = 3500;
+      night = 3400;
       day = 5500;
     };
     brightness = {
