@@ -30,8 +30,7 @@
     # Security
     pinentry-gnome gnome3.seahorse cryptsetup
     # Phone
-    jmtpfs
-    chirp
+    go-mtpfs chirp
   ];
 
   # User packages
