@@ -38,7 +38,7 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home/jakubgs/.local/share/Steam" =
+  fileSystems."/mnt/steam" =
     { device = "/dev/disk/by-uuid/25dbbbda-ab15-4f4c-ac54-36e74837b7ca";
       fsType = "ext4";
       options = [ "nofail" ];
