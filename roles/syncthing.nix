@@ -55,7 +55,7 @@ in {
         autoAcceptFolders = true;
       };
       ramiel = { # phone
-        id = "D6YVYAJ-YJQ36WT-GS2NACX-NAOEVD6-LNKUVU2-P6IBRF3-MZGGMVS-LKFBUAS";
+        id = "ORTBD5P-FZXB5QP-XWY6WP4-IZLASIL-VGSWU5L-7DGMAHF-EH5VG5V-JL3OPAQ";
         addresses = [ "tcp://ramiel.magi.vpn:22000" ];
         autoAcceptFolders = true;
       };
