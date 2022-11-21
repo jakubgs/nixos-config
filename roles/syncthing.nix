@@ -35,7 +35,7 @@ in {
         autoAcceptFolders = true;
       };
       lilim = { # laptop
-        id = "NXAI36W-YHU7WSH-PKFILGV-52P4T4K-SS77H5R-LQBWJ5L-GCNUMCH-LZ74HQB";
+        id = "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC";
         addresses = [ "tcp://lilim.magi.vpn:22000" ];
         autoAcceptFolders = true;
       };

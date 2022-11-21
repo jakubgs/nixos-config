@@ -54,12 +54,12 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/AD43-F8F4";
+    { device = "/dev/disk/by-uuid/0BE7-9164";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/8c023781-b98d-4a75-9c68-f37432573544"; }
+    [ { device = "/dev/disk/by-uuid/37f94f00-5def-4dfe-b055-7452b120c9b1"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

@@ -8,7 +8,7 @@ This is configuration for my laptop.
 * Intel Core i5-8350U
 * 16 GB DDR4 2400MHz
 * GeForce MX150 + Intel UHD 620
-* Samsung PM981 512 GB M.2
+* Samsung 990 PRO 2TB M.2 NVMe
 
 # Installation
 
