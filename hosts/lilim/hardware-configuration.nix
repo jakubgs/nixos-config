@@ -38,6 +38,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/photos" =
+    { device = "rpool/secret/photos";
+      fsType = "zfs";
+    };
+
   fileSystems."/mnt/mobile" =
     { device = "rpool/mobile";
       fsType = "zfs";
