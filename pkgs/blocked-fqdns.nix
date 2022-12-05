@@ -14,11 +14,11 @@ in pkgs.stdenv.mkDerivation {
     sha256 = "sha256-LRg5f08nbcI5VMzM5rzEyp6NUrB7rnYHckFBxIjrpT8=";
   };
   srcs = [
-    (fetchurl { 
+    (fetchurl {
       url = "${noTracking}/hostnames.txt";
       sha256 = "sha256-UFa03ypTpZtWSBSV9Y0RHwK//5jXfKyefXPcX4mTW3Q=";
     })
-    (fetchurl { 
+    (fetchurl {
       url = "${stevenBlack}/alternates/fakenews-gambling-porn-social/hosts";
       sha256 = "sha256-OxCcZn54ayROZWZPJdadzjZCs7VEhr1RLDta0T67wrc=";
     })
