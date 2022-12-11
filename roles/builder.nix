@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  nix.trustedUsers = [ "builder" ];
+  nix.settings.trusted-users = [ "builder" ];
 
   users.users.builder = {
     uid = 4000;
