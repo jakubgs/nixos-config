@@ -4,6 +4,12 @@
   # Enable ZFS support
   boot.supportedFilesystems = [ "zfs" ];
 
+  # Enable hibernation
+  boot.zfs.allowHibernation = true;
+  # Importing a suspended pool can corrupt it
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.forceImportAll = false;
+
   # Snapshot daily
   services.zfs.autoSnapshot = {
     enable = true;
