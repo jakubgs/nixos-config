@@ -23,8 +23,7 @@ let
 in {
   # Allows for use of builtins.exec to call pass.
   nix.extraOptions = let
-    # WARNING: Version 9.0.0 from unstable necessary for Nix 2.8.
-    nix-plugins = pkgs.unstable.nix-plugins.override { nix = config.nix.package; };
+    nix-plugins = pkgs.nix-plugins.override { nix = config.nix.package; };
   in ''
     plugin-files = ${nix-plugins}/lib/nix/plugins
     extra-builtins-file = ${import ./builtins.nix { inherit pkgs; }}
