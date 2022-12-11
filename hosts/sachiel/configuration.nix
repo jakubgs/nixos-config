@@ -30,7 +30,7 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.linuxPackages_5_19;
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
   boot.kernelPatches = [{
     name = "pcie-rockchip-config.patch";
     patch = null;
