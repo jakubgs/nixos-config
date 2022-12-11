@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> { }
-, excludes ? [ "linkedin.com" "web.whatsapp.com" "pstmrk.it" ] }:
+, excludes ? [ "linkedin.com" "whatsapp.com" "redd" ] }:
 
 let
   inherit (pkgs) fetchurl;
