@@ -28,7 +28,6 @@
   environment.memoryAllocator.provider = "libc";
 
   # Hetzner KVMs are limited, better to always force.
-  boot.zfs.forceImportRoot = true;
   boot.zfs.requestEncryptionCredentials = false;
 
   # Use the GRUB 2 boot loader.
