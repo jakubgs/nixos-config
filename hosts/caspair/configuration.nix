@@ -23,7 +23,6 @@
     ../../roles/docs.nix
     ../../roles/netdata.nix
     ../../roles/landing.nix
-    ../../roles/crypto.nix
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix
     ../../roles/qemu.nix
@@ -42,7 +41,7 @@
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernelPackages = pkgs.linuxPackages_5_19;
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
 
   networking = {
     hostName = "caspair";

@@ -2,7 +2,7 @@
 
 {
   # Give extra permissions with Nix
-  nix.trustedUsers = [ "jakubgs" ];
+  nix.settings.trusted-users = [ "jakubgs" ];
 
   users.groups.jakubgs = {
     gid = 1000;
