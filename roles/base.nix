@@ -27,7 +27,7 @@
     # networking
     wget curl nmap nettools traceroute dnsutils wol iperf
     # filesystems
-    zfs zfstools inotify-tools ncdu lsof parted ntfs3g gptfdisk
+    zfs zfstools ranger lsof parted ntfs3g gptfdisk
     # network filesystems
     nfs-utils
     # hard drive management

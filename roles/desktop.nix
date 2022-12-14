@@ -14,7 +14,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     # Console
-    rxvt_unicode ranger rofi w3m
+    rxvt_unicode rofi w3m
     # Xorg Tools
     glxinfo xsel libdrm xorg.xmodmap
     # Keyboard & Mouse
