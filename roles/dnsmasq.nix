@@ -2,7 +2,7 @@
 
 let
   inherit (lib) concatStringsSep mapAttrsToList;
-  formatConfig = ip: fqdns: 
+  formatConfig = ip: fqdns:
     concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);
 
   stubbyExample = pkgs.stubby.passthru.settingsExample;
@@ -35,13 +35,15 @@ in {
     enable = true;
     resolveLocalQueries = true;
     extraConfig = ''
-      listen-address=127.0.0.1
       interface=lo
-      cache-size=10000
-      local-ttl=300
+      bind-interfaces
 
       no-resolv
       server=127.0.0.1#153
+
+      no-negcache
+      cache-size=10000
+      local-ttl=300
 
       conf-dir=/etc/dnsmasq.d/,*.conf
       conf-file=${blockedFqdns}/domains
