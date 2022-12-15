@@ -39,6 +39,7 @@ in {
       bind-interfaces
 
       no-resolv
+      proxy-dnssec
       server=127.0.0.1#153
 
       no-negcache
