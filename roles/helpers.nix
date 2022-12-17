@@ -3,9 +3,9 @@
 let
   inherit (lib) concatStringsSep splitString drop;
   newLib = {
-    pathToService = path: (
+    pathToMountUnit = path: (
       concatStringsSep "-" (drop 1 (splitString "/" path))
-    ) + ".service";
+    ) + ".mount";
   };
 in {
   # Helpers avaialble under pkgs.lib.

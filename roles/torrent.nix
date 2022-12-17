@@ -42,7 +42,7 @@ in {
   systemd.services.transmission = {
     # Wait for torrent volume to be mounted.
     after = lib.mkForce [
-      "network.target" (pkgs.lib.pathToService torrentDir)
+      "network.target" (pkgs.lib.pathToMountUnit torrentDir)
     ];
     # Temporary for for memory leak.
     # https://github.com/transmission/transmission/issues/3494

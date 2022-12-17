@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 
 let
@@ -71,11 +71,10 @@ in {
   };
 
   # Wait for volumes to be mounted.
-  systemd.services.syncthing.after = lib.mkForce [
-    "network.target" "mnt-data.mount"
-    "mnt-git.mount" "mnt-mobile.mount"
-    "mnt-music.mount" "mnt-photos.mount"
-  ];
+  systemd.services.syncthing.after = lib.mkForce (["network.target"] ++
+    (map pkgs.lib.pathToMountUnit [
+      "/mnt/data" "/mnt/git" "/mnt/mobile" "/mnt/music" "/mnt/photos"
+    ]));
 
   services.landing = {
     proxyServices = [

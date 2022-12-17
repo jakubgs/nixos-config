@@ -55,6 +55,8 @@ in {
       LoadCredential = [ "jwtsecret:/etc/nimbus-eth2/jwtsecret" ];
     };
     # Wait for volume to be mounted
-    after = lib.mkForce ["mnt-nimbus.mount"];
+    after = lib.mkForce (map pkgs.lib.pathToMountUnit [
+      "/mnt/nimbus" "/mnt/nimbus/validators" "/mnt/nimbus/secrets"
+    ]));
   };
 }
