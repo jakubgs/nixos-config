@@ -43,6 +43,9 @@
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
+  # Serial console or keyboard is not easily accessible.
+  boot.zfs.requestEncryptionCredentials = false;
+
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 
