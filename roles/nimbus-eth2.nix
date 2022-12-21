@@ -1,4 +1,4 @@
-{ lib, config, secret, ... }:
+{ pkgs, lib, config, secret, ... }:
 
 let
   listenPort = 9802; # WebDAV Source TLS/SSL
@@ -57,6 +57,6 @@ in {
     # Wait for volume to be mounted
     after = lib.mkForce (map pkgs.lib.pathToMountUnit [
       "/mnt/nimbus" "/mnt/nimbus/validators" "/mnt/nimbus/secrets"
-    ]));
+    ]);
   };
 }
