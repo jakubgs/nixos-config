@@ -16,7 +16,7 @@
     corefonts
     vulkan-tools
     # Wine
-    wineWowPackages.stagingFull
+    wineWowPackages.stableFull
     winetricks
     # Mouse
     piper
