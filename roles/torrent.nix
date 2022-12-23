@@ -46,7 +46,10 @@ in {
     ];
     # Temporary for for memory leak.
     # https://github.com/transmission/transmission/issues/3494
-    serviceConfig.RuntimeMaxSec = "6h";
+    serviceConfig = {
+      RuntimeMaxSec = "6h";
+      Restart = "always";
+    };
   };
 
   # Directory Watcher - Recursively starts torrents
