@@ -16,16 +16,21 @@ in {
       listen_addresses = [ "127.0.0.1:153" ];
       log_level = "GETDNS_LOG_NOTICE";
       dnssec_return_status = "GETDNS_EXTENSION_TRUE";
-      upstream_recursive_servers = stubbyExample.upstream_recursive_servers ++ [
-        {
-          address_data = "1.1.1.1";
+      upstream_recursive_servers = [
+        { address_data = "1.1.1.1";
           tls_port = 853;
           tls_auth_name = "cloudflare-dns.com";
           tls_pubkey_pinset = [
             { digest = "sha256";
               value = "MnLdGiqUGYhtyinlrGTC4FZdDyDXv4NOWFGnXW3ur14="; }
-          ];
-        }
+          ]; }
+        { address_data = "8.8.8.8";
+          tls_port = 853;
+          tls_auth_name = "dns.google";
+          tls_pubkey_pinset = [
+            { digest = "sha256";
+              value = "CxzDnNYQv9RlubDYchc9oCKvvtNyEIsS4kcG9nSBrxQ="; }
+          ]; }
       ];
     };
   };
