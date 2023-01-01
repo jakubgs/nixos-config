@@ -2,16 +2,18 @@
 
 let
   inherit (lib) concatStringsSep mapAttrsToList;
-  formatConfig = ip: fqdns:
-    concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);
+
+  stubbyEnabled = true;
 
   stubbyExample = pkgs.stubby.passthru.settingsExample;
-
   blockedFqdns = pkgs.callPackage ../pkgs/blocked-fqdns.nix { };
+
+  formatConfig = ip: fqdns:
+    concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);
 in {
   # DNS over TLS
   services.stubby = {
-    enable = true;
+    enable = stubbyEnabled;
     settings = stubbyExample // {
       listen_addresses = [ "127.0.0.1:153" ];
       log_level = "GETDNS_LOG_NOTICE";
@@ -43,9 +45,11 @@ in {
       interface=lo
       bind-interfaces
 
+      ${lib.optionalString stubbyEnabled ''
       no-resolv
       proxy-dnssec
       server=127.0.0.1#153
+      ''}
 
       no-negcache
       cache-size=10000
