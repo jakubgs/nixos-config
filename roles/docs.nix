@@ -4,7 +4,7 @@ let
   # Custom Latex distribution
   myTexLive = pkgs.texlive.combine {
     inherit (pkgs.texlive)
-      scheme-basic latexmk 
+      scheme-basic latexmk
       collection-latexextra
       collection-xetex;
   };

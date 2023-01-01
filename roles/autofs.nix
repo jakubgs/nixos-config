@@ -28,7 +28,7 @@ in {
   services.autofs = {
     enable = true;
     timeout = 60;
-    autoMaster = 
+    autoMaster =
       lib.concatStrings (lib.mapAttrsToList (host: shares: ''
         /nfs/${host}  ${genShareConfigFile host shares genNfsShare}  --timeout 3
       '') hostShares) +

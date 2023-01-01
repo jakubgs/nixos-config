@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    smartmontools 
+    smartmontools
   ];
 
   # SMART drive monitoring

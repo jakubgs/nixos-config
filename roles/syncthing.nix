@@ -78,7 +78,7 @@ in {
 
   services.landing = {
     proxyServices = [
-      { 
+      {
         name ="/sync/";
         title = "Syncthing";
         value = {

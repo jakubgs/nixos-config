@@ -32,7 +32,7 @@
   security.sudo.wheelNeedsPassword = false;
 
   system.userActivationScripts = {
-    jakubgsDotfiles = let 
+    jakubgsDotfiles = let
       dotfilesSh = pkgs.substituteAll {
         src = ../files/dotfiles.sh;
         isExecutable = true;

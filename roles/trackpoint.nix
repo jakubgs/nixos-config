@@ -3,7 +3,7 @@
 {
   services.xserver.libinput.enable = false;
 
-  services.xserver.synaptics = { 
+  services.xserver.synaptics = {
     enable = true;
     # Disable touchpad
     additionalOptions = ''
