@@ -17,7 +17,7 @@ let
     # Statistics
     matplotlib pandas seaborn
     # Misc
-    backoff
+    sh backoff
   ];
   myPython = pkgs.python39.withPackages myPythonPkgs;
 in {
