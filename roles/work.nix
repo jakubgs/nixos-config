@@ -9,7 +9,8 @@ let
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
     # Devops
-    boto3 wakeonlan PyGithub consul python-hosts cloudflare
+    boto3 wakeonlan PyGithub python-hosts cloudflare
+    (pkgs.callPackage ../pkgs/consul2.nix {})
     # Security
     pyopenssl cryptography passlib
     # Databases
