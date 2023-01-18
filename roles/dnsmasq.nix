@@ -3,7 +3,7 @@
 let
   inherit (lib) concatStringsSep mapAttrsToList;
 
-  stubbyEnabled = true;
+  stubbyEnabled = false;
 
   stubbyExample = pkgs.stubby.passthru.settingsExample;
   blockedFqdns = pkgs.callPackage ../pkgs/blocked-fqdns.nix { };
