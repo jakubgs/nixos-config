@@ -9,6 +9,12 @@
   # Gaming mouse configuration
   services.ratbagd.enable = true;
 
+  # XBox Pad kernel driver.
+  hardware.xone.enable = false;
+  hardware.xpadneo.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     steam
