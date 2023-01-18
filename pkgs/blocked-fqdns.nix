@@ -1,13 +1,18 @@
 { pkgs ? import <nixpkgs> { }
+, includes ? [
+  "4channel.org" "4chan.org"
+]
 , excludes ? [
-  "groups.google.com"
+  "twitter" "twimg"
+  "whatsapp.com" "redd"
   "linkedin.com" "licdn.com"
-  "whatsapp.com"
-  "redd"
+  "groups.google.com" "pstmrk"
 ] }:
 
 let
-  inherit (pkgs) fetchurl;
+  inherit (pkgs) lib fetchurl;
+  inherit (lib) concatStringsSep;
+
   noTracking = "https://github.com/notracking/hosts-blocklists/raw/ad8fd425";
   stevenBlack = "https://github.com/StevenBlack/hosts/raw/3.11.41";
 in pkgs.stdenv.mkDerivation {
@@ -35,13 +40,16 @@ in pkgs.stdenv.mkDerivation {
 
     cat $src \
       | grep -v -e '^\s*#' \
-      | grep -v -e ${pkgs.lib.concatStringsSep " -e " excludes} \
+      | grep -v -e ${concatStringsSep " -e " excludes} \
       > $out/domains
 
     cat $srcs \
       | grep -e '^0.0.0.0' \
-      | grep -v -e ${pkgs.lib.concatStringsSep " -e " excludes} \
+      | grep -v -e ${concatStringsSep " -e " excludes} \
       | sort -u \
+      > $out/hosts
+
+    echo '${concatStringsSep "\n" (map (i: "0.0.0.0 " + i) includes)}' \
       > $out/hosts
   '';
 }
