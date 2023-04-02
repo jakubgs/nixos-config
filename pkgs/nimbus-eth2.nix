@@ -10,14 +10,14 @@ let
   inherit (pkgs) stdenv fetchgit fetchFromGitHub lib nim which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "23.3.0";
-  commit = "17c0eeee";
+  version = "23.3.2";
+  commit = "6c0d756d";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-8HTk0JubINHifyskDAreIkTqkHxAADbgpyLiMwp9lUs=";
+    sha256 = "sha256-hdegrv+VbhQhk6O91oQDmj3vfm29dX/p1ygcNg25n24=";
     fetchSubmodules = true;
   };
 
@@ -33,21 +33,6 @@ in stdenv.mkDerivation rec {
 
   # WARNING: Version 1.6.10 is known to be stable.
   makeFlags = makeTargets ++ [ "USE_SYSTEM_NIM=1" ];
-
-  # FIXME: Temp fix due to using unpinned Nim 1.6.
-  # https://github.com/status-im/nimbus-eth2/pull/4722
-  patches = [
-    (fetchFromGitHub {
-      owner = "status-im";
-      repo = "nim-json-rpc";
-      rev = "af1276443618974a95dd3c83e57a1ecd70df2c5e";
-      sha256 = "sha256-0juXk2W/78vK9IAmAkO59Ge1Nkg6iZ7pd1JLa0JBp1Y=";
-    })
-  ];
-
-  patchPhase = ''
-    cp $patches/json_rpc/router.nim vendor/nim-json-rpc/json_rpc/router.nim
-  '';
 
   # Generate the nimbus-build-system.paths file.
   configurePhase = ''
