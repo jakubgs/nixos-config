@@ -3,16 +3,6 @@
 let
   devp2pPort = 9800; # WebDAV Source port
   publicIp = secret "service/geth/public-ip";
-
-  gethPackage = pkgs.unstable.go-ethereum.geth.overrideAttrs (old: rec {
-    version = "1.10.23";
-    src = pkgs.fetchFromGitHub {
-      owner = "ethereum";
-      repo = old.pname;
-      rev = "v${version}";
-      sha256 = "sha256-1fEmtbHKrjuyIVrGr/vTudZ99onkNjEMvyBJt4I8KK4=";
-    };
-  });
 in {
   /* Use service definition with AuthRPC options. */
   disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
@@ -29,7 +19,7 @@ in {
       syncmode = "snap";
       maxpeers = 50;
       port = devp2pPort;
-      package = gethPackage;
+      package = pkgs.unstable.callPackage ../pkgs/go-ethereum.nix { };
       metrics = {
         enable = true;
         port = 16060;
