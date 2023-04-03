@@ -12,6 +12,7 @@ in {
     settings = {
       admins = ["jakubgs"];
       external_port = 80;
+      use_pubsub_feeds = true;
       https_only = false;
       popular_enabled = false;
       quality = "dash";
