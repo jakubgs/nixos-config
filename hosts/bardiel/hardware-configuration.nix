@@ -74,6 +74,11 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/mnt/ftp" =
+    { device = "rpool/ftp";
+      fsType = "zfs";
+    };
+
   fileSystems."/var/lib/prometheus2" =
     { device = "rpool/prometheus";
       fsType = "zfs";
