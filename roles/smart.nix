@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -10,4 +10,15 @@
     enable = true;
     autodetect = true;
   };
+
+  # SMART metrics exporter
+  services.prometheus.exporters.smartctl = {
+    enable = true;
+    maxInterval = "20s";
+  };
+
+  # Firewall
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [
+    config.services.prometheus.exporters.smartctl.port
+  ];
 }
