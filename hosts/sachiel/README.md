@@ -12,6 +12,12 @@ Configuration for NanoPC-T4.
 * eMMC: 16GB, MicroSD up to 128GB
 * Gbps Ethernet, Wi-Fi 802.11a/b/g/n/ac
 
+With:
+
+* Samsung NVMe SSD 970 EVO Plus 250GB
+* IcyBox IB-RD2253-U31 USB 3.1 enclosure
+* 2x 2TB SSD PATRIOT P210 in enclosure
+
 # Installation
 
 * https://nixos.wiki/wiki/NixOS_on_ARM/NanoPC-T4
