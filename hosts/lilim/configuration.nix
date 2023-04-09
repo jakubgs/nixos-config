@@ -22,7 +22,6 @@
     ../../roles/docs.nix
     ../../roles/qemu.nix
     ../../roles/syncthing.nix
-    ../../roles/netdata.nix
     ../../roles/landing.nix
   ];
 

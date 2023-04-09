@@ -11,8 +11,6 @@
     ../../roles/locate.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
-    ../../roles/netdata.nix
-    ../../roles/smart.nix
     ../../roles/syncthing.nix
     ../../roles/prometheus.nix
     ../../roles/alertmanager.nix

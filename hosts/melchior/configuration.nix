@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/base.nix
-    ../../roles/smart.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/nfs.nix
@@ -14,7 +13,6 @@
     ../../roles/torrent.nix
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
-    ../../roles/netdata.nix
     ../../roles/landing.nix
   ];
 

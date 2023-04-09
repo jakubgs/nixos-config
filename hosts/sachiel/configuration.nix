@@ -5,11 +5,8 @@
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
-    ../../roles/smart.nix
     ../../roles/users.nix
     ../../roles/locate.nix
-    ../../roles/netdata.nix
-    ../../roles/smart.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/syncthing.nix
@@ -20,7 +17,6 @@
     ../../roles/music.nix
     ../../roles/torrent.nix
     ../../roles/mikrotik.nix
-    ../../roles/mtr-exporter.nix
   ];
 
   # Boot

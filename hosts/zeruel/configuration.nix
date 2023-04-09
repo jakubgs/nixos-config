@@ -10,8 +10,6 @@
     ../../roles/base.nix
     ../../roles/users.nix
     ../../roles/locate.nix
-    ../../roles/netdata.nix
-    ../../roles/smart.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
     ../../roles/go-ethereum.nix

@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/base.nix
-    ../../roles/smart.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/network.nix
@@ -21,8 +20,6 @@
     ../../roles/syncthing.nix
     ../../roles/work.nix
     ../../roles/docs.nix
-    ../../roles/netdata.nix
-    ../../roles/smart.nix
     ../../roles/landing.nix
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix

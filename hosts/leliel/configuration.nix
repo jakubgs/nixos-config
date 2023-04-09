@@ -3,11 +3,9 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/base.nix
-    ../../roles/smart.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
-    ../../roles/netdata.nix
     ../../roles/nfs.nix
     ../../roles/music.nix
     ../../roles/autofs.nix
@@ -17,7 +15,6 @@
     ../../roles/gossa.nix
     ../../roles/landing.nix
     ../../roles/torrent.nix
-    ../../roles/mtr-exporter.nix
     ../../roles/distbuild.nix
   ];
 

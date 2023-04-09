@@ -5,6 +5,7 @@
     ./nix.nix
     ./helpers.nix
     ./secrets.nix
+    ./metrics.nix
     ./security.nix
   ];
 
