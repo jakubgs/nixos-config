@@ -1,0 +1,12 @@
+---
+groups:
+  - name: smart
+    rules:
+    # Alert for SMART critical errors on hard drives.
+    - alert: SMARTCriticalWarning
+      expr: smartctl_device_critical_warning > 0
+      for: 5m
+      annotations:
+        summary: "Disk on {{ $labels.instance }} has critical warnings."
+        description: "Disk {{ $labels.device }} on {{ $labels.instance }} has {{ $value }} critical SMART warnings."
+        current_value: "{{ $value }}"

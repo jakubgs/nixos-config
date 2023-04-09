@@ -3,14 +3,16 @@
 let
   inherit (config) services;
 
+  default = { netdata = 8000; smartctl = 9633; mtr = 8080; };
+
   hosts = {
     "eve.magi.vpn" = { openwrt = 9100; };
-    "bardiel.magi.vpn" = { netdata = 8000; };
-    "caspair.magi.vpn" = { netdata = 8000; };
-    "lilim.magi.vpn" = { netdata = 8000; };
-    "leliel.magi.vpn" = { netdata = 8000; mtr = 8080; };
-    "sachiel.magi.vpn" = { netdata = 8000; mikrotik = 9436; mtr = 8080; };
-    "zeruel.magi.vpn" = { netdata = 8000; nimbus = 9100; geth = 16060; };
+    "bardiel.magi.vpn" = default;
+    "caspair.magi.vpn" = default;
+    "lilim.magi.vpn" = default;
+    "leliel.magi.vpn" = default;
+    "sachiel.magi.vpn" = default // {mikrotik = 9436; };
+    "zeruel.magi.vpn" = default // { nimbus = 9100; geth = 16060; };
   };
 
   # helper for filtering hosts by available service port
@@ -55,6 +57,7 @@ in {
 
     scrapeConfigs = [
       (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
+      (genScrapeJob {name = "smartctl"; path = "/metrics";})
       (genScrapeJob {name = "nimbus";   path = "/metrics"; interval = "6s"; })
       (genScrapeJob {name = "geth";     path = "/debug/metrics/prometheus"; })
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
@@ -64,6 +67,7 @@ in {
 
     ruleFiles = [
       ../files/prometheus/rules/netdata.yml
+      ../files/prometheus/rules/smartctl.yml
       ../files/prometheus/rules/nimbus.yml
     ];
   };
