@@ -22,6 +22,7 @@
     ../../roles/work.nix
     ../../roles/docs.nix
     ../../roles/netdata.nix
+    ../../roles/smart.nix
     ../../roles/landing.nix
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix
