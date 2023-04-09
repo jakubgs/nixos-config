@@ -50,6 +50,6 @@ in pkgs.stdenv.mkDerivation {
       > $out/hosts
 
     echo '${concatStringsSep "\n" (map (i: "0.0.0.0 " + i) includes)}' \
-      > $out/hosts
+      >> $out/hosts
   '';
 }
