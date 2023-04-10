@@ -2,6 +2,13 @@
 
 Describes installtion process on NanoPC-T4 `sachiel` host.
 
+# Install Image
+
+You can build a custom install image using the [`sd-image.nix`](./sd-image.nix):
+```sh
+nixos-generate -f sd-aarch64-installer --system aarch64-linux -c sd-image.nix -I nixpkgs=$HOME/nixpkgs
+```
+
 # External Drives
 
 Env variable to avoid boilerplate:

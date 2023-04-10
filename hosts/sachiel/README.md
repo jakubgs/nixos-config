@@ -21,4 +21,5 @@ With:
 # Installation
 
 * https://nixos.wiki/wiki/NixOS_on_ARM/NanoPC-T4
+* https://github.com/jakubgs/nixos-nanopc-t4
 * https://github.com/NixOS/nixos-hardware/tree/master/friendlyarm/nanopc-t4
