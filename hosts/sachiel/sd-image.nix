@@ -6,7 +6,7 @@
   ];
 
   # Set serial console settings
-  services.mingetty.serialSpeed = [ 1500000 115200 ];
+  boot.kernelParams = ["console=ttyS2,1500000"];
 
   # Enable OpenSSH out of the box.
   services.openssh = {
@@ -24,17 +24,7 @@
   sdImage.compressImage = false;
 
   # Fix for not detecting the NVMe SSD
-  boot = {
-    kernelPackages = pkgs.linuxPackages_6_1;
-    kernelPatches = [{
-      name = "pcie-rockchip-config.patch";
-      patch = null;
-      extraConfig = ''
-        PHY_ROCKCHIP_PCIE y
-        PCIE_ROCKCHIP_HOST y
-      '';
-    }];
-  };
+  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";

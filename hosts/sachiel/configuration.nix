@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -27,15 +27,7 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
-  boot.kernelPatches = [{
-    name = "pcie-rockchip-config.patch";
-    patch = null;
-    extraConfig = ''
-      PHY_ROCKCHIP_PCIE y
-      PCIE_ROCKCHIP_HOST y
-    '';
-  }];
+  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };

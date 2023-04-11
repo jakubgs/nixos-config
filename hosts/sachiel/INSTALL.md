@@ -8,6 +8,7 @@ You can build a custom install image using the [`sd-image.nix`](./sd-image.nix):
 ```sh
 nixos-generate -f sd-aarch64-installer --system aarch64-linux -c sd-image.nix -I nixpkgs=$HOME/nixpkgs
 ```
+For more details see [this article](https://rbf.dev/blog/2020/05/custom-nixos-build-for-raspberry-pis/).
 
 # External Drives
 
@@ -44,3 +45,9 @@ sudo zfs create -o canmount=on -o quota=20G  -o reservation=10G  USB-HDD/mobile
 sudo zfs create -o canmount=on -o quota=20G  -o reservation=10G  USB-HDD/git
 sudo zfs create -o canmount=on -o quota=1.4T -o reservation=1.4T USB-HDD/torrent
 ```
+
+# Kernel
+
+A [custom kernel](./KERNEL.md) is built due to [known issues with PCI-E timouts](./KNOWN_ISSUES.md).
+
+The [kernel config](./kernel.config) is used both for the system and the recovery/install [SD card image](./sd-image.nix).
