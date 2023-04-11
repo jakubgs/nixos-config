@@ -1,6 +1,6 @@
 # Description
 
-Configuration for NanoPC-T4.
+Configuration for [NanoPC-T4](https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T4).
 
 # Hardware
 
@@ -18,8 +18,15 @@ With:
 * IcyBox IB-RD2253-U31 USB 3.1 enclosure
 * 2x 2TB SSD PATRIOT P210 in enclosure
 
-# Installation
+# Docs
+
+* [Installation Process](./INSTALL.md)
+* [Custom Kernel Config](./KERNEL.md)
+* [Known Issues](./KNOWN_ISSUES.md)
+
+# Links
 
 * https://nixos.wiki/wiki/NixOS_on_ARM/NanoPC-T4
 * https://github.com/jakubgs/nixos-nanopc-t4
+* https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T4
 * https://github.com/NixOS/nixos-hardware/tree/master/friendlyarm/nanopc-t4
