@@ -28,6 +28,7 @@
   };
   # Fix for not detecting the NVMe SSD
   boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
+  boot.initrd.includeDefaultModules = false;
 
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };

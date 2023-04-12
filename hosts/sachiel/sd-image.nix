@@ -8,6 +8,10 @@
   # Set serial console settings
   boot.kernelParams = ["console=ttyS2,1500000"];
 
+  # Fix for not detecting the NVMe SSD
+  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
+  boot.initrd.includeDefaultModules = false;
+
   # Enable OpenSSH out of the box.
   services.openssh = {
     enable = true;
@@ -22,9 +26,6 @@
 
   # bzip2 compression takes loads of time with emulation, skip it.
   sdImage.compressImage = false;
-
-  # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
