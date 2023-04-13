@@ -10,6 +10,11 @@ pkgs.linuxPackagesFor (
     version = "${base_kernel.version}";
     configfile = ./kernel.config;
 
+    kernelPatches = [
+      { name = "pcie-rockchip-bus-scan-delay";
+        patch = ./pcie-rockchip-bus-scan-delay.patch; }
+    ];
+
     allowImportFromDerivation = true;
   }
 )
