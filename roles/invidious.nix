@@ -6,7 +6,7 @@ let
 in {
   services.invidious = {
     enable = true;
-    package = pkgs.unstable.callPackage ../pkgs/invidious.nix { };
+    package = pkgs.unstable.invidious;
     inherit port domain;
     database.createLocally = true;
     settings = {
