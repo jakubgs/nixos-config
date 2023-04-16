@@ -38,6 +38,18 @@
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
+  # Systemd in initrd. EXPERIMENTAL
+  boot.initrd.systemd = {
+    enable = true;
+    emergencyAccess = true;
+    storePaths = with pkgs; [ util-linux pciutils ];
+    extraBin = {
+      fdisk = "${pkgs.util-linux}/bin/fdisk";
+      lsblk = "${pkgs.util-linux}/bin/lsblk";
+      lspci = "${pkgs.pciutils}/bin/lspci";
+    };
+  };
+
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;
 
