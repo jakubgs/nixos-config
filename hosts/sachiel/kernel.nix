@@ -11,8 +11,8 @@ pkgs.linuxPackagesFor (
     configfile = ./kernel.config;
 
     kernelPatches = [
-      { name = "pcie-rockchip-bus-scan-delay";
-        patch = ./pcie-rockchip-bus-scan-delay.patch; }
+      { name = "pcie-rockchip-host-training-timeout-bump";
+        patch = ./pcie-rockchip-host-training-timeout-bump.patch; }
     ];
 
     allowImportFromDerivation = true;
