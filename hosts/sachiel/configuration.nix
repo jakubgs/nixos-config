@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -27,8 +27,12 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
-  boot.initrd.includeDefaultModules = false;
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
+    structuredExtraConfig = with lib.kernel; {
+      PHY_ROCKCHIP_PCIE  = yes;
+      PCIE_ROCKCHIP_HOST = yes;
+    };
+  });
 
   # Set serial console settings
   boot.kernelParams = [ "console=ttyS2,1500000" ];
