@@ -30,9 +30,9 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_12
+    ansible_2_12 nix-linter
     # Security
-    bitwarden bitwarden-cli sops oathToolkit yubikey-manager
+    bitwarden unstable.bitwarden-cli sops oathToolkit yubikey-manager
     # Databases
     robo3t
     # Network
