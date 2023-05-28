@@ -7,7 +7,8 @@
 }:
 
 let
-  inherit (pkgs) stdenv fetchgit lib nim which writeScriptBin;
+  inherit (pkgs) stdenv fetchgit lib which writeScriptBin;
+  inherit (pkgs.unstable) nim;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
   version = "23.5.1";
