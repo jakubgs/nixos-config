@@ -12,7 +12,7 @@ pkgs.go-ethereum.override {
       sha256 = "sha256-u1p9k12tY79kA/2Hu109czQZnurHuDJQf/w7J0c8SuU=";
     };
 
-    vendorSha256 = "sha256-k5MbOiJDvWFnaAPViNRHeqFa64XPZ3ImkkvkmTTscNA=";
+    vendorHash = "sha256-k5MbOiJDvWFnaAPViNRHeqFa64XPZ3ImkkvkmTTscNA=";
 
     subPackages = [
       "cmd/ethkey"
