@@ -4,9 +4,6 @@ let
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
-  # Font/DPI optimized for HiDPI displays
-  hardware.video.hidpi.enable = true;
-
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;

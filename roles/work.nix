@@ -30,7 +30,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_12 nix-linter
+    ansible_2_13
     # Security
     bitwarden unstable.bitwarden-cli sops oathToolkit yubikey-manager
     # Databases
@@ -47,13 +47,11 @@ in {
     # Infra dev
     pkgs.unstable.terraform_1
     # NodeJS dev
-    nodejs-16_x (yarn.override { nodejs = nodejs-16_x; })
+    nodejs-18_x (yarn.override { nodejs = nodejs-18_x; })
     # GoLang dev
     pkgs.unstable.go_1_19 gocode gopls go-protobuf protobuf3_19
     # Python dev
     myPython
-    # Ruby dev
-    ruby_2_7
     # Mobile dev
     fastlane apktool jdk8 scrcpy
     # Utils

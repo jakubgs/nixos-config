@@ -14,8 +14,10 @@
   services.openssh = {
     enable = true;
     openFirewall = true;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
   };
 
   # Enable GnuPG agent for keys.

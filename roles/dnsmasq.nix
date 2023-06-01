@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 
 let
-  inherit (lib) concatStringsSep mapAttrsToList;
+  inherit (lib) concatStringsSep mapAttrsToList optionalAttrs;
 
   stubbyEnabled = false;
 
@@ -41,24 +41,20 @@ in {
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = true;
-    extraConfig = ''
-      interface=lo
-      bind-interfaces
-
-      ${lib.optionalString stubbyEnabled ''
-      no-resolv
-      proxy-dnssec
-      server=127.0.0.1#153
-      ''}
-
-      no-negcache
-      cache-size=10000
-      local-ttl=300
-
-      conf-dir=/etc/dnsmasq.d/,*.conf
-      conf-file=${blockedFqdns}/domains
-      addn-hosts=${blockedFqdns}/hosts
-    '';
+    settings = {
+      interface = "lo";
+      bind-interfaces = true;
+      no-negcache = true;
+      cache-size = 10000;
+      local-ttl = 300;
+      conf-dir = "/etc/dnsmasq.d/,*.conf";
+      conf-file = "${blockedFqdns}/domains";
+      addn-hosts = "${blockedFqdns}/hosts";
+    } // optionalAttrs stubbyEnabled {
+      no-resolv = true;
+      proxy-dnssec = true;
+      server = "127.0.0.1#153";
+    };
   };
 
   # Support wildcard resolution of /etc/hosts contents.
