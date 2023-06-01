@@ -33,7 +33,6 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
     enable = true;
-    version = 2;
     configurationLimit = 10;
     copyKernels = true;
     mirroredBoots = [
