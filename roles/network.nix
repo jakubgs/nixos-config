@@ -1,6 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  # Packages
+  environment.systemPackages = with pkgs; [ nftables ];
+
   # Enable NetworkManager
   networking.networkmanager.enable = true;
 
