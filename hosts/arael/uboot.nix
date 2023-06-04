@@ -34,7 +34,7 @@ pkgs.stdenv.mkDerivation {
     cd uboot-rockchip
   '';
 
-  configurePhase = ''
+  patchPhase = ''
     chmod -R +w ./ ../rkbin
     autoPatchelf ./ ../rkbin
     patchShebangs make.sh scripts arch
@@ -48,6 +48,12 @@ pkgs.stdenv.mkDerivation {
     done
     chmod +x /build/bin/*
     export PATH="/build/bin:$PATH"
+  '';
+
+  configurePhase = ''
+    echo "CONFIG_FS_FAT"   >> configs/nanopi6_defconfig
+    echo "CONFIG_FS_EXT4"  >> configs/nanopi6_defconfig
+    echo "CONFIG_CMD_EXT4" >> configs/nanopi6_defconfig
   '';
 
   buildPhase = ''
