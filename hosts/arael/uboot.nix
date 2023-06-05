@@ -51,9 +51,9 @@ pkgs.stdenv.mkDerivation {
   '';
 
   configurePhase = ''
-    echo "CONFIG_FS_FAT"   >> configs/nanopi6_defconfig
-    echo "CONFIG_FS_EXT4"  >> configs/nanopi6_defconfig
-    echo "CONFIG_CMD_EXT4" >> configs/nanopi6_defconfig
+    echo "CONFIG_FS_FAT=y"   >> configs/nanopi6_defconfig
+    echo "CONFIG_FS_EXT4=y"  >> configs/nanopi6_defconfig
+    echo "CONFIG_CMD_EXT4=y" >> configs/nanopi6_defconfig
   '';
 
   buildPhase = ''
