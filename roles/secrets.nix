@@ -4,7 +4,7 @@
 # https://elvishjerricco.github.io/2018/06/24/secure-declarative-key-management.html
 
 let
-  inherit (lib) assertMsg isString removeSuffix attrByPath;
+  inherit (lib) assertMsg isString attrByPath fromJSON;
 
   # Not all hosts have password-store and gpg keys.
   # Using secrets.nix as override for remote servers and setup.
@@ -15,9 +15,13 @@ let
   # 2. Calls pass command for given path.
   secretFunc = path:
     assert (assertMsg (isString path) "Secret path has to be a string!");
-    assert (assertMsg (path != "") "Secret path can't be empty!");
+    assert (assertMsg (path != "")    "Secret path can't be empty!");
     let
-      queryPass = path: removeSuffix "\n" (builtins.extraBuiltins.pass path);
+      queryPass = path: let
+        val = builtins.extraBuiltins.pass path;
+      in
+        if builtins.isString val then val
+        else throw "Could not find secret: ${path}";
     in
       attrByPath [ path ] (queryPass path) overrideSecrets;
 in {
