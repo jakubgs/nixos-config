@@ -18,7 +18,7 @@
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
       # Some hosts are ARM64.
       systemForHost = hostname:
-        if builtins.elem hostname ["sachiel" "leliel"] then "aarch64-linux"
+        if builtins.elem hostname ["leliel" "sachiel" "shamshel"] then "aarch64-linux"
         else "x86_64-linux";
     in {
       nixosConfigurations = builtins.listToAttrs (builtins.map (host: {
