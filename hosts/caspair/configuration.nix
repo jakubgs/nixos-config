@@ -24,6 +24,7 @@
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix
     ../../roles/qemu.nix
+    ../../roles/torrent.nix
     ../../roles/builder.nix
   ];
 
@@ -77,4 +78,6 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.09";
+
+  systemd.coredump.enable = true;
 }

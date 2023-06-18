@@ -86,6 +86,12 @@
       options = [ "nofail" ];
     };
 
+  fileSystems."/mnt/torrent" =
+    { device = "DATA/torrent";
+      fsType = "zfs";
+      options = [ "nofail" ];
+    };
+
   fileSystems."/mnt/git" =
     { device = "DATA/git";
       fsType = "zfs";
