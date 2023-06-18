@@ -13,10 +13,7 @@
   boot.initrd.includeDefaultModules = false;
 
   # Enable OpenSSH out of the box.
-  services.openssh = {
-    enable = true;
-    openFirewall = true;
-  };
+  services.openssh.enable = true;
 
   # Users
   users.extraUsers.nixos.openssh.authorizedKeys.keys = [
