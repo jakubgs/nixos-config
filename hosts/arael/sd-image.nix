@@ -19,7 +19,8 @@ in {
     };
     consoleLogLevel = lib.mkDefault 7;
     kernelParams = ["cma=32M" "console=ttyS2,115200n8" "console=tty0"];
-    kernelPackages = pkgs.linuxPackages_6_3;
+    #kernelPackages = pkgs.linuxPackages_6_3;
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./kernel.nix { });
   };
 
   sdImage = {
@@ -40,7 +41,7 @@ in {
   networking.firewall.enable = false;
 
   # ZFS fix: https://github.com/NixOS/nixpkgs/pull/237875
-  boot.zfs.removeLinuxDRM = true;
+  #boot.zfs.removeLinuxDRM = true;
 
   # root autologin etc
   users.users.root.password = "root";
