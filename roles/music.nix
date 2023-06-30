@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ pkgs, lib, config, secret, ... }:
 
 let
   password = secret "service/mpd/pass";
@@ -12,10 +12,16 @@ in {
     config.services.ympd.webPort
   ];
 
+  # Necessary to use PulseAudio
+  hardware.pulseaudio.systemWide = true; 
+  hardware.pulseaudio.extraConfig = ''
+    load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
+  '';
+
   # Daemon
   services.mpd = {
     enable = true;
-    user = "jakubgs";
+    user = "mpd";
     group = "jakubgs";
     network.port = 6600;
     network.listenAddress = "0.0.0.0";
@@ -25,7 +31,13 @@ in {
       password   "${password}@read,add,control,admin"
       mixer_type "software"
       audio_buffer_size "8192"
-    '';
+    ${lib.optionalString config.hardware.pulseaudio.enable ''
+      audio_output {
+        type "pulse"
+        name "Pulseaudio"
+        server "127.0.0.1"
+      }
+    ''}'';
   };
 
   # Web UI
