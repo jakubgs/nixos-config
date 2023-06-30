@@ -15,6 +15,7 @@
     ../../roles/printer.nix
     ../../roles/gaming.nix
     ../../roles/docker.nix
+    ../../roles/music.nix
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
     ../../roles/syncthing.nix
