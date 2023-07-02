@@ -14,9 +14,7 @@ Configuration for [NanoPC-T4](https://wiki.friendlyelec.com/wiki/index.php/NanoP
 
 With:
 
-* Samsung NVMe SSD 970 EVO Plus 250GB
-* IcyBox IB-RD2253-U31 USB 3.1 enclosure
-* 2x 2TB SSD PATRIOT P210 in enclosure
+* KINGSTON 2 TB NVMe SNV2S2000G
 
 # Docs
 

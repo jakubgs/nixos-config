@@ -33,42 +33,6 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/torrent" =
-    { device = "USB-HDD/torrent";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/photos" =
-    { device = "USB-HDD/photos";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/mobile" =
-    { device = "USB-HDD/mobile";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/music" =
-    { device = "USB-HDD/music";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/git" =
-    { device = "USB-HDD/git";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/data" =
-    { device = "USB-HDD/data";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
   fileSystems."/git" =
     { device = "/mnt/git";
       fsType = "none";
@@ -76,7 +40,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/09a75307-8dda-4e21-9a91-709d0dc3338a"; }
+    [ { device = "/dev/disk/by-uuid/3b90983f-f3a4-4526-b90b-194e2445216b"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
