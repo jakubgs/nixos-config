@@ -4,7 +4,7 @@
 
 let
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = _: with (pkgs.python39Packages); [
+  myPythonPkgs = _: with (pkgs.python310Packages); [
     ipython pip
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
@@ -20,7 +20,7 @@ let
     # Misc
     sh backoff
   ];
-  myPython = pkgs.python39.withPackages myPythonPkgs;
+  myPython = pkgs.python310.withPackages myPythonPkgs;
 in {
   imports = [
     # Useful for SQL development.
@@ -30,7 +30,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_13
+    ansible_2_14
     # Security
     bitwarden unstable.bitwarden-cli sops oathToolkit yubikey-manager
     # Databases
