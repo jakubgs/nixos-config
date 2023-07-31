@@ -28,6 +28,8 @@
   "service/alertmanager/discord-webhook" = "CHANGE_ME";
   # Grafana first admin user password
   "service/grafana/pass" = "CHANGE_ME";
+  # Invidious HMAC signing key used for CSRF tokens
+  "service/invidious/hmac-key" = "CHANGE_ME";
   # Password for landing page created by htpasswd
   "service/landing/htpasswd" = "CHANGE_ME";
   # Password for MikroTik read-only prometheus user

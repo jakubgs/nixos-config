@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, secret, ... }:
 
 let
   domain = "yt.${config.networking.hostName}.magi.vpn";
@@ -19,6 +19,7 @@ in {
       popular_enabled = false;
       quality = "dash";
       quality_dash = "best";
+      hmac_key = secret "service/invidious/hmac-key";
     };
   };
 
