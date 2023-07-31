@@ -1,3 +1,7 @@
 /secrets.nix
 /configuration.nix
 /hardware-configuration.nix
+result
+*.log
+*.img
+*.qcow
