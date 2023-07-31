@@ -75,11 +75,10 @@ zfs create -o canmount=on -o encryption=on -o keyformat=passphrase -o keylocatio
 zfs create -o canmount=on -o quota=30G  -o reservation=30G  rpool/root
 zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/nix
 zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/docker
-zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/music
-zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/mobile
-zfs create -o canmount=on -o quota=200G -o reservation=200G rpool/secret/home
-zfs create -o canmount=on -o quota=150G -o reservation=150G rpool/secret/data
-zfs create -o canmount=on -o quota=10G  -o reservation=10G  rpool/secret/git
+zfs create -o canmount=on -o quota=150G -o reservation=150G rpool/secret/music
+zfs create -o canmount=on -o quota=200G -o reservation=200G rpool/secret/data
+zfs create -o canmount=on -o quota=30G  -o reservation=30G  rpool/secret/mobile
+zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/secret/photos
 ```
 
 # Installation
