@@ -8,7 +8,8 @@ let
     "/mnt/music"
     "/mnt/photos"
   ]
-    ++ lib.optionals (config.networking.hostName == "sachiel") [ "/mnt/torrent" ]
+    ++ lib.optionals (config.networking.hostName == "sachiel")  [ "/mnt/torrent" ]
+    ++ lib.optionals (config.networking.hostName == "caspair")  [ "/mnt/torrent" ]
     ++ lib.optionals (config.networking.hostName == "melchior") [ "/mnt/backup" ];
 
   allowIpRanges = [
