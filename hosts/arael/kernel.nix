@@ -1,10 +1,16 @@
-{ buildLinux, fetchFromGitHub, ... }@args:
+{ lib, buildLinux, fetchFromGitHub, ... }@args:
 
 buildLinux (args // rec {
   kernelPatches = [];
   version = "5.10.160";
   modDirVersion = "5.10.160";
   defconfig = "rockchip_linux_defconfig";
+
+  # Disable broken modules
+  structuredExtraConfig = {
+    XFS_FS = lib.kernel.no;
+    WL_ROCKCHIP = lib.kernel.no;
+  };
 
   # do not automatically try to load other modules
   autoModules = false;
