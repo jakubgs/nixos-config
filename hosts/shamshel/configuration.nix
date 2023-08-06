@@ -25,6 +25,13 @@
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
+  # Necessary for Hetzner Cloud
+  boot.loader.grub = {
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+    device = "nodev";
+  };
+
   networking = {
     hostName = "shamshel";
     hostId = "de25ccd4";
