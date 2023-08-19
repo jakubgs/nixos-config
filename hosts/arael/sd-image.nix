@@ -19,8 +19,7 @@ in {
     };
     consoleLogLevel = lib.mkDefault 7;
     kernelParams = ["cma=32M" "console=ttyS2,115200n8" "console=tty0"];
-    #kernelPackages = pkgs.linuxPackages_6_3;
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./kernel_rockchip_5_10.nix { });
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./kernel_vanilla_6_3.nix { });
   };
 
   sdImage = {

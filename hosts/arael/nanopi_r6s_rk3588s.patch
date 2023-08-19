@@ -1,0 +1,143 @@
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 99a44c400d6a..39cad757d29d 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -91,3 +91,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+new file mode 100644
+index 000000000000..21b26539a855
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+@@ -0,0 +1,126 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/gpio/gpio.h>
++#include "rk3588s.dtsi"
++
++/ {
++	model = "NanoPi R6S - RK3588S";
++	compatible = "friendlyelec,nanopi6", "rockchip,rk3588";
++	
++	aliases {
++		mmc0 = &sdhci;
++		serial2 = &uart2;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++	
++	gpio_leds: gpio-leds {
++		compatible = "gpio-leds";
++
++		sys_led: led-0 {
++			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++			label = "sys_led";
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++
++		wan_led: led-1 {
++			gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
++			label = "wan_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&wan_led_pin>;
++		};
++
++		lan1_led: led-2 {
++			gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
++			label = "lan1_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan1_led_pin>;
++		};
++
++		lan2_led: led-3 {
++			gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
++			label = "lan2_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan2_led_pin>;
++		};
++	};
++};
++
++&pinctrl {
++	gpio-leds {
++		sys_led_pin: sys-led-pin {
++			rockchip,pins =
++				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wan_led_pin: wan-led-pin {
++			rockchip,pins =
++				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan1_led_pin: lan1-led-pin {
++			rockchip,pins =
++				<1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan2_led_pin: lan2-led-pin {
++			rockchip,pins =
++				<1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	rtl8211f {
++		rtl8211f_rst: rtl8211f-rst {
++			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&gmac1 {
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii-rxid";
++	pinctrl-0 = <&gmac1_miim
++		     &gmac1_tx_bus2
++		     &gmac1_rx_bus2
++		     &gmac1_rgmii_clk
++		     &gmac1_rgmii_bus>;
++	pinctrl-names = "default";
++	tx_delay = <0x42>;
++	status = "okay";
++};
++
++&mdio1 {
++	rgmii_phy1: ethernet-phy@1 {
++		compatible = "ethernet-phy-id001c.c916";
++		reg = <0x1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rtl8211f_rst>;
++		reset-assert-us = <20000>;
++		reset-deassert-us = <100000>;
++		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
+-- 
+2.40.0
