@@ -70,9 +70,12 @@
   hardware.pulseaudio.enable = true;
 
   # Video
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.modesetting.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" "intel" ];
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    nvidiaSettings = true;
+    modesetting.enable = true;
+  };
 
   # Power Managemtn
   powerManagement.cpuFreqGovernor = "performance";
