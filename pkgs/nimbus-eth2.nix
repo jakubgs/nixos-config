@@ -11,14 +11,14 @@ let
   inherit (pkgs.unstable) nim;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "23.5.1";
-  commit = "40253a76";
+  version = "23.7.0";
+  commit = "60f0a2f6";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-6f8WEqx5uqnFFVYpHRovLovNcpONcS8CRPN6wGGiGl0=";
+    sha256 = "sha256-gskbdKSlR2s0syqHdD2T4rkkTNWNHL1XKSYfDTbTO9s=";
     fetchSubmodules = true;
   };
 
