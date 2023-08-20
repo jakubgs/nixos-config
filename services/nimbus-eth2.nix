@@ -4,7 +4,7 @@ let
   inherit (lib)
     types mkEnableOption mkOption mkIf length
     escapeShellArgs literalExpression toUpper
-    boolToString optionalString optionalAttrs;
+    boolToString concatMapStringsSep optionalString optionalAttrs;
 
   cfg = config.services.nimbus-eth2;
 in {
@@ -78,9 +78,9 @@ in {
           description = "Public IP address of the node to advertise.";
         };
 
-        web3Url = mkOption {
-          type = types.str;
-          default = "";
+        execURLs = mkOption {
+          type = types.listOf types.str;
+          default = [];
           description = "URL for the Web3 RPC endpoint.";
         };
 
@@ -189,7 +189,6 @@ in {
             --network=${cfg.network} \
             --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
-            --web3-url=${cfg.web3Url} \
             --jwt-secret=${cfg.jwtSecret} \
             --nat=extip:${cfg.publicIp} \
             --log-level=${toUpper cfg.log.level} \
@@ -199,6 +198,7 @@ in {
             --udp-port=${toString cfg.discoverPort} \
             --rest=${boolToString cfg.rest.enable} ${optionalString cfg.rest.enable ''--rest-address=${cfg.rest.address} --rest-port=${toString cfg.rest.port} ''}\
             --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
+            ${if cfg.execURLs == [] then "--no-el \\" else concatMapStringsSep " \\\n" (url: "--el=${url}") cfg.execURLs} \
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger} \
             --suggested-fee-recipient=${cfg.suggestedFeeRecipient} ${optionalString (length cfg.extraArgs > 0) "\\"}
