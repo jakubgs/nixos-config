@@ -3,6 +3,7 @@
 {
   imports = [
     ./nix.nix
+    ./fixes.nix
     ./helpers.nix
     ./secrets.nix
     ./metrics.nix
