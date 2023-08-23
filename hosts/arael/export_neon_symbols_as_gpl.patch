@@ -1,0 +1,44 @@
+From aaeca98456431a8d9382ecf48ac4843e252c07b3 Mon Sep 17 00:00:00 2001
+From: Mark Brown <broonie@kernel.org>
+Date: Mon, 7 Nov 2022 17:07:47 +0000
+Subject: [PATCH] arm64/fpsimd: Make kernel_neon_ API _GPL
+
+Currently for reasons lost in the mists of time the kernel_neon_ APIs are
+EXPORT_SYMBOL() but the general policy for floating point usage is that it
+should be GPL only given the non-standard runtime environment that holds
+while it is in use and PCS impacts when code is compiled for FP usage.
+
+Given the limited existing deployment of non-GPL modules for arm64 and the
+fact that other architectures like x86 already make their equivalent
+functions GPL only this is not expected to be disruptive to existing users.
+
+Suggested-by: Christoph Hellwig <hch@infradead.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Link: https://lore.kernel.org/r/20221107170747.276910-1-broonie@kernel.org
+Signed-off-by: Will Deacon <will@kernel.org>
+---
+ arch/arm64/kernel/fpsimd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/kernel/fpsimd.c b/arch/arm64/kernel/fpsimd.c
+index 23834d96d1e781..1fe7d65096ac66 100644
+--- a/arch/arm64/kernel/fpsimd.c
++++ b/arch/arm64/kernel/fpsimd.c
+@@ -1838,7 +1838,7 @@ void kernel_neon_begin(void)
+ 	/* Invalidate any task state remaining in the fpsimd regs: */
+ 	fpsimd_flush_cpu_state();
+ }
+-EXPORT_SYMBOL(kernel_neon_begin);
++EXPORT_SYMBOL_GPL(kernel_neon_begin);
+ 
+ /*
+  * kernel_neon_end(): give the CPU FPSIMD registers back to the current task
+@@ -1856,7 +1856,7 @@ void kernel_neon_end(void)
+ 
+ 	put_cpu_fpsimd_context();
+ }
+-EXPORT_SYMBOL(kernel_neon_end);
++EXPORT_SYMBOL_GPL(kernel_neon_end);
+ 
+ #ifdef CONFIG_EFI
+ 

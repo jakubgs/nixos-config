@@ -17,5 +17,7 @@ buildLinux (args // rec {
   kernelPatches = [
     { name = "nanopi_r6s_rk3588s";
       patch = ./nanopi_r6s_rk3588s.patch; }
+    { name = "export_neon_symbols_as_gpl";
+      patch = ./export_neon_symbols_as_gpl.patch; }
   ];
 } // (args.argsOverride or { }))

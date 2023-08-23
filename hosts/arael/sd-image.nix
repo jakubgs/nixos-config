@@ -39,11 +39,6 @@ in {
   services.sshd.enable = true;
   networking.firewall.enable = false;
 
-  # ZFS "GPL-incompatible module" fix:
-  # https://github.com/NixOS/nixpkgs/pull/237875
-  # https://github.com/openzfs/zfs/issues/14555
-  boot.zfs.removeLinuxDRM = true;
-
   # root autologin etc
   users.users.root.password = "root";
   services.openssh.settings.PermitRootLogin = lib.mkDefault "yes";
