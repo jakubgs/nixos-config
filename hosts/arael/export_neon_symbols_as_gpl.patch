@@ -21,24 +21,24 @@ Signed-off-by: Will Deacon <will@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/kernel/fpsimd.c b/arch/arm64/kernel/fpsimd.c
-index 23834d96d1e781..1fe7d65096ac66 100644
+index 9e7e50a0fd76..c7e02cdee0f8 100644
 --- a/arch/arm64/kernel/fpsimd.c
 +++ b/arch/arm64/kernel/fpsimd.c
-@@ -1838,7 +1838,7 @@ void kernel_neon_begin(void)
- 	/* Invalidate any task state remaining in the fpsimd regs: */
- 	fpsimd_flush_cpu_state();
+@@ -1913,7 +1913,7 @@ void kernel_neon_begin(void)
+        /* Invalidate any task state remaining in the fpsimd regs: */
+        fpsimd_flush_cpu_state();
  }
--EXPORT_SYMBOL(kernel_neon_begin);
-+EXPORT_SYMBOL_GPL(kernel_neon_begin);
+-EXPORT_SYMBOL_GPL(kernel_neon_begin);
++EXPORT_SYMBOL(kernel_neon_begin);
  
  /*
   * kernel_neon_end(): give the CPU FPSIMD registers back to the current task
-@@ -1856,7 +1856,7 @@ void kernel_neon_end(void)
+@@ -1931,7 +1931,7 @@ void kernel_neon_end(void)
  
- 	put_cpu_fpsimd_context();
+        put_cpu_fpsimd_context();
  }
--EXPORT_SYMBOL(kernel_neon_end);
-+EXPORT_SYMBOL_GPL(kernel_neon_end);
+-EXPORT_SYMBOL_GPL(kernel_neon_end);
++EXPORT_SYMBOL(kernel_neon_end);
  
  #ifdef CONFIG_EFI
  
