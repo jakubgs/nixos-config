@@ -10,8 +10,8 @@
   # Define printers
   hardware.printers.ensurePrinters = [
     {
-      name = "HL2130";
-      description = "Brother HL-2130";
+      name = "HL2130_NET";
+      description = "Brother HL-2130 NET";
       deviceUri = "ipp://192.168.1.100/ipp/port1";
       model = "drv:///brlaser.drv/br2140.ppd";
       ppdOptions = { PageSize = "A4"; };
