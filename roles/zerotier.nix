@@ -28,6 +28,7 @@ in {
     "10.2.2.14" = [ "leliel.magi.vpn"   ]; # rasppi4
     "10.2.2.16" = [ "sachiel.magi.vpn"  ]; # nanopct4
     "10.2.2.17" = [ "bardiel.magi.vpn"  ]; # hetzner
+    "10.2.2.18" = [ "arael.magi.vpn"    ]; # nanopir6c
     "10.2.2.19" = [ "zeruel.magi.vpn"   ]; # hetzner
     "10.2.2.20" = [ "shamshel.magi.vpn" ]; # hetzner
   };
