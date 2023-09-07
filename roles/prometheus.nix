@@ -6,13 +6,14 @@ let
   default = { netdata = 8000; smartctl = 9633; mtr = 8080; };
 
   hosts = {
-    "eve.magi.vpn" = { openwrt = 9100; };
+    "eve.magi.vpn"     = { openwrt = 9100; };
+    "arael.magi.vpn"   = { mtr = 8080; };
     "bardiel.magi.vpn" = default;
     "caspair.magi.vpn" = default;
-    "lilim.magi.vpn" = default;
-    "leliel.magi.vpn" = default;
+    "lilim.magi.vpn"   = default;
+    "leliel.magi.vpn"  = default;
     "sachiel.magi.vpn" = default // {mikrotik = 9436; };
-    "zeruel.magi.vpn" = default // { nimbus = 9100; geth = 16060; };
+    "zeruel.magi.vpn"  = default // { nimbus = 9100; geth = 16060; };
   };
 
   # helper for filtering hosts by available service port
