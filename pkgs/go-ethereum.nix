@@ -3,16 +3,16 @@
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.go-ethereum.override {
   buildGoModule = args: pkgs.buildGo120Module ( args // rec {
-    version = "1.12.2";
+    version = "1.13.1";
 
     src = pkgs.fetchFromGitHub {
       owner = "ethereum";
       repo = args.pname;
       rev = "v${version}";
-      sha256 = "sha256-iCLOrf6/f0f7sD0YjmBtlcOcZRDIp9IZkBadTKj1Qjw=";
+      sha256 = "sha256-eEoWuW4edH/2+GkHI/+bHoB4fgWjaPrCTz5ZmP6qzoY=";
     };
 
-    vendorHash = "sha256-ChmQjhz4dQdwcY/269Hi5XAn8/+0z/AF7Kd9PJ8WqHg=";
+    vendorHash = "sha256-08jB8LWVnUzkisx0QqJPf7PTRf8inhPu3HboGZSqspo=";
 
     subPackages = [
       "cmd/ethkey"
