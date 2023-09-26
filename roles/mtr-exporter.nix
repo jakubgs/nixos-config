@@ -3,7 +3,7 @@
 {
   # Use new service definition
   disabledModules = [ "services/networking/mtr-exporter.nix" ];
-  imports = [ ../services/mtr-exporter.nix ];
+  imports = [ "${channels.unstable}/nixos/modules/services/networking/mtr-exporter.nix" ];
 
   # Firewall
   networking.firewall.interfaces."zt*".allowedTCPPorts = [ 8080 ];
