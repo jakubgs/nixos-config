@@ -60,6 +60,8 @@ in {
     obs-studio
     # Docs
     mdbook hugo
+    # Communication
+    weechat
   ];
 
   # Android development Tool
