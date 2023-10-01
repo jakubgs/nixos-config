@@ -19,6 +19,7 @@
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
     ../../roles/syncthing.nix
+    ../../roles/restic.nix
     ../../roles/work.nix
     ../../roles/docs.nix
     ../../roles/landing.nix
