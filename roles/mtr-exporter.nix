@@ -12,9 +12,15 @@
     enable = true;
     address = "0.0.0.0";
     jobs = [
-      { name = "google";     address = "google.com"; }
-      { name = "github";     address = "github.com"; }
-      { name = "cloudflare"; address = "one.one.one.one"; }
+      { name = "google-icmp";        address = "google.com";                  }
+      { name = "google-tcp-80";      address = "google.com";      flags = ["--tcp" "--port=80"]; }
+      { name = "google-tcp-443";     address = "google.com";      flags = ["--tcp" "--port=443"]; }
+      { name = "github-icmp";        address = "github.com";                  }
+      { name = "github-tcp-80";      address = "github.com";      flags = ["--tcp" "--port=80"]; }
+      { name = "github-tcp-443";     address = "github.com";      flags = ["--tcp" "--port=443"]; }
+      { name = "cloudflare-icmp";    address = "one.one.one.one";             }
+      { name = "cloudflare-tcp-80";  address = "one.one.one.one"; flags = ["--tcp" "--port=80"]; }
+      { name = "cloudflare-tcp-443"; address = "one.one.one.one"; flags = ["--tcp" "--port=443"]; }
     ];
 
     # https://github.com/mgumz/mtr-exporter/pull/13
