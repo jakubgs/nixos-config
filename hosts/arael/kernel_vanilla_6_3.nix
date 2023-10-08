@@ -20,4 +20,12 @@ buildLinux (args // rec {
     { name = "export_neon_symbols_as_gpl";
       patch = ./export_neon_symbols_as_gpl.patch; }
   ];
+
+  # Enable more debugging.
+  structuredExtraConfig = {
+    DEBUG_KERNEL = lib.kernel.yes;
+    DEBUG_LL = lib.kernel.yes;
+    DEBUG_UART_8250 = lib.kernel.yes;
+    BACKTRACE_VERBOSE = lib.kernel.yes;
+  };
 } // (args.argsOverride or { }))
