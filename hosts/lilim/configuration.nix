@@ -16,6 +16,7 @@
     ../../roles/bluetooth.nix
     ../../roles/physlock.nix
     ../../roles/docker.nix
+    ../../roles/music.nix
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
     ../../roles/work.nix
