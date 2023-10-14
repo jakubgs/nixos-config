@@ -14,6 +14,7 @@
     ../../roles/syncthing.nix
     ../../roles/gossa.nix
     ../../roles/landing.nix
+    ../../roles/metrics.nix
     ../../roles/torrent.nix
     ../../roles/distbuild.nix
   ];
