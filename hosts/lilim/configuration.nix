@@ -8,6 +8,7 @@
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/network.nix
+    ../../roles/dnsmasq.nix
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
