@@ -18,8 +18,9 @@ in {
       generic-extlinux-compatible.enable = true;
     };
     consoleLogLevel = lib.mkDefault 7;
-    kernelParams = ["cma=32M" "console=ttyS2,115200n8" "console=tty0"];
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./kernel_vanilla_6_3.nix { });
+    kernelParams = ["console=ttyS2,1500000n8"];
+    kernelPackages = pkgs.callPackage ./kernel_nixos_6_5.nix { };
+    zfs.removeLinuxDRM = true;
   };
 
   sdImage = {
@@ -60,5 +61,5 @@ in {
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
