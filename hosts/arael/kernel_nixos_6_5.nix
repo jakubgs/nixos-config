@@ -2,8 +2,8 @@
 
 pkgs.linuxPackagesFor (pkgs.linux_6_5.override {
   kernelPatches = [
-    { name = "nanopi_r6s_rk3588s";
-      patch = ./nanopi_r6s_rk3588s.patch; }
+    { name = "rk3588s_nanopi_r6_dts";
+      patch = ./rk3588s_nanopi_r6_dts.patch; }
   ];
 
   # Enable more debugging.
