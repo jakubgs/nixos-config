@@ -1,10 +1,21 @@
 { pkgs, lib, ... }:
 
-pkgs.linuxPackagesFor (pkgs.linux_testing.override {
-  kernelPatches = [
-    { name = "rk3588s_nanopi_r6_dts";
-      patch = ./rk3588s_nanopi_r6_dts.patch; }
-  ];
+pkgs.linuxPackagesFor (
+  let
+    base_kernel = pkgs.linuxKernel.kernels.linux_testing;
+  in pkgs.linuxKernel.manualConfig {
+    inherit (pkgs) lib stdenv;
+    inherit (base_kernel) src;
 
-  configfile = ./kernel.config;
-})
+    version = "${base_kernel.version}";
+
+    configfile = ./kernel.config;
+
+    kernelPatches = [
+      { name = "rk3588s_nanopi_r6_dts";
+        patch = ./rk3588s_nanopi_r6_dts.patch; }
+    ];
+
+    allowImportFromDerivation = true;
+  }
+)
