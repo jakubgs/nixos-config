@@ -19,7 +19,7 @@ in {
     };
     consoleLogLevel = lib.mkDefault 7;
     kernelParams = ["console=ttyS2,1500000n8"];
-    kernelPackages = pkgs.callPackage ./kernel_nixos_6_5.nix { };
+    kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
     zfs.removeLinuxDRM = true;
   };
 
