@@ -14,6 +14,8 @@ pkgs.linuxPackagesFor (
     kernelPatches = [
       { name = "rk3588s_nanopi_r6_dts";
         patch = ./rk3588s_nanopi_r6_dts.patch; }
+      { name = "rk3588s_nanopi_r6_dts_fix";
+        patch = ./rk3588s_nanopi_r6_dts_fix.patch; }
     ];
 
     allowImportFromDerivation = true;

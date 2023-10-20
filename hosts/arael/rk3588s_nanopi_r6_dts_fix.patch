@@ -1,0 +1,69 @@
+From 351e8d0b60d79941a8c947cb794654f114bbc94a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jakub=20Soko=C5=82owski?= <jakub@status.im>
+Date: Fri, 20 Oct 2023 10:23:34 +0200
+Subject: [PATCH] remove broken entries in rk3588s-nanopi-r6s.dts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Otherwise we get these errors:
+```
+  DTC     arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dtb
+Error: ../arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts:793.1-8 Label or path u2phy0 not found
+Error: ../arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts:797.1-12 Label or path u2phy0_otg not found
+Error: ../arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts:819.1-16 Label or path usb_host0_xhci not found
+Error: ../arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts:825.1-12 Label or path usbdp_phy0 not found
+Error: ../arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts:829.1-15 Label or path usbdp_phy0_u3 not found
+FATAL ERROR: Syntax error parsing input tree
+make[3]: *** [../scripts/Makefile.lib:419: arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dtb] Error
+```
+
+Signed-off-by: Jakub Sokołowski <jakub@status.im>
+---
+ .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 23 -------------------
+ 1 file changed, 23 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+index 2f09b9024cd4..8216132d0427 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+@@ -790,15 +790,6 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
+-&u2phy0 {
+-	status = "okay";
+-};
+-
+-&u2phy0_otg {
+-	phy-supply = <&vcc5v0_usb_otg0>;
+-	status = "okay";
+-};
+-
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -816,20 +807,6 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
+-&usb_host0_xhci {
+-	dr_mode = "host";
+-	extcon = <&u2phy0>;
+-	status = "okay";
+-};
+-
+-&usbdp_phy0 {
+-	status = "okay";
+-};
+-
+-&usbdp_phy0_u3 {
+-	status = "okay";
+-};
+-
+ &wdt {
+ 	status = "okay";
+ };
+-- 
+2.40.1
+
