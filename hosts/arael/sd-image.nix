@@ -18,7 +18,6 @@ in {
       generic-extlinux-compatible.enable = true;
     };
     consoleLogLevel = lib.mkDefault 7;
-    kernelParams = ["console=ttyS2,1500000n8"];
     kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
     # Disable ZFS since it doesn't support 6.6 kernel yet.
     zfs.enabled = false;
