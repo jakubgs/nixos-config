@@ -10,7 +10,17 @@ in {
   ];
 
   # building with emulation
-  nixpkgs.system = "aarch64-linux";
+  nixpkgs = {
+    system = "aarch64-linux";
+    # Fix missing modules
+    # https://github.com/NixOS/nixpkgs/issues/154163
+    overlays = [
+      (final: super: {
+        makeModulesClosure = x:
+          super.makeModulesClosure (x // { allowMissing = true; });
+      })
+    ];
+  };
 
   boot = {
     loader = {
@@ -21,8 +31,6 @@ in {
     kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
     # Disable ZFS since it doesn't support 6.6 kernel yet.
     zfs.enabled = false;
-    # Avoid build failures due to missing SATA modules.
-    initrd.availableKernelModules = [ "ehci_pci" "pcie-rockchip-host" "phy-rockchip-pcie" ];
   };
 
   sdImage = {
