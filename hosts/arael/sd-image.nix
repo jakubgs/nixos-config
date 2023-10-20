@@ -22,6 +22,8 @@ in {
     kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
     # Disable ZFS since it doesn't support 6.6 kernel yet.
     zfs.enabled = false;
+    # Avoid build failures due to missing SATA modules.
+    initrd.availableKernelModules = [ "ehci_pci" "pcie-rockchip-host" "phy-rockchip-pcie" ];
   };
 
   sdImage = {
