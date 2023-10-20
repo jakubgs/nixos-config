@@ -20,7 +20,8 @@ in {
     consoleLogLevel = lib.mkDefault 7;
     kernelParams = ["console=ttyS2,1500000n8"];
     kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
-    zfs.removeLinuxDRM = true;
+    # Disable ZFS since it doesn't support 6.6 kernel yet.
+    zfs.enabled = false;
   };
 
   sdImage = {
