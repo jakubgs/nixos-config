@@ -17,6 +17,7 @@
     ../../roles/music.nix
     ../../roles/torrent.nix
     ../../roles/mikrotik.nix
+    ../../roles/iperf.nix
   ];
 
   # Boot
