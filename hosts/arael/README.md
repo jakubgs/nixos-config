@@ -12,6 +12,11 @@ Configuration for [NanoPi-R6C](https://wiki.friendlyelec.com/wiki/index.php/Nano
 * 32GB eMMC, at HS400 mode
 * Native Gigabit Ethernet, PCIe 2.5G Ethernet
 
+# Docs
+
+* [Installation Process](./INSTALL.md)
+* [Hardware Notes](./NOTES.md)
+
 # Links
 
 * https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R6C
