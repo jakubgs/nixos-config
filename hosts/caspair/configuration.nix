@@ -72,11 +72,7 @@
 
   # Video
   services.xserver.videoDrivers = [ "nvidia" "intel" ];
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    nvidiaSettings = true;
-    modesetting.enable = true;
-  };
+  hardware.nvidia.open = true;
 
   # Power Managemtn
   powerManagement.cpuFreqGovernor = "performance";
