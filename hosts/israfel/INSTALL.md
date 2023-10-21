@@ -26,7 +26,9 @@ Write LBA from file (100%)
 
 [nix-shell:~/rk3588]$ sudo rkdeveloptool rb
 ```
-Now the device has a graphical bootloader available when pressing `Escape` at boot time.
+Now the device has a graphical bootloader available when pressing `Escape` at boot time:
+
+![Bootloader Menu](./bootloader.png)
 
 # Install Image
 
