@@ -12,6 +12,10 @@ Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/).
 * 16MB SPI Flash for bootloader
 * eMMC socket
 
+# Docs
+
+* [Installation Process](./INSTALL.md)
+
 # Links
 
 * https://wiki.radxa.com/Rock5/5B
