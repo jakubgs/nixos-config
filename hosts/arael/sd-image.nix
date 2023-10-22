@@ -10,33 +10,21 @@ in {
   ];
 
   # building with emulation
-  nixpkgs = {
-    system = "aarch64-linux";
-    # Fix missing modules
-    # https://github.com/NixOS/nixpkgs/issues/154163
-    overlays = [
-      (final: super: {
-        makeModulesClosure = x:
-          super.makeModulesClosure (x // { allowMissing = true; });
-      })
-    ];
-  };
+  nixpkgs.system = "aarch64-linux";
 
   boot = {
     loader = {
       grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      systemd-boot.enable = true;
     };
     consoleLogLevel = lib.mkDefault 7;
-    kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
-    # Disable ZFS since it doesn't support 6.6 kernel yet.
-    zfs.enabled = false;
+    kernelPackages = pkgs.linuxPackages_testing;
   };
 
   sdImage = {
     # bzip2 compression takes loads of time with emulation, skip it.
     compressImage = false;
-    populateFirmwareCommands = '''';
+    populateFirmwareCommands = "";
     populateRootCommands = ''
       mkdir -p ./files/boot
       ${extlinux-conf-builder} -t 3 -c ${config.system.build.toplevel} -d ./files/boot
