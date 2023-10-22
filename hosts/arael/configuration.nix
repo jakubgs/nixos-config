@@ -19,16 +19,7 @@
   };
 
   # Get new drivers.
-  boot.kernelPackages = pkgs.callPackage ./kernel_nixos_testing.nix { };
-
-  # Fix missing modules
-  # https://github.com/NixOS/nixpkgs/issues/154163
-  nixpkgs.overlays = [
-    (final: super: {
-      makeModulesClosure = x:
-        super.makeModulesClosure (x // { allowMissing = true; });
-    })
-  ];
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   networking = {
     hostName = "arael";
