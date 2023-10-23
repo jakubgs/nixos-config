@@ -1,12 +1,8 @@
 { config, pkgs, lib, ... }:
-let
-  extlinux-conf-builder =
-    import <nixpkgs/nixos/modules/system/boot/loader/generic-extlinux-compatible/extlinux-conf-builder.nix> {
-      pkgs = pkgs.buildPackages;
-    };
-in {
+
+{
   imports = [
-    <nixpkgs/nixos/modules/installer/sd-card/sd-image.nix>
+    <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
   ];
 
   # building with emulation
@@ -14,8 +10,13 @@ in {
 
   boot = {
     loader = {
-      grub.enable = false;
+      efi = {
+        efiSysMountPoint = "/boot";
+        canTouchEfiVariables = true;
+      };
       systemd-boot.enable = true;
+      generic-extlinux-compatible.enable = lib.mkForce false;
+      grub.enable = false;
     };
     consoleLogLevel = lib.mkDefault 7;
     kernelPackages = pkgs.linuxPackages_testing;
@@ -25,10 +26,7 @@ in {
     # bzip2 compression takes loads of time with emulation, skip it.
     compressImage = false;
     populateFirmwareCommands = "";
-    populateRootCommands = ''
-      mkdir -p ./files/boot
-      ${extlinux-conf-builder} -t 3 -c ${config.system.build.toplevel} -d ./files/boot
-    '';
+    populateRootCommands = "";
   };
 
   # Important
