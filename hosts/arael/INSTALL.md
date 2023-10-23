@@ -21,6 +21,18 @@ Now the device has a graphical bootloader available when pressing `Escape` at bo
 
 ![Bootloader Menu](./bootloader.png)
 
+# Install Image
+
+I used an Armbian 23.8 Bookworm image: https://www.armbian.com/nanopc-t4/
+
+The stock [NixOS `aarch64` image](https://hydra.nixos.org/job/nixos/trunk-combined/nixos.sd_image.aarch64-linux) does not work currently.
+
+Install Nix package manager using [the usual methods](https://nixos.wiki/wiki/Nix_Installation_Guide) and then install `nixos-install-tools`:
+```sh
+curl -L https://nixos.org/nix/install | sh -s -- --daemon
+nix-env -iA nixos-install-tools
+```
+
 # Partitioning
 
 To partition the NVMe the following layout is used:
