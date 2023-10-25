@@ -49,6 +49,11 @@ in {
         addresses = [ "tcp://sachiel.magi.vpn:22000" ];
         autoAcceptFolders = true;
       };
+      arael = { # nanopi-r6c
+        id = "HOBTQ6M-WYSYZM3-SVXACFZ-VOLJRR3-XCIWSZB-FLPYML4-F4BE35Q-3NIF4AB";
+        addresses = [ "tcp://arael.magi.vpn:22000" ];
+        autoAcceptFolders = true;
+      };
       bardiel = { # hetzner
         id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
         addresses = [ "tcp://bardiel.magi.vpn:22000" ];
