@@ -33,6 +33,48 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/torrent" =
+    { device = "rpool/secret/torrent";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "rpool/secret/photos";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "rpool/secret/mobile";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "rpool/secret/music";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/data" =
+    { device = "rpool/secret/data";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "rpool/secret/git";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "noauto" "nofail" "bind" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/8b957939-0a1b-4678-8265-f5ea0e4e10e0"; }
     ];
