@@ -3,6 +3,14 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../roles/base.nix
+    ../../roles/zfs.nix
+    ../../roles/users.nix
+    ../../roles/locate.nix
+    ../../roles/zerotier.nix
+    ../../roles/landing.nix
+    ../../roles/mikrotik.nix
+    ../../roles/iperf.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
