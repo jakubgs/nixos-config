@@ -7,12 +7,12 @@ let
 
   hosts = {
     "eve.magi.vpn"     = { openwrt = 9100; };
-    "arael.magi.vpn"   = { mtr = 8080; };
+    "arael.magi.vpn"   = default // { mikrotik = 9436; };
     "bardiel.magi.vpn" = default;
     "caspair.magi.vpn" = default;
     "lilim.magi.vpn"   = default;
     "leliel.magi.vpn"  = default;
-    "sachiel.magi.vpn" = default // {mikrotik = 9436; };
+    "sachiel.magi.vpn" = default // { mikrotik = 9436; };
     "zeruel.magi.vpn"  = default // { nimbus = 9100; geth = 16060; };
   };
 
