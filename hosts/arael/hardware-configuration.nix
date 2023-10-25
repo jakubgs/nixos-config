@@ -8,23 +8,33 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" ];
+  boot.initrd.availableKernelModules = [ "nvme" "usb_storage" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5b592e10-8881-4dcf-a1ec-33117bdc248c";
-      fsType = "ext4";
+    { device = "rpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nix" =
+    { device = "rpool/nix";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "rpool/home";
+      fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/87F5-E78C";
+    { device = "/dev/disk/by-uuid/2CF9-2C77";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f79e6602-3cf9-4b40-8669-ca73d0c940a3"; }
+    [ { device = "/dev/disk/by-uuid/8b957939-0a1b-4678-8265-f5ea0e4e10e0"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -32,9 +42,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.end0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wan.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enP3p1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
