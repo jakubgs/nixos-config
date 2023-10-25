@@ -15,6 +15,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
+    timeout = 5;
     efi = {
       efiSysMountPoint = "/boot";
       canTouchEfiVariables = true;
