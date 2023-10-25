@@ -18,9 +18,6 @@
     grub.enable = false;
   };
 
-  # Get new drivers.
-  boot.kernelPackages = pkgs.linuxPackages_testing;
-
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
