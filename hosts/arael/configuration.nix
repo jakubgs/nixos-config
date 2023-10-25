@@ -21,6 +21,9 @@
   # Get new drivers.
   boot.kernelPackages = pkgs.linuxPackages_testing;
 
+  # Serial console or keyboard is not easily accessible.
+  boot.zfs.requestEncryptionCredentials = false;
+
   networking = {
     hostName = "arael";
     hostId = "892cff1c";
