@@ -45,15 +45,6 @@
     keyMap = "pl";
   };
 
-  services.openssh = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      PasswordAuthentication = true;
-      PermitRootLogin = "yes";
-    };
-  }; 
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11"; # Did you read the comment?
 }
