@@ -12,8 +12,8 @@ pkgs.stdenv.mkDerivation {
   phases = [ "installPhase" "fixupPhase" ];
 
   installPhase = ''
-    mkdir $out/bin
-    cp $src $out/bin/
+    mkdir -p $out/bin
+    cp $src $out/bin/upgrade_tool
     chmod +x $out/bin/upgrade_tool
   '';
 
