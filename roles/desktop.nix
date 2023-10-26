@@ -49,6 +49,8 @@
     mpv yt-dlp ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg321 soundconverter
+    # Archive
+    unrar
     # Communication
     gnome3.geary discord
     # Torrent

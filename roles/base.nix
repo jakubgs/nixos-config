@@ -16,7 +16,7 @@
     file zsh bash man-pages sudo pass bc pv rename uptimed lsb-release
     # building
     gnumake gcc autoconf automake patchelf
-    unrar unzip zip envsubst entr
+    unzip zip envsubst entr
     # processes
     dtach reptyr pstree killall sysstat
     # monitoring
