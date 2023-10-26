@@ -9,8 +9,11 @@
 
   outputs = { self, nixpkgs, unstable, hardware }:
     let
-      overlay = final: prev: {
-        unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
+      overlay = final: prev: let
+        unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
+      in {
+        unstable = unstablePkgs;
+        zfsUnstable = unstablePkgs.zfsUnstable;
       };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
       overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
