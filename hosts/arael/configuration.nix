@@ -35,6 +35,12 @@
   # Get new drivers.
   boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
 
+  boot.zfs = {
+    enableUnstable = true;
+    # Serial console or keyboard is not easily accessible.
+    requestEncryptionCredentials = false;
+  };
+
   # Fix missing modules
   # https://github.com/NixOS/nixpkgs/issues/154163
   nixpkgs.overlays = [
@@ -43,9 +49,6 @@
         super.makeModulesClosure (x // { allowMissing = true; });
     })
   ];
-
-  # Serial console or keyboard is not easily accessible.
-  boot.zfs.requestEncryptionCredentials = false;
 
   networking = {
     hostName = "arael";
