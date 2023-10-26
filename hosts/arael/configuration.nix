@@ -32,6 +32,18 @@
     grub.enable = false;
   };
 
+  # Get new drivers.
+  boot.kernelPackages = pkgs.callPackage ./kernel.nix { };
+
+  # Fix missing modules
+  # https://github.com/NixOS/nixpkgs/issues/154163
+  nixpkgs.overlays = [
+    (final: super: {
+      makeModulesClosure = x:
+        super.makeModulesClosure (x // { allowMissing = true; });
+    })
+  ];
+
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
