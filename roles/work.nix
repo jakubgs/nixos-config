@@ -40,7 +40,7 @@ in {
     # Remote
     remmina
     # Cloud
-    awscli s3cmd doctl google-cloud-sdk
+    awscli s3cmd unstable.doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # General dev
     github-cli pkg-config shellcheck
