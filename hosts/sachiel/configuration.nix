@@ -9,14 +9,7 @@
     ../../roles/locate.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
-    ../../roles/syncthing.nix
     ../../roles/landing.nix
-    ../../roles/nfs.nix
-    ../../roles/samba.nix
-    ../../roles/gossa.nix
-    ../../roles/music.nix
-    ../../roles/torrent.nix
-    ../../roles/mikrotik.nix
     ../../roles/iperf.nix
   ];
 
