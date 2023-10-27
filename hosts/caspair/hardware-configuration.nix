@@ -34,8 +34,9 @@
     };
 
   fileSystems."/var/lib/docker" =
-    { device = "rpool/docker";
-      fsType = "zfs";
+    { device = "/dev/disk/by-uuid/6285b12d-6a5f-451c-b6c1-e899a14d609e";
+      fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   fileSystems."/mnt/steam" =
