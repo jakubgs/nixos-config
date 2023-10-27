@@ -10,6 +10,23 @@ nixos-generate -f sd-aarch64-installer --system aarch64-linux -c sd-image.nix -I
 ```
 For more details see [this article](https://rbf.dev/blog/2020/05/custom-nixos-build-for-raspberry-pis/).
 
+# System
+
+## Partitioning
+
+To partition the NVMe the following layout is used:
+```sh
+format() {
+  wipefs -a "$1";
+  parted -s --align optimal "$1" -- mklabel msdos;
+  parted -s --align optimal "$1" -- mkpart primary    0   8GiB;
+  parted -s --align optimal "$1" -- mkpart primary 8GiB '100%';
+  parted -s --align optimal "$1" -- print;
+  mkswap "${1}p1";
+  mkfs.ext4 "${1}p2";
+}
+```
+
 # External Drives
 
 Env variable to avoid boilerplate:
