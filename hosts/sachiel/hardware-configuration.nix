@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "uas" ];
+  boot.initrd.availableKernelModules = [ "nvme" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -29,55 +29,22 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4adaf361-6b1e-47d1-95e3-c24d53f3937c";
+    { device = "/dev/disk/by-uuid/6d057042-726d-48df-8be4-9db7a61c7515";
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/torrent" =
-    { device = "rpool/secret/torrent";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/photos" =
-    { device = "rpool/secret/photos";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/mobile" =
-    { device = "rpool/secret/mobile";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/music" =
-    { device = "rpool/secret/music";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/data" =
-    { device = "rpool/secret/data";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/mnt/git" =
-    { device = "rpool/secret/git";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."/git" =
-    { device = "/mnt/git";
-      fsType = "none";
-      options = [ "noauto" "nofail" "bind" ];
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/3b90983f-f3a4-4526-b90b-194e2445216b"; }
+    [ { device = "/dev/disk/by-uuid/03a27ff3-6497-4397-aef4-4a14e07e1f30"; }
     ];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.end0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.ztbto5ttab.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
