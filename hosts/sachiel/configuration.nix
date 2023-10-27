@@ -28,12 +28,9 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
-    structuredExtraConfig = with lib.kernel; {
-      PHY_ROCKCHIP_PCIE  = yes;
-      PCIE_ROCKCHIP_HOST = yes;
-    };
-  });
+  boot.initrd.availableKernelModules = [
+    "nvme" "pcie-rockchip-host" "phy-rockchip-pcie"
+  ];
 
   # Set serial console settings
   boot.kernelParams = [ "console=ttyS2,1500000" ];
@@ -42,18 +39,6 @@
 
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
-
-  # Systemd in initrd. EXPERIMENTAL
-  boot.initrd.systemd = {
-    enable = true;
-    emergencyAccess = true;
-    storePaths = with pkgs; [ util-linux pciutils ];
-    extraBin = {
-      fdisk = "${pkgs.util-linux}/bin/fdisk";
-      lsblk = "${pkgs.util-linux}/bin/lsblk";
-      lspci = "${pkgs.pciutils}/bin/lspci";
-    };
-  };
 
   # Enable additional firmware (such as Wi-Fi drivers).
   hardware.enableRedistributableFirmware = true;

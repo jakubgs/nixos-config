@@ -25,9 +25,17 @@ https://github.com/torvalds/linux/blob/4b0986a3/drivers/pci/controller/pcie-rock
 
 This results in system not being bootable without patching or special configuration.
 
+### PCI-E Rockchip Module in Initram Image
+
+The simplest way __that works only with some devices__ is including the module in Initrd image:
+```nix
+boot.initrd.availableKernelModules = [ "nvme" "pcie-rockchip-host" "phy-rockchip-pcie" ];
+```
+Known to work with __SK hynix PC401 256 GB NVMe__.
+
 ### Built-in PCI-E Rockchip Module
 
-To make the NVMe SSD be detected you will need to compile some modules directly into the kernel:
+Another way to make the NVMe SSD be detected you will need to compile some modules directly into the kernel:
 ```
 PHY_ROCKCHIP_PCIE y
 PCIE_ROCKCHIP_HOST y
@@ -55,12 +63,3 @@ The other way is to include the patch that adds support for the `pcie_rk_bus_sca
 * https://github.com/ayufan-rock64/linux-mainline-kernel/commit/005d53f6519887c24d73e8542be1d258be633169
 
 But that patch is only for `5.9` to `6.2` versions of Linux Kernel.
-
-### PCI-E Rockchip Module in Initram Image
-
-Another possibility __that currently doesn't work__ is by including the module in Initrd image:
-```nix
-boot.initrd.availableKernelModules = [ "ehci_pci" "pcie-rockchip-host" "phy-rockchip-pcie" ];
-boot.initrd.kernelModules = [ "ehci_pci" "pcie-rockchip-host" "phy-rockchip-pcie" ];
-```
-
