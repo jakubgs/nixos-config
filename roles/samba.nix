@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 
 let
+  isMounted = path: lib.hasAttr path config.fileSystems;
+
   makePublicShare = path: {
     name = builtins.baseNameOf path;
     value = {
@@ -21,12 +23,11 @@ let
     };
   };
   shares = {
-    public = [
+    public = lib.filter isMounted [
       "/mnt/music"
       "/mnt/photos"
-      "/mnt/torrent/movies"
     ];
-    private = [
+    private = lib.filter isMounted [
       "/mnt/git"
       "/mnt/data"
       "/mnt/torrent"
