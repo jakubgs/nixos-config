@@ -21,10 +21,7 @@
   networking = {
     hostName = "israfel";
     hostId = "d22a9a6c";
-    useDHCP = false;
-    interfaces = {
-      enP4p1s0 = { useDHCP = true; };
-    };
+    useDHCP = true;
   };
 
   # Set your time zone.
