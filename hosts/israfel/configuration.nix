@@ -40,10 +40,6 @@
     keyMap = "pl";
   };
 
-  # Copy the NixOS config and symlink at run/current-system/configuration.nix.
-  system.copySystemConfiguration = true;
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
