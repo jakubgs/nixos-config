@@ -2,20 +2,22 @@
 
 let
   join = lib.concatStringsSep " ";
-  fileSystems = [
+  isMounted = path: lib.hasAttr path config.fileSystems;
+
+  fileSystems = lib.filter isMounted [
     "/mnt/git"
     "/mnt/data"
     "/mnt/music"
     "/mnt/photos"
-  ]
-    ++ lib.optionals (config.networking.hostName == "sachiel")  [ "/mnt/torrent" ]
-    ++ lib.optionals (config.networking.hostName == "caspair")  [ "/mnt/torrent" ]
-    ++ lib.optionals (config.networking.hostName == "melchior") [ "/mnt/backup" ];
+    "/mnt/torrent"
+    "/mnt/backup"
+  ];
 
   allowIpRanges = [
     "10.2.2.0/8"    # Zerotier VPNC
     "192.168.1.0/8" # Local Network
   ];
+
   # Tempalte NFS config
   fsExports = map (fs: ''
     ${fs} ${join (map (r: "${r}(rw,no_subtree_check)") allowIpRanges)}
