@@ -20,17 +20,18 @@ in {
 
   # Hosts Entries
   networking.hosts = {
-    "10.2.2.1"  = [ "eve.magi.vpn"      ]; # router
+    "10.2.2.1"  = [      "eve.magi.vpn" ]; # router
     "10.2.2.10" = [ "melchior.magi.vpn" ]; # server
-    "10.2.2.11" = [ "caspair.magi.vpn"  ]; # desktop
-    "10.2.2.12" = [ "lilim.magi.vpn"    ]; # laptop
-    "10.2.2.13" = [ "ramiel.magi.vpn"   ]; # phone
-    "10.2.2.14" = [ "leliel.magi.vpn"   ]; # rasppi4
-    "10.2.2.16" = [ "sachiel.magi.vpn"  ]; # nanopct4
-    "10.2.2.17" = [ "bardiel.magi.vpn"  ]; # hetzner
-    "10.2.2.18" = [ "arael.magi.vpn"    ]; # nanopir6c
-    "10.2.2.19" = [ "zeruel.magi.vpn"   ]; # hetzner
+    "10.2.2.11" = [  "caspair.magi.vpn" ]; # desktop
+    "10.2.2.12" = [    "lilim.magi.vpn" ]; # laptop
+    "10.2.2.13" = [   "ramiel.magi.vpn" ]; # phone
+    "10.2.2.14" = [   "leliel.magi.vpn" ]; # rasppi4
+    "10.2.2.16" = [  "sachiel.magi.vpn" ]; # nanopct4
+    "10.2.2.17" = [  "bardiel.magi.vpn" ]; # hetzner
+    "10.2.2.18" = [    "arael.magi.vpn" ]; # nanopir6c
+    "10.2.2.19" = [   "zeruel.magi.vpn" ]; # hetzner
     "10.2.2.20" = [ "shamshel.magi.vpn" ]; # hetzner
+    "10.2.2.21" = [  "israfel.magi.vpn" ]; # rock5b
   };
 
   # Search the magi domain
