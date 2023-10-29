@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "usb_storage" ];
+  boot.initrd.availableKernelModules = [ "nvme" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -18,19 +18,41 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home" =
-    { device = "rpool/home";
+  fileSystems."/nix" =
+    { device = "rpool/nix";
       fsType = "zfs";
     };
 
-  fileSystems."/nix" =
-    { device = "rpool/nix";
+  fileSystems."/home" =
+    { device = "rpool/home";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/0072-08E9";
       fsType = "vfat";
+    };
+
+  fileSystems."/mnt/nimbus" =
+    { device = "rpool/nimbus";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/erigon" =
+    { device = "rpool/erigon";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/nimbus/secrets" =
+    { device = "rpool/secret/nimbus/secrets";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/nimbus/validators" =
+    { device = "rpool/secret/nimbus/validators";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
     };
 
   swapDevices =
@@ -43,6 +65,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enP4p1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.ztbto5ttab.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
