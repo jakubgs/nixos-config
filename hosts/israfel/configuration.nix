@@ -27,6 +27,9 @@
     grub.enable = false;
   };
 
+  # Load thermal sensor module.
+  boot.kernelModules = [ "rockchip-thermal" ];
+
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
