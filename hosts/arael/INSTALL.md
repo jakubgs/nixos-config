@@ -34,13 +34,13 @@ To partition the NVMe the following layout is used:
 ```sh
 format() {
   parted -s --align optimal "$1" -- mklabel gpt;
-  parted -s --align optimal "$1" -- mkpart 'EFI'   2MB   5GiB  set 1 esp on;
-  parted -s --align optimal "$1" -- mkpart 'SWAP'  5GiB  10GiB;
-  parted -s --align optimal "$1" -- mkpart 'CACHE' 10GiB 30GiB;
-  parted -s --align optimal "$1" -- mkpart 'ROOT'  30GiB '100%';
+  parted -s --align optimal "$1" -- mkpart 'EFI'     2MB   5GiB set 1 esp on;
+  parted -s --align optimal "$1" -- mkpart 'SWAP'   5GiB  20GiB;
+  parted -s --align optimal "$1" -- mkpart 'CACHE' 20GiB  40GiB;
+  parted -s --align optimal "$1" -- mkpart 'ROOT'  40GiB '100%';
   parted -s --align optimal "$1" -- print;
-  mkfs.vfat /dev/nvme0n1p1;
-  mkswap /dev/nvme0n1p2;
+  mkfs.vfat "${1}p1";
+  mkswap "${1}p2";
 }
 ```
 
@@ -48,7 +48,16 @@ format() {
 
 Then ZFS pool:
 ```sh
-zpool create -O canmount=off -O mountpoint=legacy -O acltype=posixacl -O compression=zstd -O dnodesize=auto -O normalization=formD -O atime=off -O xattr=sa rpool /dev/nvme0n1p4
+zpool create \
+    -O canmount=off \
+    -O mountpoint=legacy \
+    -O acltype=posixacl \
+    -O compression=zstd \
+    -O dnodesize=auto \
+    -O normalization=formD \
+    -O atime=off \
+    -O xattr=sa \
+    rpool /dev/nvme0n1p4
 ```
 And some basic ZFS volumes:
 ```
@@ -69,12 +78,12 @@ zfs create -o canmount=on  -o quota=20G  -o reservation=10G  rpool/secret/mobile
 
 Mount volumes:
 ```sh
-swapon /dev/nvme0n1p2
-mount.zfs rpool/root /mnt
-mkdir /mnt/nix /mnt/boot /mnt/home /mnt/etc
-mount.zfs rpool/home /mnt/home
-mount.zfs rpool/nix /mnt/nix
-mount /dev/nvme0n1p1 /mnt/boot
+swapon /dev/nvme0n1p2;
+mount.zfs rpool/root /mnt;
+mkdir /mnt/nix /mnt/boot /mnt/home /mnt/etc;
+mount.zfs rpool/home /mnt/home;
+mount.zfs rpool/nix /mnt/nix;
+mount /dev/nvme0n1p1 /mnt/boot;
 ```
 After configuring NixOS run installation process:
 ```
