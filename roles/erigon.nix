@@ -41,9 +41,17 @@ in {
     group = "erigon";
     isSystemUser = true;
   };
-  systemd.services.erigon.serviceConfig = {
-    User = "erigon";
-    DynamicUser = lib.mkForce false;
+  systemd.services.erigon = {
+    # Wait for torrent volume to be mounted.
+    after = lib.mkForce [
+      "network.target" (
+        pkgs.lib.pathToMountUnit config.services.erigon.settings.datadir
+      )
+    ];
+    serviceConfig = {
+      User = "erigon";
+      DynamicUser = lib.mkForce false;
+    };
   };
 
   # Secrets
