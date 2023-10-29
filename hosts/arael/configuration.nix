@@ -35,6 +35,9 @@
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
+  # Disable USB Attached Storage(UAS) for IcyBox enclosure.
+  boot.extraModprobeConfig = "options usb-storage quirks=1234:5678:u";
+
   networking = {
     hostName = "arael";
     hostId = "892cff1c";
