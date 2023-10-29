@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ modulesPath, config, lib, pkgs, ... }:
 
 {
   imports = [
+    (modulesPath + "/profiles/hardened.nix")
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
@@ -9,6 +10,8 @@
     ../../roles/locate.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/erigon.nix
+    ../../roles/nimbus-eth2.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
