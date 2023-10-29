@@ -27,6 +27,9 @@
     grub.enable = false;
   };
 
+  # Serial console or keyboard is not easily accessible.
+  boot.zfs.requestEncryptionCredentials = false;
+
   networking = {
     hostName = "israfel";
     hostId = "d22a9a6c";
