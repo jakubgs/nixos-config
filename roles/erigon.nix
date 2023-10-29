@@ -1,4 +1,4 @@
-{ config, pkgs, channels, secret, ... }:
+{ config, pkgs, lib, secret, ... }:
 
 let
   devp2pPort = 9800; # WebDAV Source port
@@ -34,9 +34,22 @@ in {
     };
   };
 
+  # Custom user
+  users.groups.erigon.gid = 500;
+  users.users.erigon = {
+    uid = 500;
+    group = "erigon";
+    isSystemUser = true;
+  };
+  systemd.services.erigon.serviceConfig = {
+    User = "erigon";
+    DynamicUser = lib.mkForce false;
+  };
+
   # Secrets
   environment.etc."erigon/jwtsecret" = {
-    mode = "0444";
+    mode = "0440";
+    user = config.systemd.services.erigon.serviceConfig.User;
     text = secret "service/nimbus/web3-jws-secret";
   };
 
