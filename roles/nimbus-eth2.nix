@@ -21,7 +21,7 @@ in {
     metrics = { enable = true; address = "0.0.0.0"; };
     rest = { enable = true; address = "0.0.0.0"; };
     dataDir = "/mnt/nimbus";
-    publicIp = secret "service/nimbus/public-ip";
+    publicIp = secret "hosts/${config.networking.hostName}/ip";
     threadsNumber = 0; /* 0 == auto */
     /* Higher resource usage for small increase in rewards. */
     subAllSubnets = false;
