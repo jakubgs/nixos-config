@@ -30,8 +30,9 @@ in {
     /* Address for transaction fee/priority tips. */
     suggestedFeeRecipient = secret "service/nimbus/fee-recipient";
     /* If Go-Ethereum is running use it. */
-    execURLs = if services.geth.mainnet.enable
-      then ["http://localhost:${builtins.toString services.geth.mainnet.authrpc.port}/"]
+    execURLs =
+      if services.erigon.enable       then ["http://localhost:${builtins.toString services.erigon.settings.${"authrpc.port"}}/"] else
+      if services.geth.mainnet.enable then ["http://localhost:${builtins.toString services.geth.mainnet.authrpc.port}/"]
       else [secret "service/nimbus/web3-url"];
     jwtSecret = "/etc/nimbus-eth2/jwtsecret";
   };
