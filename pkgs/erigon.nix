@@ -13,10 +13,15 @@ pkgs.erigon.override {
       fetchSubmodules = true;
     };
 
-    vendorHash = "sha256-415ALovZo6NjZD/yDw3ckYz2NCuNMYwV34Up7bTBdOQ=";
+    vendorSha256 = "sha256-415ALovZo6NjZD/yDw3ckYz2NCuNMYwV34Up7bTBdOQ=";
 
     subPackages = [
       "cmd/erigon"
     ];
+
+    # Fix error: 'Caught SIGILL in blst_cgo_init'
+    # https://github.com/bnb-chain/bsc/issues/1521
+    CGO_CFLAGS = "-O -D__BLST_PORTABLE__";
+    CGO_CFLAGS_ALLOW = "-O -D__BLST_PORTABLE__";
   });
 }
