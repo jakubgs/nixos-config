@@ -14,6 +14,7 @@
       in {
         unstable = unstablePkgs;
         zfsUnstable = unstablePkgs.zfsUnstable;
+        erigon = import ./pkgs/erigon.nix { pkgs = prev; };
       };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
       overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
