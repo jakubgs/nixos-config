@@ -27,7 +27,7 @@ in {
       # AuthRPC / Engine API
       "authrpc.addr" = "localhost";
       "authrpc.port" = 18551;
-      "authrpc.vhosts" = "TODO";
+      "authrpc.vhosts" = "localhost,127.0.0.1,${config.networking.hostName}";
       # Metrics
       "metrics" = true;
       "metrics.addr" = "0.0.0.0";
