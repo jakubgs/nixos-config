@@ -76,10 +76,12 @@ in {
   };
 
   # Wait for volumes to be mounted.
-  systemd.services.syncthing.after = lib.mkForce (["network.target"] ++
-    (map pkgs.lib.pathToMountUnit [
-      "/mnt/data" "/mnt/git" "/mnt/mobile" "/mnt/music" "/mnt/photos"
-    ]));
+  systemd.services.syncthing = {
+    after = lib.mkForce (["network.target"] ++
+      (map pkgs.lib.pathToMountUnit (lib.attrNames services.syncthing.folders))
+    );
+    unitConfig.ConditionPathIsMountPoint = (lib.attrNames services.syncthing.folders);
+  };
 
   services.landing = {
     proxyServices = [
