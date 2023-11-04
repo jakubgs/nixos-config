@@ -99,6 +99,12 @@
       options = [ "nofail" ];
     };
 
+  fileSystems."/git" =
+    { device = "/mnt/git";
+      fsType = "none";
+      options = [ "noauto" "nofail" "bind" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/678b584f-bb41-4aa2-95b4-8350b2dd91f2"; }
     ];
