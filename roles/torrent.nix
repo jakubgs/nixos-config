@@ -41,6 +41,9 @@ in {
 
   systemd.services.transmission = {
     # Wait for torrent volume to be mounted.
+    unitConfig = {
+      ConditionPathIsMountPoint = torrentDir;
+    };
     after = lib.mkForce [
       "network.target" (pkgs.lib.pathToMountUnit torrentDir)
     ];
