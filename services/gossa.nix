@@ -2,6 +2,7 @@
 
 let
   inherit (lib) types mkEnableOption mkOption mkIf concatStringsSep optional;
+  inherit (pkgs.lib) pathToMountUnit;
 
   cfg = config.services.gossa;
   # script for watching for new *.torrent files
@@ -83,6 +84,8 @@ in {
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "network.target" ];
+      after = [ "network.target" (pathToMountUnit cfg.dataDir) ];
+      unitConfig.ConditionPathIsMountPoint = cfg.dataDir;
     };
   };
 }
