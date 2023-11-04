@@ -6,7 +6,7 @@ let
 in {
   services.erigon = {
     enable = true;
-    #package = pkgs.unstable.callPackage ../pkgs/erigon.nix { };
+    package = pkgs.callPackage ../pkgs/erigon.nix { };
     secretJwtPath = "/etc/erigon/jwtsecret";
     settings = {
       "chain" = "mainnet";
