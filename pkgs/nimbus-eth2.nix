@@ -3,7 +3,7 @@
   # Options: nimbus_light_client, nimbus_validator_client, nimbus_signing_node
   makeTargets ? [ "nimbus_beacon_node" ],
   # WARNING: CPU optmizations that make binary not portable.
-  nativeBuild ? false
+  nativeBuild ? true
 }:
 
 let
