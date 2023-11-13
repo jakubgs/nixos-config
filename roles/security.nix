@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   # Drop packets by default.
@@ -16,7 +16,7 @@
     openFirewall = true;
     settings = {
       PasswordAuthentication = false;
-      PermitRootLogin = "no";
+      PermitRootLogin = lib.mkForce "no";
     };
   };
 
