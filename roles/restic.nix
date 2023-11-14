@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   repository = "sftp:u288137@u288137.your-storagebox.de:/home/${config.networking.hostName}";
@@ -22,6 +22,8 @@ let
     };
   };
 in {
+  users.users.jakubgs.packages = [ pkgs.restic ];
+
   services.restic = {
     backups = {
       "company"   = makeBackup "company"   ["/mnt/data/company"];
