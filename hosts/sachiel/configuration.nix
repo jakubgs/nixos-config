@@ -11,6 +11,9 @@
     ../../roles/zerotier.nix
     ../../roles/landing.nix
     ../../roles/iperf.nix
+    ../../roles/nfs.nix
+    ../../roles/samba.nix
+    ../../roles/syncthing.nix
   ];
 
   # Boot
