@@ -26,7 +26,7 @@
           autoAcceptFolders = true;
         };
         sachiel = { # nanopct4
-          id = "H22G6SP-HDEJUJY-VMVETG7-QH6LZBU-QTC6YQZ-E2HPXM6-C5G3NWN-YJLJDAA";
+          id = "4R5Z36S-6S5HBSC-2BAEZEH-HCNLXJH-GRDYZ6P-X66AFAK-RDUCRKA-PNX5YQU";
           addresses = [ "tcp://sachiel.magi.vpn:22000" ];
           autoAcceptFolders = true;
         };
