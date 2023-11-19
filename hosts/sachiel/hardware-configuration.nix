@@ -33,6 +33,36 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/data" =
+    { device = "USB-DATA/data";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/git" =
+    { device = "USB-DATA/git";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/mobile" =
+    { device = "USB-DATA/mobile";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/music" =
+    { device = "USB-DATA/music";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
+  fileSystems."/mnt/photos" =
+    { device = "USB-DATA/photos";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/03a27ff3-6497-4397-aef4-4a14e07e1f30"; }
     ];
