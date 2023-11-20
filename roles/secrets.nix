@@ -23,11 +23,11 @@ let
         if builtins.isString val then val
         else throw "Could not find secret: ${path}";
     in
-      attrByPath [ path ] (queryPass path) overrideSecrets;
+      attrByPath [ path ] (lib.traceVal path) overrideSecrets;
 in {
   # Allows for use of builtins.exec to call pass.
   nix.extraOptions = let
-    nix-plugins = pkgs.nix-plugins.override { nix = config.nix.package; };
+    nix-plugins = pkgs.unstable.nix-plugins.override { nix = config.nix.package; };
   in ''
     plugin-files = ${nix-plugins}/lib/nix/plugins
     extra-builtins-file = ${import ./builtins.nix { inherit pkgs; }}
