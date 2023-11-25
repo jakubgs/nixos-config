@@ -10,6 +10,9 @@
   environment.systemPackages = with pkgs; [
     ccid opensc pcsctools
   ];
+  users.users.jakubgs.packages = with pkgs; [
+    yubikey-manager
+  ];
 
   /* Required udev rules for YubiKey usage */
   services.udev.packages = with pkgs; [
@@ -19,4 +22,5 @@
 
   /* Necessary for GPG Agent. */
   services.pcscd.enable = true;
+  hardware.gpgSmartcards.enable = true;
 }
