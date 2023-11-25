@@ -40,31 +40,31 @@
     };
 
   fileSystems."/mnt/photos" =
-    { device = "rpool/secret/photos";
+    { device = "USB-DATA/photos";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/mobile" =
-    { device = "rpool/secret/mobile";
+    { device = "USB-DATA/mobile";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/music" =
-    { device = "rpool/secret/music";
+    { device = "USB-DATA/music";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/data" =
-    { device = "rpool/secret/data";
+    { device = "USB-DATA/data";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
   fileSystems."/mnt/git" =
-    { device = "rpool/secret/git";
+    { device = "USB-DATA/git";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
