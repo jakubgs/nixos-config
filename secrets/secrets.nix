@@ -14,13 +14,13 @@ let
   zeruel  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2g2ZcL5+T+LNLXaXU2T6kWIb8TTCE2W9LvTiyostsO";
   systems = [ arael bardiel caspair israfel lilim sachiel zeruel ];
 
-  default = jakubgs ++ systems;
+  all = jakubgs ++ systems;
 in {
-  "hosts/users/jakubgs/pass-hash.age" = { publicKeys = default; };
-  "service/grafana/pass.age"          = { publicKeys = default; };
-  "service/landing/htpasswd.age"      = { publicKeys = default; };
-  "service/mikrotik/config.age"       = { publicKeys = default; };
-  "service/mpd/pass.age"              = { publicKeys = default; };
-  "service/transmission/creds.age"    = { publicKeys = default; };
-  "service/zerotier/magi.age"         = { publicKeys = default; };
+  "hosts/users/jakubgs/pass-hash.age" = { publicKeys = all;     };
+  "service/grafana/pass.age"          = { publicKeys = bardiel; };
+  "service/landing/htpasswd.age"      = { publicKeys = all;     };
+  "service/mikrotik/config.age"       = { publicKeys = arael;   };
+  "service/mpd/pass.age"              = { publicKeys = all;     };
+  "service/transmission/creds.age"    = { publicKeys = all;     };
+  "service/zerotier/magi.age"         = { publicKeys = all;     };
 }
