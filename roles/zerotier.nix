@@ -1,10 +1,25 @@
 { config, secret, ... }:
 
 let
-  network = secret "service/zerotier/magi";
+  networkNameFile = secret "service/zerotier/magi";
 in {
+  age.secrets."service/zerotier/magi" = {
+    file = ../secrets/service/zerotier/magi.age;
+  };
+
   # Accept license
   nixpkgs.config.allowUnfree = true;
+
+  # Daemon
+  services.zerotierone.enable = true;
+
+  # Workaround to use file as source of network name.
+  systemd.services.zerotierone.preStart = ''
+    mkdir -p /var/lib/zerotier-one/networks.d
+    chmod 700 /var/lib/zerotier-one
+    chown -R root:root /var/lib/zerotier-one
+    touch "/var/lib/zerotier-one/networks.d/$(cat ${networkNameFile}).conf"
+  '';
 
   # Firewall
   networking.firewall = {
@@ -13,10 +28,6 @@ in {
     # Open firewall for connections from ZeroTier
     trustedInterfaces = [ "ztbto5ttab" ];
   };
-
-  # Daemon
-  services.zerotierone.enable = true;
-  services.zerotierone.joinNetworks = [ network ];
 
   # Hosts Entries
   networking.hosts = {

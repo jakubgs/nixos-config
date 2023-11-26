@@ -20,4 +20,5 @@ in {
   "service/landing/htpasswd.age"      = { publicKeys = default; };
   "service/mpd/pass.age"              = { publicKeys = default; };
   "service/transmission/creds.age"    = { publicKeys = default; };
+  "service/zerotier/magi.age"         = { publicKeys = default; };
 }
