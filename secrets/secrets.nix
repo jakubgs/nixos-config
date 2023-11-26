@@ -19,6 +19,7 @@ in {
   "hosts/users/jakubgs/pass-hash.age" = { publicKeys = default; };
   "service/grafana/pass.age"          = { publicKeys = default; };
   "service/landing/htpasswd.age"      = { publicKeys = default; };
+  "service/mikrotik/config.age"       = { publicKeys = default; };
   "service/mpd/pass.age"              = { publicKeys = default; };
   "service/transmission/creds.age"    = { publicKeys = default; };
   "service/zerotier/magi.age"         = { publicKeys = default; };

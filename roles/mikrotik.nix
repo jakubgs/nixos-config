@@ -1,26 +1,39 @@
-{ secret, ... }:
+{ lib, config, secret, ... }:
 
 {
-  services.prometheus.exporters = {
-    mikrotik = {
-      enable = true;
-      openFirewall = true;
-      listenAddress = "0.0.0.0";
-      port = 9436;
-      configuration ={
-        devices = [
-          {
-            name = "adam";
-            address = "192.168.1.2";
-            user = "prometheus";
-            password = secret "service/mikrotik/pass";
-          }
-        ];
-        features = {
-          dhcp = true;
-          routes = true;
-        };
+  options.mikrotik = {
+    configFile = lib.mkOption {
+      default = secret "service/mikrotik/config";
+    };
+  };
+
+  config = {
+    age.secrets."service/mikrotik/config" = {
+      file = ../secrets/service/mikrotik/config.age;
+      owner = "mikrotik-exporter";
+    };
+
+    services.prometheus.exporters = {
+      mikrotik = {
+        enable = true;
+        openFirewall = true;
+        listenAddress = "0.0.0.0";
+        port = 9436;
+        configFile = config.mikrotik.configFile;
       };
+    };
+
+    # Necessary to allow access to config file.
+    users.groups.mikrotik-exporter = {
+      name = "mikrotik-exporter";
+    };
+    users.users.mikrotik-exporter = {
+      name = "mikrotik-exporter";
+      group = "mikrotik-exporter";
+      isSystemUser = true;
+    };
+    systemd.services."prometheus-mikrotik-exporter" = {
+      serviceConfig.DynamicUser = false;
     };
   };
 }
