@@ -13,7 +13,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash man-pages sudo pass bc pv rename uptimed lsb-release
+    file zsh bash man-pages sudo bc pv rename uptimed lsb-release
     # building
     gnumake gcc autoconf automake patchelf
     unzip zip envsubst entr
@@ -35,7 +35,7 @@
     # network filesystems
     nfs-utils
     # security
-    openssl
+    pass gopass age openssl
   ];
 
   # Shell
