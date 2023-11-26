@@ -2,26 +2,20 @@
 
 {
   options.music = {
-    collection = lib.mkOption { default = "/mnt/music"; };
-    password = lib.mkOption   { default = secret "service/mpd/pass"; };
+    collection   = lib.mkOption { default = "/mnt/music"; };
+    passwordFile = lib.mkOption { default = secret "service/mpd/pass"; };
   };
 
   config = let
     cfg = config.music;
   in {
+    age.secrets."service/mpd/pass" = {
+      owner = "mpd";
+      file = ../secrets/service/mpd/pass.age;
+    };
+
     # Clients
     environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];
-
-    # Firewall
-    networking.firewall.allowedTCPPorts = [
-      config.services.mpd.network.port
-      config.services.ympd.webPort
-    ];
-
-    # Necessary to use PulseAudio
-    hardware.pulseaudio.extraConfig = ''
-      load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
-    '';
 
     # Daemon
     services.mpd = {
@@ -32,8 +26,11 @@
       network.listenAddress = "0.0.0.0";
       musicDirectory = cfg.collection;
       playlistDirectory = "${cfg.collection}/_playlists";
+      credentials = [
+        { passwordFile = cfg.passwordFile;
+          permissions = [ "read" "add" "control" "admin" ]; }
+      ];
       extraConfig = ''
-        password   "${cfg.password}@read,add,control,admin"
         mixer_type "software"
         audio_buffer_size "8192"
       ${lib.optionalString config.hardware.pulseaudio.enable ''
@@ -52,6 +49,17 @@
       ];
       unitConfig.ConditionPathIsMountPoint = cfg.collection;
     };
+
+    # Firewall
+    networking.firewall.allowedTCPPorts = [
+      config.services.mpd.network.port
+      config.services.ympd.webPort
+    ];
+
+    # Necessary to use PulseAudio
+    hardware.pulseaudio.extraConfig = ''
+      load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
+    '';
 
     # Web UI
     services.ympd = {

@@ -18,4 +18,5 @@ let
 in {
   "hosts/users/jakubgs/pass-hash.age" = { publicKeys = default; };
   "service/landing/htpasswd.age"      = { publicKeys = default; };
+  "service/mpd/pass.age"              = { publicKeys = default; };
 }
