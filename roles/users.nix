@@ -3,10 +3,7 @@
 {
   age.secrets."hosts/users/jakubgs/pass-hash" = {
     file = ../secrets/hosts/users/jakubgs/pass-hash.age;
-    group = "jakubgs";
-    mode = "0440";
   };
-
 
   # Give extra permissions with Nix
   nix.settings.trusted-users = [ "jakubgs" ];
