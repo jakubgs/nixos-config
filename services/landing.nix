@@ -16,8 +16,15 @@ in {
   options = {
     services = {
       landing = {
-        enable =
-          mkEnableOption "Enabel a fast and simple webserver for your files.";
+        enable = mkEnableOption "Enabel a fast and simple webserver for your files.";
+
+        htpasswdFile = mkOption {
+          type = types.path;
+          default = "";
+          description = ''
+            Location of file with credentials in htpasswd format.
+          '';
+        };
 
         # This list of sets represents service proxies we support.
         # To simplify merging with 'locations' we use the 
@@ -40,7 +47,7 @@ in {
       virtualHosts = {
         "${config.networking.fqdn}" = {
           default = true;
-          basicAuthFile = pkgs.writeText "htpasswd" htpasswd;
+          basicAuthFile = cfg.htpasswdFile;
           locations = {
             "= /" = {
               root = pkgs.writeTextDir "index.html" landingPage;

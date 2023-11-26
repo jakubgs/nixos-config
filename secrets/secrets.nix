@@ -17,4 +17,5 @@ let
   default = jakubgs ++ systems;
 in {
   "hosts/users/jakubgs/pass-hash.age" = { publicKeys = default; };
+  "service/landing/htpasswd.age"      = { publicKeys = default; };
 }
