@@ -23,4 +23,5 @@ in {
   "service/mpd/pass.age"              = { publicKeys = all;     };
   "service/transmission/creds.age"    = { publicKeys = all;     };
   "service/zerotier/magi.age"         = { publicKeys = all;     };
+  "service/wifi.age"                  = { publicKeys = all;     };
 }
