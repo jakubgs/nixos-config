@@ -7,7 +7,6 @@
     ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
-    ../../roles/wireless.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
     ../../roles/iperf.nix
