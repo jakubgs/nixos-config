@@ -15,8 +15,8 @@ let
     src = ./transmission-add.sh;
     isExecutable = true;
     inotifytools = pkgs.inotify-tools;
-    inherit (cfg) rpcAddr rpcUser rpcPass;
-    inherit (pkgs) transmission coreutils;
+    inherit (cfg) rpcAddr rpcCreds;
+    inherit (pkgs) transmission coreutils jq;
   };
 
   watchScript = pkgs.substituteAll {
@@ -48,6 +48,14 @@ in {
           '';
         };
 
+        serviceGroup = mkOption {
+          type = types.str;
+          default = "jakubgs";
+          description = ''
+            Group to run the watch service as.
+          '';
+        };
+
         rpcAddr = mkOption {
           type = types.str;
           default = "localhost:${toString rpcPort}";
@@ -56,19 +64,12 @@ in {
           '';
         };
 
-        rpcUser = mkOption {
+        rpcCreds = mkOption {
           type = types.str;
           default = "";
           description = ''
-            HTTP Auth user for RPC port.
-          '';
-        };
-
-        rpcPass = mkOption {
-          type = types.str;
-          default = "";
-          description = ''
-            HTTP Auth password for RPC port.
+            Path to JSON file with RPC credentials.
+            Same format as credentialsFile in transmission config.
           '';
         };
       };
@@ -79,12 +80,13 @@ in {
     systemd.services.transmission-watch = {
       enable = true;
       serviceConfig = {
+        DynamicUser = true;
+        Group = cfg.serviceGroup;
         ExecStart = "${watchScript} ${cfg.watchDir} ${cfg.downloadDir}";
         Restart = "on-failure";
       };
       environment = {
-        RPC_USER = cfg.rpcUser;
-        RPC_PASS = cfg.rpcPass;
+        RPC_CREDS = cfg.rpcCreds;
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "transmission.service" ];

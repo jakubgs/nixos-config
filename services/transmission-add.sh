@@ -1,7 +1,10 @@
 #!@shell@
 
 RPC_ADDR="@rpcAddr@"
-RPC_AUTH="@rpcUser@:@rpcPass@"
+# Credentials are in a JSON file.
+RPC_CREDS="@rpcCreds@"
+RPC_USER=$(jq '."rpc-username"' "${RPC_CREDS}")
+RPC_PASS=$(jq '."rpc-password"' "${RPC_CREDS}")
 
 TORRENT_FILE="${1}"
 DOWNLOAD_DIR="${2}"
