@@ -16,9 +16,4 @@ If the hostname matches `--flake` is not necessary.
 
 # Secrets
 
-Secrets are fetched by [`roles/secrets.nix`](roles/secrets.nix):
-
-1. Checking `secrets.nix` for overrides.
-2. By calling [`pass`](https://www.passwordstore.org/) for given path.
-
-Use [`example.secrets.nix`](example.secrets.nix) to create `secrets.nix`
+Secrets are fetched encrypted using [agenix](https://github.com/ryantm/agenix) with public Ed25519 keys of hosts.

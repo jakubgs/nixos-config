@@ -1,6 +1,13 @@
-{ pkgs, secret, ... }:
+{ pkgs, secret, config, ... }:
 
 {
+  age.secrets."hosts/users/jakubgs/pass-hash" = {
+    file = ../secrets/hosts/users/jakubgs/pass-hash.age;
+    group = "jakubgs";
+    mode = "0440";
+  };
+
+
   # Give extra permissions with Nix
   nix.settings.trusted-users = [ "jakubgs" ];
 
@@ -16,7 +23,7 @@
     isNormalUser = true;
     useDefaultShell = true;
     group = "jakubgs";
-    hashedPassword = secret "hosts/users/jakubgs/pass-hash";
+    passwordFile = secret "hosts/users/jakubgs/pass-hash";
     extraGroups = [
       "wheel" "audio" "dialout" "video" "disk"
       "adm" "tty" "systemd-journal" "docker"

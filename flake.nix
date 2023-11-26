@@ -2,12 +2,18 @@
   description = "NixOS configuration for my personal hosts.";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url  = "nixpkgs/nixos-23.05";
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    agenix = {
+      url   = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+      inputs.home-manager.follows = "";
+    };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware }:
+  outputs = { self, nixpkgs, unstable, hardware, agenix }:
     let
       overlay = final: prev: let
         unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
@@ -30,7 +36,11 @@
         value = nixpkgs.lib.nixosSystem {
           system = systemForHost host;
           specialArgs.channels = { inherit nixpkgs unstable hardware; };
-          modules = [ overlayModule ./hosts/${host}/configuration.nix ];
+          modules = [
+            overlayModule
+            agenix.nixosModules.default
+            ./hosts/${host}/configuration.nix
+          ];
         };
       }) hostnames);
     };

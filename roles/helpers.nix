@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 let
   inherit (lib) concatStringsSep splitString drop;
@@ -12,4 +12,8 @@ in {
   nixpkgs.overlays = [
     (_: prev: { lib = prev.lib // newLib; })
   ];
+
+  # Make helper function vailable in module arguments.
+  # WARNING: Can cause infinite recursion errors!
+  _module.args.secret = name: config.age.secrets."${name}".path;
 }
