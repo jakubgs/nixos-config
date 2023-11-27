@@ -48,6 +48,14 @@ in {
           '';
         };
 
+        serviceUser = mkOption {
+          type = types.str;
+          default = "jakubgs";
+          description = ''
+            User to run the watch service as.
+          '';
+        };
+
         serviceGroup = mkOption {
           type = types.str;
           default = "jakubgs";
@@ -80,7 +88,7 @@ in {
     systemd.services.transmission-watch = {
       enable = true;
       serviceConfig = {
-        DynamicUser = true;
+        User = cfg.serviceUser;
         Group = cfg.serviceGroup;
         ExecStart = "${watchScript} ${cfg.watchDir} ${cfg.downloadDir}";
         Restart = "on-failure";

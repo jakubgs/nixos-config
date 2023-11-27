@@ -3,8 +3,8 @@
 RPC_ADDR="@rpcAddr@"
 # Credentials are in a JSON file.
 RPC_CREDS="@rpcCreds@"
-RPC_USER=$(jq '."rpc-username"' "${RPC_CREDS}")
-RPC_PASS=$(jq '."rpc-password"' "${RPC_CREDS}")
+RPC_USER=$(@jq@/bin/jq -r '."rpc-username"' "${RPC_CREDS}")
+RPC_PASS=$(@jq@/bin/jq -r '."rpc-password"' "${RPC_CREDS}")
 
 TORRENT_FILE="${1}"
 DOWNLOAD_DIR="${2}"
@@ -19,6 +19,6 @@ echo "Download dir: '${DOWNLOAD_DIR}'"
 
 exec @transmission@/bin/transmission-remote ${RPC_ADDR} \
   --no-trash-torrent \
-  --auth "${RPC_AUTH}" \
+  --auth "${RPC_USER}:${RPC_PASS}" \
   --add "${TORRENT_FILE}" \
   --download-dir "${DOWNLOAD_DIR}"
