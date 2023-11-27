@@ -17,6 +17,7 @@
   in {
     age.secrets."service/transmission/creds" = {
       file = ../secrets/service/transmission/creds.age;
+      owner = cfg.username;
     };
 
     # Firewall
