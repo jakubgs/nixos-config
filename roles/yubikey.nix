@@ -22,5 +22,5 @@
 
   /* Necessary for GPG Agent. */
   services.pcscd.enable = true;
-  hardware.gpgSmartcards.enable = true;
+  hardware.gpgSmartcards.enable = false;
 }
