@@ -18,7 +18,7 @@ let
     # Statistics
     matplotlib pandas seaborn
     # Misc
-    sh backoff
+    sh backoff psutil
   ];
   myPython = pkgs.python310.withPackages myPythonPkgs;
 in {
@@ -38,7 +38,7 @@ in {
     awscli s3cmd unstable.doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # General dev
-    github-cli pkg-config shellcheck
+    github-cli pkg-config shellcheck dos2unix
     # Infra dev
     pkgs.unstable.terraform_1
     # NodeJS dev
