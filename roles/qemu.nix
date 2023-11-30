@@ -7,7 +7,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    virtmanager
+    virt-manager
     qemu-utils
   ];
 

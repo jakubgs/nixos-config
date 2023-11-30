@@ -70,23 +70,27 @@
       # Use when syncing gets stuck.
       #extraFlags = ["--reset-deltas"];
 
-      devices = lib.filterAttrs (h: _: notThisHost h) config.syncthing.hosts;
+      settings = {
+        devices = lib.filterAttrs (h: _: notThisHost h) config.syncthing.hosts;
 
-      folders = {
-        "/mnt/git"    = { id = "git";    type = "sendreceive"; devices = otherHosts; };
-        "/mnt/data"   = { id = "data";   type = "sendreceive"; devices = otherHosts; };
-        "/mnt/music"  = { id = "music";  type = "sendreceive"; devices = otherHosts; };
-        "/mnt/photos" = { id = "photos"; type = "sendreceive"; devices = otherHosts; };
-        "/mnt/mobile" = { id = "mobile"; type = "sendreceive"; devices = otherHosts; };
+        folders = {
+          "/mnt/git"    = { id = "git";    type = "sendreceive"; devices = otherHosts; };
+          "/mnt/data"   = { id = "data";   type = "sendreceive"; devices = otherHosts; };
+          "/mnt/music"  = { id = "music";  type = "sendreceive"; devices = otherHosts; };
+          "/mnt/photos" = { id = "photos"; type = "sendreceive"; devices = otherHosts; };
+          "/mnt/mobile" = { id = "mobile"; type = "sendreceive"; devices = otherHosts; };
+        };
       };
     };
 
     # Wait for volumes to be mounted.
-    systemd.services.syncthing = {
+    systemd.services.syncthing = let
+      syncthingFolderNames = lib.attrNames services.syncthing.settings.folders;
+    in {
       after = lib.mkForce (["network.target"] ++
-        (map pkgs.lib.pathToMountUnit (lib.attrNames services.syncthing.folders))
+        (map pkgs.lib.pathToMountUnit syncthingFolderNames)
       );
-      unitConfig.ConditionPathIsMountPoint = (lib.attrNames services.syncthing.folders);
+      unitConfig.ConditionPathIsMountPoint = syncthingFolderNames;
     };
 
     services.landing = {

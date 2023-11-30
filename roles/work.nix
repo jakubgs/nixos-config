@@ -22,11 +22,6 @@ let
   ];
   myPython = pkgs.python310.withPackages myPythonPkgs;
 in {
-  imports = [
-    # Useful for SQL development.
-    ./postgres.nix
-  ];
-
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
@@ -49,7 +44,7 @@ in {
     # NodeJS dev
     nodejs-18_x (yarn.override { nodejs = nodejs-18_x; })
     # GoLang dev
-    pkgs.unstable.go_1_19 gocode gopls go-protobuf protobuf3_19
+    pkgs.unstable.go_1_19 gocode gopls go-protobuf protobuf3_20
     # Python dev
     myPython
     # Mobile dev

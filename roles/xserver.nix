@@ -37,7 +37,7 @@ in {
         monospace = [ "Inconsolata" ];
       };
     };
-    fonts = with pkgs; [
+    packages = with pkgs; [
       inconsolata
       terminus_font
       corefonts

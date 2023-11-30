@@ -20,7 +20,7 @@
     isNormalUser = true;
     useDefaultShell = true;
     group = "jakubgs";
-    passwordFile = secret "hosts/users/jakubgs/pass-hash";
+    hashedPasswordFile = secret "hosts/users/jakubgs/pass-hash";
     extraGroups = [
       "wheel" "audio" "dialout" "video" "disk"
       "adm" "tty" "systemd-journal" "docker"
