@@ -6,8 +6,8 @@
   ];
 
   age.secrets."service/landing/htpasswd" = {
-    file = ../secrets/service/grafana/pass.age;
-    group = "nginx";
+    file = ../secrets/service/landing/htpasswd.age;
+    owner = "nginx";
   };
 
   services.landing = {
