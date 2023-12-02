@@ -7,6 +7,10 @@ let
     max = 51001;
   };
 in {
+  age.secrets."service/vsftpd/pass" = {
+    file = ../secrets/service/vsftpd/pass.age;
+  };
+
   # Firewall
   networking.firewall.allowedTCPPorts = [ ftpPort 80 ];
   networking.firewall.allowedTCPPortRanges = [
@@ -17,7 +21,7 @@ in {
   users.extraUsers.anon = {
     createHome = true;
     isNormalUser = true;
-    hashedPassword = secret "service/vsftpd/pass";
+    hashedPasswordFile = secret "service/vsftpd/pass";
     extraGroups = [ "ftp" ];
   };
 

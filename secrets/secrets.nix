@@ -16,6 +16,7 @@ in with hosts; {
   "service/mikrotik/config.age"       = { publicKeys = arael;   };
   "service/mpd/pass.age"              = { publicKeys = all;     };
   "service/transmission/creds.age"    = { publicKeys = all;     };
-  "service/zerotier/magi.age"         = { publicKeys = all;     };
+  "service/vsftpd/pass.age"           = { publicKeys = all;     };
   "service/wifi.age"                  = { publicKeys = all;     };
+  "service/zerotier/magi.age"         = { publicKeys = all;     };
 }

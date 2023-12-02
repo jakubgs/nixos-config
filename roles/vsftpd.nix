@@ -7,11 +7,15 @@ let
     max = 51001;
   };
 in {
+  age.secrets."service/vsftpd/pass" = {
+    file = ../secrets/service/vsftpd/pass.age;
+  };
+
   # User
   users.extraUsers.anon = {
     createHome = true;
     isNormalUser = true;
-    hashedPassword = secret "service/vsftpd/pass";
+    hashedPasswordFile = secret "service/vsftpd/pass";
     extraGroups = [ "ftp" ];
   };
 
