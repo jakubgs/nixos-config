@@ -10,14 +10,15 @@ let
 
   all = jakubgs ++ systems;
 in with hosts; {
-  "hosts/users/jakubgs/pass-hash.age" = { publicKeys = all;     };
-  "service/alertmanager/webhook.age"  = { publicKeys = all;     };
-  "service/grafana/pass.age"          = { publicKeys = bardiel; };
-  "service/landing/htpasswd.age"      = { publicKeys = all;     };
-  "service/mikrotik/config.age"       = { publicKeys = arael;   };
-  "service/mpd/pass.age"              = { publicKeys = all;     };
-  "service/transmission/creds.age"    = { publicKeys = all;     };
-  "service/vsftpd/pass.age"           = { publicKeys = all;     };
-  "service/wifi.age"                  = { publicKeys = all;     };
-  "service/zerotier/magi.age"         = { publicKeys = all;     };
+  "hosts/users/jakubgs/pass-hash.age" = { publicKeys = all;       };
+  "service/alertmanager/webhook.age"  = { publicKeys = all;       };
+  "service/grafana/pass.age"          = { publicKeys = [bardiel]; };
+  "service/invidious/hmac-key.age"    = { publicKeys = [bardiel]; };
+  "service/landing/htpasswd.age"      = { publicKeys = all;       };
+  "service/mikrotik/config.age"       = { publicKeys = [arael];   };
+  "service/mpd/pass.age"              = { publicKeys = all;       };
+  "service/transmission/creds.age"    = { publicKeys = all;       };
+  "service/vsftpd/pass.age"           = { publicKeys = all;       };
+  "service/wifi.age"                  = { publicKeys = all;       };
+  "service/zerotier/magi.age"         = { publicKeys = all;       };
 }
