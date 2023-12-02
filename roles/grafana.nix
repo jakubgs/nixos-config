@@ -10,10 +10,11 @@ in {
   };
 
   config = let
-    cfg = config.grafan;
+    cfg = config.grafana;
   in {
     age.secrets."service/grafana/pass" = {
       file = ../secrets/service/grafana/pass.age;
+      owner = "grafana";
     };
 
     services.grafana = {
