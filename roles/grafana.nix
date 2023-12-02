@@ -29,7 +29,7 @@ in {
         };
         security = {
           admin_user = "jakubgs";
-          admin_password = "$__file{${adminPasswordFile}}";
+          admin_password = "$__file{${cfg.adminPasswordFile}}";
           serve_from_sub_path = true;
           allow_embedding = true;
         };
