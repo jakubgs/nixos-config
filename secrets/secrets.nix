@@ -11,6 +11,7 @@ let
   all = jakubgs ++ systems;
 in with hosts; {
   "hosts/users/jakubgs/pass-hash.age" = { publicKeys = all;     };
+  "service/alertmanager/webhook.age"  = { publicKeys = all;     };
   "service/grafana/pass.age"          = { publicKeys = bardiel; };
   "service/landing/htpasswd.age"      = { publicKeys = all;     };
   "service/mikrotik/config.age"       = { publicKeys = arael;   };
