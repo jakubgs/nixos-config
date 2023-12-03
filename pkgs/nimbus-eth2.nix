@@ -1,5 +1,5 @@
 {
-  pkgs ? import <nixpkgs-unstable> { },
+  pkgs ? import <nixpkgs> { },
   # Options: nimbus_light_client, nimbus_validator_client, nimbus_signing_node
   makeTargets ? [ "nimbus_beacon_node" ],
   # WARNING: CPU optmizations that make binary not portable.
@@ -7,18 +7,17 @@
 }:
 
 let
-  inherit (pkgs) stdenv fetchgit lib which writeScriptBin;
-  inherit (pkgs.unstable) nim;
+  inherit (pkgs) stdenv fetchgit lib which writeScriptBin nim;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "23.10.0";
-  commit = "8b07f4fd";
+  version = "23.11.0";
+  commit = "3a527d62";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-eXfHwexoWbrlsXwdNT2TQWlFl526aQfRNxxW6s/khHA=";
+    sha256 = "sha256-SMiWLhsuERR2GOTSbOnmH2LBzTbgyKEXRnIuFKAuXDE=";
     fetchSubmodules = true;
   };
 
