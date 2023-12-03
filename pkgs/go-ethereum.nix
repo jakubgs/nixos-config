@@ -1,18 +1,18 @@
-{ pkgs ? import <nixpkgs-unstable> { } }:
+{ pkgs ? import <nixpkgs> { } }:
 
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.go-ethereum.override {
   buildGoModule = args: pkgs.buildGo120Module ( args // rec {
-    version = "1.13.4";
+    version = "1.13.5";
 
     src = pkgs.fetchFromGitHub {
       owner = "ethereum";
       repo = args.pname;
       rev = "v${version}";
-      sha256 = "sha256-RQlWWHoij3gtFwjJeEGsmd5YJNTGX0I84nOAQyWBx/M=";
+      sha256 = "sha256-UbRsY9fSUYAwPcLfGGDHeqvSsLKUKR+2a93jH5xA9uQ=";
     };
 
-    vendorHash = "sha256-YmUgKO3JtVOE/YACqL/QBiyR1jT/jPCH+Gb0xYwkJEc=";
+    vendorHash = "sha256-dOvpOCMxxmcAaticSLVlro1L4crAVJWyvgx/JZZ7buE=";
 
     subPackages = [
       "cmd/ethkey"
