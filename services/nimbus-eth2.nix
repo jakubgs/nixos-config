@@ -74,7 +74,7 @@ in {
 
         publicIp = mkOption {
           type = types.str;
-          default = "";
+          default = "any";
           description = "Public IP address of the node to advertise.";
         };
 
