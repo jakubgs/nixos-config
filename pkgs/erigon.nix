@@ -1,19 +1,19 @@
-{ pkgs ? import <nixpkgs-unstable> { } }:
+{ pkgs ? import <nixpkgs> { } }:
 
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.erigon.override {
   buildGoModule = args: pkgs.buildGo120Module ( args // rec {
-    version = "2.53.2";
+    version = "2.54.0";
 
     src = pkgs.fetchFromGitHub {
       owner = "ledgerwatch";
       repo = args.pname;
       rev = "v${version}";
-      hash = "sha256-BFxqRPZIb4bM6a17UdFy/YB0frOnUC1UlVflo2EYgE8=";
+      hash = "sha256-1kgbIg/3SvVT83UfwAYUixs1RQk4PP1quiOcI1mzbZ0=";
       fetchSubmodules = true;
     };
 
-    vendorSha256 = "sha256-415ALovZo6NjZD/yDw3ckYz2NCuNMYwV34Up7bTBdOQ=";
+    vendorHash = "sha256-Gr9mrME8/ZDxp2ORKessNhfguklDf+jC4RSpzLOSBhQ=";
 
     subPackages = [
       "cmd/erigon"
