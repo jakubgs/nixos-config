@@ -12,13 +12,13 @@ let
 in with hosts; {
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
-  "service/grafana/pass.age"           = { publicKeys = [bardiel]; };
-  "service/invidious/hmac-key.age"     = { publicKeys = [bardiel]; };
+  "service/grafana/pass.age"           = { publicKeys = [ personal bardiel ]; };
+  "service/invidious/hmac-key.age"     = { publicKeys = [ personal bardiel ]; };
   "service/landing/htpasswd.age"       = { publicKeys = all;       };
-  "service/mikrotik/config.age"        = { publicKeys = [arael];   };
+  "service/mikrotik/config.age"        = { publicKeys = [ personal arael ];   };
   "service/mpd/pass.age"               = { publicKeys = all;       };
-  "service/nimbus/fee-recipient.age"   = { publicKeys = [israfel zeruel]; };
-  "service/nimbus/web3-jws-secret.age" = { publicKeys = [israfel zeruel]; };
+  "service/nimbus/fee-recipient.age"   = { publicKeys = [ personal israfel zeruel ]; };
+  "service/nimbus/web3-jws-secret.age" = { publicKeys = [ personal israfel zeruel ]; };
   "service/transmission/creds.age"     = { publicKeys = all;       };
   "service/vsftpd/pass.age"            = { publicKeys = all;       };
   "service/wifi.age"                   = { publicKeys = all;       };
