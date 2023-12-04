@@ -39,12 +39,6 @@
       options = [ "nofail" ];
     };
 
-  fileSystems."/mnt/steam" =
-    { device = "/dev/disk/by-uuid/25dbbbda-ab15-4f4c-ac54-36e74837b7ca";
-      fsType = "ext4";
-      options = [ "nofail" ];
-    };
-
   fileSystems."/mnt/windows" =
     { device = "/dev/disk/by-uuid/56BCBB0CBCBAE5A1";
       fsType = "ntfs-3g";
