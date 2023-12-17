@@ -14,7 +14,7 @@ let
     # Security
     pyopenssl cryptography passlib
     # Databases
-    elasticsearch psycopg2
+    elasticsearch elastic-transport psycopg2
     # Statistics
     matplotlib pandas seaborn
     # Misc
