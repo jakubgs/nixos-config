@@ -28,6 +28,7 @@
     ../../roles/qemu.nix
     ../../roles/torrent.nix
     ../../roles/builder.nix
+    ../../roles/crypto.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
