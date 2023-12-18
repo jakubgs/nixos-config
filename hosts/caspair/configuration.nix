@@ -72,14 +72,7 @@
   hardware.pulseaudio.enable = true;
 
   # Video
-  services.xserver.videoDrivers = [ "nvidia" "intel" ];
-  # Fix screen flipping to black randomly.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable.overrideAttrs {
-    src = pkgs.fetchurl {
-      url = "https://download.nvidia.com/XFree86/Linux-x86_64/545.23.06/NVIDIA-Linux-x86_64-545.23.06.run";
-      sha256 = "sha256-QTnTKAGfcvKvKHik0BgAemV3PrRqRlM3B9jjZeupCC8=";
-    };
-  };
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Power Managemtn
   powerManagement.cpuFreqGovernor = "performance";
