@@ -1,10 +1,6 @@
 { config, pkgs, channels, secret, ... }:
 
 {
-  /* Use service definition with AuthRPC options. */
-  disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
-  imports = [ "${channels.unstable}/nixos/modules/services/blockchain/ethereum/geth.nix" ];
-
   /* Firewall */
   networking.firewall.allowedTCPPorts = [ config.services.geth.port ];
   networking.firewall.allowedUDPPorts = [ config.services.geth.port ];
