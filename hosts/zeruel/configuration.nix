@@ -30,7 +30,6 @@
   # Bootloader
   boot.loader.grub = {
     enable = true;
-    version = 2;
     configurationLimit = 10;
     copyKernels = true;
     mirroredBoots = [
