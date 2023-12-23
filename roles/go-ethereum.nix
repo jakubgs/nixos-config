@@ -1,16 +1,13 @@
-{ pkgs, channels, secret, ... }:
+{ config, pkgs, channels, secret, ... }:
 
-let
-  devp2pPort = 9800; # WebDAV Source port
-  publicIp = secret "service/geth/public-ip";
-in {
+{
   /* Use service definition with AuthRPC options. */
   disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
   imports = [ "${channels.unstable}/nixos/modules/services/blockchain/ethereum/geth.nix" ];
 
   /* Firewall */
-  networking.firewall.allowedTCPPorts = [ devp2pPort ];
-  networking.firewall.allowedUDPPorts = [ devp2pPort ];
+  networking.firewall.allowedTCPPorts = [ config.services.geth.port ];
+  networking.firewall.allowedUDPPorts = [ config.services.geth.port ];
 
   services.geth = {
     "mainnet" = {
@@ -18,7 +15,7 @@ in {
       network = null; # mainnet
       syncmode = "snap";
       maxpeers = 50;
-      port = devp2pPort;
+      port = 9800; # WebDAV Source port
       package = pkgs.unstable.callPackage ../pkgs/go-ethereum.nix { };
       metrics = {
         enable = true;
@@ -47,7 +44,7 @@ in {
       extraArgs = [
         "--verbosity=3"
         "--log.json=true"
-        "--nat=extip:${publicIp}"
+        "--nat=extip:any"
         "--v5disc"
       ];
     };
