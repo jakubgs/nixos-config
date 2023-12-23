@@ -1,54 +1,63 @@
-{ config, pkgs, channels, secret, ... }:
+{ config, lib, pkgs, secret, ... }:
 
 {
-  /* Firewall */
-  networking.firewall.allowedTCPPorts = [ config.services.geth.port ];
-  networking.firewall.allowedUDPPorts = [ config.services.geth.port ];
-
-  services.geth = {
-    "mainnet" = {
-      enable = true;
-      network = null; # mainnet
-      syncmode = "snap";
-      maxpeers = 50;
-      port = 9800; # WebDAV Source port
-      package = pkgs.unstable.callPackage ../pkgs/go-ethereum.nix { };
-      metrics = {
-        enable = true;
-        port = 16060;
-        address = "0.0.0.0";
-      };
-      http = {
-        enable = true;
-        port = 18545;
-        address = "0.0.0.0";
-        apis = ["net" "eth" "admin"];
-      };
-      websocket = {
-        enable = true;
-        port = 18546;
-        address = "0.0.0.0";
-        apis = ["net" "eth" "admin"];
-      };
-      authrpc = {
-        enable = true;
-        port = 18551;
-        address = "127.0.0.1";
-        vhosts = ["localhost" "127.0.0.1"];
-        jwtsecret = "/etc/geth/jwtsecret";
-      };
-      extraArgs = [
-        "--verbosity=3"
-        "--log.json=true"
-        "--nat=extip:any"
-        "--v5disc"
-      ];
-    };
+  options.nimbus = {
+    devp2pPort = lib.mkOption { default = 9800; };
+    jwtsecret  = lib.mkOption { default = secret "service/nimbus/web3-jws-secret"; };
   };
 
-  environment.etc."geth/jwtsecret" = {
-    # FIXME: Use LoadCredential instead.
-    mode = "0444";
-    text = secret "service/nimbus/web3-jws-secret";
+  config = let
+    cfg = config.nimbus;
+  in {
+    # Secrets
+    age.secrets."service/nimbus/web3-jws-secret" = {
+      file = ../secrets/service/nimbus/web3-jws-secret.age;
+      owner = "nimbus";
+    };
+
+    services.geth = {
+      "mainnet" = {
+        enable = true;
+        network = null; # mainnet
+        syncmode = "snap";
+        maxpeers = 50;
+        port = cfg.devp2pPort;
+        package = pkgs.unstable.callPackage ../pkgs/go-ethereum.nix { };
+        metrics = {
+          enable = true;
+          port = 16060;
+          address = "0.0.0.0";
+        };
+        http = {
+          enable = true;
+          port = 18545;
+          address = "0.0.0.0";
+          apis = ["net" "eth" "admin"];
+        };
+        websocket = {
+          enable = true;
+          port = 18546;
+          address = "0.0.0.0";
+          apis = ["net" "eth" "admin"];
+        };
+        authrpc = {
+          enable = true;
+          port = 18551;
+          address = "127.0.0.1";
+          vhosts = ["localhost" "127.0.0.1"];
+          inherit (cfg) jwtsecret;
+        };
+        extraArgs = [
+          "--verbosity=3"
+          "--log.json=true"
+          "--nat=extip:any"
+          "--v5disc"
+        ];
+      };
+    };
+
+    /* Firewall */
+    networking.firewall.allowedTCPPorts = [ cfg.devp2pPort ];
+    networking.firewall.allowedUDPPorts = [ cfg.devp2pPort ];
   };
 }
