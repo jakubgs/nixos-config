@@ -42,7 +42,7 @@
     # Browsers
     brave ungoogled-chromium
     # Documents
-    evince
+    evince foliate
     # Images
     feh gthumb gimp exiftool
     # Video
