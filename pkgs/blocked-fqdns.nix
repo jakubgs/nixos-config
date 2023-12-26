@@ -13,24 +13,24 @@ let
   inherit (pkgs) lib fetchurl;
   inherit (lib) concatStringsSep;
 
-  noTracking = "https://github.com/notracking/hosts-blocklists/raw/ad8fd425";
-  stevenBlack = "https://github.com/StevenBlack/hosts/raw/3.11.41";
+  noTracking = "https://github.com/notracking/hosts-blocklists/raw/2ab426e8";
+  stevenBlack = "https://github.com/StevenBlack/hosts/raw/3.14.41";
 in pkgs.stdenv.mkDerivation {
   name = "dnsmasq-blocked-fqdns";
 
   # Lists for blocking ads, trackers, malware and other garbage.
   src = fetchurl {
     url = "${noTracking}/domains.txt";
-    sha256 = "sha256-MMYVBANe8YHPUGKg+gM1sfvNyqzk8jZOrcCZbglQHJw=";
+    sha256 = "sha256-6I6opvozJUMHqkJXhyHyZEqnfy1hziTXCGqZm+eVXXc=";
   };
   srcs = [
     (fetchurl {
       url = "${noTracking}/hostnames.txt";
-      sha256 = "sha256-u8JtxxgOgotCKfGFxdMj/7SNqRft1CwZVPzdwtz8p5I=";
+      sha256 = "sha256-z5k0upPaFTCKO9cJ/5zLGuDwzXAbw7pReFaLVLt1LXM=";
     })
     (fetchurl {
       url = "${stevenBlack}/alternates/fakenews-gambling-porn-social/hosts";
-      sha256 = "sha256-mqeH6nFr/J/w48FqePrmnvRsNsp3hFYbvkCsfyUS75s=";
+      sha256 = "sha256-Qg5kT1Ct+K3TUetA24SG7+1LOLtpBBufm9ZKoaUbcWQ=";
     })
   ];
 
