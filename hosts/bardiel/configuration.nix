@@ -1,4 +1,4 @@
-{ modulesPath, ... }:
+{ pkgs, modulesPath, ... }:
 
 {
   imports = [
@@ -46,6 +46,9 @@
       }
     ];
   };
+
+  # Specify kernel version.
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 
   # Disabled by hardened profile, big performance hit.
   security.allowSimultaneousMultithreading = true;
