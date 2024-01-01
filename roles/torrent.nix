@@ -26,6 +26,8 @@
     # Daemon
     services.transmission = {
       enable = true;
+      openFirewall = true;
+      openPeerPorts = true;
       home = cfg.torrentDir;
       user = cfg.username;
       group = cfg.username;
