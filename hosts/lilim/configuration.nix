@@ -20,6 +20,7 @@
     ../../roles/music.nix
     ../../roles/zerotier.nix
     ../../roles/yubikey.nix
+    ../../roles/crypto.nix
     ../../roles/work.nix
     ../../roles/docs.nix
     ../../roles/qemu.nix
