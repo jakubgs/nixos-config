@@ -27,7 +27,7 @@ in {
         };
 
         # This list of sets represents service proxies we support.
-        # To simplify merging with 'locations' we use the 
+        # To simplify merging with 'locations' we use the
         # Nginx path as 'name' and rest of config as 'value'.
         proxyServices = mkOption {
           type = types.listOf types.attrs;
@@ -46,7 +46,7 @@ in {
 
       virtualHosts = {
         "${config.networking.fqdn}" = {
-          default = true;
+          default = false;
           basicAuthFile = cfg.htpasswdFile;
           locations = {
             "= /" = {
