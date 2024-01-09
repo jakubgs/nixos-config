@@ -42,7 +42,7 @@ in {
         verbose = mkOption {
           type = types.bool;
           default = false;
-          description = "Whether to list hidden files.";
+          description = "Print verbose logs.";
         };
 
         port = mkOption {
@@ -75,7 +75,8 @@ in {
           "-prefix ${cfg.urlPrefix}"
           "-p ${toString cfg.port}"
           "-h ${cfg.address}"
-        ] ++ optional cfg.readOnly "-ro"
+        ] ++ optional cfg.verbose "-verb"
+          ++ optional cfg.readOnly "-ro"
           ++ optional cfg.skipHidden "-k"
           ++ optional cfg.followSymlinks "-symlinks"
           ++ [ cfg.dataDir ]);
