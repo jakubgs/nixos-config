@@ -6,18 +6,20 @@
   nativeBuild ? true
 }:
 
+assert pkgs.unstable.nim.version == "1.6.18";
+
 let
-  inherit (pkgs) stdenv fetchgit lib which writeScriptBin nim;
+  inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "23.11.0";
-  commit = "3a527d62";
+  version = "24.1.1";
+  commit = "0e63f8fd";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-SMiWLhsuERR2GOTSbOnmH2LBzTbgyKEXRnIuFKAuXDE=";
+    sha256 = "sha256-euKLjVw9f2AzdR9YF4UOIerpjWewTVTvaasXxNQgoq0=";
     fetchSubmodules = true;
   };
 
@@ -25,7 +27,7 @@ in stdenv.mkDerivation rec {
     # Fix for Nim compiler calling 'git rev-parse' and 'lsb_release'.
     fakeGit = writeScriptBin "git" "echo $commit";
     fakeLsbRelease = writeScriptBin "lsb_release" "echo nix";
-  in [ fakeGit fakeLsbRelease which nim ];
+  in [ fakeGit fakeLsbRelease which pkgs.unstable.nim ];
 
   enableParallelBuilding = true;
 
