@@ -13,6 +13,7 @@
     age.secrets."service/nimbus/web3-jws-secret" = {
       file = ../secrets/service/nimbus/web3-jws-secret.age;
       owner = "nimbus";
+      mode = "0444"; /* FIXME: Use LoadCredential. */
     };
 
     services.geth = {
