@@ -50,7 +50,7 @@
         extraArgs = [
           "--verbosity=3"
           "--log.json=true"
-          "--nat=extip:any"
+          "--nat=any"
           "--v5disc"
         ];
       };
