@@ -72,10 +72,11 @@ in {
           description = "Number of worker threads. Use 0 to detect CPU cores.";
         };
 
-        publicIp = mkOption {
+        nat = mkOption {
           type = types.str;
           default = "any";
-          description = "Public IP address of the node to advertise.";
+          example = "extip:12.34.56.78";
+          description = "Way to detect public IP address of the node to advertise.";
         };
 
         execURLs = mkOption {
@@ -190,7 +191,7 @@ in {
             --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
             --jwt-secret=${cfg.jwtSecret} \
-            --nat=extip:${cfg.publicIp} \
+            --nat=${cfg.nat} \
             --log-level=${toUpper cfg.log.level} \
             --log-format=${cfg.log.format} \
             --num-threads=${toString cfg.threadsNumber} \
