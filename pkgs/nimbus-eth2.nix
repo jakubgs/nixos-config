@@ -3,10 +3,13 @@
   # Options: nimbus_light_client, nimbus_validator_client, nimbus_signing_node
   makeTargets ? [ "nimbus_beacon_node" ],
   # WARNING: CPU optmizations that make binary not portable.
-  nativeBuild ? true
+  nativeBuild ? true,
+  # Use unsable channel to get newer Nim.
+  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim1 else pkgs.nim1
 }:
 
-assert pkgs.unstable.nim.version == "1.6.18";
+assert pkgs.lib.assertMsg (unstableNim.version == "1.6.18")
+  "Unable to build with Nim ${unstableNim.version}, only 1.6.18 allowed.";
 
 let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
@@ -27,7 +30,7 @@ in stdenv.mkDerivation rec {
     # Fix for Nim compiler calling 'git rev-parse' and 'lsb_release'.
     fakeGit = writeScriptBin "git" "echo $commit";
     fakeLsbRelease = writeScriptBin "lsb_release" "echo nix";
-  in [ fakeGit fakeLsbRelease which pkgs.unstable.nim ];
+  in [ fakeGit fakeLsbRelease which unstableNim ];
 
   enableParallelBuilding = true;
 
