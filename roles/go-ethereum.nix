@@ -12,8 +12,6 @@
     # Secrets
     age.secrets."service/nimbus/web3-jws-secret" = {
       file = ../secrets/service/nimbus/web3-jws-secret.age;
-      owner = "nimbus";
-      mode = "0444"; /* FIXME: Use LoadCredential. */
     };
 
     services.geth = {
@@ -46,7 +44,7 @@
           port = 18551;
           address = "127.0.0.1";
           vhosts = ["localhost" "127.0.0.1"];
-          inherit (cfg) jwtsecret;
+          jwtsecret = "$CREDENTIALS_DIRECTORY/jwtsecret";
         };
         extraArgs = [
           "--verbosity=3"
@@ -55,6 +53,11 @@
           "--v5disc"
         ];
       };
+    };
+
+    # Pass JWT secret using LoadCredential.
+    systemd.services.geth-mainnet = {
+      serviceConfig.LoadCredential = [ "jwtsecret:${cfg.jwtsecret}" ];
     };
 
     /* Firewall */
