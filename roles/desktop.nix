@@ -73,4 +73,21 @@
 
   # Fix Gnome Apps that require dconf
   programs.dconf.enable = true;
+
+  # Set Brave as default browser
+  xdg.mime = {
+    enable = true;
+    defaultApplications = builtins.listToAttrs (
+      map (name: { inherit name; value = "brave.desktop"; }
+    ) [
+      "text/html"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+      "x-scheme-handler/about"
+      "x-scheme-handler/unknown"
+    ]);
+  };
+
+  # Discord expects this variable.
+  environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.brave}/bin/brave";
 }
