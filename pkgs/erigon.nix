@@ -2,26 +2,25 @@
 
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.erigon.override {
-  buildGoModule = args: pkgs.buildGo120Module ( args // rec {
-    version = "2.54.0";
+  buildGoModule = args: pkgs.buildGo121Module ( args // rec {
+    version = "2.58.1";
 
     src = pkgs.fetchFromGitHub {
       owner = "ledgerwatch";
       repo = args.pname;
       rev = "v${version}";
-      hash = "sha256-1kgbIg/3SvVT83UfwAYUixs1RQk4PP1quiOcI1mzbZ0=";
+      hash = "sha256-jeOV86QVRQ6RiXUPesa+RbYgSe/t43xYZ8X9t/d9fMs=";
       fetchSubmodules = true;
     };
 
-    vendorHash = "sha256-Gr9mrME8/ZDxp2ORKessNhfguklDf+jC4RSpzLOSBhQ=";
+    vendorHash = "sha256-DOsM0G0idAHUsil4KNkmghq3VZwVE1ub6fAvRnELHn0=";
 
     subPackages = [
       "cmd/erigon"
     ];
 
-    # Fix error: 'Caught SIGILL in blst_cgo_init'
-    # https://github.com/bnb-chain/bsc/issues/1521
-    CGO_CFLAGS = "-O -D__BLST_PORTABLE__";
-    CGO_CFLAGS_ALLOW = "-O -D__BLST_PORTABLE__";
+    # Silkworm is disabled for releases. Fails due to rpath.
+    # Would require 'lib/linux_x64/libsilkworm_capi.so' from silkworm-go.
+    tags = "-tags=nosqlite,noboltdb,nosilkworm";
   });
 }
