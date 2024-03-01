@@ -57,7 +57,7 @@ in {
     # Docs
     mdbook hugo
     # Communication
-    weechat
+    weechat asciinema
   ];
 
   # Android development Tool
