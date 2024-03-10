@@ -13,6 +13,9 @@ in {
   # Daemon
   services.zerotierone.enable = true;
 
+  # Fix connection issues right after boot.
+  systemd.services.zerotierone.serviceConfig.Type = "idle";
+
   # Workaround to use file as source of network name.
   systemd.services.zerotierone.preStart = ''
     mkdir -p /var/lib/zerotier-one/networks.d
