@@ -39,7 +39,7 @@ in {
     awscli s3cmd unstable.doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # General dev
-    github-cli pkg-config shellcheck dos2unix
+    git-filter-repo github-cli pkg-config shellcheck dos2unix
     # Infra dev
     pkgs.unstable.terraform_1
     # NodeJS dev
