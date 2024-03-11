@@ -3,15 +3,15 @@
 {
   options.nimbus = {
     devp2pPort = lib.mkOption { default = 9800; };
-    jwtsecret  = lib.mkOption { default = secret "service/nimbus/web3-jws-secret"; };
+    jwtsecret  = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
   };
 
   config = let
     cfg = config.nimbus;
   in {
     # Secrets
-    age.secrets."service/nimbus/web3-jws-secret" = {
-      file = ../secrets/service/nimbus/web3-jws-secret.age;
+    age.secrets."service/nimbus/web3-jwt-secret" = {
+      file = ../secrets/service/nimbus/web3-jwt-secret.age;
     };
 
     services.geth = {

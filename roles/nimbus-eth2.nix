@@ -11,7 +11,7 @@ in {
 
   options.nimbus = {
     feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
-    jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jws-secret"; };
+    jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
   };
 
   config = let
@@ -22,8 +22,8 @@ in {
       file = ../secrets/service/nimbus/fee-recipient.age;
       owner = "nimbus";
     };
-    age.secrets."service/nimbus/web3-jws-secret" = {
-      file = ../secrets/service/nimbus/web3-jws-secret.age;
+    age.secrets."service/nimbus/web3-jwt-secret" = {
+      file = ../secrets/service/nimbus/web3-jwt-secret.age;
       owner = "nimbus";
     };
 
