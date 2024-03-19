@@ -25,7 +25,6 @@
     ../../roles/docs.nix
     ../../roles/qemu.nix
     ../../roles/syncthing.nix
-    ../../roles/tailscale.nix
     ../../roles/landing.nix
   ];
 
