@@ -21,6 +21,7 @@
     ../../roles/builder.nix
     ../../roles/invidious.nix
     ../../roles/public_ftp.nix
+    ../../roles/qemu.nix
   ];
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.
