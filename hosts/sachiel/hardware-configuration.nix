@@ -63,6 +63,12 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/mnt/grzegorz" =
+    { device = "USB-DATA/grzegorz";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/03a27ff3-6497-4397-aef4-4a14e07e1f30"; }
     ];

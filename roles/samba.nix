@@ -26,6 +26,7 @@ let
     public = lib.filter isMounted [
       "/mnt/music"
       "/mnt/photos"
+      "/mnt/grzegorz"
     ];
     private = lib.filter isMounted [
       "/mnt/git"
