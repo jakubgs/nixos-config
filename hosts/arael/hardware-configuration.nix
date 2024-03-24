@@ -69,6 +69,12 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/mnt/grzegorz" =
+    { device = "USB-DATA/grzegorz";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   fileSystems."/git" =
     { device = "/mnt/git";
       fsType = "none";
