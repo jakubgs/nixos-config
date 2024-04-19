@@ -27,7 +27,7 @@ in {
     # DevOps
     ansible_2_14
     # Security
-    bitwarden unstable.bitwarden-cli
+    bitwarden bitwarden-cli
     sops pwgen oathToolkit yubikey-manager
     # Databases
     robo3t
