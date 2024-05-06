@@ -2,7 +2,7 @@
 
 {
   imports = [
-    channels.hardware.nixosModules.lenovo-thinkpad-t480s
+    channels.hardware.nixosModules.lenovo-thinkpad-x1-10th-gen
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
@@ -12,7 +12,6 @@
     ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
-    ../../roles/nvidia.nix
     ../../roles/laptop.nix
     ../../roles/bluetooth.nix
     ../../roles/physlock.nix
@@ -44,10 +43,6 @@
   networking = {
     hostName = "lilim";
     hostId = "e87975cc";
-    useDHCP = false;
-    interfaces = {
-      enp0s31f6 = { useDHCP = true; };
-    };
   };
 
   # Select internationalisation properties.

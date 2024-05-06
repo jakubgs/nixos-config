@@ -4,12 +4,11 @@ This is configuration for my laptop.
 
 # Hardware
 
-* Thinkpad T480s
-* Intel Core i5-8350U
-* 16 GB DDR4 2400MHz
-* GeForce MX150 + Intel UHD 620
+* Thinkpad X1 Carbon 10th Gen
+* Intel Core i7-1270P
+* 32 GB DDR5 4800MHz
 * Samsung 990 PRO 2TB M.2 NVMe
 
 # Installation
 
-https://github.com/NixOS/nixos-hardware/tree/master/lenovo/thinkpad/t480s
+https://github.com/NixOS/nixos-hardware/tree/master/lenovo/thinkpad/x1

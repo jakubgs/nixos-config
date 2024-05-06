@@ -1,6 +1,6 @@
 # Description
 
-Describes installtion process on Thinkpad T480s `lilim` host.
+Describes installtion process on Thinkpad X1 Carbon `lilim` host.
 
 # Installation
 
