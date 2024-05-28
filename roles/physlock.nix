@@ -10,6 +10,7 @@ in {
     enable = true;
     allowAnyUser = true;
     disableSysRq = false;
+    muteKernelMessages = true;
     lockOn = {
       suspend = true;
       hibernate = true;
