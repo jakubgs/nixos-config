@@ -44,7 +44,7 @@
     # Documents
     evince foliate
     # Images
-    feh gthumb gimp exiftool
+    feh qimgv gimp exiftool
     # Video
     mpv yt-dlp ffmpeg
     # Audio
