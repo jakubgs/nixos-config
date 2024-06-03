@@ -25,7 +25,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_14
+    unstable.ansible_2_16
     # Security
     bitwarden unstable.bitwarden-cli
     sops pwgen oathToolkit yubikey-manager
