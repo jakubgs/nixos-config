@@ -32,7 +32,7 @@ in {
     # Databases
     robo3t
     # Network
-    netcat websocat insomnia ngrok tcpdump whois
+    netcat websocat insomnia ngrok tcpdump whois inetutils
     # Remote
     remmina
     # Cloud
@@ -57,7 +57,7 @@ in {
     # Docs
     mdbook hugo
     # Communication
-    weechat asciinema
+    weechat asciinema element-desktop
   ];
 
   # Android development Tool
