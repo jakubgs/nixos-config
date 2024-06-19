@@ -35,7 +35,8 @@
         name = host;
         value = nixpkgs.lib.nixosSystem {
           system = systemForHost host;
-          specialArgs.channels = { inherit nixpkgs unstable hardware; };
+          # Allow access to all channels from inputs in modules.
+          specialArgs.channels = { inherit nixpkgs unstable hardware agenix; };
           modules = [
             overlayModule
             agenix.nixosModules.default

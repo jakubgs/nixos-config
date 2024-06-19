@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, channels, ... }:
 
 {
   # Drop packets by default.
@@ -30,4 +30,9 @@
 
   # Use PAM with SSH auth.
   security.pam.enableSSHAgentAuth = true;
+
+  # Install Agenix CLI tool.
+  environment.systemPackages = [
+    channels.agenix.packages.${pkgs.system}.default
+  ];
 }
