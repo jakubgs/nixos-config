@@ -11,7 +11,7 @@
   # Lid closing behaviors
   services.logind = {
     lidSwitch = "suspend";
-    lidSwitchDocked = "suspend";
+    lidSwitchDocked = "ignore";
     lidSwitchExternalPower = "lock";
     extraConfig = "HandlePowerKey=suspend";
   };
