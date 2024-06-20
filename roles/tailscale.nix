@@ -1,18 +1,20 @@
 { pkgs, config, secret, ... }:
 
-{
-  age.secrets."service/tailscale/lilim" = {
-    file = ../secrets/service/tailscale/lilim.age;
-  };
-  age.secrets."service/tailscale/caspair" = {
-    file = ../secrets/service/tailscale/caspair.age;
+let
+  hostname = config.networking.hostName;
+in {
+  age.secrets = {
+    "service/tailscale/${hostname}" = {
+      file = ../secrets/service/tailscale/${hostname}.age;
+    };
   };
 
   # Daemon
   services.tailscale = {
     enable = true;
     openFirewall = true;
-    authKeyFile = secret "service/tailscale/${config.networking.hostName}";
+    # WARNING: These keys expire after 90 days.
+    authKeyFile = secret "service/tailscale/${hostname}";
   };
 
   # Client
