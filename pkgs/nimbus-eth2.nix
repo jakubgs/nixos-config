@@ -8,21 +8,21 @@
   unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim1 else pkgs.nim1
 }:
 
-assert pkgs.lib.assertMsg (unstableNim.version == "1.6.18")
-  "Unable to build with Nim ${unstableNim.version}, only 1.6.18 allowed.";
+assert pkgs.lib.assertMsg (unstableNim.version == "1.6.20")
+  "Unable to build with Nim ${unstableNim.version}, only 1.6.20 allowed.";
 
 let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "24.4.0";
-  commit = "f20a21c0";
+  version = "24.6.0";
+  commit = "7d00786d";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-2mrf1lwCuChttax45JrtRIJpvqpPZj6QV+Pgiu1Dbx0=";
+    sha256 = "sha256-cSQfuwMz0JDALJKeYpq25vvqq4SnAKkqW6kRNWGG788=";
     fetchSubmodules = true;
   };
 
