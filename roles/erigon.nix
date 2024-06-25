@@ -20,7 +20,6 @@
       secretJwtPath = cfg.jwtSecret;
       settings = {
         "chain" = "mainnet";
-        "mine" = true;
         "miner.etherbase" = secret "service/nimbus/fee-recipient";
         "allow-insecure-unlock" = true;
         "maxpeers" = 100;
