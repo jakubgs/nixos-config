@@ -28,7 +28,7 @@
     # Screen
     arandr
     # Security
-    pinentry-gnome gnome3.seahorse cryptsetup
+    gnome3.seahorse cryptsetup
     # Phone
     go-mtpfs chirp
   ];
@@ -48,7 +48,7 @@
     # Video
     mpv yt-dlp ffmpeg
     # Audio
-    mpc_cli ncmpcpp vorbis-tools mpg321 soundconverter
+    mpc_cli ncmpcpp vorbis-tools mpg123 soundconverter
     # Archive
     unrar
     # Communication

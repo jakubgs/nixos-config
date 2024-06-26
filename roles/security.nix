@@ -25,11 +25,11 @@
     enable = true;
     enableSSHSupport = true;
     enableBrowserSocket = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
 
   # Use PAM with SSH auth.
-  security.pam.enableSSHAgentAuth = true;
+  security.pam.sshAgentAuth.enable = true;
 
   # Install Agenix CLI tool.
   environment.systemPackages = [

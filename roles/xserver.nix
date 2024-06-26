@@ -4,14 +4,15 @@ let
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
+  services.displayManager.defaultSession = "none+awesome";
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "pl";
+    xkb.layout = "pl";
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
     displayManager = {
-      defaultSession = "none+awesome";
       lightdm = {
         enable = true;
         background = "${../files/wallpapers/default.jpg}";
