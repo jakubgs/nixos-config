@@ -23,6 +23,7 @@
       database.createLocally = true;
       settings = {
         admins = ["jakubgs"];
+        db.user = "invidious";
         external_port = 80;
         use_quic = true;
         channel_threads = 2;
