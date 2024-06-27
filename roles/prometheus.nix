@@ -12,7 +12,7 @@ let
     "caspair.magi.vpn" = default;
     "lilim.magi.vpn"   = default;
     "leliel.magi.vpn"  = default;
-    "sachiel.magi.vpn" = default // { mikrotik = 9436; };
+    "sachiel.magi.vpn" = default;
     "zeruel.magi.vpn"  = default // { nimbus = 9100; geth = 16060; };
     "israfel.magi.vpn" = default // { nimbus = 9100; erigon = 16060; };
   };
