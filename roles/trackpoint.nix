@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  services.xserver.libinput.enable = false;
+  services.libinput.enable = false;
 
   services.xserver.synaptics = {
     enable = true;
