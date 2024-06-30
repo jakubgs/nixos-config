@@ -26,12 +26,12 @@ let
     public = lib.filter isMounted [
       "/mnt/music"
       "/mnt/photos"
-      "/mnt/grzegorz"
     ];
     private = lib.filter isMounted [
       "/mnt/git"
       "/mnt/data"
       "/mnt/torrent"
+      "/mnt/grzegorz"
     ];
   };
 in {
@@ -71,5 +71,18 @@ in {
     isNormalUser = true;
     useDefaultShell = true;
     group = "ania";
+  };
+
+  # User for /mnt/grzegorz
+  users.groups.grzegorz = {
+    gid = 1002;
+    name = "grzegorz";
+  };
+  users.users.grzegorz = {
+    uid = 1002;
+    createHome = true;
+    isNormalUser = true;
+    useDefaultShell = true;
+    group = "grzegorz";
   };
 }
