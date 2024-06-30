@@ -23,6 +23,7 @@
     configurationLimit = 30;
   };
   # Fix for not detecting the NVMe SSD
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot.initrd.availableKernelModules = [
     "nvme" "pcie-rockchip-host" "phy-rockchip-pcie"
   ];
