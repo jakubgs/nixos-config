@@ -3,6 +3,7 @@
 {
   # Enable ZFS support
   boot.supportedFilesystems = [ "zfs" ];
+  boot.initrd.supportedFilesystems = [ "zfs" ];
 
   # Enable hibernation
   boot.zfs.allowHibernation = true;
