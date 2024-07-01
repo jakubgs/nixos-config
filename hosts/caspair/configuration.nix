@@ -26,7 +26,6 @@
     ../../roles/optical.nix
     ../../roles/dnsmasq.nix
     ../../roles/qemu.nix
-    ../../roles/torrent.nix
     ../../roles/builder.nix
     ../../roles/crypto.nix
   ];
