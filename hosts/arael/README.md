@@ -10,7 +10,8 @@ Configuration for [NanoPi-R6C](https://wiki.friendlyelec.com/wiki/index.php/Nano
 * Mali-G610 MP4, OpenGLES, OpenCL 2.2, Vulkan1.2
 * 8GB 64-bit LPDDR4X at 2133MHz
 * 32GB eMMC, at HS400 mode
-* Native Gigabit Ethernet, PCIe 2.5G Ethernet
+* Native 1Gbit Ethernet (RTL8211F-CG)
+* PCIe 2.5Gbit Ethernet (RTL8125BG)
 
 # Docs
 
