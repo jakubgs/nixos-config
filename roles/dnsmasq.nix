@@ -6,7 +6,7 @@ let
   stubbyEnabled = false;
 
   stubbyExample = pkgs.stubby.passthru.settingsExample;
-  blockedFqdns = pkgs.callPackage ../pkgs/blocked-fqdns.nix { };
+  blockedHosts = pkgs.callPackage ../pkgs/blocked-hosts.nix { };
 
   formatConfig = ip: fqdns:
     concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);
@@ -48,8 +48,7 @@ in {
       cache-size = 10000;
       local-ttl = 300;
       conf-dir = "/etc/dnsmasq.d/,*.conf";
-      conf-file = "${blockedFqdns}/domains";
-      addn-hosts = "${blockedFqdns}/hosts";
+      addn-hosts = "${blockedHosts}/hosts";
     } // optionalAttrs stubbyEnabled {
       no-resolv = true;
       proxy-dnssec = true;
