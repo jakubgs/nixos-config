@@ -3,7 +3,6 @@
   "4channel.org" "4chan.org"
 ]
 , excludes ? [
-  "porn"
   "twitter" "twimg"
   "whatsapp.com" "redd"
   "linkedin.com" "licdn.com"

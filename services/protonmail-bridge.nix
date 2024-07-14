@@ -28,9 +28,9 @@ in {
 
         package = mkOption {
           default = pkgs.protonmail-bridge;
-          defaultText = "pkgs.rxvt-unicode";
+          defaultText = "pkgs.protonmail-bridge";
           description = ''
-            Package to install. Usually pkgs.rxvt-unicode.
+            Package to install. Usually pkgs.protonmail-bridge.
           '';
           type = types.package;
         };
@@ -51,7 +51,7 @@ in {
             --no-window
         '';
       };
-      path = [ pkgs.gnome.gnome-keyring ];
+      path = with pkgs; [ gnome.gnome-keyring libnotify ];
       partOf = [ "graphical-session.target" ];
       wantedBy = [ "graphical-session.target" ];
     };
