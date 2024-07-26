@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 {
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "devicemapper";
-    extraOptions = "--storage-opt dm.basesize=30G";
-  };
+  virtualisation.docker.enable = true;
 
   # Fixes: 'IPv4 forwarding is disabled. Networking will not work.'
   boot.kernel.sysctl = {
