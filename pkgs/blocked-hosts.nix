@@ -4,7 +4,7 @@
 ]
 , excludes ? [
   "twitter" "twimg"
-  "whatsapp.com" "redd"
+  "whatsapp.com" "whatsapp.net"
   "linkedin.com" "licdn.com"
   "groups.google.com" "pstmrk"
 ] }:
@@ -18,7 +18,7 @@ in pkgs.stdenv.mkDerivation {
   # Lists for blocking ads, trackers, malware and other garbage.
   src = fetchurl {
     url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts";
-    sha256 = "sha256-Qg5kT1Ct+KaTUetA24SG7+1LOLtpBBufm9ZKoaUbcWQ=";
+    sha256 = "sha256-fvjYvmTo9YGvAwGhY6I2MpJvNrbxyAlm8ONjUeqCD0c";
   };
 
   builder = pkgs.writeScript "dnsmasq-blocked-hosts.sh" ''
