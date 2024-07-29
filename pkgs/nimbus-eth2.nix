@@ -5,24 +5,24 @@
   # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true,
   # Use unsable channel to get newer Nim.
-  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim1 else pkgs.nim1
+  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim2 else pkgs.nim2
 }:
 
-assert pkgs.lib.assertMsg (unstableNim.version == "1.6.20")
-  "Unable to build with Nim ${unstableNim.version}, only 1.6.20 allowed.";
+assert pkgs.lib.assertMsg (unstableNim.version == "2.0.8")
+  "Unable to build with Nim ${unstableNim.version}, only 2.0.8 allowed.";
 
 let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "24.6.0";
-  commit = "7d00786d";
+  version = "24.7.0";
+  commit = "99f657e5";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-cSQfuwMz0JDALJKeYpq25vvqq4SnAKkqW6kRNWGG788=";
+    sha256 = "sha256-TS/tbjZTKp8csp0w24ZdH5EHRRqbEIftwQ1ZYoJdb0I=";
     fetchSubmodules = true;
   };
 
