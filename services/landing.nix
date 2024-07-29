@@ -46,8 +46,19 @@ in {
 
       virtualHosts = {
         "${config.networking.fqdn}" = {
+          #listen = [ { port = 443; ssl = true; } ];
+
+          forceSSL = true;
+          sslCertificate = ../files/certs/server.crt;
+          sslCertificateKey = ../files/certs/server.key;
+
+          extraConfig = ''
+            ssl_client_certificate ${../files/certs/root-ca.pem};
+            ssl_verify_client on;
+          '';
+
           default = false;
-          basicAuthFile = cfg.htpasswdFile;
+          #basicAuthFile = cfg.htpasswdFile;
           locations = {
             "= /" = {
               root = pkgs.writeTextDir "index.html" landingPage;
