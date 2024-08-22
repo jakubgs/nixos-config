@@ -17,8 +17,8 @@ in pkgs.stdenv.mkDerivation {
 
   # Lists for blocking ads, trackers, malware and other garbage.
   src = fetchurl {
-    url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts";
-    sha256 = "sha256-fvjYvmTo9YGvAwGhY6I2MpJvNrbxyAlm8ONjUeqCD0c";
+    url = "https://raw.githubusercontent.com/StevenBlack/hosts/3.14.99/alternates/fakenews-gambling-porn-social/hosts";
+    sha256 = "sha256-qv1Z7F883oJGu7xnwpNfoEvkwOPEAJOMF0y483nmxOQ=";
   };
 
   builder = pkgs.writeScript "dnsmasq-blocked-hosts.sh" ''
