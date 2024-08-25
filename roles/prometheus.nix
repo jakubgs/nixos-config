@@ -62,6 +62,7 @@ in {
       (genScrapeJob {name = "smartctl"; path = "/metrics";})
       (genScrapeJob {name = "nimbus";   path = "/metrics"; interval = "6s"; })
       (genScrapeJob {name = "geth";     path = "/debug/metrics/prometheus"; })
+      (genScrapeJob {name = "erigon";   path = "/debug/metrics/prometheus"; })
       (genScrapeJob {name = "mikrotik"; path = "/metrics";})
       (genScrapeJob {name = "openwrt";  path = "/metrics";})
       (genScrapeJob {name = "mtr";      path = "/metrics";})
