@@ -55,8 +55,12 @@
     VISUAL = "nvim";
   };
 
-  # SysRQ is useful when things hang
-  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
+  boot.kernel.sysctl = {
+    # SysRQ is useful when things hang.
+    "kernel.sysrq" = 1;
+    # Reclaim file pages as often as anon pages.
+    "vm.swappiness" = 100;
+  };
 
   # domain use for my own infra
   networking.search = [ "magi.blue" "magi.lan" ];
