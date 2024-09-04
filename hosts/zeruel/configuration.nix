@@ -47,10 +47,7 @@
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
-  networking = {
-    hostName = "zeruel";
-    hostId = "e88bc7da";
-  };
+  networking.hostId = "e88bc7da";
 
   # Select internationalisation properties.
   i18n = {

@@ -41,10 +41,7 @@
     pools = [ "rpool" ];
   };
 
-  networking = {
-    hostName = "lilim";
-    hostId = "e87975cc";
-  };
+  networking.hostId = "e87975cc";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

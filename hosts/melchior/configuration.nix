@@ -33,7 +33,6 @@
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 
   networking = {
-    hostName = "melchior";
     hostId = "e5acabaa";
     interfaces.enp3s0.useDHCP = true;
   };

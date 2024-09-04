@@ -32,10 +32,7 @@
     device = "nodev";
   };
 
-  networking = {
-    hostName = "shamshel";
-    hostId = "de25ccd4";
-  };
+  networking.hostId = "de25ccd4";
 
   # Select internationalisation properties.
   i18n = {

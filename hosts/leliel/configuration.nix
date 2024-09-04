@@ -53,7 +53,6 @@
 
   # Networking
   networking = {
-    hostName = "leliel";
     hostId = "cf51a179";
     useDHCP = true;
   };

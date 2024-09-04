@@ -46,7 +46,6 @@
   boot.kernelPackages = pkgs.linuxPackages_6_6;
 
   networking = {
-    hostName = "caspair";
     hostId = "9fbd8b5d";
     useDHCP = false;
     interfaces = {

@@ -38,7 +38,6 @@
   boot.zfs.requestEncryptionCredentials = false;
 
   networking = {
-    hostName = "arael";
     hostId = "892cff1c";
     useDHCP = true;
   };

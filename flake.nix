@@ -31,16 +31,17 @@
         if builtins.elem hostname ["leliel" "sachiel" "shamshel"] then "aarch64-linux"
         else "x86_64-linux";
     in {
-      nixosConfigurations = builtins.listToAttrs (builtins.map (host: {
-        name = host;
+      nixosConfigurations = builtins.listToAttrs (builtins.map (hostname: {
+        name = hostname;
         value = nixpkgs.lib.nixosSystem {
-          system = systemForHost host;
+          system = systemForHost hostname;
           # Allow access to all channels from inputs in modules.
           specialArgs.channels = { inherit nixpkgs unstable hardware agenix; };
           modules = [
             overlayModule
             agenix.nixosModules.default
-            ./hosts/${host}/configuration.nix
+            ./hosts/${hostname}/configuration.nix
+            ({...}: { networking.hostName = hostname; })
           ];
         };
       }) hostnames);

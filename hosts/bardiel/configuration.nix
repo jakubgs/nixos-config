@@ -55,7 +55,6 @@
   security.allowSimultaneousMultithreading = true;
 
   networking = {
-    hostName = "bardiel";
     hostId = "4b16a017";
     interfaces.eth0.useDHCP = true;
   };
