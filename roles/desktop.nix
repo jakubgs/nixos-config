@@ -5,7 +5,6 @@
     ./xserver.nix
     ./clipmenu.nix
     ./redshift.nix
-    ../services/protonmail-bridge.nix
   ];
 
   # Accept unfree licenses
@@ -61,9 +60,6 @@
 
   # Automatically detect screen layout changes.
   services.autorandr.enable = true;
-
-  # Enable service that bridges SMTP with ProtonMail
-  services.protonmail-bridge.enable = true;
 
   # Keyring for app credentials
   services.gnome.gnome-keyring.enable = true;
