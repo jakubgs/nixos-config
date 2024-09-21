@@ -32,7 +32,7 @@ in {
     # Databases
     robo3t
     # Network
-    netcat websocat insomnia ngrok tcpdump whois inetutils
+    mtr netcat websocat insomnia ngrok tcpdump whois inetutils
     # Remote
     remmina
     # Cloud
