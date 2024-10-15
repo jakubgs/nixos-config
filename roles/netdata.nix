@@ -2,7 +2,7 @@
 
 let
   inherit (config) services;
-  listenPort = 8000;
+  listenPort = 9000;
 in {
   # Firewall
   networking.firewall.interfaces."zt*".allowedTCPPorts = [ listenPort ];

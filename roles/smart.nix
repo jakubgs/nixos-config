@@ -14,6 +14,7 @@
   # SMART metrics exporter
   services.prometheus.exporters.smartctl = {
     enable = true;
+    port = 9002;
     maxInterval = "20s";
   };
 

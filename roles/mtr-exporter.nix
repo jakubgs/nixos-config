@@ -1,4 +1,4 @@
-{ pkgs, channels, fetchFromGitHub, ... }:
+{ pkgs, config, channels, fetchFromGitHub, ... }:
 
 {
   # Use new service definition
@@ -6,10 +6,13 @@
   imports = [ "${channels.unstable}/nixos/modules/services/networking/mtr-exporter.nix" ];
 
   # Firewall
-  networking.firewall.interfaces."zt*".allowedTCPPorts = [ 8080 ];
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [
+    config.services.mtr-exporter.port
+  ];
 
   services.mtr-exporter = {
     enable = true;
+    port = 9001;
     address = "0.0.0.0";
     jobs = [
       { name = "google-icmp";        address = "google.com";                  }

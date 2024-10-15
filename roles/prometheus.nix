@@ -3,7 +3,7 @@
 let
   inherit (config) services;
 
-  default = { netdata = 8000; smartctl = 9633; mtr = 8080; };
+  default = { netdata = 9000; mtr = 9001; smartctl = 9002; };
 
   hosts = {
     "eve.magi.vpn"     = { openwrt = 9100; };
