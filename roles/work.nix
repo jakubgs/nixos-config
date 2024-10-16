@@ -12,7 +12,7 @@ let
     boto3 wakeonlan gitpython PyGithub python-hosts cloudflare
     (pkgs.callPackage ../pkgs/consul2.nix {})
     # Security
-    pyopenssl cryptography passlib
+    pyopenssl cryptography passlib hvac
     # Databases
     elasticsearch elastic-transport psycopg2
     # Statistics
@@ -27,7 +27,7 @@ in {
     # DevOps
     unstable.ansible_2_16
     # Security
-    bitwarden unstable.bitwarden-cli
+    vault bitwarden unstable.bitwarden-cli
     sops pwgen oathToolkit yubikey-manager
     # Databases
     robo3t
@@ -57,7 +57,7 @@ in {
     # Docs
     mdbook hugo
     # Communication
-    weechat asciinema element-desktop
+    weechat asciinema element-desktop telegram-desktop
   ];
 
   # Android development Tool
