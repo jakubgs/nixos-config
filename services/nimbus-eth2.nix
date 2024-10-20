@@ -200,7 +200,7 @@ in {
             --rest=${boolToString cfg.rest.enable} ${optionalString cfg.rest.enable ''--rest-address=${cfg.rest.address} --rest-port=${toString cfg.rest.port} ''}\
             --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
             ${if cfg.execURLs == [] then "--no-el \\" else concatMapStringsSep " \\\n" (url: "--el=${url}") cfg.execURLs} \
-            ${optionalString (cfg.suggestedFeeRecipient != "") "--suggested-fee-recipient=${cfg.suggestedFeeRecipient} \\"}
+            ${optionalString (cfg.suggestedFeeRecipient != "") "--suggested-fee-recipient=${cfg.suggestedFeeRecipient}"} \
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
             --doppelganger-detection=${boolToString cfg.doppelganger} ${optionalString (length cfg.extraArgs > 0) "\\"}
             ${escapeShellArgs cfg.extraArgs}

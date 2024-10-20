@@ -1,8 +1,6 @@
 { pkgs, lib, config, secret, ... }:
 
 let
-  listenPort = 9802; # WebDAV Source TLS/SSL
-  discoverPort = 9802; # WebDAV Source TLS/SSL
   services = config.services;
 in {
   imports = [
@@ -10,6 +8,9 @@ in {
   ];
 
   options.nimbus = {
+    network      = lib.mkOption { default = "mainnet"; };
+    listenPort   = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
+    discoverPort = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
     feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
     jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
   };
@@ -28,13 +29,13 @@ in {
     };
 
     # Firewall
-    networking.firewall.allowedTCPPorts = [ listenPort ];
-    networking.firewall.allowedUDPPorts = [ discoverPort ];
+    networking.firewall.allowedTCPPorts = [ cfg.listenPort ];
+    networking.firewall.allowedUDPPorts = [ cfg.discoverPort ];
 
     # Directory Watcher - Recursively starts torrents
     services.nimbus-eth2 = {
       enable = true;
-      inherit listenPort discoverPort;
+      inherit (cfg) network listenPort discoverPort;
       log = { level = "info"; format = "json"; };
       metrics = { enable = true; address = "0.0.0.0"; };
       rest = { enable = true; address = "0.0.0.0"; };
@@ -46,9 +47,12 @@ in {
       doppelganger = false;
       /* If Go-Ethereum is running use it. */
       execURLs =
-        if services.erigon.enable       then ["http://localhost:${builtins.toString services.erigon.settings.${"authrpc.port"}}/"] else
-        if services.geth.mainnet.enable then ["http://localhost:${builtins.toString services.geth.mainnet.authrpc.port}/"]
-        else [];
+        if services.erigon.enable then
+        ["http://localhost:${builtins.toString services.erigon.settings.${"authrpc.port"}}/"]
+        else if services.geth.${cfg.network}.enable then
+        ["http://localhost:${builtins.toString services.geth.${cfg.network}.authrpc.port}/"]
+        else
+        [];
       inherit (cfg) jwtSecret;
     };
 

@@ -8,7 +8,7 @@ let
   hosts = {
     "eve.magi.vpn"     = { openwrt = 9100; };
     "arael.magi.vpn"   = default // { mikrotik = 9436; };
-    "bardiel.magi.vpn" = default;
+    "bardiel.magi.vpn" = default // { nimbus = 9100; geth = 16060; };
     "caspair.magi.vpn" = default;
     "lilim.magi.vpn"   = default;
     "leliel.magi.vpn"  = default;

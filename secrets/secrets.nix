@@ -16,8 +16,8 @@ in with hosts; {
   "service/landing/htpasswd.age"       = { publicKeys = all;       };
   "service/mikrotik/config.age"        = { publicKeys = jakubgs ++ [ arael ];   };
   "service/mpd/pass.age"               = { publicKeys = all;       };
-  "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel ]; };
-  "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel ]; };
+  "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
+  "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/tailscale/lilim.age"        = { publicKeys = jakubgs ++ [ lilim ]; };
   "service/tailscale/caspair.age"      = { publicKeys = jakubgs ++ [ caspair ]; };
   "service/transmission/creds.age"     = { publicKeys = all;       };
