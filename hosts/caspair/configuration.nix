@@ -17,6 +17,7 @@
     ../../roles/docker.nix
     ../../roles/music.nix
     ../../roles/zerotier.nix
+    ../../roles/tailscale.nix
     ../../roles/yubikey.nix
     ../../roles/syncthing.nix
     ../../roles/restic.nix
