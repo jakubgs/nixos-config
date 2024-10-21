@@ -40,6 +40,12 @@ in {
           description = "Directory for Nimbus Eth2 blockchain data.";
         };
 
+        eraDir = mkOption {
+          type = types.str;
+          default = "${cfg.dataDir}/era";
+          description = "Directory for Nimbus Eth2 ERA files.";
+        };
+
         network = mkOption {
           type = types.str;
           default = "mainnet";
@@ -190,6 +196,7 @@ in {
             --network=${cfg.network} \
             --graffiti=${cfg.graffiti} \
             --data-dir=${cfg.dataDir} \
+            --era-dir=${cfg.eraDir} \
             --jwt-secret=${cfg.jwtSecret} \
             --nat=${cfg.nat} \
             --log-level=${toUpper cfg.log.level} \
