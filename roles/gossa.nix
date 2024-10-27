@@ -28,7 +28,6 @@
     services.nginx.virtualHosts = {
       "${config.networking.hostName}" = {
         default = true;
-        basicAuthFile = secret "service/landing/htpasswd";
         locations."/" = {
           proxyPass = "http://localhost:${toString cfg.port}/";
           extraConfig = ''

@@ -33,6 +33,9 @@ in {
           admin_password = "$__file{${cfg.adminPasswordFile}}";
           serve_from_sub_path = true;
           allow_embedding = true;
+          csrf_trusted_origins = [
+            "${config.networking.hostName}.${config.networking.domain}"
+          ];
         };
       };
 

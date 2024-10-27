@@ -4,7 +4,7 @@ let
   sortedServices = lib.sort ((a: b: a.title < b.title)) proxyServices;
   hostname = config.networking.hostName;
   fqdn = config.networking.fqdn;
-  grafanaUrl = "http://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
+  grafanaUrl = "https://bardiel.magi.vpn/grafana/d-solo/YFtG6HViz/multiple-hosts";
   graphIds = [4 2 6 26];
   graphs = builtins.map (
     id: "${grafanaUrl}?var-hostname=${fqdn}&amp;panelId=${builtins.toString id}"

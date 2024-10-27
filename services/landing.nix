@@ -4,8 +4,6 @@ let
   inherit (config) services;
   inherit (lib) types mkEnableOption mkOption mkIf listToAttrs;
 
-  htpasswd = secret "service/landing/htpasswd";
-
   cfg = config.services.landing;
 
   landingPage = pkgs.callPackage ../templates/landing.index.nix {
@@ -18,12 +16,28 @@ in {
       landing = {
         enable = mkEnableOption "Enabel a fast and simple webserver for your files.";
 
-        htpasswdFile = mkOption {
+        sslCertificate = mkOption {
           type = types.path;
           default = "";
-          description = ''
-            Location of file with credentials in htpasswd format.
-          '';
+          description = "Server certificate file.";
+        };
+
+        sslCertificateKey = mkOption {
+          type = types.path;
+          default = "";
+          description = "Server certificate key file.";
+        };
+
+        clientCertificate = mkOption {
+          type = types.path;
+          default = "";
+          description = "Client CA certificate file.";
+        };
+
+        revokeList = mkOption {
+          type = types.path;
+          default = "";
+          description = "CA revocation list file.";
         };
 
         # This list of sets represents service proxies we support.
@@ -47,7 +61,13 @@ in {
       virtualHosts = {
         "${config.networking.fqdn}" = {
           default = false;
-          basicAuthFile = cfg.htpasswdFile;
+          onlySSL = true;
+          inherit (cfg) sslCertificate sslCertificateKey;
+          extraConfig = ''
+            ssl_client_certificate ${cfg.clientCertificate};
+            ssl_crl                ${cfg.revokeList};
+            ssl_verify_client      on;
+          '';
           locations = {
             "= /" = {
               root = pkgs.writeTextDir "index.html" landingPage;

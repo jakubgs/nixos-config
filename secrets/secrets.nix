@@ -13,7 +13,7 @@ in with hosts; {
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
   "service/grafana/pass.age"           = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/invidious/hmac-key.age"     = { publicKeys = jakubgs ++ [ bardiel ]; };
-  "service/landing/htpasswd.age"       = { publicKeys = all;       };
+  "service/landing/server.key.age"     = { publicKeys = all;       };
   "service/mikrotik/config.age"        = { publicKeys = jakubgs ++ [ arael ];   };
   "service/mpd/pass.age"               = { publicKeys = all;       };
   "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
