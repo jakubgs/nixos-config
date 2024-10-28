@@ -11,6 +11,8 @@ let
     # Devops
     boto3 wakeonlan gitpython PyGithub python-hosts cloudflare
     (pkgs.callPackage ../pkgs/consul2.nix {})
+    # Ethereum
+    (pkgs.callPackage ../pkgs/staking-deposit-cli.nix {})
     # Security
     pyopenssl cryptography passlib hvac
     # Databases
