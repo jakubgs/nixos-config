@@ -5,7 +5,7 @@
   # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true,
   # Use unsable channel to get newer Nim.
-  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim2 else pkgs.nim2
+  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim-2_0 else pkgs.nim-2_0
 }:
 
 assert pkgs.lib.assertMsg (unstableNim.version == "2.0.8")
