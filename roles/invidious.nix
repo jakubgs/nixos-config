@@ -20,6 +20,7 @@
       package = pkgs.unstable.invidious;
       inherit (cfg) port domain;
       hmacKeyFile = cfg.hmac_key;
+      sig-helper.enable = true;
       database.createLocally = true;
       settings = {
         admins = ["jakubgs"];
