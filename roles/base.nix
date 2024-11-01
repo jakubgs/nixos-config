@@ -4,6 +4,7 @@
   imports = [
     ./nix.nix
     ./fixes.nix
+    ./console.nix
     ./helpers.nix
     ./metrics.nix
     ./security.nix

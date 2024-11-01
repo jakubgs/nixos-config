@@ -3,6 +3,7 @@
 {
   imports = [
     ../../roles/nix.nix
+    ../../roles/console.nix
     ../../roles/helpers.nix
     ../../roles/security.nix
     ../../roles/yubikey.nix
@@ -18,9 +19,6 @@
     eval $(renew_gpg_sub_keys)
     umount_secret_cd
   '';
-
-  # Console
-  console.font = "ter-v32b";
 
   # root autologin, root password set to root
   services.getty.autologinUser = "root";
