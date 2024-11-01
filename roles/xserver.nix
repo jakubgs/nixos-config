@@ -9,6 +9,8 @@ in {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    # Remap Caps Lock to Control.
+    xkb.options = "ctrl:nocaps";
     xkb.layout = "pl";
     enableCtrlAltBackspace = true;
     windowManager.awesome.enable = true;
