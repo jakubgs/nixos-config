@@ -47,4 +47,7 @@ in {
       ubuntu_font_family
     ];
   };
+
+  # Necessary for corefonts
+  nixpkgs.config.allowUnfree = true;
 }

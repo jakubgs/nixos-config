@@ -5,6 +5,10 @@
     nixpkgs.url  = "nixpkgs/nixos-24.05";
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url   = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware, agenix }:
+  outputs = { self, nixpkgs, unstable, hardware, nixos-generators, agenix }:
     let
       overlay = final: prev: let
         unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
@@ -31,6 +35,7 @@
         if builtins.elem hostname ["leliel" "sachiel" "shamshel"] then "aarch64-linux"
         else "x86_64-linux";
     in {
+      # Systems
       nixosConfigurations = builtins.listToAttrs (builtins.map (hostname: {
         name = hostname;
         value = nixpkgs.lib.nixosSystem {
@@ -40,6 +45,7 @@
           modules = [
             overlayModule
             agenix.nixosModules.default
+            nixos-generators.nixosModules.all-formats
             ./hosts/${hostname}/configuration.nix
             ({...}: { networking.hostName = hostname; })
           ];

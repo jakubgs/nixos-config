@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 /* Details: https://nixos.wiki/wiki/Yubikey */
 {
@@ -9,9 +9,6 @@
   /* Required tools and libraries. */
   environment.systemPackages = with pkgs; [
     ccid opensc pcsctools
-  ];
-  users.users.jakubgs.packages = with pkgs; [
-    yubikey-manager
   ];
 
   /* Required udev rules for YubiKey usage */
