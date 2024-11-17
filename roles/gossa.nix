@@ -6,8 +6,8 @@
   options.torrent-gossa = {
     enable        = lib.mkOption { default = true; };
     port          = lib.mkOption { default = 9070; };
-    dataDir       = lib.mkOption { default = "/mnt/torrent/movies"; };
-    landingPrefix = lib.mkOption { default = "/gossa"; };
+    dataDir       = lib.mkOption { default = "/mnt/torrent"; };
+    landingPrefix = lib.mkOption { default = "/gossa/"; };
   };
 
   config = let
@@ -16,8 +16,8 @@
     services.gossa = {
       enable = true;
       verbose = false;
-      urlPrefix = "/";
-      inherit (cfg) dataDir port ;
+      urlPrefix = cfg.landingPrefix;
+      inherit (cfg) dataDir port;
     };
 
     # Firewall
@@ -44,11 +44,11 @@
     # UI exposed via landing page over VPN.
     services.landing = {
       proxyServices = [{
-        name = "${cfg.landingPrefix}/";
+        name = "${cfg.landingPrefix}";
         title = "Gossa";
         value = {
-          extraConfig = "rewrite ${cfg.landingPrefix}/(.*) $1 break;";
-          proxyPass = "http://localhost:${toString cfg.port}/";
+          # WARNING: No trailing slash is important.
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
       }];
     };
