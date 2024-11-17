@@ -1,18 +1,25 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) types mkEnableOption mkOption mkIf concatStringsSep optional;
+  inherit (lib)
+    types mkEnableOption mkOption mkIf
+    concatStringsSep optional literalExpression;
   inherit (pkgs.lib) pathToMountUnit;
 
   cfg = config.services.gossa;
-  # script for watching for new *.torrent files
-  binaryPkg = pkgs.callPackage ../pkgs/gossa.nix { };
 in {
   options = {
     services = {
       gossa = {
         enable =
           mkEnableOption "Enabel a fast and simple webserver for your files.";
+
+        package = mkOption {
+          type = types.package;
+          default = pkgs.gossa;
+          defaultText = literalExpression "pkgs.gossa";
+          description = lib.mdDoc "Package to use for Gossa service.";
+        };
 
         dataDir = mkOption {
           type = types.str;
@@ -71,7 +78,7 @@ in {
       enable = true;
       serviceConfig = {
         ExecStart = concatStringsSep " " ([
-          "${binaryPkg}/bin/gossa"
+          "${cfg.package}/bin/gossa"
           "-prefix ${cfg.urlPrefix}"
           "-p ${toString cfg.port}"
           "-h ${cfg.address}"
