@@ -74,6 +74,12 @@
       options = [ "noauto" "nofail" ];
     };
 
+  fileSystems."/mnt/torrent" =
+    { device = "rpool/secret/torrent";
+      fsType = "zfs";
+      options = [ "noauto" "nofail" ];
+    };
+
   fileSystems."/mnt/ftp" =
     { device = "rpool/ftp";
       fsType = "zfs";

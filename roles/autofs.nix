@@ -3,7 +3,7 @@
 let
   hostShares = {
     #"leliel" =  [ "git" "data" "music" "photos" ];
-    "bardiel" = [ "git" "data" "music" "photos" ];
+    "bardiel" = [ "git" "data" "music" "photos" "torrent" ];
     "sachiel" = [ "git" "data" "music" "photos" "torrent" ];
     "arael" =   [ "git" "data" "music" "photos" "torrent" ];
   };
