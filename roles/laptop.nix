@@ -29,6 +29,9 @@
     };
   };
 
+  # Power auto tuning on startup
+  powerManagement.powertop.enable = true;
+
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
   ];
