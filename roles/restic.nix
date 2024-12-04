@@ -18,7 +18,7 @@ let
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
-      RandomizedDelaySec = "1h";
+      RandomizedDelaySec = "3h";
     };
   };
 in {
