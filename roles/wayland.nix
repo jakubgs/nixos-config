@@ -61,14 +61,11 @@ in
     wdisplays # tool to configure displays
   ];
 
-
-  hardware.pulseaudio.enable = lib.mkForce false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
-
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name

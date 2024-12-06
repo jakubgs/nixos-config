@@ -13,7 +13,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     # Console
-    rxvt_unicode rofi w3m
+    rxvt-unicode rofi w3m
     # Xorg Tools
     glxinfo xsel libdrm xorg.xmodmap
     # Keyboard & Mouse
@@ -27,7 +27,7 @@
     # Screen
     arandr
     # Security
-    gnome3.seahorse cryptsetup
+    cryptsetup
     # Phone
     go-mtpfs chirp
   ];
@@ -51,12 +51,16 @@
     # Archive
     unrar
     # Communication
-    gnome3.geary discord
+    geary discord
     # Torrent
     transmission-remote-gtk
     # Coding
     zeal
   ];
+
+  # Pipewire causes crackling
+  services.pipewire.enable = false;
+  hardware.pulseaudio.enable = true;
 
   # Automatically detect screen layout changes.
   services.autorandr.enable = true;

@@ -47,7 +47,7 @@ in {
     # NodeJS dev
     nodejs-18_x (yarn.override { nodejs = nodejs-18_x; })
     # GoLang dev
-    pkgs.go_1_21 gopls go-protobuf protobuf3_20
+    pkgs.go_1_22 gopls
     # Python dev
     myPython
     # Mobile dev

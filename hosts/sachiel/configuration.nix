@@ -55,7 +55,6 @@
   time.timeZone = "Europe/Warsaw";
 
   # Enable sound.
-  sound.enable = true;
   boot = { # fix for USB not being default card
     extraModprobeConfig = "options snd_usb_audio index=0";
     blacklistedKernelModules = [ "snd_hda_intel" ];

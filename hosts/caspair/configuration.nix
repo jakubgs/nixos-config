@@ -62,11 +62,8 @@
   # Avoid difference when dual-booting Windows.
   time.hardwareClockInLocalTime = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Video
+  hardware.nvidia.open = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Power Managemtn

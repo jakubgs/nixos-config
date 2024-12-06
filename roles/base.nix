@@ -23,7 +23,7 @@
     # monitoring
     htop iotop iftop multitail
     # dev tools
-    neovim jq tmux fzf silver-searcher
+    neovim jq tmux pkgs.unstable.fzf silver-searcher
     git qrencode sqlite
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode

@@ -35,7 +35,7 @@
     (pkgs.writeScriptBin "umount_secret_cd" ./umount_secret_cd.sh)
     (pkgs.writeScriptBin "renew_gpg_sub_keys" ./renew_gpg_sub_keys.sh)
     # Console
-    rxvt_unicode rofi
+    rxvt-unicode rofi
     # Base
     zsh sudo bc pv rename zip unzip wget curl
     # Storage

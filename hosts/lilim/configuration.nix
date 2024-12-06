@@ -50,7 +50,6 @@
   time.timeZone = "Europe/Warsaw";
 
   # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   # Power auto tuning on startup

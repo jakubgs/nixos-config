@@ -42,6 +42,7 @@
       ''}'';
     };
 
+    # Mountpoint check
     systemd.services.mpd = {
       after = [
         "network.target" "sound.target"
@@ -49,6 +50,10 @@
       ];
       unitConfig.ConditionPathIsMountPoint = cfg.collection;
     };
+
+    # Pipewire causes crackling
+    services.pipewire.enable = false;
+    hardware.pulseaudio.enable = true;
 
     # Firewall
     networking.firewall.allowedTCPPorts = [
