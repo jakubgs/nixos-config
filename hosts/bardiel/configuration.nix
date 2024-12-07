@@ -23,13 +23,7 @@
     ../../roles/invidious.nix
     ../../roles/public_ftp.nix
     ../../roles/qemu.nix
-    # Temporary validator workshop nodes.
-    ../../roles/go-ethereum-holesky.nix
-    ../../roles/nimbus-eth2.nix
   ];
-
-  # Temporary validator workshop nodes.
-  nimbus.network = "holesky";
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.
   # https://github.com/NixOS/nix/issues/6563
