@@ -1,28 +1,27 @@
 {
-  pkgs ? import <nixpkgs-unstable> { },
+  pkgs ? import <nixpkgs> { },
   # Options: nimbus_light_client, nimbus_validator_client, nimbus_signing_node
   makeTargets ? [ "nimbus_beacon_node" ],
   # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true,
-  # Use unsable channel to get newer Nim.
-  unstableNim ? if builtins.hasAttr "unstable" pkgs then pkgs.unstable.nim-2_0 else pkgs.nim-2_0
+  stableNim ? pkgs.nim-2_0
 }:
 
-assert pkgs.lib.assertMsg (unstableNim.version == "2.0.10")
-  "Unable to build with Nim ${unstableNim.version}, only 2.0.10 allowed.";
+assert pkgs.lib.assertMsg (stableNim.version == "2.0.12")
+  "Unable to build with Nim ${stableNim.version}, only 2.0.12 allowed.";
 
 let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "24.10.0";
-  commit = "f54a0366";
+  version = "24.11.0";
+  commit = "d2d02bd6";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-oiTw4lsmsAGTRxZjB14W2DoVDbfXQz+1p4JnHIrmXVI=";
+    sha256 = "sha256-z1NRUrYza4J18AYgbP31FQusydvuXnSl9l2daP8a43E=";
     fetchSubmodules = true;
   };
 
@@ -30,13 +29,13 @@ in stdenv.mkDerivation rec {
     # Fix for Nim compiler calling 'git rev-parse' and 'lsb_release'.
     fakeGit = writeScriptBin "git" "echo $commit";
     fakeLsbRelease = writeScriptBin "lsb_release" "echo nix";
-  in [ fakeGit fakeLsbRelease which unstableNim ];
+  in [ fakeGit fakeLsbRelease which stableNim ];
 
   enableParallelBuilding = true;
 
   NIMFLAGS = lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
-  # WARNING: Version 1.6.10 is known to be stable.
+  # WARNING: Version 2.0.12 is known to be stable.
   makeFlags = makeTargets ++ [ "USE_SYSTEM_NIM=1" ];
 
   # Generate the nimbus-build-system.paths file.
