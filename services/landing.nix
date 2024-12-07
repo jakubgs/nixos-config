@@ -61,7 +61,7 @@ in {
       virtualHosts = {
         "${config.networking.fqdn}" = {
           default = false;
-          onlySSL = true;
+          forceSSL = true;
           inherit (cfg) sslCertificate sslCertificateKey;
           extraConfig = ''
             ssl_client_certificate ${cfg.clientCertificate};
