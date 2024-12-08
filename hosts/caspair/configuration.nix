@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -56,6 +56,8 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  # 4K screen makes the font too big.
+  console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-118n.psf.gz";
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
