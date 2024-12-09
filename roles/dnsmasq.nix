@@ -24,7 +24,7 @@ in {
           tls_auth_name = "cloudflare-dns.com";
           tls_pubkey_pinset = [
             { digest = "sha256"; value = "4pqQ+yl3lAtRvKdoCCUR8iDmA53I+cJ7orgBLiF08kQ="; }
-          ]; 
+          ];
         }
         {
           address_data = "1.0.0.1";
@@ -33,7 +33,7 @@ in {
             { digest = "sha256"; value = "4pqQ+yl3lAtRvKdoCCUR8iDmA53I+cJ7orgBLiF08kQ="; }
           ];
         }
-        { 
+        {
           address_data = "8.8.8.8";
           tls_auth_name = "dns.google";
           tls_pubkey_pinset = [
@@ -54,6 +54,7 @@ in {
       no-negcache = true;
       cache-size = 10000;
       local-ttl = 300;
+      local = "/magi.lan/";
       conf-dir = "/etc/dnsmasq.d/,*.conf";
       addn-hosts = "${blockedHosts}/hosts";
     } // optionalAttrs stubbyEnabled {
