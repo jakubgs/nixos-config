@@ -21,17 +21,11 @@
 
   # Boot
   boot.loader.grub.enable = false;
-  boot.loader.raspberryPi = {
+  boot.loader.generic-extlinux-compatible = {
     enable = true;
-    version = 4;
     # Downclocking to reduce temperatures
-    firmwareConfig = ''
-      # Default: 1500
-      arm_freq_max=1700
-      # Default: 600
-      arm_freq_min=600
-      # Default: 60
-      temp_soft_limit=65
+    populateCmd = ''
+      cat ${./config.txt} >> firmware/config.txt
     '';
   };
 
