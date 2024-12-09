@@ -1,17 +1,17 @@
 { lib, secret, ... }:
 
 {
-  age.secrets."wifi/magi" = {
-    file = ../secrets/wifi.age;
+  age.secrets."service/wifi" = {
+    file = ../secrets/service/wifi.age;
   };
 
   networking.wireless = {
     enable = true;
     interfaces = [ "wlan0" ];
-    environmentFile = secret "services/wifi";
+    secretsFile = secret "service/wifi";
     networks = {
-      "MAGI"        = { psk = "@MAGI@"; };
-      "MAGI Mobile" = { psk = "@MAGI_Mobile@"; };
+      "MAGI"        = { psk = "ext:MAGI"; };
+      "MAGI Mobile" = { psk = "ext:MAGI_Mobile"; };
     };
   };
 }
