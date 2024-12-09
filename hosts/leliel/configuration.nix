@@ -3,19 +3,14 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/base.nix
-    ../../roles/zfs.nix
     ../../roles/users.nix
     ../../roles/locate.nix
     ../../roles/nfs.nix
-    ../../roles/music.nix
     ../../roles/autofs.nix
     ../../roles/wireless.nix
     ../../roles/zerotier.nix
-    ../../roles/syncthing.nix
     ../../roles/gossa.nix
     ../../roles/landing.nix
-    ../../roles/metrics.nix
-    ../../roles/torrent.nix
     ../../roles/distbuild.nix
   ];
 
