@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ channels, pkgs, lib, ... }:
+
+# This image can be built using nixos-generate.
+# https://github.com/nix-community/nixos-generators
 {
   imports = [
+    #"${channels}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/users.nix
@@ -19,13 +23,12 @@
   boot.loader.generic-extlinux-compatible = {
     enable = true;
     # Downclocking to reduce temperatures
-    populateCmd = ''
-      cat ${./config.txt} >> firmware/config.txt
-    '';
+    #populateCmd = ''
+    #  cat ${./config.txt} >> firmware/config.txt
+    #'';
   };
 
   # Kernel configuration
-  boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
   # Reboot after 5 seconds on kernel panic
@@ -49,9 +52,6 @@
   # Miscellaneous
   time.timeZone = "Europe/Warsaw";
 
-  # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-
   # SMART won't work on Raspberry Pi
   services.smartd.enable = lib.mkForce false;
 
@@ -62,7 +62,7 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "20.09";
+  system.stateVersion = "24.11";
 
   # Packages
   environment.systemPackages = with pkgs; [ libraspberrypi ];

@@ -8,6 +8,13 @@ Configuration for Raspberry Pi 4B device.
 * Quad-core ARM-8 Cortex-A72
 * RAM 8 GB
 
+# Building
+
+```sh
+IMAGE=$(nix build .\#nixosConfigurations.leliel.config.formats.iso)
+unzstd -f $IMAGE --stdout | sudo dd of=/dev/sdj bs=1M status=progress
+```
+
 # SD Card Creation
 
 To create the SD card image I've used the following instruction:
