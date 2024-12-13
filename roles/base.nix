@@ -36,7 +36,7 @@
     # network filesystems
     nfs-utils
     # security
-    pass gopass openssl age age-plugin-yubikey
+    pass gopass openssl
   ];
 
   # Shell

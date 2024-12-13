@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 /* Details: https://nixos.wiki/wiki/Yubikey */
 {
@@ -8,6 +8,10 @@
 
   /* Required tools and libraries. */
   environment.systemPackages = with pkgs; [
+    age age-plugin-yubikey
+    yubikey-personalization
+    yubikey-personalization-gui
+    yubikey-manager
     ccid opensc pcsctools
   ];
 
