@@ -5,6 +5,7 @@
 {
   imports = [
     #"${channels}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+    channels.hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
     ../../roles/base.nix
     ../../roles/users.nix
