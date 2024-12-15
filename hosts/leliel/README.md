@@ -22,3 +22,11 @@ https://gist.github.com/chrisanthropic/2e6d3645f20da8fd4c1f122113f89c06
 
 And used this repo:
 https://github.com/Robertof/nixos-docker-sd-image-builder
+
+# Firmware
+
+To upgrade EEPROM bootloader firmware use:
+```
+ > nix-shell -p raspberrypi-eeprom
+[nix-shell:~]$ sudo rpi-eeprom-update -a
+```
