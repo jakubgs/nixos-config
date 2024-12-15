@@ -69,6 +69,7 @@
 
   # NTP Server
   services.chrony.enable = true;
+  services.chrony.initstepslew.enabled = true;
 
   # Uptime tracker
   services.uptimed.enable = true;
