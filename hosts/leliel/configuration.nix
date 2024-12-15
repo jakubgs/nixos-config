@@ -21,13 +21,7 @@
 
   # Boot
   boot.loader.grub.enable = false;
-  boot.loader.generic-extlinux-compatible = {
-    enable = true;
-    # Downclocking to reduce temperatures
-    #populateCmd = ''
-    #  cat ${./config.txt} >> firmware/config.txt
-    #'';
-  };
+  boot.loader.generic-extlinux-compatible.enable = true;
 
   # Kernel configuration
   boot.kernelParams = ["cma=64M" "console=tty0"];
