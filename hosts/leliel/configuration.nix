@@ -24,6 +24,7 @@
   boot.loader.generic-extlinux-compatible.enable = true;
 
   # Kernel configuration
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
   boot.kernelParams = ["cma=64M" "console=tty0"];
 
   # Reboot after 5 seconds on kernel panic
