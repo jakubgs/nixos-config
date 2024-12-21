@@ -8,10 +8,12 @@ The best available bootloader is [EDK2 UEFI firmware for Rockchip RK3588 platfor
 
 In order to flash this bootloader we'll need to download two files:
 
-* [`rk3588_spl_loader_v1.08.111.bin`](https://dl.radxa.com/rock5/sw/images/loader/rock-5b/release/rk3588_spl_loader_v1.08.111.bin) - SPI bootloader image.
+* [`rk3588_spl_loader_v1.15.113.bin`](https://dl.radxa.com/rock5/sw/images/loader/rock-5b/release/rk3588_spl_loader_v1.15.113.bin) - SPI bootloader image.
 * [`rock-5b_UEFI_Release_v0.9.1.img`](https://github.com/edk2-porting/edk2-rk3588/releases/download/v0.9.1/rock-5b_UEFI_Release_v0.9.1.img) - UEFI bootloader image.
 
-Then use the `rkdeveloptool` tool in version `1.32` or higher as described in [SPI flashing documentation](https://wiki.radxa.com/Rock5/install/spi):
+The decide needs to be put into [Markrom mode](https://wiki.radxa.com/Rock5/install/spi#3.29_Boot_the_board_to_Maskrom_mode) which requires connecting to the device via power USB-C and pressing the button in the corner below GPIO conector.
+
+Then use the [`rkdeveloptool`](https://wiki.radxa.com/Rock5/install/rockchip-flash-tools) tool in version `1.32` or higher as described in [SPI flashing documentation](https://wiki.radxa.com/Rock5/install/spi):
 ```
  > nix-shell -p rkdeveloptool
 
@@ -32,7 +34,7 @@ Now the device has a graphical bootloader available when pressing `Escape` at bo
 
 # Install Image
 
-I used an Armbian 23.8 Bookworm image: https://www.armbian.com/rock-5b/
+I used an Armbian 23.8 Bookworm image: <https://www.armbian.com/rock-5b/>
 
 The stock [NixOS `aarch64` image](https://hydra.nixos.org/job/nixos/trunk-combined/nixos.sd_image.aarch64-linux) does not work currently.
 
