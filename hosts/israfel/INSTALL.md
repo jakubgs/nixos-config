@@ -36,71 +36,32 @@ Now the device has a graphical bootloader available when pressing `Escape` at bo
 
 I used an Armbian 23.8 Bookworm image: <https://www.armbian.com/rock-5b/>
 
-The stock [NixOS `aarch64` image](https://hydra.nixos.org/job/nixos/trunk-combined/nixos.sd_image.aarch64-linux) does not work currently.
+:warning: The stock [NixOS `aarch64` SD image](https://hydra.nixos.org/job/nixos/release-24.11/nixos.sd_image.aarch64-linux) does not work currently.
+
+Alternatively a [NixOS `aarch64` ISO image](https://hydra.nixos.org/job/nixos/release-24.11/nixos.iso_minimal.aarch64-linux) can be used on a USB pendrive.
 
 Install Nix package manager using [the usual methods](https://nixos.wiki/wiki/Nix_Installation_Guide) and then install `nixos-install-tools`:
 ```sh
-curl -L https://nixos.org/nix/install | sh -s -- --daemon
+apt install --yes xz-utils git tmux linux-headers-vendor-rk35xx linux-headers-edge-rockchip-rk3588
+apt install --yes zfs-dkms zfsutils
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 nix-env -iA nixos-install-tools
-```
-
-# Partitioning
-
-To partition the NVMe the following layout is used:
-```sh
-format() {
-  parted -s --align optimal "$1" -- mklabel gpt;
-  parted -s --align optimal "$1" -- mkpart 'EFI'     2MB   5GiB set 1 esp on;
-  parted -s --align optimal "$1" -- mkpart 'SWAP'   5GiB  20GiB;
-  parted -s --align optimal "$1" -- mkpart 'CACHE' 20GiB  40GiB;
-  parted -s --align optimal "$1" -- mkpart 'ROOT'  40GiB '100%';
-  parted -s --align optimal "$1" -- print;
-  mkfs.vfat "${1}p1";
-  mkswap "${1}p2";
-}
-```
-
-# ZFS
-
-Then ZFS pool:
-```sh
-zpool create \
-    -O canmount=off \
-    -O mountpoint=legacy \
-    -O acltype=posixacl \
-    -O compression=zstd \
-    -O dnodesize=auto \
-    -O normalization=formD \
-    -O atime=off \
-    -O xattr=sa \
-    rpool /dev/nvme0n1p4
-```
-And some basic ZFS volumes:
-```
-zfs create -o canmount=off -o quota=10G -o reservation=10G rpool/reserve;
-zfs create -o canmount=on  -o quota=10G -o reservation=10G rpool/home;
-zfs create -o canmount=on  -o quota=10G -o reservation=10G rpool/root;
-zfs create -o canmount=on  -o quota=40G -o reservation=40G rpool/nix;
 ```
 
 # Installation
 
-Mount volumes:
+Install [Disko partitioning tool](https://github.com/nix-community/disko)
 ```sh
-swapon /dev/nvme0n1p2
-mount /dev/nvme0n1p3 /mnt
-mkdir /mnt/boot
-mount /dev/nvme0n1p1 /mnt/boot
+nix --extra-experimental-features 'nix-command flakes' profile install 'github:nix-community/disko/latest'
 ```
-After configuring NixOS run installation process:
+Partition the filesystem:
+```sh
+disko --mode destroy,format,mount --flake 'github:jakubgs/nixos-config#iruel' --yes-wipe-all-disks
 ```
-nix-channel --add https://nixos.org/channels/nixos-23.05 nixos-23.05
-nix-channel --update
-nixos-install
+Perform the installation:
+```sh
+nixos-install --flake 'github:jakubgs/nixos-config#iruel'
 ```
-Unmount and reboot:
-```
-umount /mnt/boot
-umount /mnt
-reboot
-```
+
+See [MANUAL.md](./MANUAL.md) for step-by-step instructions.

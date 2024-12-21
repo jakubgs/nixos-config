@@ -1,6 +1,6 @@
 # Description
 
-Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/).
+Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/), serial number `0799539e82b855f8`.
 
 # Hardware
 
@@ -15,6 +15,7 @@ Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/).
 # Docs
 
 * [Installation Process](./INSTALL.md)
+* [Manual Installation](./MANUAL.md)
 * [Debug UART Console](./UART.md)
 
 # Links

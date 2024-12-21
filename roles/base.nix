@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
     # processes
     dtach pstree killall sysstat
     # monitoring
-    htop iotop iftop multitail
+    htop iotop iftop s-tui multitail
     # dev tools
     neovim jq tmux pkgs.unstable.fzf silver-searcher
     git qrencode sqlite
@@ -65,7 +65,11 @@
   };
 
   # domain use for my own infra
-  networking.search = [ "magi.blue" "magi.lan" ];
+  networking = {
+    enableIPv6 = false;
+    domain = lib.mkDefault "magi.lan";
+    search = [ "magi.lan" ];
+  };
 
   # NTP Server
   services.chrony.enable = true;

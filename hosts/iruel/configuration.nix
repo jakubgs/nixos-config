@@ -4,6 +4,7 @@
   imports = [
     (modulesPath + "/profiles/hardened.nix")
     ./hardware-configuration.nix
+    ./disko-config.nix
     ../../roles/base.nix
     ../../roles/zfs.nix
     ../../roles/users.nix
