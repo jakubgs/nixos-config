@@ -5,6 +5,10 @@
     nixpkgs.url  = "nixpkgs/nixos-24.11";
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware, nixos-generators, agenix }:
+  outputs = { self, nixpkgs, unstable, hardware, disko, nixos-generators, agenix }:
     let
       overlay = final: prev: let
         unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
@@ -44,6 +48,7 @@
           specialArgs.channels = { inherit nixpkgs unstable hardware agenix; };
           modules = [
             overlayModule
+            disko.nixosModules.disko
             agenix.nixosModules.default
             nixos-generators.nixosModules.all-formats
             ./hosts/${hostname}/configuration.nix
