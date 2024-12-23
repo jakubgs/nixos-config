@@ -14,6 +14,7 @@ Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/), serial number `079
 
 # Docs
 
+* [Bootloader Upgrade](./BOOTLOADER.md)
 * [Installation Process](./INSTALL.md)
 * [Manual Installation](./MANUAL.md)
 * [Debug UART Console](./UART.md)
