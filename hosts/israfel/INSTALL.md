@@ -27,11 +27,11 @@ nix --extra-experimental-features 'nix-command flakes' profile install 'github:n
 ```
 Partition the filesystem:
 ```sh
-disko --mode destroy,format,mount --flake 'github:jakubgs/nixos-config#iruel' --yes-wipe-all-disks
+disko --mode destroy,format,mount --flake 'github:jakubgs/nixos-config#israfel' --yes-wipe-all-disks
 ```
 Perform the installation:
 ```sh
-nixos-install --flake 'github:jakubgs/nixos-config#iruel'
+nixos-install --flake 'github:jakubgs/nixos-config#israfel'
 ```
 
 See [MANUAL.md](./MANUAL.md) for step-by-step instructions.

@@ -15,8 +15,9 @@ Configuration for [Radxa Rock 5B](https://radxa.com/rock5b/), serial number `c18
 
 # Docs
 
+* [Bootloader Upgrade](../israfel/BOOTLOADER.md)
 * [Installation Process](../israfel/INSTALL.md)
-* [Installation Script](./install.sh)
+* [Manual Installation](../israfel/MANUAL.md)
 * [Debug UART Console](../israfel/UART.md)
 
 # Links
