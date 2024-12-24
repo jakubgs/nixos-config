@@ -12,6 +12,7 @@ Configuration for [NanoPi-R6C](https://wiki.friendlyelec.com/wiki/index.php/Nano
 * 32GB eMMC, at HS400 mode
 * Native 1Gbit Ethernet (RTL8211F-CG)
 * PCIe 2.5Gbit Ethernet (RTL8125BG)
+* SSD Kingston NV2 Gen4 2TB (SNV2S2000G)
 
 # Docs
 
