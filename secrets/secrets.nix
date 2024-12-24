@@ -19,8 +19,9 @@ in with hosts; {
   "service/mpd/pass.age"               = { publicKeys = all;       };
   "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
-  "service/tailscale/lilim.age"        = { publicKeys = jakubgs ++ [ lilim ]; };
+  "service/nixos-activation/key.age"   = { publicKeys = all;       };
   "service/tailscale/caspair.age"      = { publicKeys = jakubgs ++ [ caspair ]; };
+  "service/tailscale/lilim.age"        = { publicKeys = jakubgs ++ [ lilim ]; };
   "service/transmission/creds.age"     = { publicKeys = all;       };
   "service/vsftpd/pass.age"            = { publicKeys = all;       };
   "service/wifi.age"                   = { publicKeys = all;       };
