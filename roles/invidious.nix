@@ -2,9 +2,10 @@
 
 {
   options.invidious = {
-    domain   = lib.mkOption { default = "yt.${config.networking.hostName}.magi.vpn"; };
-    port     = lib.mkOption { default = 9092; };
-    hmac_key = lib.mkOption { default = secret "service/invidious/hmac-key"; };
+    domain    = lib.mkOption { default = "${config.networking.hostName}.magi.vpn"; };
+    port      = lib.mkOption { default = 9092; };
+    proxyPort = lib.mkOption { default = 9093; };
+    hmac_key  = lib.mkOption { default = secret "service/invidious/hmac-key"; };
   };
 
   config = let
@@ -13,6 +14,11 @@
     age.secrets."service/invidious/hmac-key" = {
       file = ../secrets/service/invidious/hmac-key.age;
       mode = "0644";
+    };
+
+    age.secrets."service/landing/server.key" = {
+      file = ../secrets/service/landing/server.key.age;
+      owner = "nginx";
     };
 
     services.invidious = {
@@ -45,12 +51,35 @@
 
     services.nginx = {
       virtualHosts = {
-        "${cfg.domain}" = {
-          locations."/" = {
-            proxyPass = "http://localhost:${toString cfg.port}/";
+        "invidious.${cfg.domain}" = {
+          listen = [ { port = cfg.proxyPort; addr = "0.0.0.0"; ssl = true; } ];
+          serverName = "${cfg.domain}";
+          serverAliases = [ "invidious.${cfg.domain}" ];
+          forceSSL = true;
+          sslCertificate     = ../secrets/service/landing/server.crt;
+          sslCertificateKey = secret "service/landing/server.key";
+          extraConfig = ''
+            ssl_client_certificate ${../secrets/service/landing/ca.crt};
+            ssl_crl                ${../secrets/service/landing/crl.pem};
+            ssl_verify_client      on;
+          '';
+          locations = {
+            "/" = {
+              proxyPass = "http://localhost:${toString cfg.port}/";
+            };
           };
         };
       };
+    };
+
+    services.landing = {
+      proxyServices = [{
+        name = "/invidious/";
+        title = "Invidious";
+        value = {
+          return = "302 https://${cfg.domain}:${toString cfg.proxyPort}/";
+        };
+      }];
     };
   };
 }
