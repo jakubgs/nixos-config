@@ -21,7 +21,7 @@
     # processes
     dtach pstree killall sysstat
     # monitoring
-    htop iotop iftop s-tui multitail
+    htop btop iotop iftop s-tui multitail
     # dev tools
     neovim jq tmux pkgs.unstable.fzf silver-searcher
     git qrencode sqlite
