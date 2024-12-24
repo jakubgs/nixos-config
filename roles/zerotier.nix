@@ -45,7 +45,8 @@ in {
     "10.2.2.18" = [    "arael.magi.vpn" ]; # nanopir6c
     "10.2.2.19" = [   "zeruel.magi.vpn" ]; # hetzner
     "10.2.2.20" = [ "shamshel.magi.vpn" ]; # hetzner
-    "10.2.2.21" = [  "israfel.magi.vpn" ]; # rock5b
+    "10.2.2.21" = [  "israfel.magi.vpn" ]; # rock5b eth
+    "10.2.2.22" = [    "iruel.magi.vpn" ]; # rock5b misc
   };
 
   # Search the magi domain
