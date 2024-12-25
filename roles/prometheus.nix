@@ -15,6 +15,7 @@ let
     "sachiel.magi.vpn" = default;
     "zeruel.magi.vpn"  = default // { nimbus = 9100; geth = 16060; };
     "israfel.magi.vpn" = default // { nimbus = 9100; erigon = 16060; };
+    "iruel.magi.vpn"   = default;
   };
 
   # helper for filtering hosts by available service port
