@@ -27,7 +27,7 @@
       inherit (cfg) port domain;
       hmacKeyFile = cfg.hmac_key;
       sig-helper = {
-        enable = true;
+        enable = false; # Currently broken.
         package = pkgs.unstable.inv-sig-helper;
       };
       database.createLocally = true;
@@ -49,6 +49,7 @@
     # https://github.com/iv-org/invidious/issues/1439
     systemd.services.invidious.serviceConfig.Restart = "on-failure";
 
+    # Necessary due to Invidious not being able to run under a sub-path.
     services.nginx = {
       virtualHosts = {
         "invidious.${cfg.domain}" = {
