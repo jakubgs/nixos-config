@@ -35,7 +35,7 @@
   # User packages
   users.users.jakubgs.packages = with pkgs; [
     # Desktop
-    xfce.thunar nitrogen scrot screenfetch flameshot
+    xfce.thunar nitrogen scrot neofetch flameshot
     # Themes
     lxappearance matcha-gtk-theme vimix-gtk-themes
     # Browsers
@@ -64,9 +64,6 @@
 
   # Automatically detect screen layout changes.
   services.autorandr.enable = true;
-
-  # Keyring for app credentials
-  services.gnome.gnome-keyring.enable = true;
 
   # Fix Evolution startup errors
   services.gnome.evolution-data-server.enable = true;
