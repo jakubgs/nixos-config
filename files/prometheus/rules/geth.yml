@@ -1,0 +1,21 @@
+---
+groups:
+  - name: geth
+    rules:
+      # Alert when we're out of sync
+      - alert: GethBlocksOutOfSync
+        expr: (geth_sync_highestBlock_value - geth_sync_currentBlock_value) > 0
+        for: 15m
+        annotations:
+          summary: "Node {{ $labels.container }}@{{ $labels.instance }} is out of sync!"
+          description: "Node {{ $labels.container }} on host {{ $labels.instance }} is out of sync."
+          current_value: "{{ $value }}"
+
+      # Alert when we're not syncing
+      - alert: GethBlocksNotSyncing
+        expr: increase(geth_sync_highestBlock_value[1m]) == 0
+        for: 5m
+        annotations:
+          summary: "Node {{ $labels.container }}@{{ $labels.instance }} is not syncing"
+          description: "Node {{ $labels.container }} on host {{ $labels.instance }} is not syncing"
+          current_value: "{{ $value }}"
