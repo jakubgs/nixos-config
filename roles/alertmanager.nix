@@ -22,9 +22,8 @@
         {
           name = "discord-alerts";
           /* Discord accepts Slack API payloads under /slack. */
-          slack_configs = [
-            { api_url_file = "${secret "service/alertmanager/webhook"}/slack";
-              channel = "alerts"; }
+          discord_config = [
+            { webhook_url_file = "${secret "service/alertmanager/webhook"}/slack"; }
           ];
         }
       ];
