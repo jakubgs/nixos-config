@@ -4,7 +4,9 @@
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ brlaser ];
+    drivers = with pkgs; [
+      epson-201401w # EPSON L365 (Mazury)
+    ];
   };
 
   # Define printers
