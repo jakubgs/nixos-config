@@ -34,7 +34,7 @@
     };
 
   fileSystems."/var/lib/docker" =
-    { device = "/dev/disk/by-uuid/6285b12d-6a5f-451c-b6c1-e899a14d609e";
+    { device = "/dev/disk/by-uuid/0303dab8-7c30-4673-8880-7cdb154cb132";
       fsType = "ext4";
       options = [ "nofail" ];
     };
@@ -100,7 +100,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/678b584f-bb41-4aa2-95b4-8350b2dd91f2"; }
+    [ { device = "/dev/disk/by-uuid/81618887-fa8f-4403-9196-cf246708e509"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
