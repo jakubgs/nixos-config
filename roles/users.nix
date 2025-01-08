@@ -51,6 +51,7 @@
         isExecutable = true;
         sshKey = secret "service/nixos-activation/key";
         dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";
+        dotfilesBranch = "master";
         shell = "${pkgs.bash}/bin/bash";
         path = lib.makeBinPath (with pkgs; [
           bash util-linux ncurses openssh git coreutils findutils gnused
