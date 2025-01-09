@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  nix.package = pkgs.nixStable;
+  nix.package = pkgs.nixVersions.nix_2_25;
   nix.extraOptions = ''
     extra-experimental-features = flakes nix-command
     debugger-on-trace = true
