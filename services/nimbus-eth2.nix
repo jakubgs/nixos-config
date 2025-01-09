@@ -162,6 +162,21 @@ in {
           };
         };
 
+        payloadBuilder = {
+          enable = lib.mkEnableOption "Nimbus Eth2 payload builder";
+          url = mkOption {
+            type = types.str;
+            default = [];
+            description = "URL of builder API endpoint.";
+          };
+
+          locaBlockValueBoost = mkOption {
+            type = types.int;
+            default = 10;
+            description = "Bump exec layer builder bid comparison by a percentage.";
+          };
+        };
+
         extraArgs = mkOption {
           type = types.listOf types.str;
           description = lib.mdDoc "Additional arguments passed to node.";
@@ -206,6 +221,8 @@ in {
             --udp-port=${toString cfg.discoverPort} \
             --rest=${boolToString cfg.rest.enable} ${optionalString cfg.rest.enable ''--rest-address=${cfg.rest.address} --rest-port=${toString cfg.rest.port} ''}\
             --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
+            --payload-builder=${boolToString cfg.payloadBuilder.enable} ${optionalString cfg.payloadBuilder.enable ''
+            --local-block-value-boost=${toString cfg.payloadBuilder.locaBlockValueBoost} --payload-builder-url=${cfg.payloadBuilder.url} ''}\
             ${if cfg.execURLs == [] then "--no-el \\" else concatMapStringsSep " \\\n" (url: "--el=${url}") cfg.execURLs} \
             ${optionalString (cfg.suggestedFeeRecipient != "") "--suggested-fee-recipient=${cfg.suggestedFeeRecipient}"} \
             --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
