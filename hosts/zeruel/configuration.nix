@@ -12,6 +12,7 @@
     ../../roles/locate.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/mev-boost.nix
     ../../roles/go-ethereum.nix
     ../../roles/nimbus-eth2.nix
   ];
