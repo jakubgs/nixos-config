@@ -23,21 +23,21 @@ in {
           address_data = "1.1.1.1";
           tls_auth_name = "cloudflare-dns.com";
           tls_pubkey_pinset = [
-            { digest = "sha256"; value = "4pqQ+yl3lAtRvKdoCCUR8iDmA53I+cJ7orgBLiF08kQ="; }
+            { digest = "sha256"; value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA="; }
           ];
         }
         {
           address_data = "1.0.0.1";
           tls_auth_name = "cloudflare-dns.com";
           tls_pubkey_pinset = [
-            { digest = "sha256"; value = "4pqQ+yl3lAtRvKdoCCUR8iDmA53I+cJ7orgBLiF08kQ="; }
+            { digest = "sha256"; value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA="; }
           ];
         }
         {
           address_data = "8.8.8.8";
           tls_auth_name = "dns.google";
           tls_pubkey_pinset = [
-            { digest = "sha256"; value = "pjKe8bAOKqjEHNl0n9VF4FuVY5jVrDUn1vMSWiZkRzA="; }
+            { digest = "sha256"; value = "KOXrkRFDUozvCJk1C8rrgZF47LnFkWyXfYNyAjJ/Tds="; }
           ];
         }
       ];
