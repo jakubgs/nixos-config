@@ -34,10 +34,10 @@ in {
           ];
         }
         {
-          address_data = "8.8.8.8";
-          tls_auth_name = "dns.google";
+          address_data = "146.255.56.98";
+          tls_auth_name = "dot1.applied-privacy.net";
           tls_pubkey_pinset = [
-            { digest = "sha256"; value = "KOXrkRFDUozvCJk1C8rrgZF47LnFkWyXfYNyAjJ/Tds="; }
+            { digest = "sha256"; value = "/ylamrPMlw32XjX23scWXKF1w8hoHteActOW6yhrvxo="; }
           ];
         }
       ];
