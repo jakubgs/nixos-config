@@ -5,7 +5,7 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      epson-201401w # EPSON L365 (Mazury)
+      #epson-201401w # EPSON L365 (Mazury)
     ];
   };
 
