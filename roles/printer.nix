@@ -5,7 +5,8 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      #epson-201401w # EPSON L365 (Mazury)
+      brlaser       # Brother HL-2135 (Home)
+      epson-201401w # EPSON L365 (Mazury)
     ];
   };
 
