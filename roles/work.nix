@@ -37,7 +37,7 @@ in {
     # Remote
     remmina
     # Cloud
-    awscli s3cmd unstable.doctl google-cloud-sdk
+    awscli s5cmd unstable.doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # General dev
     git-filter-repo github-cli pkg-config shellcheck dos2unix
