@@ -39,8 +39,8 @@ in {
       log = { level = "info"; format = "json"; };
       metrics = { enable = true; address = "0.0.0.0"; };
       rest = { enable = true; address = "0.0.0.0"; };
-      payloadBuilder = {
-        enable = services.mev-boost.enable;
+      payloadBuilder = lib.mkIf (builtins.hasAttr "mev-boost" services && services.mev-boost.enable) {
+        enable = true;
         url = "http://localhost:${toString services.mev-boost.port}";
       };
       dataDir = "/mnt/nimbus";
