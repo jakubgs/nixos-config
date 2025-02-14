@@ -12,6 +12,7 @@
     ../../roles/landing.nix
     ../../roles/erigon.nix
     ../../roles/nimbus-eth2.nix
+    ../../roles/mev-boost.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
