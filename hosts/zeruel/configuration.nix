@@ -15,6 +15,7 @@
     ../../roles/mev-boost.nix
     ../../roles/go-ethereum.nix
     ../../roles/nimbus-eth2.nix
+    ../../roles/mev-boost.nix
   ];
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.
