@@ -44,7 +44,8 @@
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.zfs.package = pkgs.zfs_2_3;
 
   networking = {
     hostId = "9fbd8b5d";
