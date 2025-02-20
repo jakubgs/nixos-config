@@ -35,6 +35,7 @@
         admins = ["jakubgs"];
         db.user = "invidious";
         external_port = 80;
+        channel_refresh_interval = "60m";
         use_quic = true;
         channel_threads = 2;
         use_pubsub_feeds = true;
