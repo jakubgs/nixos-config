@@ -16,6 +16,7 @@
     ../../roles/samba.nix
     ../../roles/syncthing.nix
     ../../roles/torrent.nix
+    ../../roles/invidious.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
