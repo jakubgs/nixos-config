@@ -34,7 +34,8 @@
   boot.loader.grub.enable = false;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.zfs.package = pkgs.zfs_2_3;
 
   # Scrub to find errors
   services.zfs.autoScrub = {
