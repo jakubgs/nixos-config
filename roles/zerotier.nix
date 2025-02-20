@@ -14,7 +14,7 @@ in {
   services.zerotierone.enable = true;
 
   # Fix connection issues right after boot.
-  systemd.services.zerotierone.serviceConfig.OnBootSec = 60;
+  systemd.services.zerotierone.requires = [ "network-online.target" ];
 
   # Workaround to use file as source of network name.
   systemd.services.zerotierone.preStart = ''
