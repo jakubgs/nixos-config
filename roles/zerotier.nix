@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ pkgs, config, secret, ... }:
 
 let
   networkNameFile = secret "service/zerotier/magi";
@@ -15,6 +15,7 @@ in {
 
   # Fix connection issues right after boot.
   systemd.services.zerotierone.requires = [ "network-online.target" ];
+  systemd.services.zerotierone.serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 5" ];
 
   # Workaround to use file as source of network name.
   systemd.services.zerotierone.preStart = ''
