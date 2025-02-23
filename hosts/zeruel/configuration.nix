@@ -46,6 +46,10 @@
     ];
   };
 
+
+  # Pin kernel version
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+
   # Reboot after 5 seconds on kernel panic
   boot.kernel.sysctl = { "kernel.panic" = 5; };
 

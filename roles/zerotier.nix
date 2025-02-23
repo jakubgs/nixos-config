@@ -15,7 +15,7 @@ in {
 
   # Fix connection issues right after boot.
   systemd.services.zerotierone.requires = [ "network-online.target" ];
-  systemd.services.zerotierone.serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 5" ];
+  systemd.services.zerotierone.serviceConfig.ExecStartPre = [ "${pkgs.coreutils}/bin/sleep 10" ];
 
   # Workaround to use file as source of network name.
   systemd.services.zerotierone.preStart = ''

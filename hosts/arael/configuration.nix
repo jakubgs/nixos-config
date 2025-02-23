@@ -32,9 +32,6 @@
 
   # Lock kernel version.
   boot.kernelPackages = pkgs.linuxPackages_6_12;
-  boot.zfs.package = pkgs.zfs_2_3;
-  # Fix missing symbols dropped in kernel 6.2.
-  boot.zfs.removeLinuxDRM = true;
 
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;

@@ -51,7 +51,6 @@
 
   # Specify kernel version.
   boot.kernelPackages = pkgs.linuxPackages_6_12;
-  boot.zfs.package = pkgs.zfs_2_3;
 
   # Disabled by hardened profile, big performance hit.
   security.allowSimultaneousMultithreading = true;
