@@ -11,6 +11,10 @@
     ../../roles/locate.nix
     ../../roles/zerotier.nix
     ../../roles/landing.nix
+    ../../roles/iperf.nix
+    ../../roles/nfs.nix
+    ../../roles/samba.nix
+    ../../roles/syncthing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
