@@ -13,7 +13,7 @@
     ../../roles/zerotier.nix
     ../../roles/landing.nix
     ../../roles/syncthing.nix
-    ../../roles/prometheus.nix
+    ../../roles/metrics/prometheus.nix
     ../../roles/alertmanager.nix
     ../../roles/grafana.nix
     ../../roles/gitweb.nix
