@@ -5,6 +5,7 @@
   nix.settings = {
     "download-buffer-size" = "268435456";
     "extra-experimental-features" = "flakes nix-command";
+    "commit-lockfile-summary" = true;
     "debugger-on-trace" = true;
   };
 
