@@ -7,11 +7,7 @@
     (modulesPath + "/profiles/hardened.nix")
     (modulesPath + "/profiles/headless.nix")
     ./hardware-configuration.nix
-    ../../roles/base.nix
-    ../../roles/users.nix
-    ../../roles/locate.nix
-    ../../roles/zerotier.nix
-    ../../roles/landing.nix
+    ../../roles/base
     ../../roles/mev-boost.nix
     ../../roles/go-ethereum.nix
     ../../roles/nimbus-eth2.nix

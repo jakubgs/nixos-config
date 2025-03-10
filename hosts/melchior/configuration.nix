@@ -3,17 +3,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../roles/base.nix
-    ../../roles/zfs.nix
-    ../../roles/users.nix
+    ../../roles/base
     ../../roles/nfs.nix
     ../../roles/samba.nix
     ../../roles/music.nix
-    ../../roles/locate.nix
     ../../roles/torrent.nix
-    ../../roles/zerotier.nix
     ../../roles/syncthing.nix
-    ../../roles/landing.nix
   ];
 
   # Upgrade kernel

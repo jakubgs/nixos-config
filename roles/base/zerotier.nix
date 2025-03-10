@@ -4,7 +4,7 @@ let
   networkNameFile = secret "service/zerotier/magi";
 in {
   age.secrets."service/zerotier/magi" = {
-    file = ../secrets/service/zerotier/magi.age;
+    file = ../../secrets/service/zerotier/magi.age;
   };
 
   # Accept license

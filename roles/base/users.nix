@@ -2,11 +2,11 @@
 
 {
   age.secrets."hosts/users/jakubgs/pass-hash" = {
-    file = ../secrets/hosts/users/jakubgs/pass-hash.age;
+    file = ../../secrets/hosts/users/jakubgs/pass-hash.age;
   };
 
   age.secrets."service/nixos-activation/key" = {
-    file = ../secrets/service/nixos-activation/key.age;
+    file = ../../secrets/service/nixos-activation/key.age;
     owner = "jakubgs";
   };
 
@@ -47,7 +47,7 @@
   system.userActivationScripts = {
     jakubgsDotfiles = let
       dotfilesSh = pkgs.substituteAll {
-        src = ../files/dotfiles.sh;
+        src = ../../files/dotfiles.sh;
         isExecutable = true;
         sshKey = secret "service/nixos-activation/key";
         dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";

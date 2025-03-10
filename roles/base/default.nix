@@ -2,19 +2,24 @@
 
 {
   imports = [
-    ./nix.nix
-    ./fixes.nix
     ./console.nix
+    ./fixes.nix
     ./helpers.nix
+    ./landing.nix
+    ./locate.nix
+    ./nix.nix
     ./security.nix
-    ./metrics
+    ./users.nix
+    ./zerotier.nix
+    ./zfs.nix
+    ../metrics
   ];
 
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
     file zsh bash man-pages sudo bc pv rename
-    lsb-release moreutils unzip zip envsubst
+    lsb-release moreutils unzip zip unrar envsubst
     # processes
     dtach pstree killall sysstat
     # monitoring

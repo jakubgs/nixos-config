@@ -5,13 +5,8 @@
     (modulesPath + "/profiles/hardened.nix")
     (modulesPath + "/profiles/headless.nix")
     ./hardware-configuration.nix
-    ../../roles/base.nix
+    ../../roles/base
     ../../roles/mosh.nix
-    ../../roles/zfs.nix
-    ../../roles/users.nix
-    ../../roles/locate.nix
-    ../../roles/zerotier.nix
-    ../../roles/landing.nix
     ../../roles/syncthing.nix
     ../../roles/metrics/prometheus.nix
     ../../roles/alertmanager.nix

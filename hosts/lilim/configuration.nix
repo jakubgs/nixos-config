@@ -4,12 +4,9 @@
   imports = [
     channels.hardware.nixosModules.lenovo-thinkpad-x1-10th-gen
     ./hardware-configuration.nix
-    ../../roles/base.nix
-    ../../roles/zfs.nix
-    ../../roles/users.nix
+    ../../roles/base
     ../../roles/network.nix
     ../../roles/dnsmasq.nix
-    ../../roles/locate.nix
     ../../roles/autofs.nix
     ../../roles/desktop.nix
     ../../roles/laptop.nix
@@ -17,7 +14,6 @@
     ../../roles/physlock.nix
     ../../roles/docker.nix
     ../../roles/music.nix
-    ../../roles/zerotier.nix
     ../../roles/tailscale.nix
     ../../roles/yubikey.nix
     ../../roles/crypto.nix
@@ -25,7 +21,6 @@
     ../../roles/docs.nix
     ../../roles/qemu.nix
     ../../roles/syncthing.nix
-    ../../roles/landing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

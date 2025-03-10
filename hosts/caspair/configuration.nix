@@ -3,32 +3,27 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../roles/base.nix
-    ../../roles/zfs.nix
-    ../../roles/users.nix
-    ../../roles/network.nix
-    ../../roles/locate.nix
+    ../../roles/base
     ../../roles/autofs.nix
-    ../../roles/desktop.nix
     ../../roles/bluetooth.nix
-    ../../roles/physlock.nix
-    ../../roles/printer.nix
-    ../../roles/gaming.nix
-    ../../roles/docker.nix
-    ../../roles/music.nix
-    ../../roles/zerotier.nix
-    ../../roles/tailscale.nix
-    ../../roles/yubikey.nix
-    ../../roles/syncthing.nix
-    ../../roles/restic.nix
-    ../../roles/work.nix
-    ../../roles/docs.nix
-    ../../roles/landing.nix
-    ../../roles/optical.nix
-    ../../roles/dnsmasq.nix
-    ../../roles/qemu.nix
     ../../roles/builder.nix
     ../../roles/crypto.nix
+    ../../roles/desktop.nix
+    ../../roles/dnsmasq.nix
+    ../../roles/docker.nix
+    ../../roles/docs.nix
+    ../../roles/gaming.nix
+    ../../roles/music.nix
+    ../../roles/network.nix
+    ../../roles/optical.nix
+    ../../roles/physlock.nix
+    ../../roles/printer.nix
+    ../../roles/qemu.nix
+    ../../roles/restic.nix
+    ../../roles/syncthing.nix
+    ../../roles/tailscale.nix
+    ../../roles/work.nix
+    ../../roles/yubikey.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

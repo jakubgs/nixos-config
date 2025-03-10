@@ -7,15 +7,11 @@
     #"${channels}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
     channels.hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
-    ../../roles/base.nix
-    ../../roles/users.nix
-    ../../roles/locate.nix
+    ../../roles/base
     ../../roles/nfs.nix
     ../../roles/autofs.nix
     ../../roles/wireless.nix
-    ../../roles/zerotier.nix
     ../../roles/gossa.nix
-    ../../roles/landing.nix
     ../../roles/distbuild.nix
   ];
 

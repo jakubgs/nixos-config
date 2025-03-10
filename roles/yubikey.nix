@@ -3,7 +3,7 @@
 /* Details: https://nixos.wiki/wiki/Yubikey */
 {
   imports = [
-    ./security.nix
+    ./base/security.nix
   ];
 
   /* Required tools and libraries. */

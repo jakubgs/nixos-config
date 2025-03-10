@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ../../roles/nix.nix
-    ../../roles/console.nix
-    ../../roles/helpers.nix
-    ../../roles/security.nix
+    ../../roles/base/nix.nix
+    ../../roles/base/console.nix
+    ../../roles/base/helpers.nix
+    ../../roles/base/security.nix
     ../../roles/yubikey.nix
   ];
 
