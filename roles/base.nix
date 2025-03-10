@@ -14,29 +14,23 @@
   environment.systemPackages = with pkgs; [
     # utilities
     file zsh bash man-pages sudo bc pv rename
-    uptimed lsb-release moreutils
-    # building
-    gnumake gcc autoconf automake patchelf
-    unzip zip envsubst entr
+    lsb-release moreutils unzip zip envsubst
     # processes
     dtach pstree killall sysstat
     # monitoring
-    htop btop iotop iftop s-tui multitail
+    htop btop iotop iftop s-tui multitail entr
     # dev tools
-    neovim jq tmux fzf silver-searcher
-    git qrencode sqlite
+    neovim jq tmux fzf silver-searcher git
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
-    wget curl nmap nettools traceroute dnsutils wol iperf
+    wget curl nmap nettools traceroute dnsutils iperf
     # filesystems
-    ncdu zfs zfstools ranger lsof ntfs3g
+    ncdu zfs zfstools ranger lsof ntfs3g nfs-utils
     # hard drive management
     lsscsi hddtemp hdparm perf-tools parted gptfdisk
-    # network filesystems
-    nfs-utils
     # security
-    pass gopass openssl
+    pass gopass
   ];
 
   # Shell

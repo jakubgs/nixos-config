@@ -28,8 +28,10 @@ in {
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
     mosh unstable.ansible_2_17
+    # Development
+    gnumake gcc autoconf automake patchelf
     # Security
-    vault sops pwgen oathToolkit yubikey-manager
+    vault sops pwgen oathToolkit yubikey-manager openssl
     # Databases
     robo3t
     # Network
