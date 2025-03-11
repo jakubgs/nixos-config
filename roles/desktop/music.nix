@@ -11,7 +11,7 @@
   in {
     age.secrets."service/mpd/pass" = {
       owner = "mpd";
-      file = ../secrets/service/mpd/pass.age;
+      file = ../../secrets/service/mpd/pass.age;
     };
 
     # Clients

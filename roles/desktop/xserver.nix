@@ -17,7 +17,7 @@ in {
     displayManager = {
       lightdm = {
         enable = true;
-        background = "${../files/wallpapers/default.jpg}";
+        background = "${../../files/wallpapers/default.jpg}";
       };
       # for better mouse in FPS
       # TODO: generalize for all pointers with this setting

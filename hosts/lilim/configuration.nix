@@ -5,22 +5,11 @@
     channels.hardware.nixosModules.lenovo-thinkpad-x1-10th-gen
     ./hardware-configuration.nix
     ../../roles/base
-    ../../roles/network.nix
-    ../../roles/dnsmasq.nix
-    ../../roles/autofs.nix
-    ../../roles/desktop.nix
+    ../../roles/desktop
     ../../roles/laptop.nix
-    ../../roles/bluetooth.nix
-    ../../roles/physlock.nix
-    ../../roles/docker.nix
-    ../../roles/music.nix
-    ../../roles/tailscale.nix
-    ../../roles/yubikey.nix
-    ../../roles/crypto.nix
-    ../../roles/work.nix
-    ../../roles/docs.nix
-    ../../roles/qemu.nix
     ../../roles/syncthing.nix
+    ../../roles/tailscale.nix
+    ../../roles/work.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

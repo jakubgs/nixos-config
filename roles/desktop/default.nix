@@ -2,9 +2,21 @@
 
 {
   imports = [
-    ./xserver.nix
+    ./autofs.nix
+    ./bluetooth.nix
     ./clipmenu.nix
+    ./crypto.nix
+    ./dnsmasq.nix
+    ./docker.nix
+    ./docs.nix
+    ./mime.nix
+    ./music.nix
+    ./network.nix
+    ./physlock.nix
+    ./qemu.nix
     ./redshift.nix
+    ./xserver.nix
+    ./yubikey.nix
   ];
 
   # Accept unfree licenses
@@ -48,8 +60,6 @@
     mpv yt-dlp ffmpeg
     # Audio
     mpc_cli ncmpcpp vorbis-tools mpg123 soundconverter
-    # Archive
-    unrar
     # Communication
     geary discord
     # Torrent
@@ -70,16 +80,4 @@
 
   # Fix Gnome Apps that require dconf
   programs.dconf.enable = true;
-
-  # Set Brave as default browser
-  xdg.mime = {
-    enable = true;
-    defaultApplications = {
-      "text/html"                = "brave.desktop";
-      "x-scheme-handler/http"    = "brave.desktop";
-      "x-scheme-handler/https"   = "brave.desktop";
-      "x-scheme-handler/about"   = "brave.desktop";
-      "x-scheme-handler/unknown" = "brave.desktop";
-    };
-  };
 }

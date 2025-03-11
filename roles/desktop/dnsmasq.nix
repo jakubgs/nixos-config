@@ -6,7 +6,7 @@ let
   stubbyEnabled = true;
 
   stubbyExample = pkgs.stubby.passthru.settingsExample;
-  blockedHosts = pkgs.callPackage ../pkgs/blocked-hosts.nix { };
+  blockedHosts = pkgs.callPackage ../../pkgs/blocked-hosts.nix { };
 
   formatConfig = ip: fqdns:
     concatStringsSep "\n" (map (fqdn: "address=/${fqdn}/${ip}") fqdns);

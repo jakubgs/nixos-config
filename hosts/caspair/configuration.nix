@@ -4,26 +4,15 @@
   imports = [
     ./hardware-configuration.nix
     ../../roles/base
-    ../../roles/autofs.nix
-    ../../roles/bluetooth.nix
+    ../../roles/desktop
     ../../roles/builder.nix
-    ../../roles/crypto.nix
-    ../../roles/desktop.nix
-    ../../roles/dnsmasq.nix
-    ../../roles/docker.nix
-    ../../roles/docs.nix
     ../../roles/gaming.nix
-    ../../roles/music.nix
-    ../../roles/network.nix
     ../../roles/optical.nix
-    ../../roles/physlock.nix
     ../../roles/printer.nix
-    ../../roles/qemu.nix
     ../../roles/restic.nix
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix
     ../../roles/work.nix
-    ../../roles/yubikey.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
