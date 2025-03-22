@@ -22,7 +22,6 @@
   security.allowSimultaneousMultithreading = true;
 
   # Decrypt after boot
-  boot.zfs.forceImportRoot = true;
   boot.zfs.requestEncryptionCredentials = false;
 
   # Bootloader
