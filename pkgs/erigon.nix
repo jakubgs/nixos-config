@@ -3,13 +3,13 @@
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.erigon.override {
   buildGoModule = args: pkgs.buildGo122Module ( args // rec {
-    version = "2.61.1";
+    version = "2.61.3";
 
     src = pkgs.fetchFromGitHub {
       owner = "ledgerwatch";
       repo = args.pname;
       rev = "v${version}";
-      hash = "sha256-fSDAUdhSFTzqZji2bYxky8Orf64ZWvuQLZ/GqoPwNTM=";
+      hash = "sha256-VGLuPaGYx/DQc3Oc9wAbELXAtkuxr8cbePVBExlZikk=";
       fetchSubmodules = true;
     };
 
