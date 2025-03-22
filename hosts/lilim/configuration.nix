@@ -7,6 +7,7 @@
     ../../roles/base
     ../../roles/desktop
     ../../roles/laptop.nix
+    ../../roles/qemu.nix
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix
     ../../roles/work.nix

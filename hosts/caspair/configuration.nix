@@ -9,6 +9,7 @@
     ../../roles/gaming.nix
     ../../roles/optical.nix
     ../../roles/printer.nix
+    ../../roles/qemu.nix
     ../../roles/restic.nix
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix

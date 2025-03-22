@@ -13,7 +13,6 @@
     ./music.nix
     ./network.nix
     ./physlock.nix
-    ./qemu.nix
     ./redshift.nix
     ./xserver.nix
     ./yubikey.nix
