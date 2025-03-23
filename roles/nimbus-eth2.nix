@@ -4,7 +4,7 @@ let
   services = config.services;
 in {
   imports = [
-    ../services/nimbus-eth2.nix
+    ../services/nimbus/beacon-node.nix
   ];
 
   options.nimbus = {
@@ -33,7 +33,7 @@ in {
     networking.firewall.allowedUDPPorts = [ cfg.discoverPort ];
 
     # Directory Watcher - Recursively starts torrents
-    services.nimbus-eth2 = {
+    services.nimbus-beacon-node = {
       enable = true;
       inherit (cfg) network listenPort discoverPort;
       log = { level = "info"; format = "json"; };
@@ -65,7 +65,7 @@ in {
     users.groups.nimbus.gid = 5000;
 
     # Raise priority and add required volumes.
-    systemd.services.nimbus-eth2 = {
+    systemd.services.nimbus-beacon-node = {
       serviceConfig = {
         Nice = -20;
         IOSchedulingClass = "realtime";

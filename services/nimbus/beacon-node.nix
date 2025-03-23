@@ -6,16 +6,16 @@ let
     escapeShellArgs literalExpression toUpper
     boolToString concatMapStringsSep optionalString optionalAttrs;
 
-  cfg = config.services.nimbus-eth2;
+  cfg = config.services.nimbus-beacon-node;
 in {
   options = {
     services = {
-      nimbus-eth2 = {
+      nimbus-beacon-node = {
         enable = mkEnableOption "Nimbus Eth2 Beacon Node service.";
 
         package = mkOption {
           type = types.package;
-          default = pkgs.callPackage ../pkgs/nimbus-eth2.nix { };
+          default = pkgs.callPackage ../pkgs/nimbus-beacon-node.nix { };
           defaultText = literalExpression "pkgs.go-ethereum.geth";
           description = lib.mdDoc "Package to use as Go Ethereum node.";
         };
@@ -54,7 +54,7 @@ in {
 
         graffiti = mkOption {
           type = types.str;
-          default = "Nimbus-Eth2";
+          default = "nimbus-beacon-node";
           description = "Name of Eth2 network to connect to.";
         };
 
@@ -200,7 +200,7 @@ in {
       nimbus = { };
     };
 
-    systemd.services.nimbus-eth2 = {
+    systemd.services.nimbus-beacon-node = {
       enable = true;
       serviceConfig = {
         User = cfg.service.user;
