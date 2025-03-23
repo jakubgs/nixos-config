@@ -11,6 +11,7 @@ in {
     network      = lib.mkOption { default = "mainnet"; };
     listenPort   = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
     discoverPort = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
+    restPort     = lib.mkOption { default = 5052; }; # REST API
     feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
     jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
   };
@@ -35,29 +36,37 @@ in {
     # Directory Watcher - Recursively starts torrents
     services.nimbus-beacon-node = {
       enable = true;
-      inherit (cfg) network listenPort discoverPort;
-      log = { level = "info"; format = "json"; };
-      metrics = { enable = true; address = "0.0.0.0"; };
-      rest = { enable = true; address = "0.0.0.0"; };
-      payloadBuilder = lib.mkIf (builtins.hasAttr "mev-boost" services && services.mev-boost.enable) {
-        enable = true;
-        url = "http://localhost:${toString services.mev-boost.port}";
+      settings = {
+        data-dir = "/mnt/nimbus";
+        network = cfg.network;
+        tcp-port = cfg.listenPort;
+        udp-port= cfg.discoverPort;
+        jwt-secret = cfg.jwtSecret;
+        num-threads = 0; /* 0 == auto */
+        log-level = "info";
+        log-format = "json";
+        metrics = true;
+        metrics-address = "0.0.0.0";
+        metrics-port = 9100;
+        rest = true;
+        rest-address = "0.0.0.0";
+        rest-port = cfg.restPort;
+        /* Higher resource usage for small increase in rewards. */
+        subscribe-all-subnets = false;
+        /* Costs two slot rewards at restart if enabled. */
+        doppelganger-detection = false;
+        /* If Go-Ethereum is running use it. */
+        web3-url =
+          if services.erigon.enable then
+          ["http://localhost:${builtins.toString services.erigon.settings.${"authrpc.port"}}/"]
+          else if lib.hasAttr cfg.network services.geth && services.geth.${cfg.network}.enable then
+          ["http://localhost:${builtins.toString services.geth.${cfg.network}.authrpc.port}/"]
+          else
+          [];
+      } // lib.optionalAttrs (builtins.hasAttr "mev-boost" services && services.mev-boost.enable) {
+        payload-builder = true;
+        payload-builder-url = "http://localhost:${toString services.mev-boost.port}";
       };
-      dataDir = "/mnt/nimbus";
-      threadsNumber = 0; /* 0 == auto */
-      /* Higher resource usage for small increase in rewards. */
-      subAllSubnets = false;
-      /* Costs two slot rewards at restart if enabled. */
-      doppelganger = false;
-      /* If Go-Ethereum is running use it. */
-      execURLs =
-        if services.erigon.enable then
-        ["http://localhost:${builtins.toString services.erigon.settings.${"authrpc.port"}}/"]
-        else if services.geth.${cfg.network}.enable then
-        ["http://localhost:${builtins.toString services.geth.${cfg.network}.authrpc.port}/"]
-        else
-        [];
-      inherit (cfg) jwtSecret;
     };
 
     # Lock UID/GID
@@ -70,8 +79,6 @@ in {
         Nice = -20;
         IOSchedulingClass = "realtime";
         IOSchedulingPriority = 0;
-        /* Address for transaction fee/priority rewards. */
-        LoadCredential = [ "feeRecipient:${cfg.feeRecipient}" ];
       };
       # Wait for volume to be mounted
       after = lib.mkForce (map pkgs.lib.pathToMountUnit [

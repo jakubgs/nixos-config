@@ -2,11 +2,16 @@
 
 let
   inherit (lib)
-    types mkEnableOption mkOption mkIf length
-    escapeShellArgs literalExpression toUpper
-    boolToString concatMapStringsSep optionalString optionalAttrs;
+    mkEnableOption mkOption mkIf
+    types filterAttrs optionalAttrs
+    escapeShellArgs literalExpression;
 
   cfg = config.services.nimbus-beacon-node;
+
+  toml = pkgs.formats.toml { };
+  removeNull = k: v: v != null;
+  cleanSettings = filterAttrs removeNull cfg.settings;
+  configFile = toml.generate "nimbus-beacon-node.toml" cleanSettings;
 in {
   options = {
     services = {
@@ -15,166 +20,9 @@ in {
 
         package = mkOption {
           type = types.package;
-          default = pkgs.callPackage ../pkgs/nimbus-beacon-node.nix { };
-          defaultText = literalExpression "pkgs.go-ethereum.geth";
+          default = pkgs.callPackage ../../pkgs/nimbus-eth2.nix { };
+          defaultText = literalExpression "pkgs.nimbus-eth2";
           description = lib.mdDoc "Package to use as Go Ethereum node.";
-        };
-
-        service = {
-          user = mkOption {
-            type = types.str;
-            default = "nimbus";
-            description = "Username for Nimbus Eth2 service.";
-          };
-
-          group = mkOption {
-            type = types.str;
-            default = "nimbus";
-            description = "Group name for Nimbus Eth2 service.";
-          };
-        };
-
-        dataDir = mkOption {
-          type = types.str;
-          default = "";
-          description = "Directory for Nimbus Eth2 blockchain data.";
-        };
-
-        eraDir = mkOption {
-          type = types.str;
-          default = "${cfg.dataDir}/era";
-          description = "Directory for Nimbus Eth2 ERA files.";
-        };
-
-        network = mkOption {
-          type = types.str;
-          default = "mainnet";
-          description = "Name of Eth2 network to connect to.";
-        };
-
-        graffiti = mkOption {
-          type = types.str;
-          default = "nimbus-beacon-node";
-          description = "Name of Eth2 network to connect to.";
-        };
-
-        log = {
-          level = mkOption {
-            type = types.str;
-            default = "info";
-            description = "Logging level for the node.";
-          };
-
-          format = mkOption {
-            type = types.str;
-            default = "auto";
-            description = "Logging formatting (auto, colors, nocolors, json).";
-          };
-        };
-
-        threadsNumber = mkOption {
-          type = types.int;
-          default = 1;
-          description = "Number of worker threads. Use 0 to detect CPU cores.";
-        };
-
-        nat = mkOption {
-          type = types.str;
-          default = "any";
-          example = "extip:12.34.56.78";
-          description = "Way to detect public IP address of the node to advertise.";
-        };
-
-        execURLs = mkOption {
-          type = types.listOf types.str;
-          default = [];
-          description = "URL for the Web3 RPC endpoint.";
-        };
-
-        jwtSecret = mkOption {
-          type = types.str;
-          default = "";
-          description = "Path of JWT secret for Auth RPC endpoint.";
-        };
-
-        subAllSubnets = mkOption {
-          type = types.bool;
-          default = false;
-          description = "Subscribe to all attestation subnet topics.";
-        };
-
-        doppelganger = mkOption {
-          type = types.bool;
-          default = true;
-          description = ''
-            Protection against slashing due to double-voting.
-            Means you will miss two attestations when restarting.
-          '';
-        };
-
-        suggestedFeeRecipient = mkOption {
-          type = types.str;
-          default = "";
-          description = ''
-            Wallet address where transaction fee tips - priority fees,
-            unburnt portion of gas fees - will be sent.
-          '';
-        };
-
-        listenPort = mkOption {
-          type = types.int;
-          default = 9000;
-          description = "Listen port for libp2p protocol.";
-        };
-
-        discoverPort = mkOption {
-          type = types.int;
-          default = 9000;
-          description = "Listen port for libp2p protocol.";
-        };
-
-        metrics = {
-          enable = lib.mkEnableOption "Nimbus Eth2 metrics endpoint";
-          address = mkOption {
-            type = types.str;
-            default = "127.0.0.1";
-            description = "Metrics address for beacon node.";
-          };
-          port = mkOption {
-            type = types.int;
-            default = 9100;
-            description = "Metrics port for beacon node.";
-          };
-        };
-
-        rest = {
-          enable = lib.mkEnableOption "Nimbus Eth2 REST API";
-          address = mkOption {
-            type = types.str;
-            default = "127.0.0.1";
-            description = "Listening address of the REST API server";
-          };
-
-          port = mkOption {
-            type = types.int;
-            default = 5052;
-            description = "Port for the REST API server";
-          };
-        };
-
-        payloadBuilder = {
-          enable = lib.mkEnableOption "Nimbus Eth2 payload builder";
-          url = mkOption {
-            type = types.str;
-            default = [];
-            description = "URL of builder API endpoint.";
-          };
-
-          locaBlockValueBoost = mkOption {
-            type = types.int;
-            default = 10;
-            description = "Bump exec layer builder bid comparison by a percentage.";
-          };
         };
 
         extraArgs = mkOption {
@@ -182,54 +30,179 @@ in {
           description = lib.mdDoc "Additional arguments passed to node.";
           default = [];
         };
+
+        settings = lib.mkOption {
+          description = "TOML config file settings for Nimbus Eth2 beacon node.";
+          default = {};
+          type = lib.types.submodule {
+            freeformType = toml.type;
+            options = {
+              data-dir = mkOption {
+                type = types.nullOr types.path;
+                default = null;
+                description = "Directory for Nimbus Eth2 blockchain data.";
+              };
+
+              era-dir = mkOption {
+                type = types.nullOr types.path;
+                default = null;
+                description = "Directory for Nimbus Eth2 ERA files.";
+              };
+
+              network = mkOption {
+                type = types.str;
+                default = "mainnet";
+                description = "Name of Eth2 network to connect to.";
+              };
+
+              graffiti = mkOption {
+                type = types.str;
+                default = "nimbus-beacon-node";
+                description = "Name of Eth2 network to connect to.";
+              };
+
+              log-level = mkOption {
+                type = types.str;
+                default = "info";
+                description = "Logging level for the node.";
+              };
+
+              log-format = mkOption {
+                type = types.str;
+                default = "auto";
+                description = "Logging formatting (auto, colors, nocolors, json).";
+              };
+
+              num-threads = mkOption {
+                type = types.int;
+                default = 1;
+                description = "Number of worker threads. Use 0 to detect CPU cores.";
+              };
+
+              nat = mkOption {
+                type = types.str;
+                default = "any";
+                example = "extip:12.34.56.78";
+                description = "Way to detect public IP address of the node to advertise.";
+              };
+
+              web3-url = mkOption {
+                type = types.listOf types.str;
+                default = [];
+                description = "URL for the Web3 RPC endpoint.";
+              };
+
+              jwt-secret = mkOption {
+                type = types.nullOr types.str;
+                default = null;
+                description = "Path of JWT secret for Auth RPC endpoint.";
+              };
+
+              subscribe-all-subnets = mkOption {
+                type = types.bool;
+                default = false;
+                description = "Subscribe to all attestation subnet topics.";
+              };
+
+              doppelganger-detection = mkOption {
+                type = types.bool;
+                default = true;
+                description = ''
+                  Protection against slashing due to double-voting.
+                  Means you will miss two attestations when restarting.
+                '';
+              };
+
+              suggested-fee-recipient = mkOption {
+                type = types.nullOr types.str;
+                default = null;
+                description = ''
+                  Wallet address where transaction fee tips - priority fees,
+                  unburnt portion of gas fees - will be sent.
+                '';
+              };
+
+              tcp-port = mkOption {
+                type = types.int;
+                default = 9000;
+                description = "Listen port for libp2p protocol.";
+              };
+
+              udp-port = mkOption {
+                type = types.int;
+                default = 9000;
+                description = "Listen port for libp2p protocol.";
+              };
+
+              metrics = lib.mkEnableOption "Nimbus Eth2 metrics endpoint";
+
+              metrics-address = mkOption {
+                type = types.str;
+                default = "127.0.0.1";
+                description = "Metrics address for beacon node.";
+              };
+
+              metrics-port = mkOption {
+                type = types.int;
+                default = 9100;
+                description = "Metrics port for beacon node.";
+              };
+
+              rest = lib.mkEnableOption "Nimbus Eth2 REST API";
+
+              rest-address = mkOption {
+                type = types.str;
+                default = "127.0.0.1";
+                description = "Listening address of the REST API server";
+              };
+
+              rest-port = mkOption {
+                type = types.int;
+                default = 5052;
+                description = "Port for the REST API server";
+              };
+
+              payload-builder = lib.mkEnableOption "Nimbus Eth2 REST API";
+
+              payload-builder-url = mkOption {
+                type = types.nullOr types.str;
+                default = null;
+                description = "URL of builder API endpoint.";
+              };
+
+              local-block-value-boost = mkOption {
+                type = types.int;
+                default = 10;
+                description = "Bump exec layer builder bid comparison by a percentage.";
+              };
+            };
+          };
+        };
       };
     };
   };
 
   config = mkIf cfg.enable {
-    users.users = optionalAttrs (cfg.service.user == "nimbus") {
-      nimbus = {
-        group = cfg.service.group;
-        home = cfg.dataDir;
-        description = "Nimbus Eth2 service user";
-        isSystemUser = true;
-      };
-    };
-
-    users.groups = optionalAttrs (cfg.service.user == "nimbus") {
-      nimbus = { };
-    };
+    environment.etc."nimbus/beacon-node.toml".source = configFile;
 
     systemd.services.nimbus-beacon-node = {
       enable = true;
       serviceConfig = {
-        User = cfg.service.user;
-        Group = cfg.service.group;
+        DynamicUser = true;
 
-        ExecStart = ''
-          ${cfg.package}/bin/nimbus_beacon_node \
-            --network=${cfg.network} \
-            --graffiti=${cfg.graffiti} \
-            --data-dir=${cfg.dataDir} \
-            --era-dir=${cfg.eraDir} \
-            --jwt-secret=${cfg.jwtSecret} \
-            --nat=${cfg.nat} \
-            --log-level=${toUpper cfg.log.level} \
-            --log-format=${cfg.log.format} \
-            --num-threads=${toString cfg.threadsNumber} \
-            --tcp-port=${toString cfg.listenPort} \
-            --udp-port=${toString cfg.discoverPort} \
-            --rest=${boolToString cfg.rest.enable} ${optionalString cfg.rest.enable ''--rest-address=${cfg.rest.address} --rest-port=${toString cfg.rest.port} ''}\
-            --metrics=${boolToString cfg.metrics.enable} ${optionalString cfg.metrics.enable ''--metrics-address=${cfg.metrics.address} --metrics-port=${toString cfg.metrics.port} ''}\
-            --payload-builder=${boolToString cfg.payloadBuilder.enable} ${optionalString cfg.payloadBuilder.enable ''
-            --local-block-value-boost=${toString cfg.payloadBuilder.locaBlockValueBoost} --payload-builder-url=${cfg.payloadBuilder.url} ''}\
-            ${if cfg.execURLs == [] then "--no-el \\" else concatMapStringsSep " \\\n" (url: "--el=${url}") cfg.execURLs} \
-            ${optionalString (cfg.suggestedFeeRecipient != "") "--suggested-fee-recipient=${cfg.suggestedFeeRecipient}"} \
-            --subscribe-all-subnets=${boolToString cfg.subAllSubnets} \
-            --doppelganger-detection=${boolToString cfg.doppelganger} ${optionalString (length cfg.extraArgs > 0) "\\"}
-            ${escapeShellArgs cfg.extraArgs}
-        '';
+        # Hardening measures
+        PrivateTmp = "true";
+        ProtectSystem = "full";
+        NoNewPrivileges = "true";
+        PrivateDevices = "true";
+        MemoryDenyWriteExecute = "true";
+
         Restart = "on-failure";
+        ExecStart = ''
+          ${cfg.package}/bin/nimbus_beacon_node --config-file=${configFile} ${escapeShellArgs cfg.extraArgs}
+        '';
+      } // optionalAttrs (cfg.settings.data-dir == null) {
+        StateDirectory = ["nimbus-beacon-node"];
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "network.target" ];
