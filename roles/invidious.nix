@@ -4,7 +4,7 @@
   options.invidious = {
     domain    = lib.mkOption { default = "${config.networking.hostName}.magi.vpn"; };
     port      = lib.mkOption { default = 9092; };
-    proxyPort = lib.mkOption { default = 9093; };
+    proxyPort = lib.mkOption { default = 9095; };
     hmac_key  = lib.mkOption { default = secret "service/invidious/hmac-key"; };
   };
 
