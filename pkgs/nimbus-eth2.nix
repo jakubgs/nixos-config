@@ -1,7 +1,7 @@
 {
   pkgs ? import <nixpkgs> { },
   # Options: nimbus_light_client, nimbus_validator_client, nimbus_signing_node
-  makeTargets ? [ "nimbus_beacon_node" ],
+  makeTargets ? [ "nimbus_beacon_node" "nimbus_validator_client" ],
   # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true,
   stableNim ? pkgs.nim-2_0
