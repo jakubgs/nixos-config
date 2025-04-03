@@ -72,4 +72,10 @@ in {
 
   # Disable Garbage Collection
   nix.gc.automatic = lib.mkForce false;
+
+  # Add Status cache to configured ones.
+  nix.settings = {
+    trusted-substituters = [ "https://nix-cache.status.im/" ];
+    trusted-public-keys = [ "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY=" ];
+  };
 }
