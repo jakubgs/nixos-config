@@ -45,7 +45,7 @@ in {
             options = {
               data-dir = mkOption {
                 type = types.path;
-                default = "/var/lib/private/nimbus-beacon-node";
+                default = "/var/lib/nimbus-beacon-node";
                 description = "Directory for Nimbus Eth2 blockchain data.";
               };
 

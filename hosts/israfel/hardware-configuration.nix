@@ -33,7 +33,7 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/nimbus" =
+  fileSystems."/var/lib/private/nimbus-beacon-node" =
     { device = "rpool/nimbus";
       fsType = "zfs";
     };
@@ -43,13 +43,13 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/nimbus/secrets" =
+  fileSystems."/var/lib/private/nimbus-beacon-node/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/mnt/nimbus/validators" =
+  fileSystems."/var/lib/private/nimbus-beacon-node/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
