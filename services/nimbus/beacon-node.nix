@@ -25,6 +25,12 @@ in {
           description = lib.mdDoc "Package to use as Go Ethereum node.";
         };
 
+        jwtSecret = mkOption {
+          type = types.nullOr types.path;
+          default = null;
+          description = "Path of JWT secret for Auth RPC endpoint.";
+        };
+
         extraArgs = mkOption {
           type = types.listOf types.str;
           description = lib.mdDoc "Additional arguments passed to node.";
@@ -90,12 +96,6 @@ in {
                 type = types.listOf types.str;
                 default = [];
                 description = "URL for the Web3 RPC endpoint.";
-              };
-
-              jwt-secret = mkOption {
-                type = types.nullOr types.str;
-                default = null;
-                description = "Path of JWT secret for Auth RPC endpoint.";
               };
 
               subscribe-all-subnets = mkOption {
@@ -196,13 +196,17 @@ in {
         NoNewPrivileges = "true";
         PrivateDevices = "true";
         MemoryDenyWriteExecute = "true";
+        WorkingDirectory = "%S/nimbus-beacon-node";
+        StateDirectory = "nimbus-beacon-node";
+        LoadCredential = [ "jwtSecret:${cfg.jwtSecret}" ];
 
         Restart = "on-failure";
         ExecStart = ''
-          ${cfg.package}/bin/nimbus_beacon_node --config-file=${configFile} ${escapeShellArgs cfg.extraArgs}
+          ${cfg.package}/bin/nimbus_beacon_node \
+            --jwt-secret=%d/jwtSecret \
+            --config-file=${configFile} \
+            ${escapeShellArgs cfg.extraArgs}
         '';
-      } // optionalAttrs (cfg.settings.data-dir == "/var/lib/private/nimbus-beacon-node") {
-        StateDirectory = "nimbus-beacon-node";
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "network.target" ];

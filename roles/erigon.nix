@@ -2,16 +2,20 @@
 
 {
   options.erigon = {
-    devp2pPort = lib.mkOption { default = 9800; };
-    jwtSecret  = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
+    devp2pPort   = lib.mkOption { default = 9800; };
+    jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
+    feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
   };
 
   config = let
     cfg = config.erigon;
   in {
+    # Secrets
     age.secrets."service/nimbus/web3-jwt-secret" = {
       file = ../secrets/service/nimbus/web3-jwt-secret.age;
-      owner = "nimbus";
+    };
+    age.secrets."service/nimbus/fee-recipient" = {
+      file = ../secrets/service/nimbus/fee-recipient.age;
     };
 
     services.erigon = {

@@ -12,7 +12,6 @@ in {
     listenPort   = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
     discoverPort = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
     restPort     = lib.mkOption { default = 5052; }; # REST API
-    feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
     jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
   };
 
@@ -20,13 +19,8 @@ in {
     cfg = config.nimbus;
   in {
     # Secrets
-    age.secrets."service/nimbus/fee-recipient" = {
-      file = ../secrets/service/nimbus/fee-recipient.age;
-      owner = "nimbus";
-    };
     age.secrets."service/nimbus/web3-jwt-secret" = {
       file = ../secrets/service/nimbus/web3-jwt-secret.age;
-      owner = "nimbus";
     };
 
     # Firewall
@@ -36,12 +30,12 @@ in {
     # Directory Watcher - Recursively starts torrents
     services.nimbus-beacon-node = {
       enable = true;
+      inherit (cfg) jwtSecret;
       settings = {
         data-dir = "/var/lib/private/nimbus-beacon-node";
         network = cfg.network;
         tcp-port = cfg.listenPort;
         udp-port= cfg.discoverPort;
-        jwt-secret = cfg.jwtSecret;
         num-threads = 0; /* 0 == auto */
         log-level = "info";
         log-format = "json";
