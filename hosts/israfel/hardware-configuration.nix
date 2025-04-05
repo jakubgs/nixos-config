@@ -38,7 +38,7 @@
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/erigon" =
+  fileSystems."/var/lib/private/erigon" =
     { device = "rpool/erigon";
       fsType = "zfs";
     };

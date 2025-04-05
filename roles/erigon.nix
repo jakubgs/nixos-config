@@ -28,7 +28,7 @@
         "miner.etherbase" = secret "service/nimbus/fee-recipient";
         "allow-insecure-unlock" = true;
         "maxpeers" = 100;
-        "datadir" = "/mnt/erigon";
+        "datadir" = "/var/lib/private/erigon";
         "log.console.json" = true;
         "log.console.verbosity" = "info";
         # DevP2P
@@ -48,24 +48,13 @@
       };
     };
 
-    # Custom user
-    users.groups.erigon.gid = 500;
-    users.users.erigon = {
-      uid = 500;
-      group = "erigon";
-      isSystemUser = true;
-    };
+    # Wait for torrent volume to be mounted.
     systemd.services.erigon = {
-      # Wait for torrent volume to be mounted.
       after = lib.mkForce [
         "network.target" (
           pkgs.lib.pathToMountUnit config.services.erigon.settings.datadir
         )
       ];
-      serviceConfig = {
-        User = "erigon";
-        DynamicUser = lib.mkForce false;
-      };
     };
 
     /* Firewall */
