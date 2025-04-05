@@ -33,23 +33,23 @@
       fsType = "vfat";
     };
 
-  fileSystems."/var/lib/private/nimbus-beacon-node" =
-    { device = "rpool/nimbus";
-      fsType = "zfs";
-    };
-
-  fileSystems."/var/lib/private/erigon" =
+  fileSystems."${config.erigon.dataDir}" =
     { device = "rpool/erigon";
       fsType = "zfs";
     };
 
-  fileSystems."/var/lib/private/nimbus-beacon-node/secrets" =
+  fileSystems."${config.nimbus.dataDir}" =
+    { device = "rpool/nimbus";
+      fsType = "zfs";
+    };
+
+  fileSystems."${config.nimbus.dataDir}/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/var/lib/private/nimbus-beacon-node/validators" =
+  fileSystems."${config.nimbus.dataDir}/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];

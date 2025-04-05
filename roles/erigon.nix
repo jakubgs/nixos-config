@@ -5,6 +5,7 @@
     devp2pPort   = lib.mkOption { default = 9800; };
     jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
     feeRecipient = lib.mkOption { default = secret "service/nimbus/fee-recipient"; };
+    dataDir      = lib.mkOption { default = "/var/lib/private/erigon"; };
   };
 
   config = let
@@ -25,10 +26,10 @@
       settings = {
         "chain" = "mainnet";
         "prune" = "hrtc";
+        "datadir" = cfg.dataDir;
         "miner.etherbase" = secret "service/nimbus/fee-recipient";
         "allow-insecure-unlock" = true;
         "maxpeers" = 100;
-        "datadir" = "/var/lib/private/erigon";
         "log.console.json" = true;
         "log.console.verbosity" = "info";
         # DevP2P
@@ -51,9 +52,7 @@
     # Wait for torrent volume to be mounted.
     systemd.services.erigon = {
       after = lib.mkForce [
-        "network.target" (
-          pkgs.lib.pathToMountUnit config.services.erigon.settings.datadir
-        )
+        "network.target" (pkgs.lib.pathToMountUnit cfg.dataDir)
       ];
     };
 

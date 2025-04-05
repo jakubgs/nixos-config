@@ -13,6 +13,7 @@ in {
     discoverPort = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
     restPort     = lib.mkOption { default = 5052; }; # REST API
     jwtSecret    = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
+    dataDir      = lib.mkOption { default = "/var/lib/private/nimbus-beacon-node"; };
   };
 
   config = let
@@ -23,16 +24,12 @@ in {
       file = ../secrets/service/nimbus/web3-jwt-secret.age;
     };
 
-    # Firewall
-    networking.firewall.allowedTCPPorts = [ cfg.listenPort ];
-    networking.firewall.allowedUDPPorts = [ cfg.discoverPort ];
-
     # Directory Watcher - Recursively starts torrents
     services.nimbus-beacon-node = {
       enable = true;
       inherit (cfg) jwtSecret;
       settings = {
-        data-dir = "/var/lib/private/nimbus-beacon-node";
+        data-dir = cfg.dataDir;
         network = cfg.network;
         tcp-port = cfg.listenPort;
         udp-port= cfg.discoverPort;
@@ -71,9 +68,11 @@ in {
         IOSchedulingPriority = 0;
       };
       # Wait for volume to be mounted
-      after = lib.mkForce [(
-        pkgs.lib.pathToMountUnit config.services.nimbus-beacon-node.settings.data-dir
-      )];
+      after = lib.mkForce [(pkgs.lib.pathToMountUnit cfg.dataDir)];
     };
+
+    # Firewall
+    networking.firewall.allowedTCPPorts = [ cfg.listenPort ];
+    networking.firewall.allowedUDPPorts = [ cfg.discoverPort ];
   };
 }
