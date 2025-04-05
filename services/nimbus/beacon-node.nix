@@ -38,8 +38,8 @@ in {
             freeformType = toml.type;
             options = {
               data-dir = mkOption {
-                type = types.nullOr types.path;
-                default = null;
+                type = types.path;
+                default = "/var/lib/private/nimbus-beacon-node";
                 description = "Directory for Nimbus Eth2 blockchain data.";
               };
 
@@ -201,8 +201,8 @@ in {
         ExecStart = ''
           ${cfg.package}/bin/nimbus_beacon_node --config-file=${configFile} ${escapeShellArgs cfg.extraArgs}
         '';
-      } // optionalAttrs (cfg.settings.data-dir == null) {
-        StateDirectory = ["nimbus-beacon-node"];
+      } // optionalAttrs (cfg.settings.data-dir == "/var/lib/private/nimbus-beacon-node") {
+        StateDirectory = "nimbus-beacon-node";
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "network.target" ];

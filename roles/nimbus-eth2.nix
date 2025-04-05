@@ -37,7 +37,7 @@ in {
     services.nimbus-beacon-node = {
       enable = true;
       settings = {
-        data-dir = "/mnt/nimbus";
+        data-dir = "/var/lib/private/nimbus-beacon-node";
         network = cfg.network;
         tcp-port = cfg.listenPort;
         udp-port= cfg.discoverPort;
@@ -68,10 +68,6 @@ in {
         payload-builder-url = "http://localhost:${toString services.mev-boost.port}";
       };
     };
-
-    # Lock UID/GID
-    users.users.nimbus.uid = 5000;
-    users.groups.nimbus.gid = 5000;
 
     # Raise priority and add required volumes.
     systemd.services.nimbus-beacon-node = {

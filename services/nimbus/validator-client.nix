@@ -38,8 +38,8 @@ in {
             freeformType = toml.type;
             options = {
               data-dir = mkOption {
-                type = types.nullOr types.path;
-                default = null;
+                type = types.path;
+                default = "/var/lib/private/nimbus-validator-client";
                 description = "Directory for Nimbus Eth2 blockchain data.";
               };
 
@@ -162,14 +162,14 @@ in {
         ProtectSystem = "full";
         NoNewPrivileges = "true";
         PrivateDevices = "true";
+        StateDirectory = "nimbus-validator-client";
+        WorkingDirectory = "%S/nimbus-validator-client";
         MemoryDenyWriteExecute = "true";
 
         Restart = "on-failure";
         ExecStart = ''
           ${cfg.package}/bin/nimbus_validator_client --config-file=${configFile} ${escapeShellArgs cfg.extraArgs}
         '';
-      } // optionalAttrs (cfg.settings.data-dir == null) {
-        StateDirectory = ["nimbus-validator-client"];
       };
       wantedBy = [ "multi-user.target" ];
       requires = [ "network.target" ];
