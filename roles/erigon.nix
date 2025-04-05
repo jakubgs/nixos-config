@@ -23,11 +23,11 @@
       enable = true;
       package = pkgs.callPackage ../pkgs/erigon.nix { };
       secretJwtPath = cfg.jwtSecret;
+      extraArgs = ["miner.etherbase=%d/feeRecipient"];
       settings = {
         "chain" = "mainnet";
         "prune.mode" = "minimal";
         "datadir" = cfg.dataDir;
-        "miner.etherbase" = secret "service/nimbus/fee-recipient";
         "allow-insecure-unlock" = true;
         "maxpeers" = 100;
         "log.console.json" = true;
@@ -54,6 +54,11 @@
       after = lib.mkForce [
         "network.target" (pkgs.lib.pathToMountUnit cfg.dataDir)
       ];
+    };
+
+    # Provide secret via credentials dir
+    systemd.services.erigon.serviceConfig = {
+      LoadCredential = [ "feeRecipient:${cfg.feeRecipient}" ];
     };
 
     /* Firewall */
