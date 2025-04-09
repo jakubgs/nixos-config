@@ -46,7 +46,7 @@ in {
     # Infra dev
     pkgs.unstable.terraform_1
     # NodeJS dev
-    nodejs-18_x (yarn.override { nodejs = nodejs-18_x; })
+    nodejs_20 (yarn.override { nodejs = nodejs_20; })
     # GoLang dev
     pkgs.go_1_22 gopls
     # Python dev
