@@ -35,60 +35,69 @@
           };
         };
       };
+      icybox1 = {
+        type = "disk";
+        device = "/dev/disk/by-id/ata-WDC_WD10JPCX-24UE4T0_WD-WXL1E8419FT9";
+        content = {
+          type = "zfs";
+          pool = "USB-DATA";
+        };
+      };
+      icybox2 = {
+        type = "disk";
+        device = "/dev/disk/by-id/ata-WDC_WD10JPVX-60JC3T0_WD-WX21A566JTDP";
+        content = {
+          type = "zfs";
+          pool = "USB-DATA";
+        };
+      };
     };
-    zpool = {
+    zpool = let
+      mkZfsDataSet = mountpoint: quota: snapshot: options: {
+        type = "zfs_fs";
+        inherit mountpoint;
+        options = {
+          inherit quota;
+          "reservation" = quota;
+          "canmount" = "noauto";
+          "com.sun:auto-snapshot" = toString snapshot;
+        } // options;
+      };
+
+      rootFsOptions = {
+        canmount = "off";
+        mountpoint = "none";
+        compression = "zstd";
+        dnodesize = "auto";
+        normalization = "formD";
+        atime = "off";
+        xattr = "sa";
+      };
+
+      reserve = mkZfsDataSet null "10G" false { canmount = "off"; };
+    in {
       rpool = {
         type = "zpool";
-
-        rootFsOptions = {
-          canmount = "off";
-          mountpoint = "none";
-          compression = "zstd";
-          dnodesize = "auto";
-          normalization = "formD";
-          atime = "off";
-          xattr = "sa";
-        };
+        inherit rootFsOptions;
 
         datasets = {
-          root = {
-            type = "zfs_fs";
-            mountpoint = "/";
-            options = {
-              canmount = "noauto";
-              quota = "10G";
-              reservation = "10G";
-              "com.sun:auto-snapshot" = "true";
-            };
-          };
-          home = {
-            type = "zfs_fs";
-            mountpoint = "/home";
-            options = {
-              canmount = "noauto";
-              quota = "10G";
-              reservation = "10G";
-              "com.sun:auto-snapshot" = "true";
-            };
-          };
-          nix = {
-            type = "zfs_fs";
-            mountpoint = "/nix";
-            options = {
-              canmount = "noauto";
-              quota = "40G";
-              reservation = "40G";
-            };
-          };
-          reserve = {
-            type = "zfs_fs";
-            options = {
-              canmount = "off";
-              mountpoint = "none";
-              quota = "10G";
-              reservation = "10G";
-            };
-          };
+          root = mkZfsDataSet "/"     "10G" true  {};
+          home = mkZfsDataSet "/home" "10G" true  {};
+          nix  = mkZfsDataSet "/nix"  "40G" false {};
+          inherit reserve;
+        };
+      };
+      USB-DATA = {
+        type = "zpool";
+        inherit rootFsOptions;
+
+        datasets = {
+          data   = mkZfsDataSet "/mnt/data"   "200G" true {};
+          git    = mkZfsDataSet "/mnt/git"    "10G"  true {};
+          mobile = mkZfsDataSet "/mnt/mobile" "30G"  true {};
+          music  = mkZfsDataSet "/mnt/music"  "150G" true {};
+          photos = mkZfsDataSet "/mnt/photos" "100G" true {};
+          inherit reserve;
         };
       };
     };
