@@ -55,6 +55,14 @@ in {
           };
           folder = { type= "receiveonly"; };
         };
+        iruel = { # rock5b
+          device = {
+            id = "62JV5VO-ZONAL5V-QRY2WWY-J2TNBCB-SMPSCRR-WRUSRS6-5ZI4GLC-N2UG4QF";
+            addresses = [ "tcp://iruel.magi.vpn:22000" ];
+            autoAcceptFolders = true;
+          };
+          folder = { type= "sendreceive"; };
+        };
         bardiel = { # hetzner
           device = {
             id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
