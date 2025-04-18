@@ -61,7 +61,7 @@ in {
             addresses = [ "tcp://iruel.magi.vpn:22000" ];
             autoAcceptFolders = true;
           };
-          folder = { type= "sendreceive"; };
+          folder = { type= "receiveonly"; };
         };
         bardiel = { # hetzner
           device = {
