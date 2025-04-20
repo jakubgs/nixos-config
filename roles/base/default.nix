@@ -72,4 +72,8 @@
 
   # Uptime tracker
   services.uptimed.enable = true;
+
+  # NTP Server
+  services.chrony.enable = true;
+  services.chrony.initstepslew.enabled = true;
 }
