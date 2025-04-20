@@ -54,6 +54,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Firewall
+    networking.firewall.interfaces."zt*".allowedTCPPorts = [ 80 443 ];
+
     services.nginx = {
       enable = true;
       enableReload = true;
