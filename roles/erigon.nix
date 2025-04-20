@@ -23,7 +23,7 @@
       enable = true;
       package = pkgs.callPackage ../pkgs/erigon.nix { };
       secretJwtPath = cfg.jwtSecret;
-      extraArgs = ["miner.etherbase=%d/feeRecipient"];
+      extraArgs = ["--miner.etherbase=%d/feeRecipient"];
       settings = {
         "chain" = "mainnet";
         "prune.mode" = "minimal";
