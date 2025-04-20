@@ -2,7 +2,7 @@
 
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.erigon.override {
-  buildGoModule = args: pkgs.buildGo122Module ( args // rec {
+  buildGoModule = args: pkgs.buildGo123Module ( args // rec {
     version = "3.0.2";
 
     src = pkgs.fetchFromGitHub {
