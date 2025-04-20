@@ -1,13 +1,14 @@
 { config, lib, pkgs, secret, ... }:
 
 {
-  options.nimbus = {
+  options.geth = {
     devp2pPort = lib.mkOption { default = 9800; };
     jwtsecret  = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
+    dataDir    = lib.mkOption { default = "/var/lib/private/goethereum"; };
   };
 
   config = let
-    cfg = config.nimbus;
+    cfg = config.geth;
   in {
     # Secrets
     age.secrets."service/nimbus/web3-jwt-secret" = {

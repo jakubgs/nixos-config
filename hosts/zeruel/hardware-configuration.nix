@@ -38,24 +38,24 @@
       fsType = "ext4";
     };
 
-  fileSystems."/var/lib/private/goethereum" =
+  fileSystems."${config.geth.dataDir}" =
     { device = "DATA/geth";
       fsType = "zfs";
       options = [ "nofail" ];
      };
 
-  fileSystems."/mnt/nimbus" =
+  fileSystems."${config.nimbus.bnDataDir}" =
     { device = "rpool/nimbus";
       fsType = "zfs";
     };
 
-  fileSystems."/mnt/nimbus/secrets" =
+  fileSystems."${config.nimbus.vcDataDir}/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."/mnt/nimbus/validators" =
+  fileSystems."${config.nimbus.vcDataDir}/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
