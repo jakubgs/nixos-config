@@ -86,7 +86,7 @@ in {
               };
 
               payload-builder = mkOption {
-                type = types.nullOr types.str;
+                type = types.nullOr types.bool;
                 default = null;
                 description = "Enable usage of beacon node with external payload builder (BETA) [=false].";
               };
