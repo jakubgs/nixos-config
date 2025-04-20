@@ -38,18 +38,18 @@
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbus.dataDir}" =
+  fileSystems."${config.nimbus.bnDataDir}" =
     { device = "rpool/nimbus";
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbus.dataDir}/secrets" =
+  fileSystems."${config.nimbus.bnDataDir}/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."${config.nimbus.dataDir}/validators" =
+  fileSystems."${config.nimbus.bnDataDir}/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
