@@ -83,6 +83,8 @@ in {
         metrics = true;
         metrics-address = "0.0.0.0";
         metrics-port = 9101;
+        /* Costs two slot rewards at restart if enabled. */
+        doppelganger-detection = false;
       };
     };
 
