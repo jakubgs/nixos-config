@@ -16,7 +16,6 @@
     ../../roles/gossa.nix
     ../../roles/builder.nix
     ../../roles/invidious.nix
-    ../../roles/public_ftp.nix
     ../../roles/qemu.nix
   ];
 
