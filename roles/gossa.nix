@@ -20,10 +20,6 @@
       inherit (cfg) dataDir port;
     };
 
-    # Firewall
-    networking.firewall.interfaces."eno*".allowedTCPPorts = [ 80 ];
-    networking.firewall.allowedTCPPorts = [ 80 ];
-
     # UI available locally without VPN.
     services.nginx.virtualHosts = {
       "${config.networking.hostName}" = {
