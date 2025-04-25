@@ -8,13 +8,13 @@ let
   hosts = {
     "eve.magi.vpn"     = { openwrt = 9100; };
     "arael.magi.vpn"   = default // { mikrotik = 9436; };
-    "bardiel.magi.vpn" = default // { nimbus = 9100; geth = 16060; };
+    "bardiel.magi.vpn" = default;
     "caspair.magi.vpn" = default;
     "lilim.magi.vpn"   = default;
     "leliel.magi.vpn"  = default;
     "sachiel.magi.vpn" = default;
-    "zeruel.magi.vpn"  = default // { nimbus = 9100; geth = 16060; };
-    "israfel.magi.vpn" = default // { nimbus = 9100; erigon = 16060; };
+    "zeruel.magi.vpn"  = default // { beacon-node = 9100; validator-client = 9101; geth = 16060; };
+    "israfel.magi.vpn" = default // { beacon-node = 9100; validator-client = 9101; erigon = 16060; };
     "iruel.magi.vpn"   = default;
   };
 
@@ -59,14 +59,15 @@ in {
     };
 
     scrapeConfigs = [
-      (genScrapeJob {name = "netdata";  path = "/api/v1/allmetrics";})
-      (genScrapeJob {name = "smartctl"; path = "/metrics";})
-      (genScrapeJob {name = "nimbus";   path = "/metrics"; interval = "6s"; })
-      (genScrapeJob {name = "geth";     path = "/debug/metrics/prometheus"; })
-      (genScrapeJob {name = "erigon";   path = "/debug/metrics/prometheus"; })
-      (genScrapeJob {name = "mikrotik"; path = "/metrics";})
-      (genScrapeJob {name = "openwrt";  path = "/metrics";})
-      (genScrapeJob {name = "mtr";      path = "/metrics";})
+      (genScrapeJob {name = "netdata";          path = "/api/v1/allmetrics";})
+      (genScrapeJob {name = "smartctl";         path = "/metrics";})
+      (genScrapeJob {name = "beacon-node";      path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "validator-client"; path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "geth";             path = "/debug/metrics/prometheus"; })
+      (genScrapeJob {name = "erigon";           path = "/debug/metrics/prometheus"; })
+      (genScrapeJob {name = "mikrotik";         path = "/metrics";})
+      (genScrapeJob {name = "openwrt";          path = "/metrics";})
+      (genScrapeJob {name = "mtr";              path = "/metrics";})
     ];
 
     ruleFiles = [
