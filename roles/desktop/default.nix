@@ -34,7 +34,7 @@
     # System
     gparted
     # Audio
-    pavucontrol pasystray
+    pavucontrol pamix pasystray
     # Screen
     arandr
     # Security
