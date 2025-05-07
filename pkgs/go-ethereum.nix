@@ -3,18 +3,16 @@
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.go-ethereum.override {
   buildGoModule = args: pkgs.buildGo123Module ( args // rec {
-    version = "1.15.10";
+    version = "1.15.11";
 
     src = pkgs.fetchFromGitHub {
       owner = "ethereum";
       repo = args.pname;
       rev = "v${version}";
-      sha256 = "sha256-QVgi4IDPDGlvg8J3Wwrjtzkd6eYi3aAwU8IJbnIr5fU=";
+      sha256 = "sha256-2XGKkimwe9h8RxO3SzUta5Bh2Ooldl2LiHqUpn8FK7I=";
     };
 
-    vendorHash = "sha256-1FuVdx84jvMBo8VO6q+WaFpK3hWn88J7p8vhIDsQHPM=";
-    /* Fix for: fatal error: os/events_posix.h: No such file */
-    proxyVendor = true;
+    vendorHash = "sha256-R9Qg6estiyjMAwN6tvuN9ZuE7+JqjEy+qYOPAg5lIJY=";
 
     subPackages = [
       "cmd/ethkey"
