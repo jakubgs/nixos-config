@@ -57,7 +57,7 @@ in {
         };
         iruel = { # rock5b
           device = {
-            id = "62JV5VO-ZONAL5V-QRY2WWY-J2TNBCB-SMPSCRR-WRUSRS6-5ZI4GLC-N2UG4QF";
+            id = "2ZTE4DE-S7FRAY3-A4HFT3Y-DMJVYRZ-6HVRN3N-3OREQA6-YX3UVTT-ZGONAQU";
             addresses = [ "tcp://iruel.magi.vpn:22000" ];
             autoAcceptFolders = true;
           };
