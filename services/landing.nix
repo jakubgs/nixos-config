@@ -14,7 +14,9 @@ in {
   options = {
     services = {
       landing = {
-        enable = mkEnableOption "Enabel a fast and simple webserver for your files.";
+        enable = mkEnableOption "Enable a fast and simple webserver for your files.";
+
+        debug = mkEnableOption "Enable Nginx debug logs in /ver/log/nginx/error.log.";
 
         sslCertificate = mkOption {
           type = types.path;
@@ -60,6 +62,7 @@ in {
     services.nginx = {
       enable = true;
       enableReload = true;
+      logError = if cfg.debug then "/var/log/nginx/error.log debug" else "stderr";
 
       virtualHosts = {
         "${config.networking.fqdn}" = {
