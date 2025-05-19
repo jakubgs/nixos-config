@@ -31,6 +31,7 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/0548-47D2";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/var/lib/docker" =
