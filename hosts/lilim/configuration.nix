@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
     ../../roles/base
     ../../roles/desktop
-    ../../roles/laptop.nix
+    ../../roles/laptop
     ../../roles/qemu.nix
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix
