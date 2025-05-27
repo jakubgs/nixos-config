@@ -7,6 +7,7 @@
     "extra-experimental-features" = "flakes nix-command";
     "commit-lockfile-summary" = true;
     "debugger-on-trace" = true;
+    "warn-dirty" = false;
   };
 
   # Lower priority of builds to not Disturb other processes.
@@ -18,4 +19,10 @@
     automatic = true;
     options = "--delete-older-than 15";
   };
+
+  # Nix output formatter
+  environment.systemPackages = with pkgs; [
+    nix-output-monitor
+  ];
+
 }
