@@ -2,6 +2,7 @@
 
 {
   options.ollama = {
+    domain    = lib.mkOption { default = "${config.networking.hostName}.magi.vpn"; };
     apiPort   = lib.mkOption { default = 11434; };
     webuiPort = lib.mkOption { default = 3000;  };
   };
@@ -35,6 +36,16 @@
         WEBUI_HOSTNAME = config.networking.fqdn;
         WEBUI_AUTH = "False";
       };
+    };
+
+    services.landing = {
+      proxyServices = [{
+        name = "/open-webui/";
+        title = "Open WebUI";
+        value = {
+          return = "302 http://${cfg.domain}:${toString cfg.webuiPort}/";
+        };
+      }];
     };
 
     networking.firewall.interfaces."zt*".allowedTCPPorts = [ cfg.webuiPort ];
