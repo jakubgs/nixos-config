@@ -46,16 +46,16 @@
 
   system.userActivationScripts = {
     jakubgsDotfiles = let
-      dotfilesSh = pkgs.substituteAll {
+      dotfilesSh = pkgs.replaceVarsWith {
         src = ../../files/dotfiles.sh;
         isExecutable = true;
-        sshKey = secret "service/nixos-activation/key";
-        dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";
-        dotfilesBranch = "master";
-        shell = "${pkgs.bash}/bin/bash";
-        path = lib.makeBinPath (with pkgs; [
-          bash util-linux ncurses openssh git coreutils findutils gnused
-        ]);
+        replacements = {
+          sshKey = secret "service/nixos-activation/key";
+          dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";
+          dotfilesBranch = "master";
+          shell = "${pkgs.bash}/bin/bash";
+          inherit (pkgs) git;
+        };
       };
     in "${dotfilesSh}";
   };

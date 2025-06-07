@@ -33,7 +33,7 @@
       extraConfig = ''
         mixer_type "software"
         audio_buffer_size "8192"
-      ${lib.optionalString config.hardware.pulseaudio.enable ''
+      ${lib.optionalString config.services.pulseaudio.enable ''
         audio_output {
           type "pulse"
           name "Pulseaudio"
@@ -53,7 +53,7 @@
 
     # Pipewire causes crackling
     services.pipewire.enable = false;
-    hardware.pulseaudio.enable = true;
+    services.pulseaudio.enable = true;
 
     # Firewall
     networking.firewall.allowedTCPPorts = [
@@ -62,7 +62,7 @@
     ];
 
     # Necessary to use PulseAudio
-    hardware.pulseaudio.extraConfig = ''
+    services.pulseaudio.extraConfig = ''
       load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
     '';
 

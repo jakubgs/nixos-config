@@ -8,7 +8,7 @@
   hardware.firmware = [ pkgs.broadcom-bt-firmware ];
 
   # Bluetooth audio
-  hardware.pulseaudio = {
+  services.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
   };

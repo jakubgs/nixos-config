@@ -1,4 +1,6 @@
 #!@shell@
+set -e
+export PATH="@binPath@:${PATH}"
 
 WATCH_DIR="${1}"
 DOWNLOAD_DIR="${2}"
@@ -8,7 +10,7 @@ if [[ -z "${WATCH_DIR}" ]]; then
   exit 1
 fi
 
-@inotifytools@/bin/inotifywait \
+inotifywait \
   --monitor \
   --recursive \
   --format='%e|%w|%f' \
@@ -32,10 +34,10 @@ fi
 
       if [[ $? -eq 0 ]]; then
         echo "Removing torrent file: '${FULLPATH}'"
-        @coreutils@/bin/rm -vf "${FULLPATH}"
+        rm -vf "${FULLPATH}"
       else
         echo "Failed to add torrent: '${FULLPATH}'"
-        @coreutils@/bin/mv "${FULLPATH}" "${FULLPATH}.failed"
+        mv "${FULLPATH}" "${FULLPATH}.failed"
       fi
     done
   }

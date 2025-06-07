@@ -1,7 +1,7 @@
 #!@shell@
 set -e
 
-export PATH="@path@"
+export PATH="@git@/bin:${PATH}"
 export DOTFILES_PATH="${HOME}/dotfiles"
 export DOTFILES_URL='@dotfilesUrl@'
 export DOTFILES_URL_HTTPS="${DOTFILES_URL/git@github.com:/https://github.com/}"

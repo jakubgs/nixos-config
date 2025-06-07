@@ -11,7 +11,6 @@ in {
           device = {
             id = "RNHJNYU-IVWMAZT-OL667WV-Y7NOURO-WVT6IHS-MWEBAS6-SDZVQ5C-3MXHYQ5";
             addresses = [ "tcp://caspair.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type = "sendreceive"; };
         };
@@ -19,7 +18,6 @@ in {
           device = {
             id = "42V5WFK-OBSCQW2-73PWWT6-QMGQXKR-TPTITJL-74FVKZV-MRAUJUW-YSPF5QP";
             addresses = [ "tcp://melchior.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -27,7 +25,6 @@ in {
           device = {
             id = "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC";
             addresses = [ "tcp://lilim.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "sendreceive"; };
         };
@@ -35,7 +32,6 @@ in {
           device = {
             id = "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ";
             addresses = [ "tcp://leliel.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -43,7 +39,6 @@ in {
           device = {
             id = "4R5Z36S-6S5HBSC-2BAEZEH-HCNLXJH-GRDYZ6P-X66AFAK-RDUCRKA-PNX5YQU";
             addresses = [ "tcp://sachiel.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -51,7 +46,6 @@ in {
           device = {
             id = "HOBTQ6M-WYSYZM3-SVXACFZ-VOLJRR3-XCIWSZB-FLPYML4-F4BE35Q-3NIF4AB";
             addresses = [ "tcp://arael.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -59,7 +53,6 @@ in {
           device = {
             id = "2ZTE4DE-S7FRAY3-A4HFT3Y-DMJVYRZ-6HVRN3N-3OREQA6-YX3UVTT-ZGONAQU";
             addresses = [ "tcp://iruel.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -67,7 +60,6 @@ in {
           device = {
             id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
             addresses = [ "tcp://bardiel.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "receiveonly"; };
         };
@@ -75,7 +67,6 @@ in {
           device = {
             id = "2UQXCXB-LZHCGVM-PFOL3NW-GRU57X7-R4IHVR7-SS2WDSP-TX5DFSG-YCNG7QJ";
             addresses = [ "tcp://ramiel.magi.vpn:22000" ];
-            autoAcceptFolders = true;
           };
           folder = { type= "sendreceive"; };
         };

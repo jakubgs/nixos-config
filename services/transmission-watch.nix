@@ -11,20 +11,28 @@ let
   rpcPort = config.services.transmission.settings.rpc-port;
 
   # script for watching for new *.torrent files
-  addTorrentScript = pkgs.substituteAll {
+  addTorrentScript = pkgs.replaceVarsWith {
     src = ./transmission-add.sh;
     isExecutable = true;
-    inotifytools = pkgs.inotify-tools;
-    inherit (cfg) rpcAddr rpcCreds;
-    inherit (pkgs) transmission coreutils jq;
+    replacements = {
+      inherit (cfg) rpcAddr rpcCreds;
+      shell = "${pkgs.bash}/bin/bash";
+      binPath = pkgs.lib.makeBinPath (with pkgs; [
+        transmission coreutils inotify-tools jq
+      ]);
+    };
   };
 
-  watchScript = pkgs.substituteAll {
+  watchScript = pkgs.replaceVarsWith {
     src = ./transmission-watch.sh;
     isExecutable = true;
-    inotifytools = pkgs.inotify-tools;
-    inherit addTorrentScript;
-    inherit (pkgs) coreutils;
+    replacements = {
+      inherit addTorrentScript;
+      shell = "${pkgs.bash}/bin/bash";
+      binPath = pkgs.lib.makeBinPath (with pkgs; [
+        inotify-tools coreutils
+      ]);
+    };
   };
 in {
   options = {

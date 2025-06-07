@@ -69,7 +69,7 @@
 
   # Pipewire causes crackling
   services.pipewire.enable = false;
-  hardware.pulseaudio.enable = true;
+  services.pulseaudio.enable = true;
 
   # Automatically detect screen layout changes.
   services.autorandr.enable = true;

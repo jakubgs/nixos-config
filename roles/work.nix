@@ -4,7 +4,7 @@
 
 let
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = _: with (pkgs.python310Packages); [
+  myPythonPkgs = _: with (pkgs.python311Packages); [
     ipython pip
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
@@ -22,7 +22,7 @@ let
     # Misc
     sh backoff psutil
   ];
-  myPython = pkgs.python310.withPackages myPythonPkgs;
+  myPython = pkgs.python311.withPackages myPythonPkgs;
 in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
@@ -50,7 +50,7 @@ in {
     # NodeJS dev
     nodejs_20 (yarn.override { nodejs = nodejs_20; })
     # GoLang dev
-    pkgs.go_1_22 gopls
+    pkgs.go_1_23 gopls
     # Python dev
     myPython
     # Mobile dev
