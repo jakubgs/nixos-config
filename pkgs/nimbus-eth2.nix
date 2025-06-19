@@ -4,24 +4,24 @@
   makeTargets ? [ "nimbus_beacon_node" "nimbus_validator_client" ],
   # WARNING: CPU optmizations that make binary not portable.
   nativeBuild ? true,
-  stableNim ? pkgs.nim-2_0
+  stableNim ? pkgs.nim-2_2
 }:
 
-assert pkgs.lib.assertMsg (stableNim.version == "2.0.12")
-  "Unable to build with Nim ${stableNim.version}, only 2.0.12 allowed.";
+assert pkgs.lib.assertMsg (stableNim.version == "2.2.4")
+  "Unable to build with Nim ${stableNim.version}, only 2.2.4 allowed.";
 
 let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "25.4.1";
+  version = "25.6.0";
   commit = "c00f35a9";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-iMfi6S+ABB/rX+NgtBTO1n8KBre7spKGf12t4dlK9gY=";
+    sha256 = "sha256-12aqzZndrYf3WQ3W9vW2M4pNQpW4+X6C2s1+dN1UvjM=";
     fetchSubmodules = true;
   };
 
