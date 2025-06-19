@@ -3,17 +3,17 @@
 # Can't use overrideAttrs due to how buildGoModule overwrites arguments.
 pkgs.erigon.override {
   buildGoModule = args: pkgs.buildGo123Module ( args // rec {
-    version = "3.0.3";
+    version = "3.0.7";
 
     src = pkgs.fetchFromGitHub {
       owner = "ledgerwatch";
       repo = args.pname;
       rev = "v${version}";
-      hash = "sha256-gSgkdg7677OBOkAbsEjxX1QttuIbfve2A3luUZoZ5Ik=";
+      hash = "sha256-zx7bQQ+HUq+/ejNkfautRBwiMjApDDtT6jfhXGQ9MAU=";
       fetchSubmodules = true;
     };
 
-    vendorHash = "sha256-8eyC3JkRcRlFw8CyTK5w1XySur2jAeFGXkEaY/3Oq0k=";
+    vendorHash = "sha256-ocnq97cMsiMgDTZhwZ/fiGzaHiSAiJckPwWZu2q3f58=";
 
     subPackages = [
       "cmd/erigon"
