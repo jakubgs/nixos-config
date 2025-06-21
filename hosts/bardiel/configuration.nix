@@ -14,6 +14,7 @@
     ../../roles/gitweb.nix
     ../../roles/nfs.nix
     ../../roles/gossa.nix
+    ../../roles/karakeep.nix
     ../../roles/builder.nix
     ../../roles/invidious.nix
     ../../roles/qemu.nix
