@@ -60,7 +60,7 @@
           inherit quota;
           "reservation" = quota;
           "canmount" = "noauto";
-          "com.sun:auto-snapshot" = toString snapshot;
+          "com.sun:auto-snapshot" = if snapshot then "true" else "false";
         } // options;
       };
 
