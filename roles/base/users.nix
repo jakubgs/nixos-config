@@ -10,8 +10,11 @@
     owner = "jakubgs";
   };
 
-  # Give extra permissions with Nix
+  # Give extra permissions with Nix.
   nix.settings.trusted-users = [ "jakubgs" ];
+
+  # Do not allow password changes.
+  users.mutableUsers = false;
 
   users.groups.jakubgs = {
     gid = 1000;
