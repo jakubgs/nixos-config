@@ -21,13 +21,7 @@
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Network
-  networking = {
-    hostId = "27aa0635";
-    useDHCP = false;
-    interfaces = {
-      eno1 = { useDHCP = true; };
-    };
-  };
+  networking.hostId = "27aa0635";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
