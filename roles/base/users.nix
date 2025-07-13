@@ -57,7 +57,7 @@
           dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";
           dotfilesBranch = "master";
           shell = "${pkgs.bash}/bin/bash";
-          inherit (pkgs) git;
+          inherit (pkgs) bash git openssh;
         };
       };
     in "${dotfilesSh}";
