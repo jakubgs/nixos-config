@@ -55,6 +55,6 @@ in {
   networking = {
     enableIPv6 = false;
     domain = "magi.vpn";
-    search = [ "magi.vpn" ];
+    search = [ "magi.vpn" "magi.blue" ];
   };
 }
