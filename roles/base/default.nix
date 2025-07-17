@@ -18,7 +18,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash man-pages sudo bc pv rename
+    file zsh bash man-pages sudo sd bc pv rename
     lsb-release moreutils unzip zip unrar envsubst
     # processes
     dtach pstree killall sysstat
