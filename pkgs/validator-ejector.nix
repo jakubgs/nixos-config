@@ -2,7 +2,7 @@
 
 pkgs.yarn2nix-moretea.mkYarnPackage rec {
   pname = "validator-ejector";
-  version = "1.6.0";
+  version = "1.8.0";
 
   nodejs = pkgs.nodejs_22;
 
@@ -10,7 +10,7 @@ pkgs.yarn2nix-moretea.mkYarnPackage rec {
     owner = "lidofinance";
     repo = pname;
     rev = version;
-    hash = "sha256-TMI+sv0/77RhqmqJ7bpqoWaeaGnbPv3cNMrK2Ortsl0=";
+    hash = "sha256-FJzDN7xyc/rJcpnx1X+tumAaN3kW/tVH6SlCX5gFW4U=";
   };
 
   nativeBuildInputs = [ pkgs.makeWrapper ];
