@@ -66,10 +66,12 @@
         inherit rootFsOptions;
 
         datasets = {
-          root    = mkZfsDataSet "/"     "10G" true  {};
-          home    = mkZfsDataSet "/home" "10G" true  {};
-          nix     = mkZfsDataSet "/nix"  "40G" false {};
-          reserve = mkZfsDataSet null    "10G" false { canmount = "off"; };
+          root    = mkZfsDataSet "/"           "10G" true  {};
+          home    = mkZfsDataSet "/home"       "10G" true  {};
+          nix     = mkZfsDataSet "/nix"        "40G" false {};
+          git     = mkZfsDataSet "/mnt/git"    "10G"  true {};
+          photos  = mkZfsDataSet "/mnt/photos" "100G" true {};
+          reserve = mkZfsDataSet null          "10G" false { canmount = "off"; };
         };
       };
     };
