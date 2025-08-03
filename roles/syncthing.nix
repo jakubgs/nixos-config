@@ -3,9 +3,16 @@
 
 let
   cfg = config.syncthing;
+
+  inherit (lib) filter elem attrNames listToAttrs;
 in {
   options.syncthing = {
+    folders = lib.mkOption {
+      description = "Default folders to sync if mounted.";
+      default = ["git" "data" "music" "photos" "mobile"];
+    };
     hosts = lib.mkOption {
+      description = "List of hosts with Syncthing and their IDs.";
       default = {
         caspair = { # desktop
           device = {
@@ -78,7 +85,6 @@ in {
     hostname = config.networking.hostName;
     notThisHost = h: _: h != hostname;
     otherHosts = lib.filterAttrs notThisHost cfg.hosts;
-    otherHostnames = lib.attrNames otherHosts;
     inherit (config) services;
   in {
     # Firewall
@@ -103,14 +109,15 @@ in {
         devices = lib.mapAttrs (k: v: v.device) otherHosts;
 
         folders = let
+          otherHostnames = lib.attrNames otherHosts;
           folderOpts = cfg.hosts."${hostname}".folder;
-        in {
-          "/mnt/git"    = { id = "git";    devices = otherHostnames; } // folderOpts;
-          "/mnt/data"   = { id = "data";   devices = otherHostnames; } // folderOpts;
-          "/mnt/music"  = { id = "music";  devices = otherHostnames; } // folderOpts;
-          "/mnt/photos" = { id = "photos"; devices = otherHostnames; } // folderOpts;
-          "/mnt/mobile" = { id = "mobile"; devices = otherHostnames; } // folderOpts;
-        };
+          # Generated from locally mounted folders.
+          mountedFolders = filter (n: elem (baseNameOf n) cfg.folders) (attrNames config.fileSystems);
+          folderToConfig = (name: {
+            inherit name;
+            value = { id = baseNameOf name; devices = otherHostnames; } // folderOpts;
+          });
+        in listToAttrs (map folderToConfig mountedFolders);
       };
     };
 
