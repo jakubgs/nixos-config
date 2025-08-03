@@ -7,6 +7,7 @@
     ./disko-config.nix
     ../../roles/base
     ../../roles/desktop
+    ../../roles/syncthing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

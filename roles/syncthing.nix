@@ -28,6 +28,13 @@ in {
           };
           folder = { type= "receiveonly"; };
         };
+        balthasar = { # laptop
+          device = {
+            id = "HN6DXKS-ILEBPDZ-AZU5QJQ-OVLJSML-XFIIIRL-SCTRDEI-W2LFQMN-UXAOQA4";
+            addresses = [ "tcp://balthasar.magi.vpn:22000" ];
+          };
+          folder = { type= "receiveonly"; };
+        };
         lilim = { # laptop
           device = {
             id = "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC";
