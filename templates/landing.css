@@ -29,18 +29,26 @@ a {
 
 .services {
     display: grid;
-    grid-template-columns: repeat(4, minmax(20em, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7em;
+    margin-bottom: 0.7em;
 }
+@media (max-width: 90em) { .services {
+    grid-template-columns: repeat(2, 1fr);
+} }
+@media (max-width: 40em) { .services {
+    grid-template-columns: 1fr;
+} }
 
 .service {
     font-size: 3em;
     line-height: 160px;
     display: block;
     border-radius: 0.3ex;
-    margin: 0.1em;
     padding: 0.5em;
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
+    box-sizing: border-box;
 }
 
 .service:hover {
@@ -50,8 +58,12 @@ a {
 
 .graphs {
     display: grid;
-    grid-template-columns: repeat(2, minmax(20em, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7em;
 }
+@media (max-width: 40em) { .graphs {
+    grid-template-columns: 1fr;
+} }
 
 .graph {
     padding: 0;

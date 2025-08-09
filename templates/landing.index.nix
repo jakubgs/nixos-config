@@ -26,17 +26,17 @@ in ''
         <header class="row center-text">
             <h1 class="hostname">⛁ ${hostname}</h1>
         </header>
+        <div class="services">
+${lib.concatStringsSep "\n" (builtins.map (service: ''
+            <a class="service" href="${service.name}">${service.title}</a>
+'') sortedServices)}
+        </div>
         <div class="graphs">
 ${lib.concatStringsSep "\n" (builtins.map (graph: ''
           <div class="service graph">
             <iframe class="graph" src="${graph}" width="100%" height="100%" frameborder="0"></iframe>
           </div>
 '') graphs)}
-        </div>
-        <div class="services">
-${lib.concatStringsSep "\n" (builtins.map (service: ''
-            <a class="service" href="${service.name}">${service.title}</a>
-'') sortedServices)}
         </div>
     </body>
 </html>
