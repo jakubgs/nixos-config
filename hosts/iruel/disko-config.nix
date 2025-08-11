@@ -92,7 +92,7 @@
         inherit rootFsOptions;
 
         datasets = {
-          data   = mkZfsDataSet "/mnt/data"   "200G" true {};
+          data   = mkZfsDataSet "/mnt/data"   "50G"  true {};
           git    = mkZfsDataSet "/mnt/git"    "10G"  true {};
           mobile = mkZfsDataSet "/mnt/mobile" "30G"  true {};
           music  = mkZfsDataSet "/mnt/music"  "150G" true {};
