@@ -8,7 +8,7 @@ let
     "arael" =   [ "git" "data" "music" "photos" "torrent" ];
   };
 
-  defaultNfsOptions = "async,noac,soft,rsize=262144,wsize=262144";
+  defaultNfsOptions = "async,noac,soft,timeo=50,retrans=2,rsize=262144,wsize=262144";
   genNfsShare = host: paths:
     lib.concatStringsSep "\n" (
       map (p: "${p} -fstype=nfs,${defaultNfsOptions} ${host}.magi.vpn:/mnt/${p}") paths
