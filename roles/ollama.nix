@@ -22,8 +22,7 @@
       acceleration = "cuda";
       loadModels = [
         "llama2-uncensored:7b"
-        "codellama:7b"
-        "llava:13b"
+        "dolphin-llama3:8b"
       ];
     };
 
