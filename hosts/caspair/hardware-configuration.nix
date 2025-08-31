@@ -28,6 +28,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/private/ollama" =
+    { device = "rpool/ollama";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/0548-47D2";
       fsType = "vfat";
