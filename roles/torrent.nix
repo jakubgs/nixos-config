@@ -4,6 +4,7 @@
   options.torrent = {
     credsFile  = lib.mkOption { default = secret "service/transmission/creds"; };
     listenPort = lib.mkOption { default = 9091; };
+    peerPort   = lib.mkOption { default = 51413; };
     torrentDir = lib.mkOption { default = "/mnt/torrent"; };
     username   = lib.mkOption { default = "jakubgs"; };
   };
@@ -21,7 +22,8 @@
     };
 
     # Firewall
-    networking.firewall.allowedTCPPorts = [ cfg.listenPort ];
+    networking.firewall.allowedTCPPorts = [ cfg.peerPort cfg.listenPort ];
+    networking.firewall.allowedUDPPorts = [ cfg.peerPort ];
 
     # Daemon
     services.transmission = {
@@ -46,6 +48,8 @@
         download-dir = cfg.torrentDir;
         incomplete-dir-enabled = false;
         rename-partial-files = true;
+        # Network
+        peer-port = cfg.peerPort;
         # RPC
         rpc-port = cfg.listenPort;
         rpc-bind-address = "0.0.0.0";
