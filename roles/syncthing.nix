@@ -33,7 +33,7 @@ in {
             id = "HN6DXKS-ILEBPDZ-AZU5QJQ-OVLJSML-XFIIIRL-SCTRDEI-W2LFQMN-UXAOQA4";
             addresses = [ "tcp://balthasar.magi.vpn:22000" ];
           };
-          folder = { type= "receiveonly"; };
+          folder = { type= "sendreceive"; };
         };
         lilim = { # laptop
           device = {
