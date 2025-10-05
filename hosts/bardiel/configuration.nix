@@ -16,6 +16,7 @@
     ../../roles/gossa.nix
     ../../roles/karakeep.nix
     ../../roles/builder.nix
+    ../../roles/cache.nix
     ../../roles/invidious.nix
     ../../roles/qemu.nix
   ];
