@@ -13,8 +13,8 @@ in {
   services.tailscale = {
     enable = true;
     openFirewall = true;
-    extraUpFlags = [ "--accept-routes=false" "--ssh=false" ];
-    extraSetFlags = [ "--accept-routes=false" "--ssh=false" ];
+    extraUpFlags = [ "--accept-routes=false" "--accept-dns=false" "--ssh=false" ];
+    extraSetFlags = [ "--accept-routes=false" "--accept-dns=false" "--ssh=false" ];
     # WARNING: These keys expire after 90 days.
     authKeyFile = secret "service/tailscale/${hostname}";
   };

@@ -54,7 +54,7 @@ in {
       no-negcache = true;
       cache-size = 10000;
       local-ttl = 300;
-      local = "/magi.lan/tailc1638.ts.net/";
+      local = "/magi.lan/";
       conf-dir = "/etc/dnsmasq.d/,*.conf";
       addn-hosts = "${blockedHosts}/hosts";
     } // optionalAttrs stubbyEnabled {
