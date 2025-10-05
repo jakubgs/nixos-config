@@ -8,6 +8,13 @@
     "commit-lockfile-summary" = true;
     "debugger-on-trace" = true;
     "warn-dirty" = false;
+    "substituters" = [
+      "https://cache.nixos.org/"
+      "http://bardiel.magi.vpn:5000/"
+    ];
+    "trusted-public-keys" = [
+      "nix.magi.vpn:Q00cvekd+F+fSujdWFHEWwbkCAozwdaOve6pK/P3aFA="
+    ];
   };
 
   # Lower priority of builds to not Disturb other processes.
