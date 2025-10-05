@@ -31,6 +31,14 @@
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
+  # Avoid memory-starving processes
+  boot.extraModprobeConfig = ''
+    options zfs \
+      zfs_arc_max=3221225472 \
+      zfs_arc_min=1073741824 \
+      zfs_prefetch_disable=1
+  '';
+
   networking = {
     hostId = "892cff1c";
     useDHCP = true;
