@@ -74,6 +74,11 @@
   services.uptimed.enable = true;
 
   # NTP Server
-  services.chrony.enable = true;
-  services.chrony.initstepslew.enabled = true;
+  services.chrony = {
+    enable = true;
+    initstepslew.enabled = true;
+    extraConfig = ''
+      makestep 1.0 3
+    '';
+  };
 }
