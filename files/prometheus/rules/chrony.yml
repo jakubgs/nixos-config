@@ -1,0 +1,17 @@
+---
+groups:
+  - name: chrony
+    rules:
+      - record: chrony_clock_error_seconds:abs
+        expr: >
+          abs(chrony_tracking_last_offset_seconds)
+          + chrony_tracking_root_dispersion_seconds
+          + (0.5 * chrony_tracking_root_delay_seconds)
+
+      - alert: ChronyClockError
+        expr: chrony_clock_error_seconds > 1
+        for: 15m
+        annotations:
+          summary: "Node {{ $labels.container }}@{{ $labels.instance }} clock out of sync!"
+          description: "Node {{ $labels.container }} on host {{ $labels.instance }} out of sync for more than 15 minutes."
+          current_value: "{{ $value }}"

@@ -72,6 +72,7 @@ in {
     ];
 
     ruleFiles = [
+      ../../files/prometheus/rules/chrony.yml
       ../../files/prometheus/rules/netdata.yml
       ../../files/prometheus/rules/smartctl.yml
       ../../files/prometheus/rules/nimbus.yml
