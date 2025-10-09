@@ -3,7 +3,7 @@
 let
   inherit (config) services;
 
-  default = { netdata = 9000; mtr = 9001; smartctl = 9002; };
+  default = { netdata = 9000; mtr = 9001; chrony = 9123; smartctl = 9002; };
 
   hosts = {
     "eve.magi.vpn"     = { openwrt = 9100; };
@@ -68,6 +68,7 @@ in {
       (genScrapeJob {name = "mikrotik";         path = "/metrics";})
       (genScrapeJob {name = "openwrt";          path = "/metrics";})
       (genScrapeJob {name = "mtr";              path = "/metrics";})
+      (genScrapeJob {name = "chrony";           path = "/metrics";})
     ];
 
     ruleFiles = [

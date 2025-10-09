@@ -8,6 +8,7 @@
     ./landing.nix
     ./locate.nix
     ./nix.nix
+    ./ntp.nix
     ./security.nix
     ./users.nix
     ./zerotier.nix
@@ -68,17 +69,5 @@
     enableIPv6 = false;
     domain = lib.mkDefault "magi.lan";
     search = [ "magi.lan" ];
-  };
-
-  # Uptime tracker
-  services.uptimed.enable = true;
-
-  # NTP Server
-  services.chrony = {
-    enable = true;
-    initstepslew.enabled = true;
-    extraConfig = ''
-      makestep 1.0 3
-    '';
   };
 }
