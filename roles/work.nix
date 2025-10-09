@@ -27,7 +27,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    mosh unstable.ansible_2_17
+    mosh unstable.ansible_2_17 ansible-lint
     # Development
     gnumake gcc autoconf automake patchelf
     # Security
