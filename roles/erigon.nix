@@ -26,6 +26,7 @@
       extraArgs = ["--miner.etherbase=%d/feeRecipient"];
       settings = {
         "chain" = "mainnet";
+        "externalcl" = true;
         "prune.mode" = "minimal";
         "datadir" = cfg.dataDir;
         "allow-insecure-unlock" = true;
