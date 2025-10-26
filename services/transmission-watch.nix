@@ -24,7 +24,10 @@ let
   };
 
   watchScript = pkgs.replaceVarsWith {
+    name = "transmission-watch";
     src = ./transmission-watch.sh;
+    meta.mainProgram = "transmission-watch";
+    dir = "bin";
     isExecutable = true;
     replacements = {
       inherit addTorrentScript;
@@ -98,7 +101,7 @@ in {
       serviceConfig = {
         User = cfg.serviceUser;
         Group = cfg.serviceGroup;
-        ExecStart = "${watchScript} ${cfg.watchDir} ${cfg.downloadDir}";
+        ExecStart = "${watchScript}/bin/transmission-watch ${cfg.watchDir} ${cfg.downloadDir}";
         Restart = "on-failure";
       };
       environment = {
