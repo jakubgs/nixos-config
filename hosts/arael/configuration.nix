@@ -40,6 +40,11 @@
       zfs_arc_sys_free=4294967296
   '';
 
+  # Limit memory usage of individual services.
+  systemd.services.transmission.serviceConfig.MemoryMax = "130M";
+  systemd.services.invidious.serviceConfig.MemoryMax = "400M";
+  systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
+
   networking = {
     hostId = "892cff1c";
     useDHCP = true;
