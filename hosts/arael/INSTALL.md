@@ -4,15 +4,23 @@ Describes installation process on Rock 5B `israfel` host.
 
 # Bootloader
 
-The best available bootloader is [EDK2 UEFI firmware for Rockchip RK3588 platforms](https://github.com/edk2-porting/edk2-rk3588). The [`0.9.1`](https://github.com/edk2-porting/edk2-rk3588/releases/tag/v0.9.1) release is confirmed working.
+The best available bootloader is [EDK2 UEFI firmware for Rockchip RK3588 platforms](https://github.com/edk2-porting/edk2-rk3588). The [`1.1`](https://github.com/edk2-porting/edk2-rk3588/releases/tag/v1.1) release is confirmed working.
 
 In order to flash this bootloader we'll need to download the bootloader image:
 
-* [`nanopi-r6c_UEFI_Release_v0.9.1.img`](https://github.com/edk2-porting/edk2-rk3588/releases/download/v0.9.1/nanopi-r6c_UEFI_Release_v0.9.1.img)
+* [`nanopi-r6c_UEFI_Release_v1.1.img`](https://github.com/edk2-porting/edk2-rk3588/releases/download/v1.1/nanopi-r6c_UEFI_Release_v1.1.img)
 
 And write it to the eMMC device:
 ```
-NanoPi-R6C% sudo dd if=nanopi-r6c_UEFI_Release_v0.9.1.img of=/dev/mmcblk2 bs=1M
+root@nanopi-r6s:~# sudo fdisk -l /dev/mmcblk0
+Disk /dev/mmcblk0: 28,91 GiB, 31037849600 bytes, 60620800 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 25A6920B-1CE1-4A88-9FA7-72ECBF641DC7
+
+NanoPi-R6C% sudo dd if=nanopi-r6c_UEFI_Release_v0.9.1.img of=/dev/mmcblk0 bs=1M
 6+1 records in   
 6+1 records out
 7012864 bytes (7.0 MB, 6.7 MiB) copied, 0.0319496 s, 219 MB/s
