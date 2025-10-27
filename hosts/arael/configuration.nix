@@ -34,9 +34,9 @@
   # Avoid memory-starving processes
   boot.extraModprobeConfig = ''
     options zfs \
-      zfs_arc_shrink_shift=5 \
+      zfs_arc_shrink_shift=3 \
       zfs_arc_min=1073741824 \
-      zfs_arc_max=3221225472 \
+      zfs_arc_max=2147483648 \
       zfs_arc_sys_free=4294967296
   '';
 
