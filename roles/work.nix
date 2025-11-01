@@ -4,7 +4,7 @@
 
 let
   # For details see: https://nixos.wiki/wiki/Python
-  myPythonPkgs = _: with (pkgs.python311Packages); [
+  myPythonPkgs = _: with (pkgs.python3Packages); [
     ipython pip
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
@@ -22,12 +22,12 @@ let
     # Misc
     sh backoff psutil
   ];
-  myPython = pkgs.python311.withPackages myPythonPkgs;
+  myPython = pkgs.python3.withPackages myPythonPkgs;
 in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    mosh unstable.ansible_2_17 ansible-lint
+    ansible_2_17 ansible-lint terraform_1 mosh
     # Development
     gnumake gcc autoconf automake patchelf
     # Security
@@ -39,18 +39,16 @@ in {
     # Remote
     remmina
     # Cloud
-    awscli s5cmd unstable.doctl google-cloud-sdk
-    scaleway-cli aliyun-cli hcloud
+    awscli s5cmd doctl google-cloud-sdk
+    scaleway-cli pkgs.unstable.aliyun-cli hcloud
     # Ethereum
     (pkgs.callPackage ../pkgs/eth-cli.nix {})
     # General dev
     git-filter-repo github-cli pkg-config shellcheck dos2unix
-    # Infra dev
-    pkgs.unstable.terraform_1
     # NodeJS dev
     nodejs_22 (yarn.override { nodejs = nodejs_22; })
     # GoLang dev
-    pkgs.go_1_23 gopls
+    go_1_23 gopls
     # Python dev
     myPython
     # Mobile dev

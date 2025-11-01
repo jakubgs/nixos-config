@@ -1,15 +1,15 @@
 { pkgs, lib, ... }:
 
-pkgs.python310Packages.buildPythonPackage rec {
+pkgs.python3Packages.buildPythonPackage rec {
   pname = "python-consul2";
   version = "0.1.5";
 
-  src = pkgs.python310Packages.fetchPypi {
+  src = pkgs.python3Packages.fetchPypi {
     inherit pname version;
     sha256 = "sha256-KchZ3nPhfzarmb6DH9wdkk8W6HciMyd6KO+St7mZlc0=";
   };
 
-  propagatedBuildInputs = with pkgs.python310Packages; [ six requests ];
+  propagatedBuildInputs = with pkgs.python3Packages; [ six requests ];
 
   # Some tests require Consul binaries.
   doCheck = false;

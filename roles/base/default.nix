@@ -26,7 +26,7 @@
     # monitoring
     htop btop iotop iftop s-tui multitail entr
     # dev tools
-    neovim jq tmux pkgs.unstable.fzf silver-searcher git
+    neovim jq tmux fzf silver-searcher git
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
