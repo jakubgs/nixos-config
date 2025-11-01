@@ -28,7 +28,7 @@
   # Load thermal sensor module.
   boot.kernelModules = [ "rockchip-thermal" ];
   # Lock kernel version.
-  boot.kernelPackages = pkgs.linuxPackages_6_15;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;

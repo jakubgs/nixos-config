@@ -6,7 +6,6 @@
     ../../roles/base
     ../../roles/desktop
     ../../roles/builder.nix
-    ../../roles/gaming.nix
     ../../roles/optical.nix
     ../../roles/printer.nix
     ../../roles/qemu.nix
@@ -29,7 +28,7 @@
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_15;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   networking = {
     hostId = "9fbd8b5d";
