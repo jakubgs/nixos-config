@@ -19,14 +19,14 @@
   # Packages
   environment.systemPackages = with pkgs; [
     # utilities
-    file zsh bash man-pages sudo sd bc pv rename
+    file bash man-pages sudo sd bc pv rename
     lsb-release moreutils unzip zip unrar envsubst
     # processes
     dtach pstree killall sysstat
     # monitoring
     htop btop iotop iftop s-tui multitail entr
     # dev tools
-    neovim jq tmux fzf silver-searcher git
+    jq tmux fzf silver-searcher git
     # hardware tools
     pciutils lm_sensors acpi pmutils usbutils dmidecode
     # networking
@@ -38,24 +38,6 @@
     # security
     pass gopass
   ];
-
-  # Shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
-  # Editor
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-  };
-
-  # Editor
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 
   boot.kernel.sysctl = {
     # SysRQ is useful when things hang.
