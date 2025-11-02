@@ -2,11 +2,12 @@
 
 {
   imports = [
+    ../../roles/base/shell.nix
     ../../roles/base/nix.nix
     ../../roles/base/console.nix
     ../../roles/base/helpers.nix
     ../../roles/base/security.nix
-    ../../roles/yubikey.nix
+    ../../roles/desktop/yubikey.nix
   ];
 
   # Message of the day
@@ -24,10 +25,6 @@
   services.getty.autologinUser = "root";
   users.users.root.password = "root";
 
-  # Shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
   # Packages
   environment.systemPackages = with pkgs; [
     # Scripts
@@ -39,18 +36,12 @@
     # Base
     zsh sudo bc pv rename zip unzip wget curl
     # Storage
-    parted gptfdisk
+    parted gptfdisk udftools
     # Security
     gopass pass openssl cryptsetup
     # Misc
     git neovim fzf htop tmux silver-searcher
   ];
-
-  # Editor
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 
   # Password entry method.
   programs.gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-curses;
