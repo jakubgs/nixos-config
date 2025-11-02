@@ -50,7 +50,7 @@
   system.userActivationScripts = {
     jakubgsDotfiles = let
       dotfilesSh = pkgs.replaceVarsWith {
-        src = ../../files/dotfiles.sh;
+        src = ../../files/scripts/dotfiles.sh;
         isExecutable = true;
         replacements = {
           sshKey = secret "service/nixos-activation/key";

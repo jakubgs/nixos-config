@@ -18,4 +18,10 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+
+  # Extra scripts
+  environment.systemPackages = with pkgs; [
+    (pkgs.writeScriptBin "usb_backup" ../../files/scripts/usb_backup.sh)
+    (pkgs.writeScriptBin "iso_backup" ../../files/scripts/iso_backup.sh)
+  ];
 }

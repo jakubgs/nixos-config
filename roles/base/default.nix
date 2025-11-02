@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./shell.nix
     ./console.nix
     ./fixes.nix
     ./helpers.nix
