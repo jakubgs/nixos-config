@@ -41,7 +41,7 @@
   '';
 
   # Limit memory usage of individual services.
-  systemd.services.transmission.serviceConfig.MemoryMax = "130M";
+  systemd.services.transmission.serviceConfig.MemoryMax = "400M";
   systemd.services.invidious.serviceConfig.MemoryMax = "400M";
   systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
 
