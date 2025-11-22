@@ -34,6 +34,14 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
+  # Fix for broken FN keys.
+  services.udev.extraHwdb = ''
+    evdev:name:ThinkPad Extra Buttons:*
+     KEYBOARD_KEY_4b=chat
+     KEYBOARD_KEY_4c=phone
+     KEYBOARD_KEY_4d=endcall
+  '';
+
   # Enable sound.
   hardware.pulseaudio.enable = true;
 
