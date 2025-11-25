@@ -5,6 +5,7 @@
     ./trackpoint.nix
     ./thinkpad.nix
     ./powertop.nix
+    ./usbguard.nix
   ];
 
   # Lid closing behaviors

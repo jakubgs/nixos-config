@@ -17,13 +17,14 @@ in with hosts; {
   "service/landing/server.key.age"     = { publicKeys = all;       };
   "service/mikrotik/config.age"        = { publicKeys = jakubgs ++ [ arael ];   };
   "service/mpd/pass.age"               = { publicKeys = all;       };
-  "service/nix-serve/nix.magi.vpn"     = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
+  "service/nix-serve/nix.magi.vpn"     = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/nixos-activation/key.age"   = { publicKeys = all;       };
   "service/tailscale/caspair.age"      = { publicKeys = jakubgs ++ [ caspair ]; };
   "service/tailscale/lilim.age"        = { publicKeys = jakubgs ++ [ lilim ]; };
   "service/transmission/creds.age"     = { publicKeys = all;       };
+  "service/usbguard/rules.age"         = { publicKeys = all;       };
   "service/vsftpd/pass.age"            = { publicKeys = all;       };
   "service/wifi.age"                   = { publicKeys = all;       };
   "service/zerotier/magi.age"          = { publicKeys = all;       };
