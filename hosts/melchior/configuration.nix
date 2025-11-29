@@ -12,7 +12,7 @@
   ];
 
   # Upgrade kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_6_17;
   # Modules for sensors
   boot.kernelModules = [ "it87" "k10temp" ];
 
