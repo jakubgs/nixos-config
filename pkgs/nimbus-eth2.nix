@@ -14,14 +14,14 @@ let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "25.9.2";
-  commit = "9839f140";
+  version = "25.11.1";
+  commit = "2053090b";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-TriDSV36oUd11m8mS6XruGXaoZuP4hx8a+Csp/qxKRw=";
+    sha256 = "sha256-b7nsz9iyo7BkZZoJ80iaisGFJ4EiC/mJTBHHcgtBgx8=";
     fetchSubmodules = true;
   };
 
@@ -33,6 +33,7 @@ in stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
+  NIX_ENFORCE_NO_NATIVE = !nativeBuild;
   NIMFLAGS = lib.optionalString (!nativeBuild) " -d:disableMarchNative";
 
   # WARNING: Version 2.0.12 is known to be stable.
