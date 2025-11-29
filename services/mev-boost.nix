@@ -15,7 +15,7 @@ in {
 
         package = mkOption {
           type = types.package;
-          default = pkgs.mev-boost;
+          default = pkgs.callPackage ../pkgs/mev-boost.nix { };
           defaultText = literalExpression "pkgs.mev-boost";
           description = lib.mdDoc "Package to use for MEV-Boost service.";
         };
