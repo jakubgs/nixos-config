@@ -27,7 +27,7 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_17 ansible-lint terraform_1 mosh
+    ansible_2_17 terraform_1 mosh
     # Development
     gnumake gcc autoconf automake patchelf
     # Security
