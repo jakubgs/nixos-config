@@ -76,7 +76,7 @@ zfs create -o canmount=on  -o quota=40G -o reservation=40G rpool/nix;
 zfs create -o canmount=on  -o encryption=on -o keyformat=passphrase -o keylocation=prompt rpool/secret;
 zfs create -o canmount=on  -o quota=1.2T -o reservation=1.2T rpool/secret/torrent;
 zfs create -o canmount=on  -o quota=130G -o reservation=130G rpool/secret/music;
-zfs create -o canmount=on  -o quota=100G -o reservation=100G rpool/secret/photos;
+zfs create -o canmount=on  -o quota=200G -o reservation=200G rpool/secret/photos;
 zfs create -o canmount=on  -o quota=50G  -o reservation=50G  rpool/secret/data;
 zfs create -o canmount=on  -o quota=20G  -o reservation=10G  rpool/secret/git;
 zfs create -o canmount=on  -o quota=20G  -o reservation=10G  rpool/secret/mobile;

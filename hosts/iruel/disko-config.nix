@@ -96,7 +96,7 @@
           git    = mkZfsDataSet "/mnt/git"    "10G"  true {};
           mobile = mkZfsDataSet "/mnt/mobile" "30G"  true {};
           music  = mkZfsDataSet "/mnt/music"  "150G" true {};
-          photos = mkZfsDataSet "/mnt/photos" "100G" true {};
+          photos = mkZfsDataSet "/mnt/photos" "200G" true {};
           inherit reserve;
         };
       };

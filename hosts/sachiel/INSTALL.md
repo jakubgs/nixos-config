@@ -70,7 +70,7 @@ sudo zpool create \
 ```
 ```
 sudo zfs create -o canmount=on -o quota=100G -o reservation=150G USB-DATA/music
-sudo zfs create -o canmount=on -o quota=100G -o reservation=100G USB-DATA/photos
+sudo zfs create -o canmount=on -o quota=200G -o reservation=200G USB-DATA/photos
 sudo zfs create -o canmount=on -o quota=50G  -o reservation=50G  USB-DATA/data
 sudo zfs create -o canmount=on -o quota=20G  -o reservation=30G  USB-DATA/mobile
 sudo zfs create -o canmount=on -o quota=20G  -o reservation=10G  USB-DATA/git

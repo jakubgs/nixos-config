@@ -78,7 +78,7 @@ zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/docker
 zfs create -o canmount=on -o quota=150G -o reservation=150G rpool/secret/music
 zfs create -o canmount=on -o quota=50G  -o reservation=50G  rpool/secret/data
 zfs create -o canmount=on -o quota=30G  -o reservation=30G  rpool/secret/mobile
-zfs create -o canmount=on -o quota=100G -o reservation=100G rpool/secret/photos
+zfs create -o canmount=on -o quota=200G -o reservation=200G rpool/secret/photos
 ```
 
 # Installation
