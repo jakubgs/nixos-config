@@ -79,7 +79,7 @@ in {
         };
         ramiel = { # phone
           device = {
-            id = "2UQXCXB-LZHCGVM-PFOL3NW-GRU57X7-R4IHVR7-SS2WDSP-TX5DFSG-YCNG7QJ";
+            id = "5QRC74R-RHVPOYM-53L5HXT-HNKKG44-7ZQG5NL-KMWOYMY-KEC4AFF-PDYTRA4";
             addresses = [ "tcp://ramiel.magi.vpn:22000" ];
           };
           folder = { type= "sendreceive"; };
