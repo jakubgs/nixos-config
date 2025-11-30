@@ -16,6 +16,6 @@
     insertedDevicePolicy = "block";
 
     # Use 'usbguard generate-policy' to expand rules.
-    rulesFile = secret "service/usbguard/rules"
+    rulesFile = secret "service/usbguard/rules";
   };
 }
