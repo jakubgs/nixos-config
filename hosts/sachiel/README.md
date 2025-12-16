@@ -18,6 +18,7 @@ With:
 
 # Docs
 
+* [Bootloader Upgrade](../israfel/BOOTLOADER.md)
 * [Installation Process](./INSTALL.md)
 * [Custom Kernel Config](./KERNEL.md)
 * [Known Issues](./KNOWN_ISSUES.md)
