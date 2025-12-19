@@ -15,7 +15,7 @@
     };
 
     # Clients
-    environment.systemPackages = with pkgs; [ mpc_cli ncmpcpp ];
+    environment.systemPackages = with pkgs; [ mpc ncmpcpp ];
 
     # Daemon
     services.mpd = {

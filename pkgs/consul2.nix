@@ -11,6 +11,9 @@ pkgs.python3Packages.buildPythonPackage rec {
 
   propagatedBuildInputs = with pkgs.python3Packages; [ six requests ];
 
+  pyproject = true;
+  build-system = with pkgs.python3Packages; [ setuptools ];
+
   # Some tests require Consul binaries.
   doCheck = false;
 

@@ -9,7 +9,7 @@ let
     # Development
     setuptools retry yapf mohawk grip pyyaml jinja2
     # Devops
-    boto3 wakeonlan gitpython PyGithub python-hosts cloudflare
+    boto3 wakeonlan gitpython pygithub python-hosts cloudflare
     (pkgs.callPackage ../pkgs/consul2.nix {})
     # Ethereum
     (pkgs.callPackage ../pkgs/staking-deposit-cli.nix {})
@@ -31,7 +31,7 @@ in {
     # Development
     gnumake gcc autoconf automake patchelf
     # Security
-    vault sops pwgen oathToolkit yubikey-manager openssl
+    vault sops pwgen yubikey-manager openssl
     # Databases
     robo3t
     # Network
@@ -40,15 +40,13 @@ in {
     remmina
     # Cloud
     awscli s5cmd doctl google-cloud-sdk
-    scaleway-cli pkgs.unstable.aliyun-cli hcloud
+    scaleway-cli aliyun-cli hcloud
     # Ethereum
     (pkgs.callPackage ../pkgs/eth-cli.nix {})
     # General dev
     git-filter-repo github-cli pkg-config shellcheck dos2unix
     # NodeJS dev
     nodejs_22 (yarn.override { nodejs = nodejs_22; })
-    # GoLang dev
-    go_1_23 gopls
     # Python dev
     myPython
     # Mobile dev

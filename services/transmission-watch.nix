@@ -18,7 +18,7 @@ let
       inherit (cfg) rpcAddr rpcCreds;
       shell = "${pkgs.bash}/bin/bash";
       binPath = pkgs.lib.makeBinPath (with pkgs; [
-        transmission coreutils inotify-tools jq
+        transmission_4 coreutils inotify-tools jq
       ]);
     };
   };

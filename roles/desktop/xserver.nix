@@ -46,7 +46,7 @@ in {
       corefonts
       fira-code
       dejavu_fonts
-      ubuntu_font_family
+      ubuntu-classic
     ];
   };
 

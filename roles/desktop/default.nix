@@ -26,7 +26,7 @@
     # Console
     rxvt-unicode rofi w3m
     # Xorg Tools
-    glxinfo xsel libdrm xorg.xmodmap
+    xsel libdrm xorg.xmodmap
     # Keyboard & Mouse
     xcape xbindkeys xclip xkbset
     # Network
@@ -58,7 +58,7 @@
     # Video
     mpv yt-dlp ffmpeg
     # Audio
-    mpc_cli ncmpcpp vorbis-tools mpg123 soundconverter
+    vorbis-tools mpg123 soundconverter
     # Communication
     geary discord
     # Torrent

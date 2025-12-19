@@ -9,10 +9,10 @@
   /* Required tools and libraries. */
   environment.systemPackages = with pkgs; [
     age age-plugin-yubikey
-    yubikey-personalization
-    yubikey-personalization-gui
+    #yubikey-personalization
     yubikey-manager
-    ccid opensc pcsctools
+    yubioath-flutter
+    ccid opensc pcsc-tools
   ];
 
   /* Required udev rules for YubiKey usage */
