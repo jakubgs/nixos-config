@@ -40,7 +40,7 @@
     # Security
     cryptsetup
     # Phone
-    go-mtpfs chirp
+    go-mtpfs
   ];
 
   # User packages
@@ -50,7 +50,7 @@
     # Themes
     lxappearance matcha-gtk-theme vimix-gtk-themes
     # Browsers
-    brave ungoogled-chromium
+    brave
     # Documents
     evince foliate
     # Images
@@ -60,7 +60,7 @@
     # Audio
     vorbis-tools mpg123 soundconverter
     # Communication
-    geary discord
+    discord
     # Torrent
     transmission-remote-gtk
     # Coding
