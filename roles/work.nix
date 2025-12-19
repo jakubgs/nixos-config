@@ -35,7 +35,7 @@ in {
     # Databases
     robo3t
     # Network
-    mtr netcat websocat insomnia ngrok tcpdump whois inetutils
+    mtr netcat websocat ngrok tcpdump whois inetutils
     # Remote
     remmina
     # Cloud
@@ -53,8 +53,6 @@ in {
     fastlane apktool jdk8 scrcpy
     # Utils
     jsonnet appimage-run unixtools.xxd bvi binutils-unwrapped direnv
-    # Video Recording
-    obs-studio
     # Docs
     mdbook hugo
     # Communication
