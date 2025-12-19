@@ -32,13 +32,11 @@
   boot.zfs.requestEncryptionCredentials = false;
 
   # Avoid memory-starving processes
-  boot.extraModprobeConfig = ''
-    options zfs \
-      zfs_arc_shrink_shift=3 \
-      zfs_arc_min=1073741824 \
-      zfs_arc_max=2147483648 \
-      zfs_arc_sys_free=4294967296
-  '';
+  boot.kernelParams = [
+    "zfs.zfs_arc_min=0"            # Make shrinking easier
+    "zfs.zfs_arc_max=1073741824"   # 1 GiB
+    "zfs.zfs_arc_meta_balance=100" # Reduce metadata caching
+  ];
 
   # Limit memory usage of individual services.
   systemd.services.transmission.serviceConfig.MemoryMax = "400M";
