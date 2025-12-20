@@ -33,7 +33,10 @@
 
   # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
+    "zfs.zfs_arc_min=0"                  # Make shrinking easier
+    "zfs.zfs_arc_max=1073741824"         # 1 GiB hard limit
     "zfs.zfs_scan_mem_lim_fact=100" # 1/100th of RAM hard limit
+    "zfs.zfs_scrub_limit=104857600" # 100 MB/s I/O scrubt rate limit
   ];
   boot.kernel.sysctl = {
     "vm.min_free_kbytes" = 524288; # 512 MiB
