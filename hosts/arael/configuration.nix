@@ -31,11 +31,9 @@
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
-  # Avoid memory-starving processes
+  # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
-    "zfs.zfs_arc_min=0"            # Make shrinking easier
-    "zfs.zfs_arc_max=1073741824"   # 1 GiB
-    "zfs.zfs_arc_meta_balance=100" # Reduce metadata caching
+    "zfs.zfs_scan_mem_lim_fact=50" # 1/50th of RAM hard limit
   ];
 
   # Limit memory usage of individual services.
