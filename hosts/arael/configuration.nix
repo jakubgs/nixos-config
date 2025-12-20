@@ -33,14 +33,17 @@
 
   # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
-    "zfs.zfs_arc_min=0"                  # Make shrinking easier
-    "zfs.zfs_arc_max=1073741824"         # 1 GiB hard limit
-    "zfs.zfs_scan_mem_lim_fact=100" # 1/100th of RAM hard limit
-    "zfs.zfs_scrub_limit=104857600" # 100 MB/s I/O scrubt rate limit
+    "cma=128M"                          # Contiguous Memory Allocator
+    "zfs.zfs_arc_min=0"                 # Make shrinking easier
+    "zfs.zfs_arc_max=1073741824"        # 1 GiB hard limit
+    "zfs.zfs_scan_mem_lim_fact=200"     # 1/200th of RAM hard limit
+    "zfs.zfs_scan_mem_lim_soft_fact=20" # 1/20th of hard limit
+    "zfs.zfs_scan_strict_mem_lim=1"     # Enforce tight memory limits
+    "zfs.zfs_scan_vdev_limit=4194304"   # 4 MiB for scrub per leaf device
   ];
   boot.kernel.sysctl = {
     "vm.min_free_kbytes" = 524288; # 512 MiB
-    "vm.watermark_scale_factor" = 150;
+    "vm.watermark_scale_factor" = 200;
   };
 
   # Limit memory usage of individual services.
