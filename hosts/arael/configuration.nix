@@ -33,8 +33,12 @@
 
   # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
-    "zfs.zfs_scan_mem_lim_fact=50" # 1/50th of RAM hard limit
+    "zfs.zfs_scan_mem_lim_fact=100" # 1/100th of RAM hard limit
   ];
+  boot.kernel.sysctl = {
+    "vm.min_free_kbytes" = 524288; # 512 MiB
+    "vm.watermark_scale_factor" = 150;
+  };
 
   # Limit memory usage of individual services.
   systemd.services.transmission.serviceConfig.MemoryMax = "400M";
