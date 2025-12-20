@@ -31,6 +31,11 @@
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;
 
+  # Avoid memory-starving processes via ZFS pool scan bug.
+  # TODO: Remove once upgraded to ZFS 2.4.0 which includes:
+  # https://github.com/openzfs/zfs/pull/17542
+  boot.kernelParams = [ "zfs.zfs_scan_legacy=1" ];
+
   # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
     "cma=128M"                          # Contiguous Memory Allocator
@@ -43,7 +48,7 @@
   ];
   boot.kernel.sysctl = {
     "vm.min_free_kbytes" = 524288; # 512 MiB
-    "vm.watermark_scale_factor" = 200;
+    "vm.watermark_scale_factor" = 300;
   };
 
   # Limit memory usage of individual services.
