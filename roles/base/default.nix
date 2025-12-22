@@ -33,7 +33,7 @@
     # networking
     wget curl nmap nettools traceroute dnsutils iperf
     # filesystems
-    ncdu zfs zfstools ranger lsof ntfs3g nfs-utils
+    ncdu ranger lsof ntfs3g nfs-utils
     # hard drive management
     lsscsi hddtemp hdparm perf-tools parted gptfdisk
     # security
