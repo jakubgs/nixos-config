@@ -6,7 +6,7 @@
   boot.initrd.supportedFilesystems = [ "zfs" ];
 
   # Pin version
-  boot.zfs.package = pkgs.zfs_2_3;
+  boot.zfs.package = pkgs.zfs_2_4;
   # Enable hibernation
   boot.zfs.allowHibernation = true;
   # Importing a suspended pool can corrupt it
