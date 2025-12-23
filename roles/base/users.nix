@@ -32,7 +32,7 @@
     extraGroups = [
       "wheel" "audio" "dialout" "video" "disk"
       "adm" "tty" "systemd-journal" "docker"
-      "networkmanager" "cdrom"
+      "networkmanager" "cdrom" "lp"
     ];
     openssh.authorizedKeys.keys = [
       # CURRENT
