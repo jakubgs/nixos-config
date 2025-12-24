@@ -15,7 +15,6 @@
             EFI = {
               size = "1G";
               type = "EF00";
-              flags = [ "esp" ];
               content = {
                 type = "filesystem";
                 format = "vfat";
