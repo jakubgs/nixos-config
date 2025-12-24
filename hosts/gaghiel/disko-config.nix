@@ -7,11 +7,14 @@
         content = {
           type = "gpt";
           partitions = {
-            uboot = {
-              start = "1048576"; # 2048s
-              end = "9437312"; # 18431s
+            edk2 = {
+              priority = 1;
+              size = "32M";
+              alignment = 1;
+              content = null;
             };
             EFI = {
+              priority = 2;
               size = "1G";
               type = "EF00";
               content = {
@@ -22,6 +25,7 @@
               };
             };
             plainSwap = {
+              priority = 3;
               size = "4G";
               content = {
                 type = "swap";
@@ -30,6 +34,7 @@
               };
             };
             root = {
+              priority = 4;
               size = "100%";
               content = {
                 type = "filesystem";
