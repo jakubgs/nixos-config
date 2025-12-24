@@ -8,7 +8,6 @@
           type = "gpt";
           partitions = {
             uboot = {
-              type = "partition";
               start = "1048576"; # 2048s
               end = "9437312"; # 18431s
             };
