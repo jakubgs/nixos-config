@@ -32,11 +32,7 @@
   security.pam.sshAgentAuth.enable = true;
 
   # Install Agenix CLI tool.
-  environment.systemPackages = let
-    agenix = channels.agenix.packages.${pkgs.system}.default;
-  in with pkgs; [
-    rage pinentry-gnome3
-    # Override age binary with rage for pinentry support.
-    (agenix.override { ageBin = "${rage}/bin/rage"; })
+  environment.systemPackages = [
+    channels.agenix.packages.${pkgs.system}.default
   ];
 }
