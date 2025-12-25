@@ -2,6 +2,13 @@
 
 set -exuo pipefail
 
+function add_missing_pkg() {
+    local command=${1} package=${2}
+    command -v ${command} 2>&1 >/dev/null && return
+    nix --extra-experimental-features 'nix-command flakes' \
+        profile add ${package}
+}
+
 # This is expected to run from an Armbian SD card image.
 if command -v apt 2>&1 >/dev/null; then
     apt install --yes xz-utils git tmux linux-headers-vendor-rk35xx linux-headers-edge-rockchip-rk3588
@@ -12,13 +19,6 @@ fi
 if [[ ! -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
     sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 fi
-
-function add_missing_pkg() {
-    local command=${1} package=${2}
-    command -v ${command} 2>&1 >/dev/null && return
-    nix --extra-experimental-features 'nix-command flakes' \
-        profile add ${package}
-}
 
 # Source Nix if not available.
 if ! command -v nix 2>&1 >/dev/null; then
