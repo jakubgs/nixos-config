@@ -10,6 +10,13 @@ let
 
   all = jakubgs ++ systems;
 in with hosts; {
+  # Host Private Keys
+  "hosts/keys/ed25519/arael.age"       = { publicKeys = jakubgs;   };
+  "hosts/keys/ed25519/bardiel.age"     = { publicKeys = jakubgs;   };
+  "hosts/keys/ed25519/caspair.age"     = { publicKeys = jakubgs;   };
+  "hosts/keys/ed25519/israfel.age"     = { publicKeys = jakubgs;   };
+  "hosts/keys/ed25519/zeruel.age"      = { publicKeys = jakubgs;   };
+  # Other Secrets
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
   "service/grafana/pass.age"           = { publicKeys = jakubgs ++ [ bardiel ]; };
