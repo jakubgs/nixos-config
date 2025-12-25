@@ -34,9 +34,6 @@
   # Avoid memory-starving processes via ZFS pool scan bug.
   # TODO: Remove once upgraded to ZFS 2.4.0 which includes:
   # https://github.com/openzfs/zfs/pull/17542
-  boot.kernelParams = [ "zfs.zfs_scan_legacy=1" ];
-
-  # Avoid memory-starving processes via ZFS pool scan.
   boot.kernelParams = [
     "cma=128M"                          # Contiguous Memory Allocator
     "zfs.zfs_arc_min=0"                 # Make shrinking easier
@@ -45,6 +42,8 @@
     "zfs.zfs_scan_mem_lim_soft_fact=20" # 1/20th of hard limit
     "zfs.zfs_scan_strict_mem_lim=1"     # Enforce tight memory limits
     "zfs.zfs_scan_vdev_limit=4194304"   # 4 MiB for scrub per leaf device
+    "zfs.zfs_vdev_scrub_max_active=1"   # Max active I/Os per vdev
+    "zfs.zfs_scrub_min_time_ms=500"     # Reduce time between TXG flushes.
   ];
   boot.kernel.sysctl = {
     "vm.min_free_kbytes" = 524288; # 512 MiB
