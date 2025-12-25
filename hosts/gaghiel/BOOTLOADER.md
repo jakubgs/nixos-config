@@ -12,7 +12,7 @@ In order to flash this bootloader we'll need to download the image:
 
 Write it to the eMMC device using `dd`:
 ```
-dd if=rock-5c_UEFI_Release_v1.1.img of=/dev/mmcblk0p1 bs=512 skip=64 conv=notrunc
+dd if=rock-5c_UEFI_Release_v1.1.img of=/dev/mmcblk0p1 bs=512 skip=64 seek=64 conv=notrunc
 ```
 > :warning: This assumes existence of first `uboot` partition.
 

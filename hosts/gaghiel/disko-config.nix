@@ -9,8 +9,9 @@
           partitions = {
             edk2 = {
               priority = 1;
-              size = "32M";
-              alignment = 1;
+              start = "1M";
+              size  = "8M";
+              type  = "8300";
               content = null;
             };
             EFI = {
