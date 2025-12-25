@@ -11,8 +11,8 @@ function keyscan() {
         return
     fi
     echo "${OUTPUT}" \
-        | awk '{printf "%s %s", $2, $3}' \
-        | tee "${THIS_DIR}/${1%.*}"
+        | awk '/ssh-ed25519/{printf "%s %s", $2, $3}' \
+        | tee "${THIS_DIR}/ed25519/${1%.*}"
     echo
 }
 

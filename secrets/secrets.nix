@@ -5,7 +5,7 @@ let
   jakubgs = [ yubikey fallback ];
 
   # Hosts
-  hosts = import ../keys/hosts;
+  hosts = import ../keys/hosts/ed25519;
   systems = builtins.attrValues hosts;
 
   all = jakubgs ++ systems;
