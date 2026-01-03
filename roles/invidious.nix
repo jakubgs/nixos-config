@@ -46,6 +46,9 @@
       };
     };
 
+    # Fix 'postgresql_13 was removed' error.
+    services.postgresql.package = pkgs.postgresql_14;
+
     # Fix for random crashes dur to 'Invalid memory access'.
     # https://github.com/iv-org/invidious/issues/1439
     systemd.services.invidious.serviceConfig.Restart = "on-failure";
