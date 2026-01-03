@@ -14,14 +14,14 @@ let
   inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
-  version = "25.11.1";
-  commit = "2053090b";
+  version = "25.12.0";
+  commit = "ce4689f7";
   name = "${pname}-${version}-${commit}";
 
   src = fetchgit {
     url = "https://github.com/status-im/nimbus-eth2.git";
     rev = "v${version}";
-    sha256 = "sha256-b7nsz9iyo7BkZZoJ80iaisGFJ4EiC/mJTBHHcgtBgx8=";
+    sha256 = "sha256-pHQVMM4H1bbFrF+RhdeWcL15LzADeZvErelafZ+bbPs=";
     fetchSubmodules = true;
   };
 
