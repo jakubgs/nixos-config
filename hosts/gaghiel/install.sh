@@ -12,7 +12,7 @@ function add_missing_pkg() {
 [[ -z "${ED25519_KEY:-}" ]] && { echo "No ED25519_KEY env var provided."; exit 1; }
 
 export NIX_CONFIG='experimental-features = nix-command flakes'
-export FLAKE='github:jakubgs/nixos-config?ref=72fff2f2c15e14c91d9adc61fc6197f77fcd04a2#gaghiel'
+export FLAKE='github:jakubgs/nixos-config#gaghiel'
 
 set -x
 
@@ -49,16 +49,13 @@ echo "${ED25519_KEY}" | ssh-keygen -y -f /dev/stdin > "/mnt/etc/ssh/ssh_host_ed2
 set -x
 
 # Install EDK2 EFI Bootloader
-#wget https://dl.radxa.com/rock5/sw/images/loader/rock-5a/rk3588_spl_loader_v1.15.113.bin
-#wget https://dl.radxa.com/rock5/5c/images/loader/spi/rock-5c-spi-image-20240528.img
-#wget https://github.com/kwankiu/edk2-rk3588/releases/download/v1.1/rock-5c_UEFI_Release_v1.1.img
-#add_missing_pkg rkdeveloptool 'nixpkgs#rkdeveloptool'
-#rkdeveloptool db rk3588_spl_loader.bin
-#rkdeveloptool wl 0 rock-5c_UEFI_Release_v1.1.img
 if [[ ! -f rock-5c_UEFI_Release_v1.1.img ]]; then
     wget https://github.com/kwankiu/edk2-rk3588/releases/download/v1.1/rock-5c_UEFI_Release_v1.1.img
 fi
-dd if=rock-5c_UEFI_Release_v1.1.img of=/dev/disk/by-id/mmc-DA6064_0x16f81d00 bs=512 skip=64 seek=64 conv=notrunc
+EMMC_DEV='/dev/disk/by-id/mmc-DA6064_0x16f81d00'
+dd if=rock-5c_UEFI_Release_v1.1.img of="${EMMC_DEV}" bs=512 skip=$((0x800)) seek=$((0x4000)) conv=notrunc
+sgdisk -p "${EMMC_DEV}"
+hexdump -C -n 4 -s $((0x800 * 512)) "${EMMC_DEV}"
 
 # Install NixOS installation tools
 add_missing_pkg nixos-install 'nixpkgs#nixos-install-tools'

@@ -9,7 +9,7 @@
           partitions = {
             uboot = {
               priority = 1;
-              start = "1M";
+              start = "16M"; /* Leave space for EKD2 UEFI */
               size  = "8M";
               type  = "8300";
               content = null;
