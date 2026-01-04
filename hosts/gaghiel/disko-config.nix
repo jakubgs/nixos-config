@@ -7,7 +7,7 @@
         content = {
           type = "gpt";
           partitions = {
-            edk2 = {
+            uboot = {
               priority = 1;
               start = "1M";
               size  = "8M";
