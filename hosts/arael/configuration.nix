@@ -32,21 +32,18 @@
   boot.zfs.requestEncryptionCredentials = false;
 
   # Avoid memory-starving processes via ZFS pool scan bug.
-  # TODO: Remove once upgraded to ZFS 2.4.0 which includes:
   # https://github.com/openzfs/zfs/pull/17542
   boot.kernelParams = [
     "cma=128M"                          # Contiguous Memory Allocator
     "zfs.zfs_arc_min=0"                 # Make shrinking easier
     "zfs.zfs_arc_max=1073741824"        # 1 GiB hard limit
-    "zfs.zfs_scan_mem_lim_fact=200"     # 1/200th of RAM hard limit
-    "zfs.zfs_scan_mem_lim_soft_fact=20" # 1/20th of hard limit
+    "zfs.zfs_arc_sys_free=2147483648"   # 2 GiB kept for system
     "zfs.zfs_scan_strict_mem_lim=1"     # Enforce tight memory limits
-    "zfs.zfs_scan_vdev_limit=4194304"   # 4 MiB for scrub per leaf device
-    "zfs.zfs_vdev_scrub_max_active=1"   # Max active I/Os per vdev
     "zfs.zfs_scrub_min_time_ms=500"     # Reduce time between TXG flushes.
   ];
   boot.kernel.sysctl = {
-    "vm.min_free_kbytes" = 524288; # 512 MiB
+    "vm.swappiness" = lib.mkForce 1; # Prefer shrinking ARC over swapping.
+    "vm.min_free_kbytes" = 262144; # 256 MiB
     "vm.watermark_scale_factor" = 300;
   };
 
