@@ -3,7 +3,7 @@
 {
   # Secrets
   age.secrets."service/usbguard/rules" = {
-    file = ../secrets/service/usbguard/rules.age;
+    file = ../../secrets/service/usbguard/rules.age;
   };
 
   # Protect against malicious USB devices.
@@ -16,6 +16,6 @@
     insertedDevicePolicy = "block";
 
     # Use 'usbguard generate-policy' to expand rules.
-    rulesFile = secret "service/usbguard/rules";
+    ruleFile = secret "service/usbguard/rules";
   };
 }
