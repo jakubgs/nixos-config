@@ -34,16 +34,16 @@
   # Avoid memory-starving processes via ZFS pool scan bug.
   # https://github.com/openzfs/zfs/pull/17542
   boot.kernelParams = [
-    "cma=128M"                          # Contiguous Memory Allocator
-    "zfs.zfs_arc_min=0"                 # Make shrinking easier
-    "zfs.zfs_arc_max=1073741824"        # 1 GiB hard limit
-    "zfs.zfs_arc_sys_free=2147483648"   # 2 GiB kept for system
-    "zfs.zfs_scan_strict_mem_lim=1"     # Enforce tight memory limits
-    "zfs.zfs_scrub_min_time_ms=500"     # Reduce time between TXG flushes.
+    "cma=128M"                        # Contiguous Memory Allocator
+    "zfs.zfs_arc_min=0"               # Make shrinking easier
+    "zfs.zfs_arc_max=1073741824"      # 1 GiB hard limit
+    "zfs.zfs_arc_sys_free=4294967296" # 4 GiB kept for system
+    "zfs.zfs_scan_strict_mem_lim=1"   # Enforce tight memory limits
+    "zfs.zfs_scrub_min_time_ms=500"   # Reduce time between TXG flushes.
   ];
   boot.kernel.sysctl = {
-    "vm.swappiness" = lib.mkForce 1; # Prefer shrinking ARC over swapping.
-    "vm.min_free_kbytes" = 262144; # 256 MiB
+    "vm.swappiness" = lib.mkForce 1;  # Prefer shrinking ARC over swapping.
+    "vm.min_free_kbytes" = 131072;    # 128 MiB
     "vm.watermark_scale_factor" = 300;
   };
 
