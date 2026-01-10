@@ -51,6 +51,7 @@
   systemd.services.transmission.serviceConfig.MemoryMax = "400M";
   systemd.services.invidious.serviceConfig.MemoryMax = "400M";
   systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
+  systemd.services.netdata.serviceConfig.MemoryMax = "150M";
 
   networking = {
     hostId = "892cff1c";
