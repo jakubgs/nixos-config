@@ -13,7 +13,8 @@ in {
     "global" = {
       "hostname" = config.networking.hostName;
       "run as user" = "root";
-      "update every" = 5;
+      "update every" = 10;
+      "history" = 3600; # 1 hour retention
       "memory mode" = "ram";
       "error log" = "/var/log/netdata/error.log";
       "debug log" = "none";
@@ -25,6 +26,7 @@ in {
     };
     "health" = { "enabled" = "no"; };
     "statsd" = { "enabled" = "no"; };
+    "ml" = { "enabled" = "no"; };
     "plugins" = {
       "idlejitter" = "no";
       "python.d" = "yes";
@@ -33,9 +35,9 @@ in {
       "fping" = "no";
       "tc" = "no";
     };
-    "plugin:apps" = { "update every" = 10; };
+    "plugin:apps" = { "update every" = 30; };
     "plugin:proc:diskspace" = {
-      "update every" = 10;
+      "update every" = 30;
       "check for new mount points every" = 0;
     };
     "plugin:proc" = {
@@ -52,9 +54,7 @@ in {
       name = "/netdata/";
       title = "Netdata";
       value = {
-        proxyPass = "http://localhost:${
-            toString services.netdata.config.web."default port"
-          }/";
+        proxyPass = "http://localhost:${toString services.netdata.config.web."default port"}/";
       };
     }];
   };
