@@ -70,6 +70,13 @@ in {
           };
           folder = { type= "receiveonly"; };
         };
+        gaghiel = { # rock5c
+          device = {
+            id = "ZWUQ3PY-H7HBORL-JSSDRGL-YKDADLA-7NKA5R5-SXA2AFF-QYLRKO3-2PVF7QN";
+            addresses = [ "tcp://gaghiel.magi.vpn:22000" ];
+          };
+          folder = { type= "receiveonly"; };
+        };
         bardiel = { # hetzner
           device = {
             id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
