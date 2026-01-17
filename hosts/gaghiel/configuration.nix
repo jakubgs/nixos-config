@@ -4,6 +4,7 @@
   imports = [
     (modulesPath + "/profiles/hardened.nix")
     ./disko-config.nix
+    ./usb-storage.nix
     ../../roles/base
     ../../roles/iperf.nix
   ];
