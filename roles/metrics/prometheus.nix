@@ -6,16 +6,17 @@ let
   default = { netdata = 9000; mtr = 9001; chrony = 9123; smartctl = 9002; };
 
   hosts = {
-    "eve.magi.vpn"     = { openwrt = 9100; };
-    "arael.magi.vpn"   = default // { mikrotik = 9436; };
+        "eve.magi.vpn" = { openwrt = 9100; };
+      "arael.magi.vpn" = default // { mikrotik = 9436; };
     "bardiel.magi.vpn" = default;
     "caspair.magi.vpn" = default;
-    "lilim.magi.vpn"   = default;
-    "leliel.magi.vpn"  = default;
+      "lilim.magi.vpn" = default;
+     "leliel.magi.vpn" = default;
     "sachiel.magi.vpn" = default;
-    "zeruel.magi.vpn"  = default // { beacon-node = 9100; validator-client = 9101; geth = 16060; };
+     "zeruel.magi.vpn" = default // { beacon-node = 9100; validator-client = 9101; geth = 16060; };
     "israfel.magi.vpn" = default // { beacon-node = 9100; validator-client = 9101; erigon = 16060; };
-    "iruel.magi.vpn"   = default;
+      "iruel.magi.vpn" = default;
+    "gaghiel.magi.vpn" = default;
   };
 
   # helper for filtering hosts by available service port
