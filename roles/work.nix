@@ -42,7 +42,7 @@ in {
     awscli s5cmd doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # Ethereum
-    (pkgs.callPackage ../pkgs/eth-cli.nix {})
+    #(pkgs.callPackage ../pkgs/eth-cli.nix {})
     # General dev
     git-filter-repo github-cli pkg-config shellcheck dos2unix
     # NodeJS dev
