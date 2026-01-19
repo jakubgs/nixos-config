@@ -1,4 +1,4 @@
-{ lib, pkgs, config, secret, ... }:
+{ lib, pkgs, unstablePkgs, config, secret, ... }:
 
 {
   options.invidious = {
@@ -23,12 +23,12 @@
 
     services.invidious = {
       enable = true;
-      package = pkgs.unstable.invidious;
+      package = unstablePkgs.invidious;
       inherit (cfg) port domain;
       hmacKeyFile = cfg.hmac_key;
       sig-helper = {
         enable = false; # Currently broken.
-        package = pkgs.unstable.inv-sig-helper;
+        package = unstablePkgs.inv-sig-helper;
       };
       database.createLocally = true;
       settings = {

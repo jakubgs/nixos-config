@@ -19,7 +19,7 @@
   };
 
   # Sensors
-  boot.kernelPackages = pkgs.linuxPackages_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Network
   networking.hostId = "27aa0635";

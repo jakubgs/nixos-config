@@ -28,7 +28,7 @@
   # Load thermal sensor module.
   boot.kernelModules = [ "rockchip-thermal" ];
   # Lock kernel version.
-  boot.kernelPackages = pkgs.linuxPackages_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   networking = {
     hostId = "76fd6dc8";

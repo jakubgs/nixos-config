@@ -26,7 +26,7 @@
   };
 
   # Lock kernel version.
-  boot.kernelPackages = pkgs.linuxPackages_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Serial console or keyboard is not easily accessible.
   boot.zfs.requestEncryptionCredentials = false;

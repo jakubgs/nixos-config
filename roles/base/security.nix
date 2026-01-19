@@ -32,7 +32,7 @@
   security.pam.sshAgentAuth.enable = true;
 
   # Install Agenix CLI tool.
-  environment.systemPackages = [
-    channels.agenix.packages.${pkgs.system}.default
+  environment.systemPackages = with channels.agenix; [
+    packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 
 {
   # Packages required for work
-  users.users.jakubgs.packages = with pkgs.unstable; [
+  users.users.jakubgs.packages = with unstablePkgs; [
     ledger-live-desktop
   ];
 

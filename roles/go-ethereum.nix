@@ -1,4 +1,4 @@
-{ config, lib, pkgs, secret, ... }:
+{ config, lib, unstablePkgs, secret, ... }:
 
 {
   options.geth = {
@@ -22,7 +22,7 @@
         syncmode = "snap";
         maxpeers = 50;
         port = cfg.devp2pPort;
-        package = pkgs.unstable.callPackage ../pkgs/go-ethereum.nix { };
+        package = unstablePkgs.callPackage ../pkgs/go-ethereum.nix { };
         metrics = {
           enable = true;
           port = 16060;

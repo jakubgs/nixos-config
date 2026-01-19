@@ -23,15 +23,6 @@
 
   outputs = { self, nixpkgs, unstable, hardware, disko, nixos-generators, agenix }:
     let
-      overlay = final: prev: let
-        unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
-      in {
-        unstable = unstablePkgs;
-        zfsUnstable = unstablePkgs.zfsUnstable;
-        erigon = import ./pkgs/erigon.nix { pkgs = prev; };
-      };
-      # Overlays-module makes "pkgs.unstable" available in configuration.nix
-      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
       # To generate host configurations for all hosts.
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
       # Some hosts are ARM64.
@@ -45,9 +36,14 @@
         value = nixpkgs.lib.nixosSystem {
           system = systemForHost hostname;
           # Allow access to all channels from inputs in modules.
-          specialArgs.channels = { inherit nixpkgs unstable hardware agenix; };
+          specialArgs = {
+            unstablePkgs = import unstable {
+              system = systemForHost hostname;
+              config.allowUnfree = true;
+            };
+            channels = { inherit nixpkgs unstable hardware agenix; };
+          };
           modules = [
-            overlayModule
             disko.nixosModules.disko
             agenix.nixosModules.default
             nixos-generators.nixosModules.all-formats

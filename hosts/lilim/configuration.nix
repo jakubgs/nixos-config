@@ -19,7 +19,7 @@
   boot.loader.grub.enable = false;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_17;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Scrub to find errors
   services.zfs.autoScrub = {
@@ -41,12 +41,6 @@
      KEYBOARD_KEY_4c=phone
      KEYBOARD_KEY_4d=endcall
   '';
-
-  # Enable sound.
-  hardware.pulseaudio.enable = true;
-
-  # Power auto tuning on startup
-  powerManagement.powertop.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "20.09";

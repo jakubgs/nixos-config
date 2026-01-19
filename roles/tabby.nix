@@ -1,11 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, unstablePkgs, lib, ... }:
 
 {
   services.tabby = {
     enable = true;
     port = 11029;
     host = "0.0.0.0";
-    package = pkgs.unstable.tabby;
+    package = unstablePkgs.tabby;
     model = "Qwen2.5-Coder-3B";
     acceleration = "cuda";
     usageCollection = false;
@@ -13,7 +13,7 @@
 
   systemd.services.tabby = {
     # For scraping docs pages.
-    path = with pkgs; [ pkgs.unstable.katana ];
+    path = with unstablePkgs; [ katana ];
 
     # For indexing local repos.
     serviceConfig = {
@@ -28,8 +28,8 @@
     };
   };
 
-  users.users.jakubgs.packages = with pkgs; [
-    pkgs.unstable.tabby-agent
+  users.users.jakubgs.packages = with unstablePkgs; [
+    tabby-agent
   ];
 
   # Firewall
