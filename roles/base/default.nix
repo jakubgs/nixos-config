@@ -47,6 +47,12 @@
     "vm.swappiness" = 100;
   };
 
+  # Easier debugging on failure
+  boot.kernelParams = [
+    "boot.shell_on_fail"
+    "boot.initrd.verbose"
+  ];
+
   # domain use for my own infra
   networking = {
     enableIPv6 = false;
