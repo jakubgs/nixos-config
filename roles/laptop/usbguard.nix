@@ -13,7 +13,7 @@
     implicitPolicyTarget = "block";
     presentControllerPolicy = "keep";
     presentDevicePolicy = "keep";
-    insertedDevicePolicy = "block";
+    insertedDevicePolicy = "apply-policy";
 
     # Use 'usbguard generate-policy' to expand rules.
     ruleFile = secret "service/usbguard/rules";
