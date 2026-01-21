@@ -143,6 +143,14 @@ in {
         (map pkgs.lib.pathToMountUnit syncthingFolderNames)
       );
       unitConfig.ConditionPathIsMountPoint = syncthingFolderNames;
+      # Lower priority of Syncthing service.
+      serviceConfig = {
+        Nice = 19;
+        IOSchedulingClass = "idle";
+        CPUSchedulingPolicy = "other";
+        CPUWeight = 10;
+        IOWeight = 10;
+      };
     };
 
     services.landing = {
