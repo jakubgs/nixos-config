@@ -27,17 +27,13 @@ in {
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
-    ansible_2_17 terraform_1 mosh
+    mosh remmina
     # Development
     gnumake gcc autoconf automake patchelf
     # Security
     vault sops pwgen yubikey-manager openssl
-    # Databases
-    robo3t
     # Network
     mtr netcat websocat ngrok tcpdump whois inetutils
-    # Remote
-    remmina
     # Cloud
     awscli s5cmd doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
@@ -49,8 +45,6 @@ in {
     nodejs_22 (yarn.override { nodejs = nodejs_22; })
     # Python dev
     myPython
-    # Mobile dev
-    fastlane apktool jdk8 scrcpy
     # Utils
     jsonnet appimage-run unixtools.xxd bvi binutils-unwrapped direnv
     # Docs
