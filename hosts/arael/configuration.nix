@@ -39,18 +39,19 @@
     "zfs.zfs_dedup_prefetch=0"        # Disable memory hungry deduplication
     "zfs.zfs_arc_min=0"               # Make shrinking easier
     "zfs.zfs_arc_max=1073741824"      # 1 GiB hard limit
-    "zfs.zfs_arc_sys_free=4294967296" # 4 GiB kept for system
+    "zfs.zfs_arc_sys_free=1073741824" # 1 GiB kept for system
     "zfs.zfs_scan_strict_mem_lim=1"   # Enforce tight memory limits
     "zfs.zfs_scrub_min_time_ms=500"   # Reduce time between TXG flushes.
   ];
   boot.kernel.sysctl = {
-    "vm.swappiness" = lib.mkForce 1;  # Prefer shrinking ARC over swapping.
-    "vm.min_free_kbytes" = 131072;    # 128 MiB
-    "vm.watermark_scale_factor" = 300;
+    "vm.swappiness" = lib.mkForce 60;  # Prefer shrinking ARC over swapping.
+    "vm.min_free_kbytes" = 65536;      # 64 MiB
+    "vm.watermark_scale_factor" = 150;
+    "vm.vfs_cache_pressure" = 1000;    # reclaim dentries/inodes faster
   };
 
   # Limit memory usage of individual services.
-  systemd.services.transmission.serviceConfig.MemoryMax = "400M";
+  systemd.services.transmission.serviceConfig.MemoryMax = "300M";
   systemd.services.invidious.serviceConfig.MemoryMax = "400M";
   systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
   systemd.services.netdata.serviceConfig.MemoryMax = "150M";
