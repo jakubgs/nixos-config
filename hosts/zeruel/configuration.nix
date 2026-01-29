@@ -41,6 +41,17 @@
     ];
   };
 
+  # Hetzner Cloud does not support DHCP
+  systemd.network = {
+    enable = true;
+    networks."10-wan" = {
+      matchConfig.Name = "enp0s31f6";
+      networkConfig.DHCP = "no";
+      address = [ "94.130.217.166/26" ];
+      routes = [ { Gateway = "94.130.217.129"; GatewayOnLink = true; } ];
+      networkConfig.DNS = [ "185.12.64.1" "185.12.64.2" "1.1.1.1" ];
+    };
+  };
 
   # Pin kernel version
   boot.kernelPackages = pkgs.linuxPackages_6_18;
