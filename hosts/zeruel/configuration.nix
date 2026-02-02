@@ -41,7 +41,12 @@
     ];
   };
 
-  # Hetzner Cloud does not support DHCP
+  # Hetzner Cloud does not support DHCP.
+  # Use systemd-network instead of dhcpcd.
+  networking= {
+    useNetworkd = true;
+    useDHCP = false;
+  };
   systemd.network = {
     enable = true;
     networks."10-wan" = {
