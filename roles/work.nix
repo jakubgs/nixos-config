@@ -29,7 +29,7 @@ in {
     # DevOps
     mosh remmina
     # Development
-    gnumake gcc autoconf automake patchelf
+    gnumake gcc autoconf automake patchelf opencode
     # Security
     vault sops pwgen yubikey-manager openssl
     # Network
