@@ -41,7 +41,7 @@
     "zfs.zfs_arc_max=1073741824"      # 1 GiB hard limit
     "zfs.zfs_arc_sys_free=1073741824" # 1 GiB kept for system
     "zfs.zfs_scan_strict_mem_lim=1"   # Enforce tight memory limits
-    "zfs.zfs_scrub_min_time_ms=500"   # Reduce time between TXG flushes.
+    "zfs.zfs_scrub_min_time_ms=100"   # Reduce time between TXG flushes.
   ];
   boot.kernel.sysctl = {
     "vm.swappiness" = lib.mkForce 60;  # Prefer shrinking ARC over swapping.
