@@ -51,7 +51,7 @@ in {
     extraFlags = [
       "--storage.tsdb.retention.size=40GB"
       "--web.external-url=http://${config.networking.fqdn}/prometheus/"
-      "--web.route-prefix=/"
+      "--web.route-prefix=/prometheus/"
     ];
 
     globalConfig = {
