@@ -29,7 +29,7 @@
     };
 
   fileSystems."/boot1" =
-    { device = "/dev/disk/by-uuid/79684d7a-0a62-4d98-bc7a-2031e1629799";
+    { device = "/dev/disk/by-uuid/14a6cdd4-b9da-4b76-95a8-57cc4ce54786";
       fsType = "ext4";
     };
 
@@ -110,7 +110,7 @@
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/04b2a3b8-c382-45df-aaa8-3c81ea39a3ec"; }
-      { device = "/dev/disk/by-uuid/6ab869d2-b6ea-4bd5-b6d0-9a89168262cb"; }
+      { device = "/dev/disk/by-uuid/51583037-3f2d-4a01-9717-b3c297c2fc5d"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

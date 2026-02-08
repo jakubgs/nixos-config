@@ -35,7 +35,7 @@
     copyKernels = true;
     mirroredBoots = [
       {
-        devices = ["/dev/disk/by-id/ata-TOSHIBA_MG04ACA400EY_586IK061F7GB"];
+        devices = ["/dev/disk/by-id/ata-TOSHIBA_MG04ACA400EY_987VK0ALF7GB"];
         path = "/boot1";
       }
       {
