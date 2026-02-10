@@ -7,6 +7,7 @@
     ./disko-config.nix
     ../../roles/base
     ../../roles/desktop
+    ../../roles/printer.nix
     ../../roles/syncthing.nix
   ];
 
