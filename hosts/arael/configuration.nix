@@ -34,19 +34,22 @@
   # Avoid memory-starving processes via ZFS pool scan bug.
   # https://github.com/openzfs/zfs/pull/17542
   boot.kernelParams = [
-    "cma=128M"                        # Contiguous Memory Allocator
-    "zfs.zfs_prefetch_disable=1"      # Disable loading extra data into ARC
-    "zfs.zfs_dedup_prefetch=0"        # Disable memory hungry deduplication
-    "zfs.zfs_arc_min=0"               # Make shrinking easier
-    "zfs.zfs_arc_max=1073741824"      # 1 GiB hard limit
-    "zfs.zfs_arc_sys_free=1073741824" # 1 GiB kept for system
-    "zfs.zfs_scan_strict_mem_lim=1"   # Enforce tight memory limits
-    "zfs.zfs_scrub_min_time_ms=100"   # Reduce time between TXG flushes.
+    "cma=128M"                         # Contiguous Memory Allocator
+    "zfs.zfs_scan_legacy=1"            # Old scan had smaller memory usage
+    "zfs.zfs_prefetch_disable=1"       # Disable loading extra data into ARC
+    "zfs.zfs_dedup_prefetch=0"         # Disable memory hungry deduplication
+    "zfs.zfs_arc_min=0"                # Make shrinking easier
+    "zfs.zfs_arc_max=1073741824"       # 1 GiB hard limit
+    "zfs.zfs_arc_sys_free=2147483648"  # 1 GiB kept for system
+    "zfs.zfs_scan_strict_mem_lim=1"    # Enforce tight memory limits
+    "zfs.zfs_scrub_min_time_ms=50"     # Reduce time between TXG flushes.
+    "zfs.zfs_dirty_data_max=268435456" # dirty limit (default often too high)
+    "zfs.zfs_txg_timeout=3"            # shorter TXGs, frequent smaller flushes
   ];
   boot.kernel.sysctl = {
-    "vm.swappiness" = lib.mkForce 60;  # Prefer shrinking ARC over swapping.
-    "vm.min_free_kbytes" = 65536;      # 64 MiB
-    "vm.watermark_scale_factor" = 150;
+    "vm.swappiness" = lib.mkForce 100; # Prefer shrinking ARC over swapping.
+    "vm.min_free_kbytes" = 98304;      # 96 MiB, helps watermark pressure earlier
+    "vm.watermark_scale_factor" = 200; # more aggressive low watermark
     "vm.vfs_cache_pressure" = 1000;    # reclaim dentries/inodes faster
   };
 
