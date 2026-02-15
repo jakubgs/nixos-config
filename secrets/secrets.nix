@@ -29,8 +29,7 @@ in with hosts; {
   "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/nix-serve/nix.magi.vpn"     = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/nixos-activation/key.age"   = { publicKeys = all;       };
-  "service/tailscale/caspair.age"      = { publicKeys = jakubgs ++ [ caspair ]; };
-  "service/tailscale/lilim.age"        = { publicKeys = jakubgs ++ [ lilim ]; };
+  "service/tailscale/auth-key.age"     = { publicKeys = jakubgs ++ [ caspair lilim ]; };
   "service/transmission/creds.age"     = { publicKeys = all;       };
   "service/usbguard/rules.age"         = { publicKeys = all;       };
   "service/vsftpd/pass.age"            = { publicKeys = all;       };

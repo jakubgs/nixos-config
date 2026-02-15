@@ -4,8 +4,8 @@ let
   hostname = config.networking.hostName;
 in {
   age.secrets = {
-    "service/tailscale/${hostname}" = {
-      file = ../secrets/service/tailscale/${hostname}.age;
+    "service/tailscale/auth-key" = {
+      file = ../secrets/service/tailscale/auth-key.age;
     };
   };
 
@@ -16,7 +16,7 @@ in {
     extraUpFlags = [ "--accept-routes=false" "--accept-dns=false" "--ssh=false" ];
     extraSetFlags = [ "--accept-routes=false" "--accept-dns=false" "--ssh=false" ];
     # WARNING: These keys expire after 90 days.
-    authKeyFile = secret "service/tailscale/${hostname}";
+    authKeyFile = secret "service/tailscale/auth-key";
   };
 
   # Client
