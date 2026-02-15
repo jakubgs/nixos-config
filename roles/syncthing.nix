@@ -58,7 +58,7 @@ in {
         };
         arael = { # nanopi-r6c
           device = {
-            id = "HOBTQ6M-WYSYZM3-SVXACFZ-VOLJRR3-XCIWSZB-FLPYML4-F4BE35Q-3NIF4AB";
+            id = "VE25Z2C-P3VDVFH-YN6E4MU-BZDO3UG-SY6S52T-IVYXMJH-V22FMIK-HMMUAQW";
             addresses = [ "tcp://arael.magi.vpn:22000" ];
           };
           folder = { type= "receiveonly"; };

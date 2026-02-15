@@ -13,26 +13,6 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "rpool/root";
-      fsType = "zfs";
-    };
-
-  fileSystems."/nix" =
-    { device = "rpool/nix";
-      fsType = "zfs";
-    };
-
-  fileSystems."/home" =
-    { device = "rpool/home";
-      fsType = "zfs";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2CF9-2C77";
-      fsType = "vfat";
-    };
-
   fileSystems."/mnt/torrent" =
     { device = "rpool/secret/torrent";
       fsType = "zfs";
@@ -80,10 +60,6 @@
       fsType = "none";
       options = [ "noauto" "nofail" "bind" ];
     };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/8b957939-0a1b-4678-8265-f5ea0e4e10e0"; }
-    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

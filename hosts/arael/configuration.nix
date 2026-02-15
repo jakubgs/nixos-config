@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./disko-config.nix
     ./hardware-configuration.nix
     ../../roles/base
     ../../roles/mikrotik.nix
