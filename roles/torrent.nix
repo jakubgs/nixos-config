@@ -1,4 +1,4 @@
-{ pkgs, config, lib, secret, ... }:
+{ pkgs, unstablePkgs, config, lib, secret, ... }:
 
 {
   options.torrent = {
@@ -28,16 +28,7 @@
     # Daemon
     services.transmission = {
       enable = true;
-      package = pkgs.transmission_4.overrideAttrs (_: rec {
-        version = "4.0.5";
-         src = pkgs.fetchFromGitHub {
-           owner = "transmission";
-           repo = "transmission";
-           rev = version;
-           hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
-           fetchSubmodules = true;
-         };
-      });
+      package = unstablePkgs.transmission_4;
       openFirewall = true;
       openPeerPorts = true;
       home = cfg.torrentDir;
