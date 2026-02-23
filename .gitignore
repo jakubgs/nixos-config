@@ -5,3 +5,4 @@ result
 *.log
 *.img
 *.qcow
+*.qcow2
