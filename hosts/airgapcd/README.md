@@ -1,12 +1,19 @@
 # Description
 
-This ISO image is intended for running in memory to handle operations on offline backups of GPG master keys.
+Custom ISO livecd image for running from memory in ari-gapped way to handle operations on offline backups of GPG master keys.
+
+# Testing
+
+```sh
+nix build '.#nixosConfigurations.airgapcd.config.system.build.vm'
+./result/bin/run-airgapcd-vm
+```
 
 # Building
 
 ```sh
-nix build .\#nixosConfigurations.gpg.config.formats.iso
-sudo dd if=result/nixos.iso of=/dev/sdX bs=1M status=progress
+nix build '.#nixosConfigurations.airgapcd.config.formats.iso'
+sudo dd if=result/nixos-*.iso of=/dev/sdX bs=4M oflag=sync status=progress
 ```
 
 # Details

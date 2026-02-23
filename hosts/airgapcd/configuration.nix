@@ -10,6 +10,8 @@
     ../../roles/desktop/yubikey.nix
   ];
 
+  system.nixos.label = "airgapcd";
+
   # Message of the day
   users.motd = ''
     Use following scripts to renew subkeys:
