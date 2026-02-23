@@ -1,12 +1,13 @@
 { pkgs ? import <nixpkgs> { } }:
 
 pkgs.stdenv.mkDerivation rec {
-  pname = "staking-deposit-cli";
-  version = "2.8.0";
+  pname = "ethstaker-deposit-cli";
+  version = "1.2.2";
+  commit = "b13dcb9";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/ethereum/staking-deposit-cli/releases/download/v${version}/staking_deposit-cli-948d3fc-linux-amd64.tar.gz";
-    hash = "sha256-7wISUqvSWR7201WPsyWLNfR4wgMz8t/0oXzHm1c8OHk=";
+    url = "https://github.com/ethstaker/ethstaker-deposit-cli/releases/download/v${version}/ethstaker_deposit-cli-${commit}-linux-amd64.tar.gz";
+    hash = "sha256-BK8/T9L9zPSuBgq95HY3YioxEU2fLlPmJyKmlKTVsgY=";
   };
 
   nativeBuildInputs = [ pkgs.autoPatchelfHook ];
@@ -22,7 +23,7 @@ pkgs.stdenv.mkDerivation rec {
 
   meta = {
     description = "Secure key generation for deposits";
-    homepage = "https://github.com/ethereum/staking-deposit-cli";
+    homepage = "https://github.com/ethstaker/ethstaker-deposit-cli";
     mainProgram = "deposit";
   };
 }
