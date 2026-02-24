@@ -47,17 +47,24 @@
   # allow of sudo without password
   security.sudo.wheelNeedsPassword = false;
 
+  # Clone, copy, or fetch recent dotfiles
   system.userActivationScripts = {
     jakubgsDotfiles = let
       dotfilesSh = pkgs.replaceVarsWith {
         src = ../../files/scripts/dotfiles.sh;
         isExecutable = true;
-        replacements = {
+        replacements = rec {
           sshKey = secret "service/nixos-activation/key";
           dotfilesUrl = "git@github.com:jakubgs/dotfiles.git";
           dotfilesBranch = "master";
+          dotfilesFallback = pkgs.fetchFromGitHub {
+            owner = "jakubgs";
+            repo = "dotfiles";
+            rev = "95de4dc443b23bdc3bf622e3582d42cd5762fc0c";
+            hash = "sha256-gCtG9a6NsYFfuu9o/t0XmypGlhCZQ5yzDLzzs3kuJyI=";
+          };
           shell = "${pkgs.bash}/bin/bash";
-          inherit (pkgs) bash git openssh;
+          inherit (pkgs) bash git openssh ncurses;
         };
       };
     in "${dotfilesSh}";

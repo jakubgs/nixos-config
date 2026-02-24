@@ -1,14 +1,20 @@
 #!@shell@
 set -e
 
-export PATH="@bash@/bin:@git@/bin:@openssh@/bin:${PATH}"
+function has_internet() { ping -c1 -W2 1.1.1.1 >/dev/null 2>&1; }
+
+export PATH="@bash@/bin:@git@/bin:@openssh@/bin:@ncurses@/bin:${PATH}"
 export DOTFILES_PATH="${HOME}/dotfiles"
 export DOTFILES_URL='@dotfilesUrl@'
 export DOTFILES_URL_HTTPS="${DOTFILES_URL/git@github.com:/https://github.com/}"
 export DOTFILES_BRANCH='@dotfilesBranch@'
+export DOTFILES_FALLBACK='@dotfilesFallback@'
 export GIT_SSH_COMMAND='ssh -i @sshKey@ -o StrictHostKeyChecking=accept-new'
 
-if [[ ! -d "${DOTFILES_PATH}" ]]; then
+if ! has_internet; then # Handle offline case
+    mkdir -p "${DOTFILES_PATH}"
+    cp -r "${DOTFILES_FALLBACK}/." "${DOTFILES_PATH}"
+elif [[ ! -d "${DOTFILES_PATH}" ]]; then
     echo "Cloning dotfiles repository..."
     git clone "${DOTFILES_URL}" "${DOTFILES_PATH}"
 else
