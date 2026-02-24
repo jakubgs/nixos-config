@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
-
-set -e
+#!@runtimeShell@
+export PATH="@binPath@"
+set -euo pipefail
 
 # This script creates an encrypted ISO image for offline backups.
 # Source: https://www.frederickding.com/posts/2017/08/luks-encrypted-dvd-bd-data-disc-guide-273316/

@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!@runtimeShell@
+export PATH="@binPath@"
 set -euo pipefail
 
 function show_help() {
