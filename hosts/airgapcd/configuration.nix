@@ -1,19 +1,23 @@
-{ channels, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ../../roles/base/users.nix
     ../../roles/base/shell.nix
     ../../roles/base/nix.nix
     ../../roles/base/console.nix
     ../../roles/base/helpers.nix
     ../../roles/base/security.nix
     ../../roles/desktop/yubikey.nix
+    ./harden.nix
+    ./desktop.nix
   ];
 
   system.nixos.label = "airgapcd";
 
   # Message of the day
-  users.motd = ''
+  users.motdFile = "/etc/motd";
+   environment.etc."motd".text = ''
     Use following scripts to renew subkeys:
 
     mount_secret_cd
@@ -23,40 +27,33 @@
     umount_secret_cd
   '';
 
-  # root autologin, root password set to root
-  services.getty.autologinUser = "root";
-  users.users.root.password = "root";
+  environment.etc."zshrc".text = ''
+    [[ -o interactive ]] || return
+    [[ -n "$MOTD_SHOWN" ]] || return
+    export MOTD_SHOWN=1
+    cat /etc/motd
+  '';
+
+  # User autologin
+  services.getty.autologinUser = "jakubgs";
 
   # Packages
   environment.systemPackages = with pkgs; [
     # Scripts
-    (pkgs.writeScriptBin "mount_secret_cd"  ./mount_secret_cd.sh)
-    (pkgs.writeScriptBin "umount_secret_cd" ./umount_secret_cd.sh)
-    (pkgs.writeScriptBin "renew_gpg_sub_keys" ./renew_gpg_sub_keys.sh)
-    # Console
-    rxvt-unicode rofi
+    (pkgs.writeScriptBin "mount_secret_cd"  ./scripts/mount_secret_cd.sh)
+    (pkgs.writeScriptBin "umount_secret_cd" ./scripts/umount_secret_cd.sh)
+    (pkgs.writeScriptBin "renew_gpg_sub_keys" ./scripts/renew_gpg_sub_keys.sh)
     # Base
-    zsh sudo bc pv rename zip unzip wget curl
+    zsh sudo jq bc pv rename zip unzip wget curl
     # Storage
     parted gptfdisk udftools
     # Security
     gopass pass openssl cryptsetup
     # Misc
     git neovim fzf htop tmux silver-searcher
+    # Desktop
+    lxterminal rxvt-unicode rofi arandr
   ];
-
-  # Password entry method.
-  programs.gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-curses;
-
-  # Disable all suspend methods.
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
-  systemd.targets.hibernate.enable = false;
-  systemd.targets.hybrid-sleep.enable = false;
-
-  # Disable networking
-  networking.useDHCP = lib.mkForce false;
-  networking.interfaces = {};
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
