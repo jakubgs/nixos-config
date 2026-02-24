@@ -43,6 +43,8 @@
     (pkgs.writeScriptBin "mount_secret_cd"  ./scripts/mount_secret_cd.sh)
     (pkgs.writeScriptBin "umount_secret_cd" ./scripts/umount_secret_cd.sh)
     (pkgs.writeScriptBin "renew_gpg_sub_keys" ./scripts/renew_gpg_sub_keys.sh)
+    # Ethereum
+    (pkgs.callPackage ../../pkgs/ethstaker-deposit-cli.nix {})
     # Base
     zsh sudo jq bc pv rename zip unzip wget curl
     # Storage
