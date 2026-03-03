@@ -12,6 +12,7 @@ let
 in with hosts; {
   # Host Private Keys
   "hosts/keys/ed25519/arael.age"       = { publicKeys = jakubgs;   };
+  "hosts/keys/ed25519/armisael.age"    = { publicKeys = jakubgs;   };
   "hosts/keys/ed25519/bardiel.age"     = { publicKeys = jakubgs;   };
   "hosts/keys/ed25519/caspair.age"     = { publicKeys = jakubgs;   };
   "hosts/keys/ed25519/gaghiel.age"     = { publicKeys = jakubgs;   };

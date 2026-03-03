@@ -26,4 +26,12 @@
     keylocation = "prompt";
     keyformat = "passphrase";
   };
+
+  # Reduce memory usage on datasets for big files.
+  mediaOpts = {
+    primarycache = "metadata";
+    secondarycache = "metadata";
+    recordsize = "1M";
+    compression = "lz4";
+  };
 }

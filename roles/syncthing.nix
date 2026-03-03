@@ -28,17 +28,24 @@ in {
           };
           folder = { type= "receiveonly"; };
         };
-        balthasar = { # laptop
+        balthasar = { # laptop x390
           device = {
             id = "HN6DXKS-ILEBPDZ-AZU5QJQ-OVLJSML-XFIIIRL-SCTRDEI-W2LFQMN-UXAOQA4";
             addresses = [ "tcp://balthasar.magi.vpn:22000" ];
           };
           folder = { type= "sendreceive"; };
         };
-        lilim = { # laptop
+        lilim = { # laptop x1
           device = {
             id = "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC";
             addresses = [ "tcp://lilim.magi.vpn:22000" ];
+          };
+          folder = { type= "sendreceive"; };
+        };
+        armisael = { # laptop t480s
+          device = {
+            id = "NLIXMAX-IUFXYNA-FY3WMWJ-FAP3BKR-SGNU2BO-ZN5EKV2-TNXR52F-DT6QYQ3";
+            addresses = [ "tcp://armisael.magi.vpn:22000" ];
           };
           folder = { type= "sendreceive"; };
         };

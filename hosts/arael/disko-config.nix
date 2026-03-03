@@ -1,15 +1,7 @@
 let
   lib = import ../../lib/disko;
 
-  inherit (lib.zfs) mkDataSet encryptedOpts;
-
-  # Reduce memory usage on datasets for big files.
-  mediaOpts = {
-    primarycache = "metadata";
-    secondarycache = "metadata";
-    recordsize = "1M";
-    compression = "lz4";
-  };
+  inherit (lib.zfs) mkDataSet encryptedOpts mediaOpts;
 in {
   disko.devices = {
     disk = {

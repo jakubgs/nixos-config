@@ -38,9 +38,9 @@ in {
     "10.2.2.1"  = [       "eve.magi.vpn" ]; # router
     "10.2.2.10" = [  "melchior.magi.vpn" ]; # server
     "10.2.2.11" = [   "caspair.magi.vpn" ]; # desktop
-    "10.2.2.12" = [     "lilim.magi.vpn" ]; # laptop
-    "10.2.2.13" = [ "balthasar.magi.vpn" ]; # laptop
-    "10.2.2.14" = [    "leliel.magi.vpn" ]; # rasppi4
+    "10.2.2.12" = [     "lilim.magi.vpn" ]; # laptop x1
+    "10.2.2.13" = [ "balthasar.magi.vpn" ]; # laptop x390
+    "10.2.2.14" = [  "armisael.magi.vpn" ]; # laptop t480s
     "10.2.2.15" = [    "ramiel.magi.vpn" ]; # phone
     "10.2.2.16" = [   "sachiel.magi.vpn" ]; # nanopct4
     "10.2.2.17" = [   "bardiel.magi.vpn" ]; # hetzner
@@ -50,6 +50,7 @@ in {
     "10.2.2.21" = [   "israfel.magi.vpn" ]; # rock5b eth
     "10.2.2.22" = [     "iruel.magi.vpn" ]; # rock5b misc
     "10.2.2.23" = [   "gaghiel.magi.vpn" ]; # rock5c misc
+    "10.2.2.24" = [    "leliel.magi.vpn" ]; # rasppi4
   };
 
   # Search the magi domain

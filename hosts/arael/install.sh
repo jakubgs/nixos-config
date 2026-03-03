@@ -52,6 +52,8 @@ function install_uefi_bootloader() {
     dd if="${EDK2_IMG}" of="${EMMC_DEV}" bs=512 skip=$((0x800)) seek=$((0x4000)) conv=notrunc
 }
 
+# Ansure root permissions.
+[[ $(id -u) -ne 0 ]] && { echo 'ERROR: Script needs to be run as root.' >&2; exit 1; }
 # Necessary for deployment of secrets to work.
 [[ -z "${ED25519_KEY:-}" ]] && { echo "No ED25519_KEY env var provided."; exit 1; }
 

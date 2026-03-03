@@ -1,9 +1,6 @@
 { ... }:
 
 {
-  # Fix brightness keys on Thinkpad T480s.
-  boot.kernelParams = [ "acpi_osi=" ];
-
   # TLP power management daemon
   services.tlp = {
     enable = true;

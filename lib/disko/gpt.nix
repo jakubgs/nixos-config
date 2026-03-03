@@ -20,6 +20,8 @@
       type = "swap";
       discardPolicy = "both";
       resumeDevice = true;
+      randomEncryption = true;
+      priority = 100; # prefer to encrypt as long as we have space for it
     };
   };
 
