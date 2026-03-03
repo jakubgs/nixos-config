@@ -12,6 +12,7 @@
     ../../roles/restic.nix
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix
+    ../../roles/ledger.nix
     ../../roles/work.nix
   ];
 

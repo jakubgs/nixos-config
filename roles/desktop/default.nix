@@ -5,7 +5,6 @@
     ./autofs.nix
     ./bluetooth.nix
     ./clipmenu.nix
-    ./crypto.nix
     ./dnsmasq.nix
     ./docker.nix
     ./docs.nix
