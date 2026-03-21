@@ -57,7 +57,7 @@
     # Video
     mpv yt-dlp ffmpeg
     # Audio
-    vorbis-tools mpg123 soundconverter
+    vorbis-tools mpg123 soundconverter pulsemixer
     # Communication
     discord
     # Torrent
