@@ -12,9 +12,6 @@
     ../../roles/syncthing.nix
   ];
 
-  # Fix brightness keys on Thinkpad T480s.
-  boot.kernelParams = [ "acpi_osi=" ];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
