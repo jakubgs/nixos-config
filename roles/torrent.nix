@@ -51,7 +51,9 @@
         # separate service watches for torrent files to start
         watch-dir-enabled = false;
         # limits
-        download-queue-size = 30;
+        download-queue-size = 50;
+        # tuning
+        cache-size-mb = 256;
       };
     };
 
