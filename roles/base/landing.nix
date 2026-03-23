@@ -11,7 +11,10 @@
   };
 
   # Load MAGI Certificate Authority
-  security.pki.certificateFiles = [ ../../secrets/service/landing/ca.crt ];
+  security.pki = {
+    certificateFiles = [ ../../secrets/service/landing/ca.crt ];
+    installCACerts = true;
+  };
 
   services.landing = {
     enable = true;
