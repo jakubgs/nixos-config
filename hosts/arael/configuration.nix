@@ -33,7 +33,6 @@
   boot.zfs.requestEncryptionCredentials = false;
 
   # Limit memory usage of individual services.
-  systemd.services.transmission.serviceConfig.MemoryMax = "300M";
   systemd.services.invidious.serviceConfig.MemoryMax = "400M";
   systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
   systemd.services.netdata.serviceConfig.MemoryMax = "150M";
