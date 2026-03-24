@@ -11,7 +11,7 @@ export DOTFILES_BRANCH='@dotfilesBranch@'
 export DOTFILES_FALLBACK='@dotfilesFallback@'
 export GIT_SSH_COMMAND='ssh -i @sshKey@ -o StrictHostKeyChecking=accept-new'
 
-if ! has_internet; then # Handle offline case
+if ! has_internet && ! -d ${DOTFILES_PATH}; then # Handle offline case
     mkdir -p "${DOTFILES_PATH}"
     cp -r "${DOTFILES_FALLBACK}/." "${DOTFILES_PATH}"
 elif [[ ! -d "${DOTFILES_PATH}" ]]; then
