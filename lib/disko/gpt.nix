@@ -32,4 +32,22 @@
       pool = "rpool";
     };
   };
+
+  mkZCache = priority: size: name: pool: {
+    inherit priority size name;
+    content = {
+      type = "zfs_cache";
+      inherit pool;
+    };
+  };
+
+
+  mkExt4 = priority: size: name: mountpoint: {
+    inherit priority size name;
+    content = {
+      type = "filesystem";
+      format = "ext4";
+      inherit mountpoint;
+    };
+  };
 }

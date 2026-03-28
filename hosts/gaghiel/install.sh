@@ -18,12 +18,12 @@ set -x
 
 # This is expected to run from an Armbian SD card image.
 if command -v apt 2>&1 >/dev/null; then
-    apt install --yes xz-utils git tmux linux-headers-vendor-rk35xx linux-headers-edge-rockchip-rk3588
+    apt install --yes xz-utils git gdisk tmux linux-headers-vendor-rk35xx linux-headers-edge-rockchip-rk3588
     apt install --yes zfs-dkms zfsutils
 fi
 
 # Install Nix if missing.
-if [[ ! -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+if [[ ! -f /etc/NIXOS ]] && [[ ! -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
     sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 fi
 
@@ -35,7 +35,7 @@ if ! command -v nix 2>&1 >/dev/null; then
 fi
 
 # Install Disko
-add_missing_pkg disko 'github:nix-community/disko/1.11.0#disko-install'
+add_missing_pkg disko 'github:nix-community/disko/v1.13.0#disko-install'
 
 # Format filesystem
 disko --mode destroy,format,mount --flake "${FLAKE}" --yes-wipe-all-disks

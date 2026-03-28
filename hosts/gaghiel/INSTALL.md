@@ -4,9 +4,11 @@ Describes installation process on Rock 5C `gaghiel` host.
 
 # Install Image
 
-I used an Armbian 23.8 Bookworm image: <https://www.armbian.com/rock-5b/>
+I used an Armbian 23.8 Bookworm image: <https://www.armbian.com/radxa-rock-5c/>
 
-:warning: The stock [NixOS `aarch64` SD image](https://hydra.nixos.org/job/nixos/release-24.11/nixos.sd_image.aarch64-linux) does not work currently.
+> :warning: The stock [NixOS `aarch64` SD image](https://hydra.nixos.org/job/nixos/release-24.11/nixos.sd_image.aarch64-linux) does not work currently.
+
+> :warning: Once EDK2 bootloader is installed you need to use the [Armbian `uefi-arm64` image](https://www.armbian.com/uefi-arm64/).
 
 Alternatively a [NixOS `aarch64` ISO image](https://hydra.nixos.org/job/nixos/release-24.11/nixos.iso_minimal.aarch64-linux) can be used on a USB pendrive.
 
