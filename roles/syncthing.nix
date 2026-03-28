@@ -79,7 +79,7 @@ in {
         };
         gaghiel = { # rock5c
           device = {
-            id = "ZWUQ3PY-H7HBORL-JSSDRGL-YKDADLA-7NKA5R5-SXA2AFF-QYLRKO3-2PVF7QN";
+            id = "6MAGWIM-RKEUDJU-U2K4XCL-SQYNK5K-S3NUSCE-AQBEPNG-PYPNJBS-J5KPGQM";
             addresses = [ "tcp://gaghiel.magi.vpn:22000" ];
           };
           folder = { type= "receiveonly"; };
