@@ -2,10 +2,11 @@
 
 let
   hostShares = {
-    #"leliel" =  [ "git" "data" "music" "photos" ];
-    "bardiel" = [ "git" "data" "music" "photos" "torrent" ];
-    "sachiel" = [ "git" "data" "music" "photos" "torrent" ];
     "arael" =   [ "git" "data" "music" "photos" "torrent" ];
+    "bardiel" = [ "git" "data" "music" "photos" "torrent" ];
+    "gaghiel" = [ "git" "data" "music" "photos" "torrent" ];
+    "sachiel" = [ "git" "data" "music" "photos" "torrent" ];
+    "leliel" =  [ "git" "data" "music" "photos" ];
   };
 
   defaultNfsOptions = "async,noac,soft,timeo=50,retrans=2,rsize=262144,wsize=262144";
