@@ -10,7 +10,7 @@ ADDRESS="${2:-${1}.magi.lan}"
 
 # Deploy host key necessary for Agenix decryption of secrets.
 echo "Acquiring host private ED25519 key..." >&2
-export ED25519_KEY=$(cd secrets; agenix -d hosts/keys/ed25519/${1}.age)
+export ED25519_KEY=$(cd secrets; agenix -d hosts/${1}/ssh/ed25519.age)
 
 echo "Installing NixOS..." >&2
 scp hosts/${1}/install.sh "${ADDRESS}:~/"

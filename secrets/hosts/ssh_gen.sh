@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o pipefail
 
-THIS_DIR=$(dirname "${0}")
+GIT_ROOT=$(cd "${BASH_SOURCE%/*}" && git rev-parse --show-toplevel)
 DOMAIN='magi.vpn'
 
 function keyscan() {
@@ -12,14 +12,14 @@ function keyscan() {
     fi
     echo "${OUTPUT}" \
         | awk '/ssh-ed25519/{printf "%s %s", $2, $3}' \
-        | tee "${THIS_DIR}/ed25519/${1%.*}"
+        | tee "${GIT_ROOT}/secrets/hosts/${1%.*}/ssh/ed25519.pub"
     echo
 }
 
 if [[ -n "${1}" ]]; then
     keyscan "${1}"
 else
-    for HOST_PATH in "${THIS_DIR}"/../../hosts/*; do
+    for HOST_PATH in "${GIT_ROOT}"/secrets/hosts/*; do
         keyscan "$(basename "${HOST_PATH}")"
     done
 fi

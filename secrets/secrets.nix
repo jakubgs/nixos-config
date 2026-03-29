@@ -5,19 +5,20 @@ let
   jakubgs = [ yubikey fallback ];
 
   # Hosts
-  hosts = import ../keys/hosts/ed25519;
+  hosts = import ./hosts/ssh_pub.nix;
   systems = builtins.attrValues hosts;
 
   all = jakubgs ++ systems;
 in with hosts; {
   # Host Private Keys
-  "hosts/keys/ed25519/arael.age"       = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/armisael.age"    = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/bardiel.age"     = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/caspair.age"     = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/gaghiel.age"     = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/israfel.age"     = { publicKeys = jakubgs;   };
-  "hosts/keys/ed25519/zeruel.age"      = { publicKeys = jakubgs;   };
+  "hosts/arael/ssh/ed25519.age"       = { publicKeys = jakubgs;   };
+  "hosts/armisael/ssh/ed25519.age"    = { publicKeys = jakubgs;   };
+  "hosts/bardiel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
+  "hosts/caspair/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
+  "hosts/gaghiel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
+  "hosts/israfel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
+  "hosts/lilim/ssh/ed25519.age"       = { publicKeys = jakubgs;   };
+  "hosts/zeruel/ssh/ed25519.age"      = { publicKeys = jakubgs;   };
   # Other Secrets
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };

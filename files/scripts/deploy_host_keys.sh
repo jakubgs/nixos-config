@@ -17,6 +17,6 @@ ED25519_PUB_KEY="${TARGET_MOUNT}/ssh_host_ed25519_key.pub"
 # Install Agenix
 add_missing_pkg agenix 'github:ryantm/agenix'
 
-cat keys/hosts/ed25519/${HOSTNAME} > "${ED25519_PUB_KEY}"
 cd secrets/
-agenix -d hosts/keys/ed25519/${HOSTNAME}.age > "${ED25519_PRIV_KEY}"
+cat hosts/${HOSTNAME}/ssh/ed25519.pub > "${ED25519_PUB_KEY}"
+agenix -d hosts/${HOSTNAME}/ssh/ed25519.age > "${ED25519_PRIV_KEY}"
