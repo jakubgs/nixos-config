@@ -10,8 +10,9 @@
     interfaces = [ "wlan0" ];
     secretsFile = secret "service/wifi";
     networks = {
-      "MAGI"        = { psk = "ext:MAGI"; };
+      "MAGI"        = { psk = "ext:MAGI";        };
       "MAGI Mobile" = { psk = "ext:MAGI_Mobile"; };
+      "Pilchy274"   = { psk = "ext:Pilchy274";   };
     };
   };
 }
