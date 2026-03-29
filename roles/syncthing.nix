@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, secret, ... }:
 
 
 let
@@ -70,7 +70,7 @@ in {
           };
           folder = { type= "receiveonly"; };
         };
-        iruel = { # rock5b
+        iruel = { # rock5b (broken)
           device = {
             id = "2ZTE4DE-S7FRAY3-A4HFT3Y-DMJVYRZ-6HVRN3N-3OREQA6-YX3UVTT-ZGONAQU";
             addresses = [ "tcp://iruel.magi.vpn:22000" ];
@@ -103,11 +103,19 @@ in {
   };
 
   config = let
-    hostname = config.networking.hostName;
-    notThisHost = h: _: h != hostname;
-    otherHosts = lib.filterAttrs notThisHost cfg.hosts;
     inherit (config) services;
+    inherit (config.networking) hostName;
   in {
+    age.secrets."hosts/${hostName}/syncthing/key" = {
+      file = ../secrets/hosts/${hostName}/syncthing/key.age;
+      owner = "jakubgs";
+    };
+
+    age.secrets."hosts/${hostName}/syncthing/cert" = {
+      file = ../secrets/hosts/${hostName}/syncthing/cert.age;
+      owner = "jakubgs";
+    };
+
     # Firewall
     networking.firewall.interfaces."zt*".allowedTCPPorts = [ 22000 ];
     networking.firewall.interfaces."zt*".allowedUDPPorts = [ 22000 21027 ];
@@ -119,6 +127,8 @@ in {
       group = "jakubgs";
       configDir = "/home/jakubgs/.syncthing/config";
       dataDir = "/home/jakubgs/.syncthing";
+      key = secret "hosts/${hostName}/syncthing/key";
+      cert = secret "hosts/${hostName}/syncthing/cert";
       guiAddress = "127.0.0.1:8384";
       overrideDevices = true;
       overrideFolders = true;
@@ -126,12 +136,15 @@ in {
       # Use when syncing gets stuck.
       #extraFlags = ["--reset-deltas"];
 
-      settings = {
+      settings = let
+        notThisHost = h: _: h != hostName;
+        otherHosts = lib.filterAttrs notThisHost cfg.hosts;
+      in {
         devices = lib.mapAttrs (k: v: v.device) otherHosts;
 
         folders = let
           otherHostnames = lib.attrNames otherHosts;
-          folderOpts = cfg.hosts."${hostname}".folder;
+          folderOpts = cfg.hosts."${hostName}".folder;
           # Generated from locally mounted folders.
           mountedFolders = filter (n: elem (baseNameOf n) cfg.folders) (attrNames config.fileSystems);
           folderToConfig = (name: {
@@ -146,7 +159,7 @@ in {
     systemd.services.syncthing = let
       syncthingFolderNames = lib.attrNames services.syncthing.settings.folders;
     in {
-      after = lib.mkForce (["network.target"] ++
+      after = lib.mkForce (["network.target" "agenix.service"] ++
         (map pkgs.lib.pathToMountUnit syncthingFolderNames)
       );
       unitConfig.ConditionPathIsMountPoint = syncthingFolderNames;

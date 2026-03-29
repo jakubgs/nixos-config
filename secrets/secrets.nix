@@ -11,14 +11,27 @@ let
   all = jakubgs ++ systems;
 in with hosts; {
   # Host Private Keys
-  "hosts/arael/ssh/ed25519.age"       = { publicKeys = jakubgs;   };
-  "hosts/armisael/ssh/ed25519.age"    = { publicKeys = jakubgs;   };
-  "hosts/bardiel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
-  "hosts/caspair/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
-  "hosts/gaghiel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
-  "hosts/israfel/ssh/ed25519.age"     = { publicKeys = jakubgs;   };
-  "hosts/lilim/ssh/ed25519.age"       = { publicKeys = jakubgs;   };
-  "hosts/zeruel/ssh/ed25519.age"      = { publicKeys = jakubgs;   };
+  "hosts/arael/ssh/ed25519.age"        = { publicKeys = jakubgs; };
+  "hosts/armisael/ssh/ed25519.age"     = { publicKeys = jakubgs; };
+  "hosts/bardiel/ssh/ed25519.age"      = { publicKeys = jakubgs; };
+  "hosts/caspair/ssh/ed25519.age"      = { publicKeys = jakubgs; };
+  "hosts/gaghiel/ssh/ed25519.age"      = { publicKeys = jakubgs; };
+  "hosts/israfel/ssh/ed25519.age"      = { publicKeys = jakubgs; };
+  "hosts/lilim/ssh/ed25519.age"        = { publicKeys = jakubgs; };
+  "hosts/zeruel/ssh/ed25519.age"       = { publicKeys = jakubgs; };
+  # Host Syncthing Keys
+  "hosts/arael/syncthing/cert.age"     = { publicKeys = jakubgs ++ [ arael ];   };
+  "hosts/arael/syncthing/key.age"      = { publicKeys = jakubgs ++ [ arael ];   };
+  "hosts/armisael/syncthing/cert.age"  = { publicKeys = jakubgs ++ [ armisael ];   };
+  "hosts/armisael/syncthing/key.age"   = { publicKeys = jakubgs ++ [ armisael ];   };
+  "hosts/caspair/syncthing/cert.age"   = { publicKeys = jakubgs ++ [ caspair ];   };
+  "hosts/caspair/syncthing/key.age"    = { publicKeys = jakubgs ++ [ caspair ];   };
+  "hosts/gaghiel/syncthing/cert.age"   = { publicKeys = jakubgs ++ [ gaghiel ]; };
+  "hosts/gaghiel/syncthing/key.age"    = { publicKeys = jakubgs ++ [ gaghiel ]; };
+  "hosts/lilim/syncthing/cert.age"     = { publicKeys = jakubgs ++ [ lilim ];   };
+  "hosts/lilim/syncthing/key.age"      = { publicKeys = jakubgs ++ [ lilim ];   };
+  "hosts/bardiel/syncthing/cert.age"   = { publicKeys = jakubgs ++ [ bardiel ]; };
+  "hosts/bardiel/syncthing/key.age"    = { publicKeys = jakubgs ++ [ bardiel ]; };
   # Other Secrets
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
