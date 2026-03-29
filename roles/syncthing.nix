@@ -13,92 +13,32 @@ in {
     };
     hosts = lib.mkOption {
       description = "List of hosts with Syncthing and their IDs.";
-      default = {
-        caspair = { # desktop
-          device = {
-            id = "RNHJNYU-IVWMAZT-OL667WV-Y7NOURO-WVT6IHS-MWEBAS6-SDZVQ5C-3MXHYQ5";
-            addresses = [ "tcp://caspair.magi.vpn:22000" ];
+      default = let
+        mkHostConfig = items: let
+          name = builtins.elemAt items 0;
+          type = builtins.elemAt items 1;
+          id = builtins.elemAt items 2;
+        in {
+          inherit name;
+          value = {
+            device = { inherit id; addresses = [ "tcp://${name}.magi.vpn:22000" ]; };
+            folder = { inherit type; };
           };
-          folder = { type = "sendreceive"; };
         };
-        melchior = { # server
-          device = {
-            id = "42V5WFK-OBSCQW2-73PWWT6-QMGQXKR-TPTITJL-74FVKZV-MRAUJUW-YSPF5QP";
-            addresses = [ "tcp://melchior.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        balthasar = { # laptop x390
-          device = {
-            id = "HN6DXKS-ILEBPDZ-AZU5QJQ-OVLJSML-XFIIIRL-SCTRDEI-W2LFQMN-UXAOQA4";
-            addresses = [ "tcp://balthasar.magi.vpn:22000" ];
-          };
-          folder = { type= "sendreceive"; };
-        };
-        lilim = { # laptop x1
-          device = {
-            id = "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC";
-            addresses = [ "tcp://lilim.magi.vpn:22000" ];
-          };
-          folder = { type= "sendreceive"; };
-        };
-        armisael = { # laptop t480s
-          device = {
-            id = "NLIXMAX-IUFXYNA-FY3WMWJ-FAP3BKR-SGNU2BO-ZN5EKV2-TNXR52F-DT6QYQ3";
-            addresses = [ "tcp://armisael.magi.vpn:22000" ];
-          };
-          folder = { type= "sendreceive"; };
-        };
-        leliel = { # rpi4b
-          device = {
-            id = "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ";
-            addresses = [ "tcp://leliel.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        sachiel = { # nanopct4
-          device = {
-            id = "4R5Z36S-6S5HBSC-2BAEZEH-HCNLXJH-GRDYZ6P-X66AFAK-RDUCRKA-PNX5YQU";
-            addresses = [ "tcp://sachiel.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        arael = { # nanopi-r6c
-          device = {
-            id = "VE25Z2C-P3VDVFH-YN6E4MU-BZDO3UG-SY6S52T-IVYXMJH-V22FMIK-HMMUAQW";
-            addresses = [ "tcp://arael.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        iruel = { # rock5b (broken)
-          device = {
-            id = "2ZTE4DE-S7FRAY3-A4HFT3Y-DMJVYRZ-6HVRN3N-3OREQA6-YX3UVTT-ZGONAQU";
-            addresses = [ "tcp://iruel.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        gaghiel = { # rock5c
-          device = {
-            id = "6MAGWIM-RKEUDJU-U2K4XCL-SQYNK5K-S3NUSCE-AQBEPNG-PYPNJBS-J5KPGQM";
-            addresses = [ "tcp://gaghiel.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        bardiel = { # hetzner
-          device = {
-            id = "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5";
-            addresses = [ "tcp://bardiel.magi.vpn:22000" ];
-          };
-          folder = { type= "receiveonly"; };
-        };
-        ramiel = { # phone
-          device = {
-            id = "5QRC74R-RHVPOYM-53L5HXT-HNKKG44-7ZQG5NL-KMWOYMY-KEC4AFF-PDYTRA4";
-            addresses = [ "tcp://ramiel.magi.vpn:22000" ];
-          };
-          folder = { type= "sendreceive"; };
-        };
-      };
+      in listToAttrs (map mkHostConfig [
+        [ "caspair"   "sendreceive" "RNHJNYU-IVWMAZT-OL667WV-Y7NOURO-WVT6IHS-MWEBAS6-SDZVQ5C-3MXHYQ5" ] # desktop
+        [ "melchior"  "receiveonly" "42V5WFK-OBSCQW2-73PWWT6-QMGQXKR-TPTITJL-74FVKZV-MRAUJUW-YSPF5QP" ] # server
+        [ "balthasar" "sendreceive" "HN6DXKS-ILEBPDZ-AZU5QJQ-OVLJSML-XFIIIRL-SCTRDEI-W2LFQMN-UXAOQA4" ] # laptop x390
+        [ "lilim"     "sendreceive" "GGEMIJR-WYRWDE7-4QOMTZF-2QDESUK-264P4HR-3JSC7R5-662VW36-BPEOGAC" ] # laptop x1
+        [ "armisael"  "sendreceive" "NLIXMAX-IUFXYNA-FY3WMWJ-FAP3BKR-SGNU2BO-ZN5EKV2-TNXR52F-DT6QYQ3" ] # laptop t480s
+        [ "leliel"    "receiveonly" "3JHA3NU-MSQGXDA-H5EB62F-KDCCG7Y-WTJ753S-BXEIT2L-YU3XBIQ-BYLPOQJ" ] # rpi4b
+        [ "sachiel"   "receiveonly" "4R5Z36S-6S5HBSC-2BAEZEH-HCNLXJH-GRDYZ6P-X66AFAK-RDUCRKA-PNX5YQU" ] # nanopct4
+        [ "arael"     "receiveonly" "VE25Z2C-P3VDVFH-YN6E4MU-BZDO3UG-SY6S52T-IVYXMJH-V22FMIK-HMMUAQW" ] # nanopi-r6c
+        [ "iruel"     "receiveonly" "2ZTE4DE-S7FRAY3-A4HFT3Y-DMJVYRZ-6HVRN3N-3OREQA6-YX3UVTT-ZGONAQU" ] # rock5b (broken)
+        [ "gaghiel"   "receiveonly" "6MAGWIM-RKEUDJU-U2K4XCL-SQYNK5K-S3NUSCE-AQBEPNG-PYPNJBS-J5KPGQM" ] # rock5c
+        [ "bardiel"   "receiveonly" "7XUPXBA-DQ7KGZD-VHWO4WI-F37BGFE-4F4NDXK-PD4PUX7-MIJLS6A-6CYA4Q5" ] # hetzner
+        [ "ramiel"    "sendreceive" "5QRC74R-RHVPOYM-53L5HXT-HNKKG44-7ZQG5NL-KMWOYMY-KEC4AFF-PDYTRA4" ] # phone
+      ]);
     };
   };
 
