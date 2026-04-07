@@ -37,6 +37,12 @@ in {
             "${config.networking.hostName}.${config.networking.domain}"
           ];
         };
+        date_formats = {
+          full_date = "YYYY-MM-DD HH:mm:ss";
+          default_timezone = "UTC";
+          default_week_start = "monday";
+          use_browser_locale = false;
+        };
       };
 
       provision = {
