@@ -3,13 +3,13 @@
 let
   inherit (lib)
     mkEnableOption mkOption mkIf
-    types filterAttrs optionalAttrs
+    types filterAttrs
     escapeShellArgs literalExpression;
 
   cfg = config.services.nimbus-beacon-node;
 
   toml = pkgs.formats.toml { };
-  removeNull = k: v: v != null;
+  removeNull = _k: v: v != null;
   cleanSettings = filterAttrs removeNull cfg.settings;
   configFile = toml.generate "nimbus-beacon-node.toml" cleanSettings;
 in {

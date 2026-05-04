@@ -2,7 +2,7 @@
 
 let
   inherit (lib) types isBool mapAttrsToList literalExpression
-    mkEnableOption mkOption mkIf concatStringsSep optional;
+    mkEnableOption mkOption mkIf concatStringsSep;
 
   cfg = config.services.powerpanel;
   # script for watching for new *.torrent files

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 
 /* Details: https://nixos.wiki/wiki/Yubikey */
 {

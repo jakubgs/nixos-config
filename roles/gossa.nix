@@ -1,4 +1,4 @@
-{ lib, pkgs, config, secret, ... }:
+{ lib, config, ... }:
 
 {
   imports = [ ../services/gossa.nix ];

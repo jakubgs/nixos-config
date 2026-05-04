@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, ... }:
+{ unstablePkgs, ... }:
 
 {
   # Packages required for work

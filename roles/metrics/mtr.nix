@@ -1,4 +1,4 @@
-{ pkgs, config, channels, fetchFromGitHub, ... }:
+{ config, ... }:
 
 {
   # Firewall

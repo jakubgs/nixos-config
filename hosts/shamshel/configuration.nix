@@ -1,4 +1,4 @@
-{ modulesPath, pkgs, ... }:
+{ modulesPath, ... }:
 
 # This image can be built using nixos-generate.
 # https://github.com/nix-community/nixos-generators

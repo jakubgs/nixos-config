@@ -1,4 +1,4 @@
-{ lib, secret, ... }:
+{ secret, ... }:
 
 {
   age.secrets."service/wifi" = {

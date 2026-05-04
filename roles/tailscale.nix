@@ -1,8 +1,6 @@
 { pkgs, config, secret, ... }:
 
-let
-  hostname = config.networking.hostName;
-in {
+{
   age.secrets = {
     "service/tailscale/auth-key" = {
       file = ../secrets/service/tailscale/auth-key.age;

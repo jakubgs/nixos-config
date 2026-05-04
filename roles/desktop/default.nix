@@ -1,4 +1,4 @@
-{ pkgs, channels, ... }:
+{ pkgs, ... }:
 
 {
   imports = [

@@ -80,7 +80,7 @@ in {
         notThisHost = h: _: h != hostName;
         otherHosts = lib.filterAttrs notThisHost cfg.hosts;
       in {
-        devices = lib.mapAttrs (k: v: v.device) otherHosts;
+        devices = lib.mapAttrs (_k: v: v.device) otherHosts;
 
         folders = let
           otherHostnames = lib.attrNames otherHosts;

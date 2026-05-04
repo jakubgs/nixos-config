@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
 let
   netboot = import (pkgs.path + "/nixos/lib/eval-config.nix") {

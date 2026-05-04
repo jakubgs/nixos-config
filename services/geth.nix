@@ -5,7 +5,7 @@ with lib;
 let
   eachGeth = config.services.geth;
 
-  gethOpts = { config, lib, name, ...}: {
+  gethOpts = { lib, ...}: {
 
     options = {
 
@@ -156,7 +156,7 @@ in
 
   config = mkIf (eachGeth != {}) {
 
-    environment.systemPackages = flatten (mapAttrsToList (gethName: cfg: [
+    environment.systemPackages = flatten (mapAttrsToList (_gethName: cfg: [
       cfg.package
     ]) eachGeth);
 

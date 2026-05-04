@@ -1,7 +1,6 @@
-{ pkgs, config, lib, secret, ... }:
+{ pkgs, config, lib, ... }:
 
 let
-  inherit (config) services;
   inherit (lib) types mkEnableOption mkOption mkIf listToAttrs;
 
   cfg = config.services.landing;

@@ -1,4 +1,4 @@
-{ pkgs, lib, secret, config, ... }:
+{ pkgs, secret, ... }:
 
 {
   age.secrets."hosts/users/jakubgs/pass-hash" = {

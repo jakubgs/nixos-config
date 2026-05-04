@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  inherit (pkgs) lib stdenv openssl json_c aws-c-mqtt;
+  inherit (pkgs) lib stdenv;
 in stdenv.mkDerivation rec {
   pname = "powerpanel";
   version = "1.4.1";

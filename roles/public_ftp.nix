@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ secret, ... }:
 
 let
   ftpPort = 9999;

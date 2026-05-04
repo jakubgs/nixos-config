@@ -11,7 +11,7 @@ assert pkgs.lib.assertMsg (stableNim.version == "2.2.4")
   "Unable to build with Nim ${stableNim.version}, only 2.2.4 allowed.";
 
 let
-  inherit (pkgs) stdenv fetchgit fetchurl lib which writeScriptBin;
+  inherit (pkgs) stdenv fetchgit lib which writeScriptBin;
 in stdenv.mkDerivation rec {
   pname = "nimbus";
   version = "26.3.0";
