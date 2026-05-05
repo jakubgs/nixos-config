@@ -11,8 +11,6 @@ let
     # Devops
     boto3 wakeonlan gitpython pygithub python-hosts cloudflare
     (pkgs.callPackage ../pkgs/consul2.nix {})
-    # Ethereum
-    (pkgs.callPackage ../pkgs/ethstaker-deposit-cli.nix {})
     # Security
     pyopenssl cryptography passlib hvac
     # Databases
@@ -38,7 +36,7 @@ in {
     awscli s5cmd doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # Ethereum
-    #(pkgs.callPackage ../pkgs/eth-cli.nix {})
+    (pkgs.callPackage ../pkgs/ethstaker-deposit-cli.nix {})
     # General dev
     git-filter-repo github-cli pkg-config shellcheck dos2unix
     # NodeJS dev
