@@ -2,15 +2,16 @@
 
 {
   imports = [
-    ./shell.nix
     ./console.nix
     ./fixes.nix
     ./helpers.nix
     ./landing.nix
     ./locate.nix
+    ./network.nix
     ./nix.nix
     ./ntp.nix
     ./security.nix
+    ./shell.nix
     ./users.nix
     ./zerotier.nix
     ./zfs.nix
