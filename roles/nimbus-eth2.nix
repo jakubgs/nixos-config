@@ -3,11 +3,6 @@
 let
   services = config.services;
 in {
-  imports = [
-    ../services/nimbus/beacon-node.nix
-    ../services/nimbus/validator-client.nix
-  ];
-
   options.nimbus = {
     network      = lib.mkOption { default = "mainnet"; };
     listenPort   = lib.mkOption { default = 9802; }; # WebDAV Source TLS/SSL
@@ -28,12 +23,12 @@ in {
 
     services.nimbus-beacon-node = {
       enable = true;
-      inherit (cfg) jwtSecret;
       settings = {
         data-dir = cfg.bnDataDir;
         network = cfg.network;
         tcp-port = cfg.listenPort;
         udp-port= cfg.discoverPort;
+        jwt-secret = cfg.jwtSecret;
         num-threads = 0; /* 0 == auto */
         log-level = "info";
         log-format = "json";

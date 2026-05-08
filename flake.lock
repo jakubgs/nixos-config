@@ -60,6 +60,54 @@
         "type": "github"
       }
     },
+    "nimbus-eth2": {
+      "inputs": {
+        "nimbusBuildSystem": "nimbusBuildSystem",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778527817,
+        "lfs": false,
+        "narHash": "sha256-G8lrzYOQcrfGvNnzWLeYPa3mTjR0o3zVfwcYpDz26Xk=",
+        "ref": "nix/add-service-module",
+        "rev": "063b112e73ef5800025b6c06460943e83c4c94fd",
+        "revCount": 8392,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-eth2"
+      },
+      "original": {
+        "ref": "nix/add-service-module",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-eth2"
+      }
+    },
+    "nimbusBuildSystem": {
+      "inputs": {
+        "nixpkgs": [
+          "nimbus-eth2",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774606021,
+        "narHash": "sha256-XHIThT9Df7djv+8xZiEdZ4sGHVDV8IEeY/UHfH5f3ns=",
+        "ref": "refs/heads/master",
+        "rev": "67f395831f94ba4ac5fb4c511beb99bc6ec63e22",
+        "revCount": 247,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-build-system"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-build-system"
+      }
+    },
     "nixlib": {
       "locked": {
         "lastModified": 1736643958,
@@ -117,6 +165,7 @@
         "agenix": "agenix",
         "disko": "disko",
         "hardware": "hardware",
+        "nimbus-eth2": "nimbus-eth2",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "unstable": "unstable"
