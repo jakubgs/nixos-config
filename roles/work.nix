@@ -26,6 +26,7 @@ in {
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
     mosh remmina
+    (pkgs.callPackage ../pkgs/rootly-cli.nix {})
     # Development
     gnumake gcc autoconf automake patchelf opencode
     # Security
