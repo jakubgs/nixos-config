@@ -18,6 +18,9 @@
   # https://github.com/NixOS/nix/issues/6563
   environment.memoryAllocator.provider = "libc";
 
+  # Fix Zerotier broken by security.lockKernelModules from hardened profile.
+  boot.kernelModules = [ "tun" ];
+
   # Disabled by hardened profile, big performance hit.
   security.allowSimultaneousMultithreading = true;
 
