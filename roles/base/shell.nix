@@ -33,7 +33,7 @@
       };
     };
   in with pkgs; [
-    (mkScriptPkg "usb_backup" ../../files/scripts/usb_backup.sh [e2fsprogs])
+    (mkScriptPkg "usb_backup" ../../files/scripts/usb_backup.sh [rsync gawk e2fsprogs])
     (mkScriptPkg "iso_backup" ../../files/scripts/iso_backup.sh [udftools])
   ];
 }
