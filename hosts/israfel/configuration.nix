@@ -5,9 +5,9 @@
     (modulesPath + "/profiles/hardened.nix")
     ./hardware-configuration.nix
     ../../roles/base
-    ../../roles/erigon.nix
-    ../../roles/nimbus-eth2.nix
-    ../../roles/mev-boost.nix
+    ../../roles/ethereum/erigon.nix
+    ../../roles/ethereum/nimbus-eth2.nix
+    ../../roles/ethereum/mev-boost.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
