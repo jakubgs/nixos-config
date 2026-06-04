@@ -44,18 +44,18 @@
       options = [ "nofail" ];
      };
 
-  fileSystems."${config.nimbus.bnDataDir}" =
+  fileSystems."${config.nimbusBN.dataDir}" =
     { device = "rpool/nimbus";
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbus.vcDataDir}/secrets" =
+  fileSystems."${config.nimbusVC.dataDir}/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."${config.nimbus.vcDataDir}/validators" =
+  fileSystems."${config.nimbusVC.dataDir}/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];

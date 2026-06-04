@@ -5,8 +5,9 @@
     (modulesPath + "/profiles/hardened.nix")
     ./hardware-configuration.nix
     ../../roles/base
-    ../../roles/ethereum/erigon.nix
-    ../../roles/ethereum/nimbus-eth2.nix
+    ../../roles/ethereum/nimbus-el.nix
+    ../../roles/ethereum/nimbus-bn.nix
+    ../../roles/ethereum/nimbus-vc.nix
     ../../roles/ethereum/mev-boost.nix
   ];
 

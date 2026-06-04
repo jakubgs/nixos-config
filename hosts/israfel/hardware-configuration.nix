@@ -33,23 +33,23 @@
       fsType = "vfat";
     };
 
-  fileSystems."${config.erigon.dataDir}" =
-    { device = "rpool/erigon";
+  fileSystems."${config.nimbusEL.dataDir}" =
+    { device = "rpool/nimbus-eth1";
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbus.bnDataDir}" =
-    { device = "rpool/nimbus";
+  fileSystems."${config.nimbusBN.dataDir}" =
+    { device = "rpool/nimbus-eth2";
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbus.bnDataDir}/secrets" =
+  fileSystems."${config.nimbusVC.dataDir}/secrets" =
     { device = "rpool/secret/nimbus/secrets";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
 
-  fileSystems."${config.nimbus.bnDataDir}/validators" =
+  fileSystems."${config.nimbusVC.dataDir}/validators" =
     { device = "rpool/secret/nimbus/validators";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];

@@ -12,7 +12,7 @@
   in {
     # Secrets
     age.secrets."service/nimbus/web3-jwt-secret" = {
-      file = ../secrets/service/nimbus/web3-jwt-secret.age;
+      file = ../../secrets/service/nimbus/web3-jwt-secret.age;
     };
 
     services.geth = {

@@ -60,9 +60,34 @@
         "type": "github"
       }
     },
-    "nimbus-eth2": {
+    "nimbus-eth1": {
       "inputs": {
         "nimbusBuildSystem": "nimbusBuildSystem",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780480547,
+        "lfs": false,
+        "narHash": "sha256-Yyv4o9WM6MDMutZhAVDr9WkPDWWvmojBo72kr97BBVs=",
+        "ref": "nix/add-service-module",
+        "rev": "a06681ba510d075c34df7c05938597470fc625e8",
+        "revCount": 5287,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-eth1"
+      },
+      "original": {
+        "ref": "nix/add-service-module",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-eth1"
+      }
+    },
+    "nimbus-eth2": {
+      "inputs": {
+        "nimbusBuildSystem": "nimbusBuildSystem_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -86,6 +111,29 @@
       }
     },
     "nimbusBuildSystem": {
+      "inputs": {
+        "nixpkgs": [
+          "nimbus-eth1",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777910482,
+        "narHash": "sha256-qb5nFHIasfgTHWKAkIIsblXU1OHDWrkfnCGZvRu1Zjg=",
+        "ref": "refs/heads/master",
+        "rev": "e757a6023b4dbd1915b4092eae66f51ffe51b92e",
+        "revCount": 250,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-build-system"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/status-im/nimbus-build-system"
+      }
+    },
+    "nimbusBuildSystem_2": {
       "inputs": {
         "nixpkgs": [
           "nimbus-eth2",
@@ -165,6 +213,7 @@
         "agenix": "agenix",
         "disko": "disko",
         "hardware": "hardware",
+        "nimbus-eth1": "nimbus-eth1",
         "nimbus-eth2": "nimbus-eth2",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",

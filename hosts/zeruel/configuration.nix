@@ -8,9 +8,10 @@
     (modulesPath + "/profiles/headless.nix")
     ./hardware-configuration.nix
     ../../roles/base
-    ../../roles/ethereum/mev-boost.nix
     ../../roles/ethereum/go-ethereum.nix
-    ../../roles/ethereum/nimbus-eth2.nix
+    ../../roles/ethereum/nimbus-bn.nix
+    ../../roles/ethereum/nimbus-vc.nix
+    ../../roles/ethereum/mev-boost.nix
   ];
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.

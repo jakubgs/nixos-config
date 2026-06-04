@@ -1,7 +1,7 @@
 { unstablePkgs, ... }:
 
 {
-  imports = [ ../services/mev-boost.nix ];
+  imports = [ ../../services/mev-boost.nix ];
 
   services.mev-boost = {
     enable = true;
