@@ -2,7 +2,6 @@
 
 {
   imports = [
-    (modulesPath + "/profiles/hardened.nix")
     ./hardware-configuration.nix
     ../../roles/base
     ../../roles/ethereum/nimbus-el.nix
