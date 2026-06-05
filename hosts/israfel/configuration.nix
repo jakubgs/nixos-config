@@ -24,6 +24,10 @@
     grub.enable = false;
   };
 
+  # Let EDK2 provide DTB and do not force NixOS DTB.
+  boot.loader.systemd-boot.installDeviceTree = false;
+  hardware.deviceTree.enable = false;
+
   # Load thermal sensor module.
   boot.kernelModules = [ "rockchip-thermal" ];
   # Lock kernel version.
