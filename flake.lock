@@ -90,21 +90,22 @@
         "nimbusBuildSystem": "nimbusBuildSystem_2",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "nixpkgsGccCompat": "nixpkgsGccCompat"
       },
       "locked": {
-        "lastModified": 1778527817,
+        "lastModified": 1780785297,
         "lfs": false,
-        "narHash": "sha256-G8lrzYOQcrfGvNnzWLeYPa3mTjR0o3zVfwcYpDz26Xk=",
-        "ref": "nix/add-service-module",
-        "rev": "063b112e73ef5800025b6c06460943e83c4c94fd",
-        "revCount": 8392,
+        "narHash": "sha256-1QqEWVcuyWCFXd3nzjyr82MXfgzqVwTdbBgZJ+JrcMk=",
+        "ref": "testing",
+        "rev": "50b259a47a367ec8b0160284778fe1a4dfccce7a",
+        "revCount": 8513,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth2"
       },
       "original": {
-        "ref": "nix/add-service-module",
+        "ref": "testing",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth2"
@@ -141,11 +142,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774606021,
-        "narHash": "sha256-XHIThT9Df7djv+8xZiEdZ4sGHVDV8IEeY/UHfH5f3ns=",
+        "lastModified": 1777910482,
+        "narHash": "sha256-qb5nFHIasfgTHWKAkIIsblXU1OHDWrkfnCGZvRu1Zjg=",
         "ref": "refs/heads/master",
-        "rev": "67f395831f94ba4ac5fb4c511beb99bc6ec63e22",
-        "revCount": 247,
+        "rev": "e757a6023b4dbd1915b4092eae66f51ffe51b92e",
+        "revCount": 250,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-build-system"
@@ -206,6 +207,22 @@
         "id": "nixpkgs",
         "ref": "nixos-25.11",
         "type": "indirect"
+      }
+    },
+    "nixpkgsGccCompat": {
+      "locked": {
+        "lastModified": 1767313136,
+        "narHash": "sha256-16KkgfdYqjaeRGBaYsNrhPRRENs0qzkQVUooNHtoy2w=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ac62194c3917d5f474c1a844b6fd6da2db95077d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ac62194c3917d5f474c1a844b6fd6da2db95077d",
+        "type": "github"
       }
     },
     "root": {

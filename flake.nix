@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nimbus-eth2 = {
-      url = "git+https://github.com/status-im/nimbus-eth2?submodules=1&ref=nix/add-service-module";
+      url = "git+https://github.com/status-im/nimbus-eth2?submodules=1&ref=testing";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
