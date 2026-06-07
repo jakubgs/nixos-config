@@ -8,7 +8,7 @@ let
 in {
   options.nimbusVC = {
     dataDir     = mkOption { default = "/var/lib/private/nimbus-validator-client"; };
-    metricsPort = mkOption { default = 9103; }; # Metrics API
+    metricsPort = mkOption { default = 9102; }; # Metrics API
   };
 
   config = {

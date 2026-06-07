@@ -13,8 +13,8 @@ let
       "lilim.magi.vpn" = default;
      "leliel.magi.vpn" = default;
     "sachiel.magi.vpn" = default;
-     "zeruel.magi.vpn" = default // { beacon-node = 9100; validator-client = 9101; geth = 16060; };
-    "israfel.magi.vpn" = default // { beacon-node = 9100; validator-client = 9101; erigon = 16060; };
+     "zeruel.magi.vpn" = default // { geth = 16060;     nimbus-bn = 9100; nimbus-vc = 9101; };
+    "israfel.magi.vpn" = default // { nimbus-el = 9100; nimbus-bn = 9101; nimbus-vc = 9102; };
       "iruel.magi.vpn" = default;
     "gaghiel.magi.vpn" = default;
   };
@@ -60,16 +60,17 @@ in {
     };
 
     scrapeConfigs = [
-      (genScrapeJob {name = "netdata";          path = "/api/v1/allmetrics";})
-      (genScrapeJob {name = "smartctl";         path = "/metrics";})
-      (genScrapeJob {name = "beacon-node";      path = "/metrics"; interval = "6s"; })
-      (genScrapeJob {name = "validator-client"; path = "/metrics"; interval = "6s"; })
-      (genScrapeJob {name = "geth";             path = "/debug/metrics/prometheus"; })
-      (genScrapeJob {name = "erigon";           path = "/debug/metrics/prometheus"; })
-      (genScrapeJob {name = "mikrotik";         path = "/metrics";})
-      (genScrapeJob {name = "openwrt";          path = "/metrics";})
-      (genScrapeJob {name = "mtr";              path = "/metrics";})
-      (genScrapeJob {name = "chrony";           path = "/metrics";})
+      (genScrapeJob {name = "netdata";   path = "/api/v1/allmetrics";})
+      (genScrapeJob {name = "smartctl";  path = "/metrics";})
+      (genScrapeJob {name = "nimbus-bn"; path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "nimbus-el"; path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "nimbus-vc"; path = "/metrics"; interval = "6s"; })
+      (genScrapeJob {name = "geth";      path = "/debug/metrics/prometheus"; })
+      (genScrapeJob {name = "erigon";    path = "/debug/metrics/prometheus"; })
+      (genScrapeJob {name = "mikrotik";  path = "/metrics";})
+      (genScrapeJob {name = "openwrt";   path = "/metrics";})
+      (genScrapeJob {name = "mtr";       path = "/metrics";})
+      (genScrapeJob {name = "chrony";    path = "/metrics";})
     ];
 
     ruleFiles = [
