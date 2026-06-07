@@ -34,23 +34,17 @@
     };
 
   fileSystems."${config.nimbusEL.dataDir}" =
-    { device = "rpool/nimbus-eth1";
+    { device = "rpool/nimbus-el";
       fsType = "zfs";
     };
 
   fileSystems."${config.nimbusBN.dataDir}" =
-    { device = "rpool/nimbus-eth2";
+    { device = "rpool/nimbus-bn";
       fsType = "zfs";
     };
 
-  fileSystems."${config.nimbusVC.dataDir}/secrets" =
-    { device = "rpool/secret/nimbus/secrets";
-      fsType = "zfs";
-      options = [ "noauto" "nofail" ];
-    };
-
-  fileSystems."${config.nimbusVC.dataDir}/validators" =
-    { device = "rpool/secret/nimbus/validators";
+  fileSystems."${config.nimbusVC.dataDir}" =
+    { device = "rpool/secret/nimbus-vc";
       fsType = "zfs";
       options = [ "noauto" "nofail" ];
     };
