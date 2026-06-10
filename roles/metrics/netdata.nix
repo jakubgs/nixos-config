@@ -41,6 +41,7 @@ in {
       "check for new mount points every" = 0;
     };
     "plugin:proc" = {
+      "/proc/spl/kstat/zfs/arcstats" = "yes";
       "/proc/net/snmp" = "no";
       "/proc/net/snmp6" = "no";
       "/proc/net/ip_vs/stats" = "no";
