@@ -22,24 +22,25 @@
       enable = true;
       user = "mpd";
       group = "jakubgs";
-      network.port = 6600;
-      network.listenAddress = "0.0.0.0";
-      musicDirectory = cfg.collection;
-      playlistDirectory = "${cfg.collection}/_playlists";
+      openFirewall = false;
       credentials = [
         { passwordFile = cfg.passwordFile;
           permissions = [ "read" "add" "control" "admin" ]; }
       ];
-      extraConfig = ''
-        mixer_type "software"
-        audio_buffer_size "8192"
-      ${lib.optionalString config.services.pulseaudio.enable ''
-        audio_output {
-          type "pulse"
-          name "Pulseaudio"
-          server "127.0.0.1"
-        }
-      ''}'';
+      settings = {
+        port = 6600;
+        bind_to_address = "0.0.0.0";
+        music_directory = cfg.collection;
+        playlist_directory = "${cfg.collection}/_playlists";
+        mixer_type = "software";
+        audio_buffer_size = "8192";
+      } // lib.optionalAttrs config.services.pulseaudio.enable {
+        audio_output = [
+          { type = "pulse";
+            name = "Pulseaudio";
+            server = "127.0.0.1"; }
+        ];
+      };
     };
 
     # Mountpoint check
@@ -57,7 +58,7 @@
 
     # Firewall
     networking.firewall.allowedTCPPorts = [
-      config.services.mpd.network.port
+      config.services.mpd.settings.port
       config.services.ympd.webPort
     ];
 

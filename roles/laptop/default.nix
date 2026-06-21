@@ -19,7 +19,5 @@
   # Allow brightness control by video group.
   hardware.acpilight.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    xorg.xbacklight
-  ];
+  environment.systemPackages = with pkgs; [ xbacklight ];
 }

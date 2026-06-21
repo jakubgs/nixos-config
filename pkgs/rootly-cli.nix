@@ -1,6 +1,6 @@
-{ lib, buildGo124Module, fetchFromGitHub, installShellFiles, ... }:
+{ lib, buildGo126Module, fetchFromGitHub, installShellFiles, ... }:
 
-buildGo124Module rec {
+buildGo126Module rec {
   pname = "rootly-cli";
   version = "0.2.1";
 

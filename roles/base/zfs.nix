@@ -8,7 +8,7 @@
   # Pin version
   boot.zfs.package = pkgs.zfs_2_4;
   # Enable hibernation
-  boot.zfs.allowHibernation = true;
+  boot.zfs.unsafeAllowHibernation = true;
   # Importing a suspended pool can corrupt it
   boot.zfs.forceImportRoot = false;
   boot.zfs.forceImportAll = false;

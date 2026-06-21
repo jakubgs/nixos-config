@@ -25,7 +25,7 @@
     # Console
     rxvt-unicode rofi w3m
     # Xorg Tools
-    xsel libdrm xorg.xmodmap
+    xsel libdrm xmodmap
     # Keyboard & Mouse
     xcape xbindkeys xclip xkbset
     # Network
@@ -45,7 +45,7 @@
   # User packages
   users.users.jakubgs.packages = with pkgs; [
     # Desktop
-    xfce.thunar nitrogen scrot neofetch flameshot
+    thunar nitrogen scrot flameshot
     # Themes
     lxappearance matcha-gtk-theme vimix-gtk-themes
     # Browsers

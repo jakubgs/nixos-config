@@ -52,10 +52,6 @@ in {
     weechat asciinema element-desktop telegram-desktop
   ];
 
-  # Android development Tool
-  programs.adb.enable = true;
-  users.users.jakubgs.extraGroups = [ "adbusers" ];
-
   # For emergency use during DNS issues
   #networking.extraHosts = lib.readFile /home/jakubgs/statusim_hosts;
 

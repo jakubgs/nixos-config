@@ -3,6 +3,7 @@
 {
   virtualisation.docker = {
     enable = true;
+    package = pkgs.docker_29;
     # Avoid DNS issues caused by DNSMasq setup.
     daemon.settings = {
       dns = [ "1.1.1.1" "8.8.8.8" ];
