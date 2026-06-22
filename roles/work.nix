@@ -28,7 +28,7 @@ in {
     mosh remmina
     (pkgs.callPackage ../pkgs/rootly-cli.nix {})
     # Development
-    gnumake gcc autoconf automake patchelf opencode
+    gnumake gcc autoconf automake patchelf
     # Security
     vault sops pwgen yubikey-manager openssl
     # Network
