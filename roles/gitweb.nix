@@ -3,7 +3,7 @@
 {
   options.gitweb = {
     repos =   lib.mkOption { default = "/git"; };
-    subpath = lib.mkOption { default = "/gitweb"; };
+    subpath = lib.mkOption { default = "/webgit"; };
   };
 
   config = let
@@ -11,23 +11,36 @@
     cfg = config.gitweb;
   in {
     # Hosting
-    services.nginx = {
+    services.nginx.enable = true;
+
+    # Service
+    services.cgit.main = {
       enable = true;
-      gitweb = {
-        enable = true;
-        location = "${cfg.subpath}";
+      scanPath = cfg.repos;
+      nginx = {
         virtualHost = "${config.networking.hostName}.${config.networking.domain}";
+        location = "${cfg.subpath}/";
+      };
+      # HTTP clone allowed for all repos under scanPath.
+      gitHttpBackend.checkExportOkFiles = false;
+
+      settings = {
+        # Useful defaults. Remove if unwanted.
+        enable-index-links = true;
+        enable-commit-graph = true;
+        enable-log-filecount = true;
+        enable-log-linecount = true;
+
+        # Required when cgit is mounted under /gitweb/.
+        css = "${cfg.subpath}/cgit.css";
+        js = "${cfg.subpath}/cgit.js";
+        logo = "${cfg.subpath}/cgit.png";
+        favicon = "${cfg.subpath}/favicon.ico";
       };
     };
 
-    # Service
-    services.gitweb = {
-      projectroot = config.gitweb.repos;
-      gitwebTheme = true;
-    };
-
     # Wait for mount and start after.
-    systemd.services.gitweb = {
+    systemd.services."fcgiwrap-cgit-main" = {
       after =    [ (pathToMountUnit cfg.repos) ];
       wantedBy = [ (pathToMountUnit cfg.repos) ];
       unitConfig.ConditionPathIsMountPoint = cfg.repos;
