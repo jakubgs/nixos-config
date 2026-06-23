@@ -4,9 +4,8 @@ let
   inherit (config) services;
 in {
   options.grafana = {
-    adminPasswordFile = lib.mkOption {
-      default = secret "service/grafana/pass";
-    };
+    adminPasswordFile = lib.mkOption { default = secret "service/grafana/pass"; };
+    secretKeyFile     = lib.mkOption { default = secret "service/grafana/secret-key"; };
   };
 
   config = let
@@ -14,6 +13,10 @@ in {
   in {
     age.secrets."service/grafana/pass" = {
       file = ../secrets/service/grafana/pass.age;
+      owner = "grafana";
+    };
+    age.secrets."service/grafana/secret-key" = {
+      file = ../secrets/service/grafana/secret-key.age;
       owner = "grafana";
     };
 
@@ -31,6 +34,7 @@ in {
         security = {
           admin_user = "jakubgs";
           admin_password = "$__file{${cfg.adminPasswordFile}}";
+          secret_key = "$__file{${cfg.secretKeyFile}}";
           serve_from_sub_path = true;
           allow_embedding = true;
           csrf_trusted_origins = [

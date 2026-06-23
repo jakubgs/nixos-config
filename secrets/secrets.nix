@@ -36,6 +36,7 @@ in with hosts; {
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
   "service/grafana/pass.age"           = { publicKeys = jakubgs ++ [ bardiel ]; };
+  "service/grafana/secret-key.age"     = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/invidious/hmac-key.age"     = { publicKeys = jakubgs ++ [ arael bardiel iruel ]; };
   "service/landing/server.key.age"     = { publicKeys = all;       };
   "service/mikrotik/config.age"        = { publicKeys = jakubgs ++ [ arael ];   };
