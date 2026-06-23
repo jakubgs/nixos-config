@@ -19,6 +19,7 @@
     ../../roles/cache.nix
     ../../roles/invidious.nix
     ../../roles/qemu.nix
+    ../../roles/iperf.nix
   ];
 
   # Fix for GLIBC errors due to 'scudo' from hardened profile.
