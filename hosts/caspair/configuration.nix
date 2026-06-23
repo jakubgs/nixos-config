@@ -24,9 +24,6 @@
     configurationLimit = 10;
   };
 
-  # Resume
-  systemd.sleep.extraConfig = "HibernateMode=reboot";
-
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
   boot.kernelPackages = pkgs.linuxPackages_6_18;
