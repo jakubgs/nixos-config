@@ -32,6 +32,8 @@ in with hosts; {
   "hosts/lilim/syncthing/key.age"      = { publicKeys = jakubgs ++ [ lilim ];   };
   "hosts/bardiel/syncthing/cert.age"   = { publicKeys = jakubgs ++ [ bardiel ]; };
   "hosts/bardiel/syncthing/key.age"    = { publicKeys = jakubgs ++ [ bardiel ]; };
+  "hosts/balthasar/syncthing/cert.age" = { publicKeys = jakubgs ++ [ balthasar ]; };
+  "hosts/balthasar/syncthing/key.age"  = { publicKeys = jakubgs ++ [ balthasar ]; };
   # Other Secrets
   "hosts/users/jakubgs/pass-hash.age"  = { publicKeys = all;       };
   "service/alertmanager/webhook.age"   = { publicKeys = all;       };
