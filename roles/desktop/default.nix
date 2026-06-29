@@ -12,7 +12,6 @@
     ./music.nix
     ./network.nix
     ./physlock.nix
-    ./redshift.nix
     ./xserver.nix
     ./yubikey.nix
   ];
@@ -25,7 +24,7 @@
     # Console
     rxvt-unicode rofi w3m
     # Xorg Tools
-    xsel libdrm xmodmap
+    xsel libdrm xmodmap xcalib
     # Keyboard & Mouse
     xcape xbindkeys xclip xkbset
     # Network
