@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let
   inherit (config) services;
@@ -8,45 +8,54 @@ in {
   networking.firewall.interfaces."zt*".allowedTCPPorts = [ listenPort ];
 
   # Daemon
-  services.netdata.enable = true;
-  services.netdata.config = {
-    "global" = {
-      "hostname" = config.networking.hostName;
-      "run as user" = "root";
-      "update every" = 10;
-      "history" = 3600; # 1 hour retention
-      "memory mode" = "ram";
-      "error log" = "/var/log/netdata/error.log";
-      "debug log" = "none";
-      "access log" = "none";
+  services.netdata = {
+    enable = true;
+    config = {
+      "global" = {
+        "hostname" = config.networking.hostName;
+        "run as user" = "root";
+        "update every" = 10;
+        "history" = 3600; # 1 hour retention
+        "memory mode" = "ram";
+        "error log" = "/var/log/netdata/error.log";
+        "debug log" = "none";
+        "access log" = "none";
+      };
+      "web" = {
+        "default port" = listenPort;
+        "allow connections from" = "localhost 10.2.2.* 192.168.1.*";
+      };
+      "health" = { "enabled" = "no"; };
+      "statsd" = { "enabled" = "no"; };
+      "ml" = { "enabled" = "no"; };
+      "plugins" = {
+        "idlejitter" = "no";
+        "python.d" = "yes";
+        "node.d" = "no";
+        "charts.d" = "no";
+        "fping" = "no";
+        "tc" = "no";
+      };
+      "plugin:apps" = { "update every" = 30; };
+      "plugin:proc:diskspace" = {
+        "update every" = 30;
+        "check for new mount points every" = 0;
+      };
+      "plugin:proc" = {
+        "/proc/spl/kstat/zfs/arcstats" = "yes";
+        "/proc/net/snmp" = "no";
+        "/proc/net/snmp6" = "no";
+        "/proc/net/ip_vs/stats" = "no";
+        "/proc/net/stat/synproxy" = "no";
+        "/proc/net/stat/nf_conntrack" = "no";
+      };
     };
-    "web" = {
-      "default port" = listenPort;
-      "allow connections from" = "localhost 10.2.2.* 192.168.1.*";
-    };
-    "health" = { "enabled" = "no"; };
-    "statsd" = { "enabled" = "no"; };
-    "ml" = { "enabled" = "no"; };
-    "plugins" = {
-      "idlejitter" = "no";
-      "python.d" = "yes";
-      "node.d" = "no";
-      "charts.d" = "no";
-      "fping" = "no";
-      "tc" = "no";
-    };
-    "plugin:apps" = { "update every" = 30; };
-    "plugin:proc:diskspace" = {
-      "update every" = 30;
-      "check for new mount points every" = 0;
-    };
-    "plugin:proc" = {
-      "/proc/spl/kstat/zfs/arcstats" = "yes";
-      "/proc/net/snmp" = "no";
-      "/proc/net/snmp6" = "no";
-      "/proc/net/ip_vs/stats" = "no";
-      "/proc/net/stat/synproxy" = "no";
-      "/proc/net/stat/nf_conntrack" = "no";
+    configDir = {
+      "go.d/zfspool.conf" = pkgs.writeText "zfspool.conf" ''
+        jobs:
+          - name: zfspool
+            binary_path: ${config.boot.zfs.package}/bin/zpool
+      '';
     };
   };
 
