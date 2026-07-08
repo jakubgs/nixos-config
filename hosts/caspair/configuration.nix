@@ -22,6 +22,11 @@
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 10;
+    # Use 'bootctl set-oneshot windows_windows.conf'.
+    windows."windows" = {
+      title = "Windows";
+      efiDeviceHandle = "HD1c65535a2";
+    };
   };
 
   # Sensors
