@@ -36,6 +36,13 @@
   systemd.services.invidious.serviceConfig.MemoryMax = "400M";
   systemd.services.syncthing.serviceConfig.MemoryMax = "500M";
   systemd.services.netdata.serviceConfig.MemoryMax = "150M";
+  # Performance tuning.
+  systemd.services.transmission.serviceConfig = {
+    CPUWeight = 200;
+    Nice = -5;
+    CPUAffinity = "4-7";
+    MemoryLow = "256M";
+  };
 
   networking = {
     hostId = "892cff1c";
