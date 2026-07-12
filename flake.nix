@@ -2,7 +2,7 @@
   description = "NixOS configuration for my personal hosts.";
 
   inputs = {
-    nixpkgs.url  = "nixpkgs/nixos-26.05";
+    nixpkgs.url  = "nixpkgs/9abeb6b1c7c28e4ff838ed393e7e7ba9fb29cb50"; # nixos-26.05
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
     disko = {
