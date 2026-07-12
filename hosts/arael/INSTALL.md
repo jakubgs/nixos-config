@@ -29,6 +29,14 @@ Now the device has a graphical bootloader available when pressing `Escape` at bo
 
 ![Bootloader Menu](./bootloader.png)
 
+# Device Tree
+
+Instead of ACPI the Device Tree mode can be used, but it requires adjustement:
+```nix
+  boot.initrd.kernelModules = [ "phy-rockchip-naneng-combphy" ];
+```
+Without it SSD connected via built-in M.2 slot is not detected at boot.
+
 # Install Image
 
 You can use a stock `aarch64` installer ISO image:

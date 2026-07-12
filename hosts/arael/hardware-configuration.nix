@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "phy-rockchip-naneng-combphy" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
