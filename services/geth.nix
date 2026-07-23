@@ -184,7 +184,6 @@ in
 
       script = ''
         ${cfg.package}/bin/geth \
-          --nousb \
           --ipcdisable \
           ${optionalString (cfg.network != null) ''--${cfg.network}''} \
           --syncmode ${cfg.syncmode} \

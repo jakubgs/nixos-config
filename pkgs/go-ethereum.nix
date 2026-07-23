@@ -1,19 +1,30 @@
 { pkgs ? import <nixpkgs> { } }:
 
-pkgs.go-ethereum.overrideAttrs (args: rec {
-  version = "1.17.1";
+pkgs.buildGoModule rec {
+  pname = "go-ethereum";
+  version = "1.17.4";
 
   src = pkgs.fetchFromGitHub {
     owner = "ethereum";
-    repo = args.pname;
+    repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-Fg+xitRROkLVXIpCoQ78eY/RFRcj7pBPI4kTSLLl+pw=";
+    sha256 = "sha256-jgBKoSt3cdw3NyTi8SLBf28tvJIBAitkQNMlzfnIONE=";
   };
 
-  vendorHash = "sha256-S/CkTWx4fUI54JVCW9ixhNADdBuMD2i7NI5U8aDy66k=";
+  proxyVendor = true;
+  vendorHash = "sha256-18rqbSx3JGaQz3Fw38JShRikkTT4Gn+uqqbNZiJQaS8=";
 
-  subPackages = [
-    "cmd/clef"
-    "cmd/geth"
-  ];
-})
+  ldflags = ["-s" "-w"];
+
+  doCheck = false;
+
+  subPackages = [ "cmd/geth" ];
+
+  meta = with pkgs.lib; {
+    description = "Official golang implementation of the Ethereum protocol";
+    homepage = "https://geth.ethereum.org/";
+    license = with licenses; [lgpl3Plus gpl3Plus];
+    mainProgram = "geth";
+    platforms = ["x86_64-linux" "aarch64-linux"];
+  };
+}

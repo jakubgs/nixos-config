@@ -1,6 +1,9 @@
 { config, lib, unstablePkgs, secret, ... }:
 
 {
+  imports = [ ./../../services/geth.nix ];
+  disabledModules = [ "services/blockchain/ethereum/geth.nix" ];
+
   options.geth = {
     devp2pPort = lib.mkOption { default = 9800; };
     jwtsecret  = lib.mkOption { default = secret "service/nimbus/web3-jwt-secret"; };
@@ -22,7 +25,7 @@
         syncmode = "snap";
         maxpeers = 50;
         port = cfg.devp2pPort;
-        package = unstablePkgs.callPackage ../pkgs/go-ethereum.nix { };
+        package = unstablePkgs.callPackage ../../pkgs/go-ethereum.nix { };
         metrics = {
           enable = true;
           port = 16060;
@@ -51,7 +54,6 @@
           "--verbosity=3"
           "--log.json=true"
           "--nat=any"
-          "--v5disc"
         ];
       };
     };
