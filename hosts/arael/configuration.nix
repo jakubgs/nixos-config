@@ -41,7 +41,7 @@
     CPUWeight = 200;
     Nice = -5;
     CPUAffinity = "4-7";
-    MemoryLow = "256M";
+    MemoryLow = "512M";
   };
 
   networking = {
