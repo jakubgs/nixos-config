@@ -54,7 +54,9 @@
     # Misc
     git neovim fzf htop tmux silver-searcher
     # Desktop
-    lxterminal rxvt-unicode rofi arandr
+    lxterminal rxvt-unicode rofi arandr gparted
+    # System
+    acpi lm_sensors
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
