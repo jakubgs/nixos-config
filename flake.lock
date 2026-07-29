@@ -68,12 +68,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1781600151,
+        "lastModified": 1785313778,
         "lfs": false,
-        "narHash": "sha256-dvc60CFi4lug8JhKVnA1hDd6pP7smGprPnXGznMPCPk=",
+        "narHash": "sha256-aQfcgrbgHNijN76hJYNIVmiaeYqajLb9v35MrYZ9igE=",
         "ref": "nix/add-service-module",
-        "rev": "305ce907fca9012caef4a196a2bbfa2e6091120b",
-        "revCount": 5325,
+        "rev": "0b16c02e3c9c1bf6dc911f7c50f3e9fb67f226c4",
+        "revCount": 5504,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth1"
@@ -119,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777910482,
-        "narHash": "sha256-qb5nFHIasfgTHWKAkIIsblXU1OHDWrkfnCGZvRu1Zjg=",
+        "lastModified": 1780314388,
+        "narHash": "sha256-YA4zuAAIEPkIyCenc6Z58rS2J2Ih2IB1m1o//nBr7Kw=",
         "ref": "refs/heads/master",
-        "rev": "e757a6023b4dbd1915b4092eae66f51ffe51b92e",
-        "revCount": 250,
+        "rev": "74985931a6bf4c774655308eafde449696c6a32e",
+        "revCount": 253,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-build-system"

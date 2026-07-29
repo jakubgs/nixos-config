@@ -27,7 +27,7 @@ in {
         log-level = "info";
         log-format = "json";
         data-dir = cfg.dataDir;
-        network = [cfg.network];
+        network = cfg.network;
         prune = true;
         jwt-secret = cfg.jwtSecret;
         tcp-port = cfg.listenPort;
