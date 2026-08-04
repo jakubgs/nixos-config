@@ -4,8 +4,6 @@ let
   disableAccelProfile = name:
     "xinput set-prop 'pointer:${name}' 'Device Accel Profile' -1";
 in {
-  services.displayManager.defaultSession = "none+awesome";
-
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -28,26 +26,6 @@ in {
     };
     # symlink at /etc/X11/xorg.conf
     exportConfiguration = true;
-  };
-
-  # Fonts
-  fonts = {
-    fontconfig = {
-      cache32Bit = true;
-      allowBitmaps = true;
-      useEmbeddedBitmaps = true;
-      defaultFonts = {
-        monospace = [ "Inconsolata" ];
-      };
-    };
-    packages = with pkgs; [
-      inconsolata
-      terminus_font
-      corefonts
-      fira-code
-      dejavu_fonts
-      ubuntu-classic
-    ];
   };
 
   # Necessary for corefonts

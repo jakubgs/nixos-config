@@ -234,7 +234,29 @@
         "nimbus-eth2": "nimbus-eth2",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
+        "somewm": "somewm",
         "unstable": "unstable"
+      }
+    },
+    "somewm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782161616,
+        "narHash": "sha256-gjth2sPsXBn+NGGhRpjQ4WWhO2K5t/RqDooNfEvsR/E=",
+        "owner": "trip-zip",
+        "repo": "somewm",
+        "rev": "461a259ce5058f224942aefc9caf306772ec76c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "trip-zip",
+        "ref": "v1.4.2",
+        "repo": "somewm",
+        "type": "github"
       }
     },
     "systems": {

@@ -1,18 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, wrapWithFlags, ... }:
 
 {
   imports = [
     ./autofs.nix
+    ./audio.nix
     ./bluetooth.nix
     ./clipmenu.nix
     ./dnsmasq.nix
     ./docker.nix
     ./docs.nix
+    ./fonts.nix
+    ./themes.nix
+    ./terminal.nix
+    ./keyboard.nix
     ./mime.nix
     ./music.nix
     ./network.nix
     ./physlock.nix
-    ./xserver.nix
+    ./wayland.nix
     ./yubikey.nix
   ];
 
@@ -22,19 +27,17 @@
   # System packages
   environment.systemPackages = with pkgs; [
     # Console
-    rxvt-unicode rofi w3m
-    # Xorg Tools
-    xsel libdrm xmodmap xcalib
-    # Keyboard & Mouse
-    xcape xbindkeys xclip xkbset
+    foot rofi w3m
+    # Wayland Tools
+    libdrm wl-clipboard wlr-randr
     # Network
     networkmanagerapplet
     # System
     gparted
     # Audio
-    pavucontrol pamix pasystray
+    pavucontrol pamix
     # Screen
-    arandr
+    grim slurp swappy brightnessctl
     # Security
     cryptsetup
     # Phone
@@ -44,33 +47,25 @@
   # User packages
   users.users.jakubgs.packages = with pkgs; [
     # Desktop
-    thunar nitrogen scrot flameshot
-    # Themes
-    lxappearance matcha-gtk-theme vimix-gtk-themes
+    thunar swaybg grim slurp flameshot
     # Browsers
-    brave
+    (wrapWithFlags brave ["--force-device-scale-factor=1.30"])
     # Documents
     evince foliate
     # Images
-    feh qimgv gimp exiftool
+    (wrapWithFlags qimgv ["-platform" "wayland"])
+    feh gimp exiftool
     # Video
     mpv yt-dlp ffmpeg
     # Audio
-    vorbis-tools mpg123 soundconverter pulsemixer
+    vorbis-tools mpg123 soundconverter pulsemixer pasystray
     # Communication
-    discord
+    (wrapWithFlags discord ["--ozone-platform=wayland"])
     # Torrent
     transmission-remote-gtk
     # Coding
     zeal
   ];
-
-  # Pipewire causes crackling
-  services.pipewire.enable = false;
-  services.pulseaudio.enable = true;
-
-  # Automatically detect screen layout changes.
-  services.autorandr.enable = true;
 
   # Fix Evolution startup errors
   services.gnome.evolution-data-server.enable = true;

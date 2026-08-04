@@ -8,6 +8,16 @@
 
   config = let
     cfg = config.music;
+    audioOutput =
+      if config.services.pipewire.enable then {
+        audio_output = [{ type = "pipewire"; name = "PipeWire"; }];
+      } else lib.optionalAttrs config.services.pulseaudio.enable {
+        audio_output = [
+          { type = "pulse";
+            name = "Pulseaudio";
+            server = "127.0.0.1"; }
+        ];
+      };
   in {
     age.secrets."service/mpd/pass" = {
       owner = "mpd";
@@ -34,13 +44,7 @@
         playlist_directory = "${cfg.collection}/_playlists";
         mixer_type = "software";
         audio_buffer_size = "8192";
-      } // lib.optionalAttrs config.services.pulseaudio.enable {
-        audio_output = [
-          { type = "pulse";
-            name = "Pulseaudio";
-            server = "127.0.0.1"; }
-        ];
-      };
+      } // audioOutput;
     };
 
     # Mountpoint check
@@ -52,10 +56,6 @@
       unitConfig.ConditionPathIsMountPoint = cfg.collection;
     };
 
-    # Pipewire causes crackling
-    services.pipewire.enable = false;
-    services.pulseaudio.enable = true;
-
     # Firewall
     networking.firewall.allowedTCPPorts = [
       config.services.mpd.settings.port
@@ -63,7 +63,7 @@
     ];
 
     # Necessary to use PulseAudio
-    services.pulseaudio.extraConfig = ''
+    services.pulseaudio.extraConfig = lib.mkIf config.services.pulseaudio.enable ''
       load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
     '';
 

@@ -19,6 +19,10 @@
       inputs.darwin.follows = "";
       inputs.home-manager.follows = "";
     };
+    somewm = {
+      url = "github:trip-zip/somewm/v1.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nimbus-eth1 = {
       url = "git+https://github.com/status-im/nimbus-eth1?submodules=1&ref=nix/add-service-module";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +33,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware, disko, nixos-generators, agenix, nimbus-eth1, nimbus-eth2 }:
+  outputs = {
+    self, nixpkgs, unstable, hardware, disko, nixos-generators,
+    agenix, somewm, nimbus-eth1, nimbus-eth2
+  }:
     let
       # To generate host configurations for all hosts.
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
@@ -49,7 +56,7 @@
               system = systemForHost hostname;
               config.allowUnfree = true;
             };
-            channels = { inherit nixpkgs unstable hardware agenix; };
+            channels = { inherit nixpkgs unstable hardware agenix somewm; };
           };
           modules = [
             disko.nixosModules.disko
