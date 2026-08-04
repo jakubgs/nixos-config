@@ -11,6 +11,7 @@
     ../../roles/syncthing.nix
     ../../roles/tailscale.nix
     ../../roles/work.nix
+    ../../roles/torrent.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -52,7 +52,8 @@
   # Easier debugging on failure
   boot.kernelParams = [
     "boot.shell_on_fail"
-    "boot.initrd.verbose"
+    # Enable when debugging boot issues.
+    #"boot.initrd.verbose"
   ];
 
   # domain use for my own infra
