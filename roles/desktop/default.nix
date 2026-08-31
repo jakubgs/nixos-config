@@ -3,6 +3,7 @@
 {
   imports = [
     ./autofs.nix
+    ./awesome.nix
     ./bluetooth.nix
     ./clipmenu.nix
     ./dnsmasq.nix
