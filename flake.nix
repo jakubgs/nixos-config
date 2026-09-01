@@ -5,6 +5,10 @@
     nixpkgs.url  = "nixpkgs/9abeb6b1c7c28e4ff838ed393e7e7ba9fb29cb50"; # nixos-26.05
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    comin = {
+      url = "github:nlewo/comin/v0.14.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +33,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware, disko, nixos-generators, agenix, nimbus-eth1, nimbus-eth2 }:
+  outputs = {
+    self, nixpkgs, unstable, hardware, comin, disko,
+    nixos-generators, agenix, nimbus-eth1, nimbus-eth2
+  }:
     let
       # To generate host configurations for all hosts.
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
@@ -52,6 +59,7 @@
             channels = { inherit nixpkgs unstable hardware agenix; };
           };
           modules = [
+            comin.nixosModules.comin
             disko.nixosModules.disko
             agenix.nixosModules.default
             nimbus-eth1.nixosModules.default
