@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, unstablePkgs, lib, ... }:
 
 # This file includes setup for things required for work
 
@@ -29,6 +29,8 @@ in {
     (pkgs.callPackage ../pkgs/rootly-cli.nix {})
     # Development
     gnumake gcc autoconf automake patchelf
+    # LLM
+    unstablePkgs.nono unstablePkgs.opencode
     # Security
     vault sops pwgen yubikey-manager openssl
     # Network
