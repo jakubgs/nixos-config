@@ -22,7 +22,7 @@
     monthly = 2;
     weekly = 2;
     daily = 6;
-    hourly = 0;
+    hourly = 8;
     frequent = 0;
   };
 
