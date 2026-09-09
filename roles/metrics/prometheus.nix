@@ -3,7 +3,7 @@
 let
   inherit (config) services;
 
-  default = { netdata = 9000; mtr = 9001; chrony = 9123; smartctl = 9002; };
+  default = { comin = 4243; netdata = 9000; mtr = 9001; chrony = 9123; smartctl = 9002; };
 
   hosts = {
         "eve.magi.vpn" = { openwrt = 9100; };
@@ -60,6 +60,7 @@ in {
     };
 
     scrapeConfigs = [
+      (genScrapeJob {name = "comin";     path = "/metrics";})
       (genScrapeJob {name = "netdata";   path = "/api/v1/allmetrics";})
       (genScrapeJob {name = "smartctl";  path = "/metrics";})
       (genScrapeJob {name = "nimbus-bn"; path = "/metrics"; interval = "6s"; })

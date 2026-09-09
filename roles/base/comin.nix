@@ -1,11 +1,14 @@
 { pkgs, config, ... }:
 
-{
+let
+  listenPort = 4243;
+in {
   services.comin = {
     enable = true;
     desktop.enable = true;
     submodules = false;
     machineId = null;
+    exporter.port = listenPort;
     buildConfirmer.mode = "without";
     deployConfirmer.mode = "manual";
     gpgPublicKeyPaths = [
@@ -29,4 +32,7 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/comin 0750 root wheel -"
   ];
+
+  # Firewall
+  networking.firewall.interfaces."zt*".allowedTCPPorts = [ listenPort ];
 }
