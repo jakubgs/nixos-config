@@ -133,18 +133,18 @@
         "nixpkgsGccCompat": "nixpkgsGccCompat"
       },
       "locked": {
-        "lastModified": 1787948693,
+        "lastModified": 1789600017,
         "lfs": false,
-        "narHash": "sha256-sCQksju9YGdQ/Ph8/3ecHGJN1XPLTYM1RsHv8WsT30U=",
-        "ref": "stable",
-        "rev": "404a0001561d1d83c5b5bf35dcbedbcb5fb86572",
-        "revCount": 8801,
+        "narHash": "sha256-C4B1H5xW8inme1R1kzukD41P4VvyJXKPcvjHBgAodbc=",
+        "ref": "unstable",
+        "rev": "63ec2dd3514e8d89433a22911740b0c783645096",
+        "revCount": 8871,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth2"
       },
       "original": {
-        "ref": "stable",
+        "ref": "unstable",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth2"
