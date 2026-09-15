@@ -107,18 +107,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1785313778,
+        "lastModified": 1789271183,
         "lfs": false,
-        "narHash": "sha256-aQfcgrbgHNijN76hJYNIVmiaeYqajLb9v35MrYZ9igE=",
-        "ref": "nix/add-service-module",
-        "rev": "0b16c02e3c9c1bf6dc911f7c50f3e9fb67f226c4",
-        "revCount": 5504,
+        "narHash": "sha256-EWjTd79osW6R7jO5Q7n47QGfSnzgQ7l1HmfPcw3TB2o=",
+        "ref": "refs/tags/v0.4.1",
+        "rev": "ec214533952068900d4a515948768ae249a61ae7",
+        "revCount": 5650,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth1"
       },
       "original": {
-        "ref": "nix/add-service-module",
+        "ref": "refs/tags/v0.4.1",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth1"
