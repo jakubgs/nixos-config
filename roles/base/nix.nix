@@ -29,6 +29,6 @@
 
   # Nix output formatter
   environment.systemPackages = with pkgs; [
-    nix-output-monitor
+    nil nix-output-monitor
   ];
 }
