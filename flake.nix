@@ -5,6 +5,10 @@
     nixpkgs.url  = "nixpkgs/9abeb6b1c7c28e4ff838ed393e7e7ba9fb29cb50"; # nixos-26.05
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    determinate = {
+      url = "github:DeterminateSystems/determinate/v3.22.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     comin = {
       url = "github:nlewo/comin/v0.14.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +38,7 @@
   };
 
   outputs = {
-    self, nixpkgs, unstable, hardware, comin, disko,
+    self, nixpkgs, unstable, hardware, comin, disko, determinate,
     nixos-generators, agenix, nimbus-eth1, nimbus-eth2
   }:
     let
@@ -59,9 +63,10 @@
             channels = { inherit nixpkgs unstable hardware agenix; };
           };
           modules = [
-            comin.nixosModules.comin
-            disko.nixosModules.disko
             agenix.nixosModules.default
+            comin.nixosModules.comin
+            determinate.nixosModules.default
+            disko.nixosModules.disko
             nimbus-eth1.nixosModules.default
             nimbus-eth2.nixosModules.default
             nixos-generators.nixosModules.all-formats

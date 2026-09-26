@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  nix.package = pkgs.nixVersions.nix_2_34;
   nix.settings = {
     "download-buffer-size" = "268435456";
     "extra-experimental-features" = "flakes nix-command";
