@@ -32,7 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nimbus-eth2 = {
-      url = "git+https://github.com/status-im/nimbus-eth2?submodules=1&ref=unstable";
+      url = "git+https://github.com/status-im/nimbus-eth2?submodules=1&ref=stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
