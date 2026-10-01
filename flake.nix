@@ -28,7 +28,7 @@
       inputs.home-manager.follows = "";
     };
     nimbus-eth1 = {
-      url = "git+https://github.com/status-im/nimbus-eth1?submodules=1&ref=refs/tags/v0.4.1";
+      url = "git+https://github.com/status-im/nimbus-eth1?submodules=1&ref=refs/tags/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nimbus-eth2 = {
