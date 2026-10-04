@@ -43,6 +43,7 @@ in with hosts; {
   "service/landing/server.key.age"     = { publicKeys = all;       };
   "service/mikrotik/config.age"        = { publicKeys = jakubgs ++ [ arael ];   };
   "service/mpd/pass.age"               = { publicKeys = all;       };
+  "service/meteo/password.age"         = { publicKeys = jakubgs ++ [ bardiel ]; };
   "service/nimbus/fee-recipient.age"   = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/nimbus/web3-jwt-secret.age" = { publicKeys = jakubgs ++ [ israfel zeruel bardiel ]; };
   "service/nix-serve/nix.magi.vpn"     = { publicKeys = jakubgs ++ [ bardiel ]; };

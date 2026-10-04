@@ -8,7 +8,7 @@ let
   hosts = {
         "eve.magi.vpn" = { openwrt = 9100; };
       "arael.magi.vpn" = default // { mikrotik = 9436; };
-    "bardiel.magi.vpn" = default;
+    "bardiel.magi.vpn" = default // { meteo = 9109; };
     "caspair.magi.vpn" = default;
       "lilim.magi.vpn" = default;
      "leliel.magi.vpn" = default;
@@ -63,6 +63,7 @@ in {
       (genScrapeJob {name = "comin";     path = "/metrics";})
       (genScrapeJob {name = "netdata";   path = "/api/v1/allmetrics";})
       (genScrapeJob {name = "smartctl";  path = "/metrics";})
+      (genScrapeJob {name = "meteo";     path = "/metrics";})
       (genScrapeJob {name = "nimbus-bn"; path = "/metrics"; interval = "6s"; })
       (genScrapeJob {name = "nimbus-el"; path = "/metrics"; interval = "6s"; })
       (genScrapeJob {name = "nimbus-vc"; path = "/metrics"; interval = "6s"; })

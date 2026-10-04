@@ -15,6 +15,7 @@
     ../../roles/nfs.nix
     ../../roles/gossa.nix
     ../../roles/karakeep.nix
+    ../../roles/meteo.nix
     ../../roles/builder.nix
     ../../roles/cache.nix
     ../../roles/invidious.nix

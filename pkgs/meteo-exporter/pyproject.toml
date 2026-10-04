@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meteo-exporter"
+version = "0.1.0"
+description = "Prometheus exporter for Weather Underground-compatible weather stations"
+requires-python = ">=3.10"
+
+[project.scripts]
+meteo-exporter = "meteo_exporter:main"
+
+[tool.setuptools]
+py-modules = ["meteo_exporter"]
