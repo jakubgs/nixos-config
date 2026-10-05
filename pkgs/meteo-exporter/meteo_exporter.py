@@ -8,6 +8,7 @@ import logging
 import math
 import secrets
 import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Callable, Mapping
@@ -65,8 +66,13 @@ METRICS: Mapping[str, MetricDefinition] = {
 class WeatherMetrics:
     """Thread-safe latest-value store keyed by weather station ID."""
 
-    def __init__(self) -> None:
+    def __init__(self, max_age: float = 60.0, clock: Callable[[], float] = time.monotonic) -> None:
+        if max_age < 0:
+            raise ValueError("max_age must be non-negative")
         self._values: dict[str, dict[tuple[str, str | None], float]] = {}
+        self._updated_at: dict[str, float] = {}
+        self._max_age = max_age
+        self._clock = clock
         self._lock = threading.Lock()
 
     def update(self, query: Mapping[str, list[str]]) -> int:
@@ -90,11 +96,17 @@ class WeatherMetrics:
             raise ValueError("request contains no supported metrics")
         with self._lock:
             self._values[station_id] = values
+            self._updated_at[station_id] = self._clock()
         return len(values)
 
     def exposition(self) -> str:
         with self._lock:
-            snapshot = {station: dict(values) for station, values in self._values.items()}
+            now = self._clock()
+            snapshot = {
+                station: dict(values)
+                for station, values in self._values.items()
+                if now - self._updated_at[station] <= self._max_age
+            }
         samples_by_metric: dict[str, list[tuple[str, str | None, float]]] = {}
         # Group samples once instead of scanning every station for each metric.
         for station_id, values in snapshot.items():
@@ -114,7 +126,7 @@ class WeatherMetrics:
                 labels = f'station_id="{_escape_label(station_id)}"'
                 if location is not None:
                     labels += f',location="{location}"'
-                lines.append(f"meteo_{name}{{{labels}}} {value:.15g}")
+                lines.append(f"meteo_{name}{{{labels}}} {value:.3f}")
         return "\n".join(lines) + ("\n" if lines else "")
 
 
@@ -179,13 +191,23 @@ def main() -> None:
     parser.add_argument("--listen-address", default="0.0.0.0")
     parser.add_argument("--port", default=9109, type=int)
     parser.add_argument("--password-file", required=True, type=Path, help="File containing station update password")
+    parser.add_argument(
+        "--data-expiry",
+        default=60.0,
+        type=float,
+        help="Maximum age of station data in seconds (default: 60)",
+    )
     args = parser.parse_args()
+
+    if args.data_expiry < 0:
+        parser.error("--data-expiry must be non-negative")
 
     try:
         MetricsHandler.password = _read_password_file(args.password_file)
     except ValueError as error:
         parser.error(str(error))
 
+    MetricsHandler.metrics = WeatherMetrics(max_age=args.data_expiry)
     server = ThreadingHTTPServer((args.listen_address, args.port), MetricsHandler)
     try:
         server.serve_forever()

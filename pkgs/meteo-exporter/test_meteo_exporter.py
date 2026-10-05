@@ -25,8 +25,8 @@ class WeatherMetricsTest(unittest.TestCase):
         metrics = WeatherMetrics()
         metrics.update(parse_qs(REQUEST))
         output = metrics.exposition()
-        self.assertIn('meteo_temperature_celsius{station_id="EXAMPLE_ID",location="outdoor"} 16.8888888888889', output)
-        self.assertIn('meteo_wind_speed_meters_per_second{station_id="EXAMPLE_ID",location="outdoor"} 1.56464', output)
+        self.assertIn('meteo_temperature_celsius{station_id="EXAMPLE_ID",location="outdoor"} 16.889', output)
+        self.assertIn('meteo_wind_speed_meters_per_second{station_id="EXAMPLE_ID",location="outdoor"} 1.565', output)
         self.assertIn('meteo_relative_humidity_ratio{station_id="EXAMPLE_ID",location="outdoor"} 0.75', output)
         self.assertNotIn("PASSWORD", output)
 
@@ -54,6 +54,24 @@ class WeatherMetricsTest(unittest.TestCase):
         self.assertEqual(len(samples), 2)
         self.assertIn('station_id="one"', samples[0])
         self.assertIn('station_id="two"', samples[1])
+
+    def test_expired_station_is_not_exported(self):
+        current_time = [100.0]
+        metrics = WeatherMetrics(max_age=60, clock=lambda: current_time[0])
+        metrics.update(parse_qs("ID=station&tempf=50"))
+
+        current_time[0] = 160.1
+
+        self.assertEqual(metrics.exposition(), "")
+
+    def test_fresh_station_is_exported_with_configured_expiry(self):
+        current_time = [100.0]
+        metrics = WeatherMetrics(max_age=10, clock=lambda: current_time[0])
+        metrics.update(parse_qs("ID=station&tempf=50"))
+
+        current_time[0] = 110
+
+        self.assertIn("meteo_temperature_celsius", metrics.exposition())
 
 
 if __name__ == "__main__":

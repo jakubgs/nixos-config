@@ -9,6 +9,7 @@ Written with Bresser Wifi WSC 5IN1 custom endpoint functionality in mind.
 ```sh
 python3 meteo_exporter.py --port 9109 --password-file /run/secrets/meteo-exporter-password
 ```
+Station data expires after 30 seconds by default. Configure this with `--data-expiry SECONDS`; expired data produces an empty `/metrics` response.
 Send station updates to the path used by the station:
 ```text
 GET /weatherstation/updateweatherstation.php?ID=PWS-E5FE9C&PASSWORD=change-me&dateutc=now&baromin=29.71&tempf=62.4&dewptf=54.3&humidity=75&windspeedmph=3.5&windgustmph=3.5&winddir=294&rainin=0.0&dailyrainin=0.0&indoortempf=71.7&indoorhumidity=62&softwaretype=vws%20versionxx&action=updateraw&realtime=1&rtfreq2.5
