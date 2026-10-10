@@ -3,6 +3,7 @@
 {
   imports = [
     ../services/meteo-exporter.nix
+    ../services/meteo-dashboard.nix
   ];
 
   # Secrets
@@ -14,6 +15,13 @@
     enable = true;
     listenAddress = "0.0.0.0";
     passwordFile = secret "service/meteo/password";
+  };
+
+  services.meteo-dashboard = {
+    enable = true;
+    frequency = "*:0/5"; # Every 5 min
+    station = "PWS-E5FE9C";
+    outputDirectory = "/var/www/meteo-dashboard";
   };
 
   security.acme = {
@@ -32,6 +40,10 @@
       extraConfig = ''
         ssl_ciphers DEFAULT:@SECLEVEL=1;
       '';
+      locations."/${config.services.meteo-dashboard.station}" = {
+        root = config.services.meteo-dashboard.outputDirectory;
+        tryFiles = "/index.html =404";
+      };
       locations."/weatherstation/updateweatherstation.php" = {
         proxyPass = "http://localhost:${toString config.services.meteo-exporter.port}";
         extraConfig = ''
