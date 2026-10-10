@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Weather · {{STATION}}</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1120; --panel:#111827; --line:#1e293b; --muted:#94a3b8; --text:#f8fafc }
+    * { box-sizing:border-box }
+    body { margin:0; background:var(--bg); color:var(--text); font:14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif }
+    main { max-width:1120px; margin:auto; padding:24px 14px 48px }
+    header { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:20px }
+    h1 { font-size:clamp(24px,5vw,36px); letter-spacing:-.04em; margin:0 }
+    header p { color:var(--muted); margin:5px 0 0 }
+    .meta { text-align:right }
+    .status { color:#86efac; font-size:12px; white-space:nowrap }
+    .range { display:flex; gap:5px; margin:0 0 12px }
+    .range button { border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--muted); padding:7px 13px; font:inherit; cursor:pointer }
+    .range button.active { background:#2563eb; border-color:#3b82f6; color:white }
+    [hidden] { display:none !important }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px }
+    .stat,.panel { background:var(--panel); border:1px solid var(--line); border-radius:10px }
+    .stat { padding:13px 12px; min-width:0 }
+    .stat span { display:block; color:var(--muted); font-size:11px; margin-bottom:7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+    .stat strong { font-size:19px; letter-spacing:-.03em }
+    .charts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
+    .view { display:contents }
+     .panel { overflow:hidden; padding:5px }
+    .panel svg { display:block; width:100%; height:auto }
+    .empty { height:218px; display:grid; place-content:center; text-align:center; color:var(--muted); line-height:1.8 }
+    footer { color:#64748b; font-size:11px; margin-top:16px }
+    @media(max-width:650px) {
+      main { padding:18px 10px 32px }
+      header { align-items:start; flex-direction:column; gap:5px }
+      .meta { text-align:left }
+      .stats { grid-template-columns:repeat(2,1fr) }
+      .charts { grid-template-columns:1fr; gap:9px }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><h1>Weather station</h1></div>
+      <div class="meta"><p>{{STATION}} · updated {{UPDATED}}</p><div class="status">● static snapshot</div></div>
+    </header>
+    <div class="stats">{{CARDS}}</div>
+    <nav class="range" aria-label="Time range">
+      <button class="active" data-range="24h" type="button">24 hours</button>
+      <button data-range="7d" type="button">7 days</button>
+      <button data-range="30d" type="button">30 days</button>
+    </nav>
+    <div class="charts">{{CHARTS}}</div>
+    <footer>Generated {{GENERATED}}. Data from Prometheus · charts rendered server-side with Matplotlib.</footer>
+  </main>
+  <script>
+    document.querySelectorAll('[data-range]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        document.querySelectorAll('[data-range]').forEach(function (item) { item.classList.toggle('active', item === button); });
+        document.querySelectorAll('[data-view]').forEach(function (view) { view.hidden = view.dataset.view !== button.dataset.range; });
+      });
+    });
+  </script>
+</body>
+</html>
