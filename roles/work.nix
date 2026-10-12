@@ -62,7 +62,15 @@ in {
 
   # Add Status cache to configured ones.
   nix.settings = {
-    trusted-substituters = [ "https://nix-cache.status.im/" ];
-    trusted-public-keys = [ "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY=" ];
+    trusted-substituters = [
+      "https://cache.nix.free.technology/public"
+      "https://cache.nix.logos.co/public"
+      "https://nix-cache.status.im/"
+    ];
+    trusted-public-keys = [
+      "public:vAX6ZzpZzkgFEKPjf8r3Y3dSxrjZMu5+b1STWsvffeI="
+      "public:l4HrXgL4nw246+LBh2SOJyhz64BoGegOYLheT/iIAPU="
+      "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
+    ];
   };
 }
