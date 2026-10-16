@@ -36,7 +36,7 @@ in {
     # Network
     mtr netcat websocat ngrok tcpdump whois inetutils
     # Cloud
-    awscli s5cmd doctl google-cloud-sdk
+    awscli2 s5cmd doctl google-cloud-sdk
     scaleway-cli aliyun-cli hcloud
     # Ethereum
     (pkgs.callPackage ../pkgs/ethstaker-deposit-cli.nix {})
