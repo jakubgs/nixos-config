@@ -40,6 +40,23 @@
         "type": "github"
       }
     },
+    "checksums_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775198586,
+        "narHash": "sha256-EwGpWSzWeEt8KLracRUle8KFb/2c6Ndz1Sqm3FhBvRY=",
+        "owner": "nim-lang",
+        "repo": "checksums",
+        "rev": "5c132cd332cce5d64a0da9ac3e4c9664313dccb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nim-lang",
+        "repo": "checksums",
+        "rev": "5c132cd332cce5d64a0da9ac3e4c9664313dccb4",
+        "type": "github"
+      }
+    },
     "comin": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -64,6 +81,23 @@
       }
     },
     "csources": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762688095,
+        "narHash": "sha256-pTcm2y+HDOuTol8DyoJMOMHsUA6QrgwGdfcOu1NX4PU=",
+        "owner": "nim-lang",
+        "repo": "csources_v3",
+        "rev": "eeab3ac46e93f10efda8e58c4db02b9438319d71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nim-lang",
+        "repo": "csources_v3",
+        "rev": "eeab3ac46e93f10efda8e58c4db02b9438319d71",
+        "type": "github"
+      }
+    },
+    "csources_2": {
       "flake": false,
       "locked": {
         "lastModified": 1762688095,
@@ -273,6 +307,26 @@
         "url": "https://github.com/nim-lang/nimble"
       }
     },
+    "nimble_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774433142,
+        "narHash": "sha256-d9Ezmmz6QKPgx/21u/aUBx7GgXaJzDuFu/gxtj6OVE8=",
+        "ref": "refs/heads/master",
+        "rev": "42ef70c2102a942c46f13eb76872326edd525cec",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/nim-lang/nimble"
+      },
+      "original": {
+        "rev": "42ef70c2102a942c46f13eb76872326edd525cec",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/nim-lang/nimble"
+      }
+    },
     "nimbus-eth1": {
       "inputs": {
         "nimbusBuildSystem": "nimbusBuildSystem",
@@ -307,12 +361,12 @@
         "nixpkgsGccCompat": "nixpkgsGccCompat"
       },
       "locked": {
-        "lastModified": 1790738254,
+        "lastModified": 1792133071,
         "lfs": false,
-        "narHash": "sha256-UsUcV72Is151zHOUEZEc6AGfgIooAKuid47Uq6YA5n8=",
+        "narHash": "sha256-j2kFI/1q/2r+Xul9zV09FnBYtUgPM5Vow0StRnm6hIY=",
         "ref": "stable",
-        "rev": "123ea73d485f18d4f90ff77667c9f798dc8251d3",
-        "revCount": 8938,
+        "rev": "963756c91c19b7824cea57e7aab5857ce2c776c7",
+        "revCount": 9031,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-eth2"
@@ -351,23 +405,25 @@
     },
     "nimbusBuildSystem_2": {
       "inputs": {
+        "checksums": "checksums_2",
+        "csources": "csources_2",
+        "nimble": "nimble_2",
         "nixpkgs": [
           "nimbus-eth2",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1788864956,
-        "narHash": "sha256-IELOQQ5kBdVsTOLiRJ+V/B81sqgSjWN6Pui+zCIFEdU=",
+        "lastModified": 1791444235,
+        "narHash": "sha256-dzJcihXKr7CochppADFHUpFUxPsKtQ6LA4PMJwW0XU0=",
         "ref": "refs/heads/master",
-        "rev": "d82132fa4b47e1721657faee4737a1f92df0c994",
-        "revCount": 257,
+        "rev": "a46d8b5e3c30a8a822225e9a81c19e63d159c2b2",
+        "revCount": 260,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-build-system"
       },
       "original": {
-        "submodules": true,
         "type": "git",
         "url": "https://github.com/status-im/nimbus-build-system"
       }
