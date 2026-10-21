@@ -51,6 +51,7 @@ in {
     "10.2.2.22" = [     "iruel.magi.vpn" ]; # rock5b misc
     "10.2.2.23" = [   "gaghiel.magi.vpn" ]; # rock5c misc
     "10.2.2.24" = [    "leliel.magi.vpn" ]; # rasppi4
+    "10.2.2.25" = [   "tvstick.magi.vpn" ]; # tvstick
   };
 
   # Search the magi domain
