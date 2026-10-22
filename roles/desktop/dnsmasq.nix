@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, unstablePkgs, config, ... }:
 
 let
   inherit (lib) concatStringsSep mapAttrsToList optionalAttrs;
@@ -47,6 +47,8 @@ in {
   # DNS Domain Filtering
   services.dnsmasq = {
     enable = true;
+    # FIXME: Remove once stable has 2.93 release.
+    package = unstablePkgs.dnsmasq;
     resolveLocalQueries = true;
     settings = {
       interface = "lo";
