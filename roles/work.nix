@@ -28,7 +28,7 @@ in {
     mosh remmina
     (pkgs.callPackage ../pkgs/rootly-cli.nix {})
     # Development
-    cachix gnumake gcc autoconf automake patchelf
+    cachix attic-client gnumake gcc autoconf automake patchelf
     # LLM
     unstablePkgs.nono unstablePkgs.opencode
     # Security
