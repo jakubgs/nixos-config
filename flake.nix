@@ -2,8 +2,8 @@
   description = "NixOS configuration for my personal hosts.";
 
   inputs = {
-    nixpkgs.url  = "nixpkgs/26.05";
-    unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url  = "github:NixOS/nixpkgs/26.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
     determinate = {
       url = "github:DeterminateSystems/determinate/v3.22.5";
