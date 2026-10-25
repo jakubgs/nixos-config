@@ -1,7 +1,8 @@
 { config, lib, ... }:
 
 let
-  join = lib.concatStringsSep " ";
+  joinSpace = lib.concatStringsSep " ";
+  joinComma = lib.concatStringsSep ",";
   isMounted = path: lib.hasAttr path config.fileSystems;
 
   fileSystems = lib.filter isMounted [
@@ -14,13 +15,27 @@ let
   ];
 
   allowIpRanges = [
-    "10.2.2.0/8"    # Zerotier VPNC
-    "192.168.1.0/8" # Local Network
+    # Zerotier
+    "10.2.2.11" # caspair
+    "10.2.2.12" # lilim
+    "10.2.2.13" # balthasar
+    "10.2.2.14" # armisael
+    "10.2.2.25" # tvstick
+    # Local Network
+    "192.168.1.101" # caspair
+    "192.168.1.103" # lilim
+  ];
+
+  options = [
+    "rw"               # Allow read and write access
+    "insecure"         # Allow unprivileged client ports (≥1024)
+    "root_squash"      # Map client root user to anonymous user
+    "no_subtree_check" # Disable subtree checks for better reliability
   ];
 
   # Tempalte NFS config
   fsExports = map (fs: ''
-    ${fs} ${join (map (r: "${r}(rw,no_subtree_check)") allowIpRanges)}
+    ${fs} ${joinSpace (map (r: "${r}(${joinComma options})") allowIpRanges)}
   '') fileSystems;
 in {
   # Firewall
