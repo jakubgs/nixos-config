@@ -82,10 +82,10 @@ def _svg_chart(series: list[tuple[str, list[tuple[float, float]], str]], title: 
             axis.plot(x, y, color=color, linewidth=1.8, label=label, zorder=3)
             all_x.extend(x)
             all_y.extend(y)
-            plotted.append((x, y, color))
+            plotted.append((label, x, y, color))
     if all_y:
         baseline = min(all_y)
-        for x, y, color in plotted:
+        for _, x, y, color in plotted:
             axis.fill_between(x, y, baseline, color=color, alpha=0.12, zorder=1)
     if all_x:
         axis.set_xlim(min(all_x), max(all_x) or min(all_x) + 1)
@@ -110,10 +110,27 @@ def _svg_chart(series: list[tuple[str, list[tuple[float, float]], str]], title: 
     figure.tight_layout(pad=0.8)
     output = io.StringIO()
     figure.savefig(output, format="svg", transparent=True, metadata={"Date": None})
-    plt.close(figure)
     svg = output.getvalue()
     svg = svg.replace('<?xml version="1.0" encoding="utf-8" standalone="no"?>', "")
-    return svg.replace('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"\n"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">', "")
+    svg = svg.replace('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"\n"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">', "")
+    point_targets = []
+    points_to_svg = 72 / figure.dpi
+    svg_height = figure.get_figheight() * 72
+    for label, x, y, color in plotted:
+        for timestamp, value in zip(x, y):
+            display_x, display_y = axis.transData.transform((timestamp, value))
+            svg_x = display_x * points_to_svg
+            svg_y = svg_height - display_y * points_to_svg
+            timestamp_text = datetime.fromtimestamp(timestamp, timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+            tooltip = f"{label}: {timestamp_text} — {value:.2f} {unit}"
+            point_targets.append(
+                f'<circle class="datapoint" cx="{svg_x:.2f}" cy="{svg_y:.2f}" r="7" '
+                f'fill="transparent" color="{color}" data-tooltip="{html.escape(tooltip, quote=True)}" '
+                f'pointer-events="all" />'
+            )
+    svg = svg.replace("</svg>", f'<g class="datapoints">{"".join(point_targets)}</g></svg>')
+    plt.close(figure)
+    return svg
 
 
 def _value(value: float | None, unit: str) -> str:

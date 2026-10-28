@@ -25,8 +25,11 @@
     .stat strong { font-size:19px; letter-spacing:-.03em }
     .charts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
     .view { display:contents }
-     .panel { overflow:hidden; padding:5px }
+    .panel { overflow:hidden; padding:5px }
     .panel svg { display:block; width:100%; height:auto }
+    .panel svg .datapoint { cursor:crosshair }
+    .panel svg .datapoint:hover { fill:currentColor; stroke:#f8fafc; stroke-width:1.5 }
+    #chart-tooltip { position:fixed; z-index:10; max-width:min(280px,calc(100vw - 16px)); padding:7px 9px; border:1px solid #475569; border-radius:6px; background:#0f172a; color:#f8fafc; font-size:12px; line-height:1.4; box-shadow:0 4px 14px #0008; pointer-events:none }
     .empty { height:218px; display:grid; place-content:center; text-align:center; color:var(--muted); line-height:1.8 }
     footer { color:#64748b; font-size:11px; margin-top:16px }
     @media(max-width:650px) {
@@ -51,11 +54,49 @@
       <button data-range="30d" type="button">30 days</button>
     </nav>
     <div class="charts">{{CHARTS}}</div>
+    <div id="chart-tooltip" role="tooltip" hidden></div>
     <footer>Generated {{GENERATED}}. Data from Prometheus · charts rendered server-side with Matplotlib.</footer>
   </main>
   <script>
+    const chartTooltip = document.getElementById('chart-tooltip');
+    let activePoint = null;
+    function hideTooltip() {
+      activePoint = null;
+      chartTooltip.hidden = true;
+    }
+    function showTooltip(point, event) {
+      activePoint = point;
+      chartTooltip.textContent = point.dataset.tooltip;
+      chartTooltip.hidden = false;
+      const gap = 12;
+      let left = event.clientX + gap;
+      let top = event.clientY + gap;
+      if (left + chartTooltip.offsetWidth > window.innerWidth - 8) left = event.clientX - chartTooltip.offsetWidth - gap;
+      if (top + chartTooltip.offsetHeight > window.innerHeight - 8) top = event.clientY - chartTooltip.offsetHeight - gap;
+      chartTooltip.style.left = Math.max(8, left) + 'px';
+      chartTooltip.style.top = Math.max(8, top) + 'px';
+    }
+    function pointFromEvent(event) {
+      return event.target instanceof Element ? event.target.closest('.datapoint') : null;
+    }
+    document.addEventListener('pointerover', function (event) {
+      const point = pointFromEvent(event);
+      if (point) showTooltip(point, event);
+    });
+    document.addEventListener('pointermove', function (event) {
+      if (activePoint && event.pointerType !== 'touch') showTooltip(activePoint, event);
+    });
+    document.addEventListener('pointerout', function (event) {
+      if (pointFromEvent(event) && event.pointerType !== 'touch') hideTooltip();
+    });
+    document.addEventListener('pointerdown', function (event) {
+      const point = pointFromEvent(event);
+      if (point) showTooltip(point, event);
+      else if (event.pointerType === 'touch') hideTooltip();
+    });
     document.querySelectorAll('[data-range]').forEach(function (button) {
       button.addEventListener('click', function () {
+        hideTooltip();
         document.querySelectorAll('[data-range]').forEach(function (item) { item.classList.toggle('active', item === button); });
         document.querySelectorAll('[data-view]').forEach(function (view) { view.hidden = view.dataset.view !== button.dataset.range; });
       });

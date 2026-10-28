@@ -10,4 +10,4 @@ meteo-dashboard --station PWS-E5FE9C --output weather.html
 
 Prometheus URL defaults to `http://localhost:9090`.
 
-Generator fetches and embeds 24-hour, 7-day, and 30-day ranges. Matplotlib produces inline SVG charts. Generated page uses tiny inline JavaScript for range switching and no external assets. `weather_dashboard.html` is source template for page structure and CSS.
+Generator fetches and embeds 24-hour, 7-day, and 30-day ranges. Matplotlib produces inline SVG charts; hover or tap a plotted point to inspect its UTC timestamp and value. Generated page uses tiny inline JavaScript for range switching and no external assets. `weather_dashboard.html` is source template for page structure and CSS.
