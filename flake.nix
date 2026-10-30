@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     comin = {
-      url = "github:nlewo/comin/v0.14.0";
+      url = "github:nlewo/comin/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
@@ -61,6 +61,7 @@
               config.allowUnfree = true;
             };
             channels = { inherit nixpkgs unstable hardware agenix; };
+            inherit comin;
           };
           modules = [
             agenix.nixosModules.default

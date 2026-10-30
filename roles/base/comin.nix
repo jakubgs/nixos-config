@@ -1,10 +1,19 @@
-{ pkgs, config, ... }:
+{ pkgs, config, comin, ... }:
 
 let
   listenPort = 4243;
 in {
   services.comin = {
     enable = true;
+    package = comin.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+      (old: {
+        patches = (old.patches or []) ++ [
+          (pkgs.fetchpatch {
+            url = "https://github.com/jakubgs/comin/commit/f4b0e9e5ffe7c2d52359c5ed25201ffab8052c42.patch";
+            hash = "sha256-FWBikpKQuaD1FALKUf+3g6hwp5N9VLyMg4W5VcRVKYQ=";
+          })
+        ];
+      });
     desktop.enable = true;
     submodules = false;
     machineId = null;
