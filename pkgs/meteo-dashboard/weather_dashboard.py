@@ -46,7 +46,14 @@ def _selector_escape(value: str) -> str:
 
 
 def _fetch(url: str, query: str, start: float, end: float, step: int) -> list[tuple[float, float]]:
-    params = urlencode({"query": query, "start": start, "end": end, "step": step})
+    params = urlencode({
+        "query": query,
+        "start": start,
+        "end": end,
+        "step": step,
+        # Prometheus otherwise reuses stale samples for its default five-minute lookback.
+        "lookback_delta": "2m",
+    })
     request = Request(f"{url.rstrip('/')}/api/v1/query_range?{params}", headers={"Accept": "application/json"})
     with urlopen(request, timeout=20) as response:
         payload = json.load(response)
@@ -55,12 +62,20 @@ def _fetch(url: str, query: str, start: float, end: float, step: int) -> list[tu
     result = payload.get("data", {}).get("result", [])
     if not result:
         return []
-    points = []
+    count = math.floor((end - start) / step) + 1
+    values_by_step = {}
     for timestamp, value in result[0].get("values", []):
+        index = round((float(timestamp) - start) / step)
+        if not 0 <= index < count:
+            continue
         number = float(value)
-        if math.isfinite(number):
-            points.append((float(timestamp), number))
-    return points
+        values_by_step[index] = number if math.isfinite(number) else math.nan
+    if not values_by_step:
+        return []
+    return [
+        (start + index * step, values_by_step.get(index, math.nan))
+        for index in range(count)
+    ]
 
 
 def _svg_chart(series: list[tuple[str, list[tuple[float, float]], str]], title: str, unit: str, max_points: int) -> str:
@@ -76,12 +91,17 @@ def _svg_chart(series: list[tuple[str, list[tuple[float, float]], str]], title: 
     plotted = []
     for label, points, color in series:
         if len(points) > max_points:
-            points = points[::max(1, len(points) // max_points)]
-        if points:
+            stride = math.ceil(len(points) / max_points)
+            points = [
+                point
+                for index, point in enumerate(points)
+                if not math.isfinite(point[1]) or index % stride == 0 or index == len(points) - 1
+            ]
+        if any(math.isfinite(value) for _, value in points):
             x, y = zip(*points)
             axis.plot(x, y, color=color, linewidth=1.8, label=label, zorder=3)
             all_x.extend(x)
-            all_y.extend(y)
+            all_y.extend(value for value in y if math.isfinite(value))
             plotted.append((label, x, y, color))
     if all_y:
         baseline = min(all_y)
@@ -118,6 +138,8 @@ def _svg_chart(series: list[tuple[str, list[tuple[float, float]], str]], title: 
     svg_height = figure.get_figheight() * 72
     for label, x, y, color in plotted:
         for timestamp, value in zip(x, y):
+            if not math.isfinite(value):
+                continue
             display_x, display_y = axis.transData.transform((timestamp, value))
             svg_x = display_x * points_to_svg
             svg_y = svg_height - display_y * points_to_svg
@@ -145,7 +167,7 @@ def _charts(data: dict[str, list[tuple[float, float]]], max_points: int) -> str:
             _, label, _, color, scale = METRICS[name]
             points = [(timestamp, value * scale) for timestamp, value in data[name]]
             series.append((label.removesuffix(f" {title.lower()}"), points, color))
-        if any(points for _, points, _ in series):
+        if any(any(math.isfinite(value) for _, value in points) for _, points, _ in series):
             chart = _svg_chart(series, title, unit, max_points)
         else:
             chart = f'<div class="empty">{html.escape(title)}<br><small>No data</small></div>'
