@@ -61,13 +61,14 @@ in {
 
   # Add Status cache to configured ones.
   nix.settings = {
-    extra-substituters = [
-      "https://cache.nix.free.technology/public"
-      "https://cache.nix.logos.co/public"
-    ];
-    extra-trusted-public-keys = [
-      "public:vAX6ZzpZzkgFEKPjf8r3Y3dSxrjZMu5+b1STWsvffeI="
-      "public:l4HrXgL4nw246+LBh2SOJyhz64BoGegOYLheT/iIAPU="
-    ];
+    # Comment out while cache is unavailable.
+    #extra-substituters = [
+    #  "https://cache.nix.free.technology/public"
+    #  "https://cache.nix.logos.co/public"
+    #];
+    #extra-trusted-public-keys = [
+    #  "public:vAX6ZzpZzkgFEKPjf8r3Y3dSxrjZMu5+b1STWsvffeI="
+    #  "public:l4HrXgL4nw246+LBh2SOJyhz64BoGegOYLheT/iIAPU="
+    #];
   };
 }
