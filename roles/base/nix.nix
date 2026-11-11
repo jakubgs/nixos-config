@@ -6,6 +6,8 @@
     "extra-experimental-features" = "flakes nix-command";
     "commit-lockfile-summary" = true;
     "debugger-on-trace" = true;
+    "fallback" = true;
+    "connect-timeout" = 5;
     "warn-dirty" = false;
     "substituters" = [
       "https://cache.nixos.org/"
