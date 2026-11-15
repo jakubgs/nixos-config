@@ -16,6 +16,9 @@
   hardware.bluetooth.settings = {
     General = {
       Enable = "Source,Sink,Media,Socket";
+      # dual = Classic + BLE (def); bredr = Classic only; le = BLE only.
+      # Force Classic to avoid JBL A2DP connection issues.
+      ControllerMode = "bredr";
     };
   };
 }
