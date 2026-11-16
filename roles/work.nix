@@ -50,7 +50,7 @@ in {
     # Docs
     mdbook hugo
     # Communication
-    weechat asciinema element-desktop telegram-desktop
+    weechat asciinema element-desktop telegram-desktop signal-desktop
   ];
 
   # For emergency use during DNS issues
