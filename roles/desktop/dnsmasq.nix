@@ -19,27 +19,9 @@ in {
       listen_addresses = [ "127.0.1.153:53" ];
       dnssec_return_status = "GETDNS_EXTENSION_TRUE";
       upstream_recursive_servers = [
-        {
-          address_data = "1.1.1.1";
-          tls_auth_name = "cloudflare-dns.com";
-          tls_pubkey_pinset = [
-            { digest = "sha256"; value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA="; }
-          ];
-        }
-        {
-          address_data = "1.0.0.1";
-          tls_auth_name = "cloudflare-dns.com";
-          tls_pubkey_pinset = [
-            { digest = "sha256"; value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA="; }
-          ];
-        }
-        {
-          address_data = "146.255.56.98";
-          tls_auth_name = "dot1.applied-privacy.net";
-          tls_pubkey_pinset = [
-            { digest = "sha256"; value = "/ylamrPMlw32XjX23scWXKF1w8hoHteActOW6yhrvxo="; }
-          ];
-        }
+        { tls_auth_name = "cloudflare-dns.com";       address_data = "1.1.1.1"; }
+        { tls_auth_name = "cloudflare-dns.com";       address_data = "1.0.0.1"; }
+        { tls_auth_name = "dot1.applied-privacy.net"; address_data = "146.255.56.98"; }
       ];
     };
   };
