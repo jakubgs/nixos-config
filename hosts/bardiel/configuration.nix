@@ -48,7 +48,7 @@
   };
 
   # Specify kernel version.
-  boot.kernelPackages = pkgs.linuxPackages_7_0;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Disabled by hardened profile, big performance hit.
   security.allowSimultaneousMultithreading = true;

@@ -18,7 +18,7 @@
   boot.loader.grub.enable = false;
 
   # Sensors
-  boot.kernelPackages = pkgs.linuxPackages_7_0;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # Network
   networking.hostId = "9e8841ba";
