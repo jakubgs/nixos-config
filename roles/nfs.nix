@@ -16,11 +16,11 @@ let
 
   allowIpRanges = [
     # Zerotier
-    "10.2.2.11" # caspair
-    "10.2.2.12" # lilim
-    "10.2.2.13" # balthasar
-    "10.2.2.14" # armisael
-    "10.2.2.25" # tvstick
+    "10.100.0.11" # caspair
+    "10.100.0.12" # lilim
+    "10.100.0.13" # balthasar
+    "10.100.0.14" # armisael
+    "10.100.0.25" # tvstick
     # Local Network
     "192.168.1.101" # caspair
     "192.168.1.103" # lilim

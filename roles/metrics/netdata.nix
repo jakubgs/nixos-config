@@ -23,7 +23,7 @@ in {
       };
       "web" = {
         "default port" = listenPort;
-        "allow connections from" = "localhost 10.2.2.* 192.168.1.*";
+        "allow connections from" = "localhost 10.100.0.* 192.168.1.*";
       };
       "health" = { "enabled" = "no"; };
       "statsd" = { "enabled" = "no"; };

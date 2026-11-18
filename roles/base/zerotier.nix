@@ -35,23 +35,23 @@ in {
 
   # Hosts Entries
   networking.hosts = {
-    "10.2.2.1"  = [       "eve.magi.vpn" ]; # router
-    "10.2.2.10" = [  "melchior.magi.vpn" ]; # server
-    "10.2.2.11" = [   "caspair.magi.vpn" ]; # desktop
-    "10.2.2.12" = [     "lilim.magi.vpn" ]; # laptop x1
-    "10.2.2.13" = [ "balthasar.magi.vpn" ]; # laptop x390
-    "10.2.2.14" = [  "armisael.magi.vpn" ]; # laptop t480s
-    "10.2.2.15" = [    "ramiel.magi.vpn" ]; # phone
-    "10.2.2.16" = [   "sachiel.magi.vpn" ]; # nanopct4
-    "10.2.2.17" = [   "bardiel.magi.vpn" ]; # hetzner
-    "10.2.2.18" = [     "arael.magi.vpn" ]; # nanopir6c
-    "10.2.2.19" = [    "zeruel.magi.vpn" ]; # hetzner
-    "10.2.2.20" = [  "shamshel.magi.vpn" ]; # hetzner
-    "10.2.2.21" = [   "israfel.magi.vpn" ]; # rock5b eth
-    "10.2.2.22" = [     "iruel.magi.vpn" ]; # rock5b misc
-    "10.2.2.23" = [   "gaghiel.magi.vpn" ]; # rock5c misc
-    "10.2.2.24" = [    "leliel.magi.vpn" ]; # rasppi4
-    "10.2.2.25" = [   "tvstick.magi.vpn" ]; # tvstick
+    "10.100.0.1"  = [       "eve.magi.vpn" ]; # router
+    "10.100.0.10" = [  "melchior.magi.vpn" ]; # server
+    "10.100.0.11" = [   "caspair.magi.vpn" ]; # desktop
+    "10.100.0.12" = [     "lilim.magi.vpn" ]; # laptop x1
+    "10.100.0.13" = [ "balthasar.magi.vpn" ]; # laptop x390
+    "10.100.0.14" = [  "armisael.magi.vpn" ]; # laptop t480s
+    "10.100.0.15" = [    "ramiel.magi.vpn" ]; # phone
+    "10.100.0.16" = [   "sachiel.magi.vpn" ]; # nanopct4
+    "10.100.0.17" = [   "bardiel.magi.vpn" ]; # hetzner
+    "10.100.0.18" = [     "arael.magi.vpn" ]; # nanopir6c
+    "10.100.0.19" = [    "zeruel.magi.vpn" ]; # hetzner
+    "10.100.0.20" = [  "shamshel.magi.vpn" ]; # hetzner
+    "10.100.0.21" = [   "israfel.magi.vpn" ]; # rock5b eth
+    "10.100.0.22" = [     "iruel.magi.vpn" ]; # rock5b misc
+    "10.100.0.23" = [   "gaghiel.magi.vpn" ]; # rock5c misc
+    "10.100.0.24" = [    "leliel.magi.vpn" ]; # rasppi4
+    "10.100.0.25" = [   "tvstick.magi.vpn" ]; # tvstick
   };
 
   # Search the magi domain

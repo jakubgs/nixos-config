@@ -45,7 +45,7 @@
         rpc-port = cfg.listenPort;
         rpc-bind-address = "0.0.0.0";
         rpc-whitelist-enabled = true;
-        rpc-whitelist = "127.0.0.1,192.168.1.*,10.2.2.*";
+        rpc-whitelist = "127.0.0.1,192.168.1.*,10.100.0.*";
         rpc-host-whitelist = "melchior.magi.vpn,melchior.magi.local";
         rpc-authentication-required = true;
         # separate service watches for torrent files to start
