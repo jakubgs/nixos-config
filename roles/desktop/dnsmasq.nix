@@ -17,7 +17,11 @@ in {
     logLevel = "info";
     settings = stubbyExample // {
       listen_addresses = [ "127.0.1.153:53" ];
-      dnssec_return_status = "GETDNS_EXTENSION_TRUE";
+      dnssec = "GETDNS_EXTENSION_TRUE";
+      dnssec_trust_anchors = "${pkgs.dns-root-data}/root.key";
+      # Validate upstream TLS certificates by hostname.
+      tls_authentication = "GETDNS_AUTHENTICATION_REQUIRED";
+      round_robin_upstreams = 0;
       upstream_recursive_servers = [
         { tls_auth_name = "cloudflare-dns.com";       address_data = "1.1.1.1"; }
         { tls_auth_name = "cloudflare-dns.com";       address_data = "1.0.0.1"; }
@@ -33,17 +37,17 @@ in {
     package = unstablePkgs.dnsmasq;
     resolveLocalQueries = true;
     settings = {
+      log-debug = false;
+      log-queries = "only_failed"; # false, true, extra, proto, auth, only_failed
       interface = "lo";
       bind-interfaces = true;
-      no-negcache = true;
+      no-resolv = true;
       cache-size = 10000;
       local-ttl = 300;
       local = "/magi.lan/";
       conf-dir = "/etc/dnsmasq.d/,*.conf";
       addn-hosts = "${blockedHosts}/hosts";
     } // optionalAttrs stubbyEnabled {
-      strict-order = true;
-      proxy-dnssec = true;
       server = ["127.0.1.153"];
     };
   };
