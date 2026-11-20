@@ -22,6 +22,10 @@ let
   ];
   myPython = pkgs.python3.withPackages myPythonPkgs;
 in {
+  imports = [
+    ./netbird.nix
+  ];
+
   # Packages required for work
   users.users.jakubgs.packages = with pkgs; [
     # DevOps
