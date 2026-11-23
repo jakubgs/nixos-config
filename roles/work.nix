@@ -60,6 +60,9 @@ in {
   # For emergency use during DNS issues
   #networking.extraHosts = lib.readFile /home/jakubgs/statusim_hosts;
 
+  # Search the work domain
+  networking.search = [ "wg.internal" "vpn.develp.co" ];
+
   # Disable Garbage Collection
   nix.gc.automatic = lib.mkForce false;
 
